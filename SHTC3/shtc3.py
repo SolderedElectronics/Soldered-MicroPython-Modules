@@ -1,29 +1,38 @@
+# FILE: shtc3.py
+# AUTHOR: Josip Šimun Kuči @ Soldered
+# BRIEF: MicroPython library for the SHTC3 temperature and humidity sensor
+# LAST UPDATED: 2025-05-23
+
 from machine import I2C, Pin
 import time
 
-# I2C address
+# I2C address of the SHTC3 sensor
 I2C_ADDR = 0x70
 
-# Sensor commands
-SHTC3_SLEEP = 0xB098
-SHTC3_WAKEUP = 0x3517
-SHTC3_RESET = 0x805D
-SHTC3_ID = 0xEFC8
-SHTC3_READ = 0x7CA2     # Normal power
-SHTC3_READ_LP = 0x6458  # Low power
+# Sensor command constants
+SHTC3_SLEEP = 0xB098       # Put sensor to sleep
+SHTC3_WAKEUP = 0x3517      # Wake sensor from sleep
+SHTC3_RESET = 0x805D       # Soft reset
+SHTC3_ID = 0xEFC8          # Read sensor ID
+SHTC3_READ = 0x7CA2        # Measure T+RH (normal power)
+SHTC3_READ_LP = 0x6458     # Measure T+RH (low power)
 
-# Scaling constants
-H_K = 0.001525878906
-T_K = 0.002670288086
-T_MIN = 45.0
+# Conversion constants
+H_K = 0.001525878906       # Humidity scaling factor
+T_K = 0.002670288086       # Temperature scaling factor
+T_MIN = 45.0               # Temperature offset
 
 class SHTC3:
+    """Class for interfacing with the SHTC3 temperature and humidity sensor over I2C."""
+
     def __init__(self, i2c: I2C):
+        """Initialize the sensor with an I2C interface."""
         self.i2c = i2c
         self._t = 0
         self._h = 0
 
     def crc8(self, data):
+        """Calculate CRC-8 for data using polynomial 0x31 (x^8 + x^5 + x^4 + 1)."""
         crc = 0xFF
         for byte in data:
             crc ^= byte
@@ -33,9 +42,11 @@ class SHTC3:
         return crc
 
     def check_crc(self, data):
+        """Check if the CRC byte of the 3-byte data block is valid."""
         return self.crc8(data[:2]) == data[2]
 
     def twi_command(self, cmd, stop=True):
+        """Send a 16-bit command to the sensor via I2C."""
         try:
             self.i2c.writeto(I2C_ADDR, bytes([cmd >> 8, cmd & 0xFF]), stop)
             return True
@@ -43,6 +54,10 @@ class SHTC3:
             return False
 
     def twi_transfer(self, cmd, length, pause_ms=0):
+        """
+        Send a command and read a response from the sensor.
+        Returns `None` if communication fails or response is the wrong length.
+        """
         if not self.twi_command(cmd, stop=False):
             return None
         if pause_ms > 0:
@@ -54,15 +69,23 @@ class SHTC3:
             return None
 
     def wakeup(self):
+        """Wake the sensor from sleep mode."""
         return self.twi_command(SHTC3_WAKEUP)
 
     def reset(self):
+        """Perform a soft reset of the sensor."""
         return self.twi_command(SHTC3_RESET)
 
     def sleep(self):
+        """Put the sensor into sleep mode to reduce power consumption."""
         return self.twi_command(SHTC3_SLEEP)
 
     def begin(self, do_sample=True):
+        """
+        Initialize the sensor and verify communication.
+        Optionally performs an initial measurement.
+        Returns True if successful, False otherwise.
+        """
         time.sleep_us(240)
         if not self.wakeup():
             return False
@@ -84,6 +107,10 @@ class SHTC3:
         return self.sleep()
 
     def sample(self, readcmd=SHTC3_READ, pause=15):
+        """
+        Perform a temperature and humidity measurement.
+        Returns True if successful and data is valid.
+        """
         if not self.wakeup():
             return False
         data = self.twi_transfer(readcmd, 6, pause)
@@ -96,10 +123,15 @@ class SHTC3:
         return True
 
     def readTemperature(self):
+        """
+        Return the last measured temperature in degrees Celsius.
+        Call sample() before to update the value.
+        """
         return (self._t * T_K) - T_MIN
 
     def readHumidity(self):
+        """
+        Return the last measured relative humidity in %RH.
+        Call sample() before to update the value.
+        """
         return self._h * H_K
-
-
-
