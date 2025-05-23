@@ -1,37 +1,61 @@
+# FILE: bme280.py
+# AUTHOR: Josip Šimun Kuči @ Soldered
+# BRIEF: MicroPython library for the BME280 temperature, pressure, and humidity sensor
+# LAST UPDATED: 2025-05-23
+
 import struct
 import time
 
 class BME280:
+    """
+    MicroPython class for the Bosch BME280 environmental sensor.
+    Supports temperature, pressure, humidity, and altitude calculations.
+    """
+
+    # Constructor
     def __init__(self, i2c, address=0x76):
+        """
+        Initialize the BME280 sensor.
+
+        :param i2c: Initialized I2C object
+        :param address: I2C address of the sensor (default 0x76)
+        """
         self.i2c = i2c
         self.address = address
         self._load_calibration_params()
         self._configure_sensor()
 
+    # Read 8-bit unsigned value from a register
     def _read8(self, register):
         return self.i2c.readfrom_mem(self.address, register, 1)[0]
 
+    # Read 16-bit unsigned value (MSB first) from a register
     def _read16(self, register):
         data = self.i2c.readfrom_mem(self.address, register, 2)
         return data[1] << 8 | data[0]
 
+    # Read 16-bit unsigned value (LSB first)
     def _read16le(self, register):
         data = self.i2c.readfrom_mem(self.address, register, 2)
         return data[0] | (data[1] << 8)
 
+    # Read 16-bit signed value (LSB first)
     def _read_signed16le(self, register):
         result = self._read16le(register)
         if result > 32767:
             result -= 65536
         return result
 
+    # Load all factory calibration parameters from sensor registers
     def _load_calibration_params(self):
-        # Temperature calibration
+        """
+        Read and store all sensor calibration parameters from internal registers.
+        Required for temperature, pressure, and humidity compensation.
+        """
         self.dig_T1 = self._read16le(0x88)
         self.dig_T2 = self._read_signed16le(0x8A)
         self.dig_T3 = self._read_signed16le(0x8C)
 
-        # Pressure calibration
         self.dig_P1 = self._read16le(0x8E)
         self.dig_P2 = self._read_signed16le(0x90)
         self.dig_P3 = self._read_signed16le(0x92)
@@ -42,7 +66,6 @@ class BME280:
         self.dig_P8 = self._read_signed16le(0x9C)
         self.dig_P9 = self._read_signed16le(0x9E)
 
-        # Humidity calibration
         self.dig_H1 = self._read8(0xA1)
         self.dig_H2 = self._read_signed16le(0xE1)
         self.dig_H3 = self._read8(0xE3)
@@ -54,26 +77,50 @@ class BME280:
         self.dig_H5 = (e6 << 4) | (e5 >> 4)
         self.dig_H6 = e7 if e7 < 128 else e7 - 256
 
+    # Configure sensor settings (oversampling and mode)
     def _configure_sensor(self):
+        """
+        Write configuration registers to enable humidity, pressure,
+        and temperature measurements with oversampling = x1, normal mode.
+        """
         self.i2c.writeto_mem(self.address, 0xF2, b'\x01')  # Humidity oversampling x1
         self.i2c.writeto_mem(self.address, 0xF4, b'\x27')  # Temp/Pressure oversampling x1, Normal mode
         self.i2c.writeto_mem(self.address, 0xF5, b'\xA0')  # Standby 1000ms, Filter off
 
+    # Read raw sensor data for temperature, pressure, and humidity
     def read_raw_data(self):
-        # Burst read of 8 bytes from 0xF7
+        """
+        Read raw temperature, pressure, and humidity data from the sensor.
+
+        :return: (raw_temp, raw_press, raw_hum)
+        """
         data = self.i2c.readfrom_mem(self.address, 0xF7, 8)
         raw_press = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
         raw_temp = (data[3] << 12) | (data[4] << 4) | (data[5] >> 4)
         raw_hum = (data[6] << 8) | data[7]
         return raw_temp, raw_press, raw_hum
 
-    def read_temperature(self, adc_T):
+    # Convert raw temperature to degrees Celsius
+    def readTemperature(self, adc_T):
+        """
+        Convert raw temperature reading to degrees Celsius.
+
+        :param adc_T: Raw temperature from read_raw_data
+        :return: Temperature in °C
+        """
         var1 = (((adc_T >> 3) - (self.dig_T1 << 1)) * self.dig_T2) >> 11
         var2 = (((((adc_T >> 4) - self.dig_T1) * ((adc_T >> 4) - self.dig_T1)) >> 12) * self.dig_T3) >> 14
         self.t_fine = var1 + var2
-        return ((self.t_fine * 5 + 128) >> 8)/100
+        return ((self.t_fine * 5 + 128) >> 8) / 100
 
-    def read_pressure(self, adc_P):
+    # Convert raw pressure to hPa
+    def readPressure(self, adc_P):
+        """
+        Convert raw pressure reading to hectoPascals (hPa).
+
+        :param adc_P: Raw pressure from read_raw_data
+        :return: Pressure in hPa
+        """
         var1 = self.t_fine - 128000
         var2 = var1 * var1 * self.dig_P6
         var2 = var2 + ((var1 * self.dig_P5) << 17)
@@ -86,28 +133,46 @@ class BME280:
         p = ((p << 31) - var2) * 3125 // var1
         var1 = (self.dig_P9 * (p >> 13) * (p >> 13)) >> 25
         var2 = (self.dig_P8 * p) >> 19
-        return (((p + var1 + var2) >> 8) + (self.dig_P7 << 4))/25600
+        return (((p + var1 + var2) >> 8) + (self.dig_P7 << 4)) / 25600
 
-    def read_humidity(self, adc_H):
+    # Convert raw humidity to relative humidity (%)
+    def readHumidity(self, adc_H):
+        """
+        Convert raw humidity reading to percentage relative humidity.
+
+        :param adc_H: Raw humidity from read_raw_data
+        :return: Humidity in %RH
+        """
         v_x1 = self.t_fine - 76800
         v_x1 = (((((adc_H << 14) - (self.dig_H4 << 20) - (self.dig_H5 * v_x1)) + 16384) >> 15) *
                 (((((((v_x1 * self.dig_H6) >> 10) * (((v_x1 * self.dig_H3) >> 11) + 32768)) >> 10) + 2097152) *
                   self.dig_H2 + 8192) >> 14))
         v_x1 = v_x1 - (((((v_x1 >> 15) * (v_x1 >> 15)) >> 7) * self.dig_H1) >> 4)
         v_x1 = max(min(v_x1, 419430400), 0)
-        return (v_x1 >> 12)/1024
+        return (v_x1 >> 12) / 1024
 
-    def read_all_values(self):
+    # Read temperature, pressure, and humidity in one call
+    def readAllValues(self):
+        """
+        Read and return compensated temperature, pressure, and humidity values.
+
+        :return: (temperature °C, pressure hPa, humidity %)
+        """
         raw_temp, raw_press, raw_hum = self.read_raw_data()
-        temperature = self.read_temperature(raw_temp)
-        pressure = self.read_pressure(raw_press)
-        humidity = self.read_humidity(raw_hum)
+        temperature = self.readTemperature(raw_temp)
+        pressure = self.readPressure(raw_press)
+        humidity = self.readHumidity(raw_hum)
         return temperature, pressure, humidity
 
-    def calculate_altitude(self):
-        seaLevel = 1013.25
+    # Calculate altitude from current pressure using sea-level reference
+    def calculateAltitude(self):
+        """
+        Estimate altitude in meters from current pressure using standard sea-level pressure.
+
+        :return: Altitude in meters
+        """
+        seaLevel = 1013.25  # hPa
         data = self.i2c.readfrom_mem(self.address, 0xF7, 8)
         raw_press = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
-
-        return 44330.0 * (1.0 - pow(self.read_pressure(raw_press) / seaLevel, 0.1903))
+        return 44330.0 * (1.0 - pow(self.readPressure(raw_press) / seaLevel, 0.1903))
 
