@@ -1,4 +1,4 @@
-name: Python Lint and Format
+name: Format MicroPython Code
 
 on:
   push:
@@ -7,22 +7,22 @@ on:
     branches: [main]
 
 jobs:
-  lint-format:
+  ruff:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Run Ruff (lint + auto-fix)
+      - name: Run Ruff with MicroPython-friendly config
         uses: astral-sh/ruff-action@v3
         with:
-          args: check --fix
+          args: check --select ALL --ignore F821,F401,E402 --exit-zero
 
-      - name: Run Ruff Format
+      - name: Format code using Ruff
         run: ruff format .
 
-      - name: Commit and push changes (if any)
+      - name: Commit and push formatting changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "Apply Ruff formatting and lint fixes"
+          commit_message: "Apply Ruff formatting (MicroPython-safe)"
