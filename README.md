@@ -9,7 +9,7 @@ Soldered MicroPython Modules is an open-source library of MicroPython drivers de
 Each module in the library is designed to be lightweight, readable, and compatible with a wide range of MicroPython-compatible microcontrollers.
 
 ## Installation
-You can install a specific module using mpremote or manually downloading specific files onto the board using an IDE such as Thonny
+You can install a specific module using mpremote or manually downloading specific files onto the board using an IDE such as [Thonny](https://thonny.org/)
 
 ### Installing using mpremote (recommended)
 After [**installing the mpremote package**](https://docs.micropython.org/en/latest/reference/mpremote.html), flash a module to the board using the following command:
@@ -28,7 +28,7 @@ The module can now be imported and used on your board:
 from bme280 import BME280
 ```
 
-### Installing using an IDE (Thonny)
+### Installing using an IDE ([Thonny](https://thonny.org/))
 
 1. **Connect your board** to your computer via USB.
 2. Open **Thonny**, and make sure the correct interpreter is selected:
