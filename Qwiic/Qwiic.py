@@ -86,4 +86,4 @@ class Qwiic:
             self.err = e
             return -1
 
-AAAAAAAAAAAAAAAAAA
+VIUVIUVIU
