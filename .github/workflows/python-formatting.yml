@@ -1,0 +1,28 @@
+name: Python Lint and Format
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Ruff (lint + auto-fix)
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: check --fix
+
+      - name: Run Ruff Format
+        run: ruff format .
+
+      - name: Commit and push changes (if any)
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Apply Ruff formatting and lint fixes"
