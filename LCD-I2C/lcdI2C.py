@@ -5,36 +5,38 @@
 from machine import I2C
 from time import sleep_ms, sleep_us
 
+
 class LCDOutput:
     """Helper class to manage the control and data signals sent to the I2C LCD driver."""
 
     def __init__(self):
         # Control and data signal bits
-        self.rs = 0    # Register select: 0 = command, 1 = data
-        self.rw = 0    # Read/write: 0 = write, 1 = read (usually 0)
-        self.E = 0     # Enable signal
-        self.Led = 0   # Backlight control
+        self.rs = 0  # Register select: 0 = command, 1 = data
+        self.rw = 0  # Read/write: 0 = write, 1 = read (usually 0)
+        self.E = 0  # Enable signal
+        self.Led = 0  # Backlight control
         self.data = 0  # 8-bit data value
 
     def get_high_data(self):
         """Return high nibble of data combined with control bits for transmission."""
         return (
-            ((self.data & 0xF0)) |
-            (self.rs << 0) |
-            (self.rw << 1) |
-            (self.E << 2) |
-            (self.Led << 3)
+            (self.data & 0xF0)
+            | (self.rs << 0)
+            | (self.rw << 1)
+            | (self.E << 2)
+            | (self.Led << 3)
         )
 
     def get_low_data(self):
         """Return low nibble of data (shifted) combined with control bits for transmission."""
         return (
-            ((self.data & 0x0F) << 4) |
-            (self.rs << 0) |
-            (self.rw << 1) |
-            (self.E << 2) |
-            (self.Led << 3)
+            ((self.data & 0x0F) << 4)
+            | (self.rs << 0)
+            | (self.rw << 1)
+            | (self.E << 2)
+            | (self.Led << 3)
         )
+
 
 class LCD_I2C:
     """Class for controlling a character LCD via an I2C I/O expander"""
@@ -43,7 +45,7 @@ class LCD_I2C:
         self.i2c = i2c
         self._address = address
         self._output = LCDOutput()
-        self._entryState = 0b10     # Left-to-right text entry mode
+        self._entryState = 0b10  # Left-to-right text entry mode
         self._displayState = 0b100  # Display ON, cursor OFF, blink OFF
 
     def begin(self, beginWire=True):
@@ -92,7 +94,7 @@ class LCD_I2C:
             (0b00110000, 4200),
             (0b00110000, 150),
             (0b00110000, 37),
-            (0b00100000, 37)
+            (0b00100000, 37),
         ]:
             self.lcd_write(val, initialization=True)
             sleep_us(delay)
@@ -120,7 +122,7 @@ class LCD_I2C:
 
     def leftToRight(self):
         """Set text entry to left-to-right mode."""
-        self._entryState |= (1 << 1)
+        self._entryState |= 1 << 1
         self._update_entry_mode()
 
     def rightToLeft(self):
@@ -147,7 +149,7 @@ class LCD_I2C:
 
     def display(self):
         """Turn on the display."""
-        self._displayState |= (1 << 2)
+        self._displayState |= 1 << 2
         self._update_display_control()
 
     def displayOff(self):
@@ -157,7 +159,7 @@ class LCD_I2C:
 
     def cursorOn(self):
         """Show the cursor."""
-        self._displayState |= (1 << 1)
+        self._displayState |= 1 << 1
         self._update_display_control()
 
     def cursorOff(self):
@@ -232,7 +234,7 @@ class LCD_I2C:
         """Turn off the LCD backlight."""
         self._output.Led = 0
         self.i2c_write_data(0x00 | (self._output.Led << 3))
-        
+
     def print(self, string):
         """Print a string to the LCD."""
         for char in string:

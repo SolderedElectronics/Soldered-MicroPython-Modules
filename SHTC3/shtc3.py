@@ -10,17 +10,18 @@ import time
 I2C_ADDR = 0x70
 
 # Sensor command constants
-SHTC3_SLEEP = 0xB098       # Put sensor to sleep
-SHTC3_WAKEUP = 0x3517      # Wake sensor from sleep
-SHTC3_RESET = 0x805D       # Soft reset
-SHTC3_ID = 0xEFC8          # Read sensor ID
-SHTC3_READ = 0x7CA2        # Measure T+RH (normal power)
-SHTC3_READ_LP = 0x6458     # Measure T+RH (low power)
+SHTC3_SLEEP = 0xB098  # Put sensor to sleep
+SHTC3_WAKEUP = 0x3517  # Wake sensor from sleep
+SHTC3_RESET = 0x805D  # Soft reset
+SHTC3_ID = 0xEFC8  # Read sensor ID
+SHTC3_READ = 0x7CA2  # Measure T+RH (normal power)
+SHTC3_READ_LP = 0x6458  # Measure T+RH (low power)
 
 # Conversion constants
-H_K = 0.001525878906       # Humidity scaling factor
-T_K = 0.002670288086       # Temperature scaling factor
-T_MIN = 45.0               # Temperature offset
+H_K = 0.001525878906  # Humidity scaling factor
+T_K = 0.002670288086  # Temperature scaling factor
+T_MIN = 45.0  # Temperature offset
+
 
 class SHTC3:
     """Class for interfacing with the SHTC3 temperature and humidity sensor over I2C."""
@@ -94,7 +95,9 @@ class SHTC3:
         if not id_data or not self.check_crc(id_data):
             return False
 
-        sig_valid = (id_data[0] & 0b00001000) and ((id_data[1] & 0b00111111) == 0b00000111)
+        sig_valid = (id_data[0] & 0b00001000) and (
+            (id_data[1] & 0b00111111) == 0b00000111
+        )
         if not sig_valid:
             return False
 

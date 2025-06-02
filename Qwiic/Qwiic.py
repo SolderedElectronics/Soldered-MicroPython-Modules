@@ -6,8 +6,8 @@ from machine import I2C
 import time
 from os import uname
 
+
 class Qwiic:
-    
     def __init__(self, i2c=None, address: int = 0x30, native: bool = False):
         """
         Initialize the Qwiic interface.
@@ -21,7 +21,7 @@ class Qwiic:
         else:
             if uname().sysname == "esp32":
                 print("Ude ovdje")
-                self.i2c=I2C(0, scl=Pin(22), sda=Pin(21))
+                self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter Qwiic I2C pins manually")
         self.address = address

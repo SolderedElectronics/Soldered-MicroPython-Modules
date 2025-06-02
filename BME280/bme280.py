@@ -6,6 +6,7 @@
 import struct
 import time
 
+
 class BME280:
     """
     MicroPython class for the Bosch BME280 environmental sensor.
@@ -83,9 +84,11 @@ class BME280:
         Write configuration registers to enable humidity, pressure,
         and temperature measurements with oversampling = x1, normal mode.
         """
-        self.i2c.writeto_mem(self.address, 0xF2, b'\x01')  # Humidity oversampling x1
-        self.i2c.writeto_mem(self.address, 0xF4, b'\x27')  # Temp/Pressure oversampling x1, Normal mode
-        self.i2c.writeto_mem(self.address, 0xF5, b'\xA0')  # Standby 1000ms, Filter off
+        self.i2c.writeto_mem(self.address, 0xF2, b"\x01")  # Humidity oversampling x1
+        self.i2c.writeto_mem(
+            self.address, 0xF4, b"\x27"
+        )  # Temp/Pressure oversampling x1, Normal mode
+        self.i2c.writeto_mem(self.address, 0xF5, b"\xa0")  # Standby 1000ms, Filter off
 
     # Read raw sensor data for temperature, pressure, and humidity
     def read_raw_data(self):
@@ -109,7 +112,10 @@ class BME280:
         :return: Temperature in °C
         """
         var1 = (((adc_T >> 3) - (self.dig_T1 << 1)) * self.dig_T2) >> 11
-        var2 = (((((adc_T >> 4) - self.dig_T1) * ((adc_T >> 4) - self.dig_T1)) >> 12) * self.dig_T3) >> 14
+        var2 = (
+            ((((adc_T >> 4) - self.dig_T1) * ((adc_T >> 4) - self.dig_T1)) >> 12)
+            * self.dig_T3
+        ) >> 14
         self.t_fine = var1 + var2
         return ((self.t_fine * 5 + 128) >> 8) / 100
 
@@ -144,9 +150,25 @@ class BME280:
         :return: Humidity in %RH
         """
         v_x1 = self.t_fine - 76800
-        v_x1 = (((((adc_H << 14) - (self.dig_H4 << 20) - (self.dig_H5 * v_x1)) + 16384) >> 15) *
-                (((((((v_x1 * self.dig_H6) >> 10) * (((v_x1 * self.dig_H3) >> 11) + 32768)) >> 10) + 2097152) *
-                  self.dig_H2 + 8192) >> 14))
+        v_x1 = (
+            (((adc_H << 14) - (self.dig_H4 << 20) - (self.dig_H5 * v_x1)) + 16384) >> 15
+        ) * (
+            (
+                (
+                    (
+                        (
+                            ((v_x1 * self.dig_H6) >> 10)
+                            * (((v_x1 * self.dig_H3) >> 11) + 32768)
+                        )
+                        >> 10
+                    )
+                    + 2097152
+                )
+                * self.dig_H2
+                + 8192
+            )
+            >> 14
+        )
         v_x1 = v_x1 - (((((v_x1 >> 15) * (v_x1 >> 15)) >> 7) * self.dig_H1) >> 4)
         v_x1 = max(min(v_x1, 419430400), 0)
         return (v_x1 >> 12) / 1024
@@ -175,4 +197,3 @@ class BME280:
         data = self.i2c.readfrom_mem(self.address, 0xF7, 8)
         raw_press = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
         return 44330.0 * (1.0 - pow(self.readPressure(raw_press) / seaLevel, 0.1903))
-

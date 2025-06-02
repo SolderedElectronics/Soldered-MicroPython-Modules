@@ -6,6 +6,7 @@ from machine import Pin
 from Qwiic import Qwiic
 import struct
 
+
 class PIRSensor(Qwiic):
     def __init__(self, i2c=None, address=0x30, pin=None):
         """
@@ -39,7 +40,7 @@ class PIRSensor(Qwiic):
         :param delay_time_sec: Delay time in seconds
         """
         self.delay_time = delay_time_sec
-        data = struct.pack('<I', self.delay_time)
+        data = struct.pack("<I", self.delay_time)
         self.send_data(data)
 
     def get_state(self) -> bool:
@@ -58,7 +59,7 @@ class PIRSensor(Qwiic):
         Check if the PIR sensor is responding on the I2C bus.
         """
         try:
-            self.i2c.writeto(self.address, b'')
+            self.i2c.writeto(self.address, b"")
             return True
         except Exception:
             return False

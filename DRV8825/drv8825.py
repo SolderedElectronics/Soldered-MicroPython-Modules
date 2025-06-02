@@ -6,6 +6,7 @@
 from machine import Pin
 from time import sleep_us, sleep_ms
 
+
 class DRV8825:
     """
     Class for interfacing with the DRV8825 stepper motor driver via GPIO pins.
@@ -110,7 +111,9 @@ class DRV8825:
             if self._direction == self.CLOCK_WISE:
                 self._position = (self._position + 1) % self._stepsPerRotation
             else:
-                self._position = (self._position - 1 + self._stepsPerRotation) % self._stepsPerRotation
+                self._position = (
+                    self._position - 1 + self._stepsPerRotation
+                ) % self._stepsPerRotation
 
     def resetSteps(self, s=0):
         """

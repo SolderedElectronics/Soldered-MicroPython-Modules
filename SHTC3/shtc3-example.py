@@ -14,14 +14,12 @@ i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 shtc3 = SHTC3(i2c)
 
 while 1:
-    #The sensor must sample the values before we can read them
+    # The sensor must sample the values before we can read them
     shtc3.sample()
 
     # Read values
-    temperature=shtc3.readTemperature()
-    humidity=shtc3.readHumidity()
+    temperature = shtc3.readTemperature()
+    humidity = shtc3.readHumidity()
     print("Temperature: {:.2f} C".format(temperature))
     print("Humidity: {:.2f} %\n".format(humidity))
     time.sleep(5.0)
-
-

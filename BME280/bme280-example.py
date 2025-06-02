@@ -23,5 +23,3 @@ while 1:
     print("Humidity: {:.2f} %".format(hum))
     print("Altitude: {:.2f} m".format(altitude))
     time.sleep(5.0)
-
-
