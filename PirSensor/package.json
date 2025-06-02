@@ -1,6 +1,9 @@
 {
   "urls": [
-    ["PirSensor/PirSensor.py", "PirSensor.py"]
+    ["github:SolderedElectronics/Soldered-Micropython-modules/main/PirSensor/PirSensor.py", "PirSensor.py"]
+  ],
+  "deps": [
+    ["github:SolderedElectronics/Soldered-Micropython-modules/main/Qwiic/Qwiic.py", "main"]
   ],
   "version": "0.2"
 }
