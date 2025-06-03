@@ -20,7 +20,6 @@ class Qwiic:
             self.i2c = i2c
         else:
             if uname().sysname == "esp32":
-                print("Ude ovdje")
                 self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter Qwiic I2C pins manually")
