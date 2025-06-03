@@ -1,7 +1,8 @@
 # FILE: ModuleTemplate.py
 # AUTHOR: Name @ Soldered
-# BRIEF: A template of a MicroPython module 
+# BRIEF: A template of a MicroPython module
 # LAST UPDATED: YYYY-MM-DD
+
 
 class ModuleTemplate:
     """
@@ -20,4 +21,3 @@ class ModuleTemplate:
         Returns:
             True on successful initialization.
         """
-        
