@@ -5,6 +5,7 @@
 
 from machine import I2C, Pin
 import time
+from os import uname
 
 # I2C address of the SHTC3 sensor
 I2C_ADDR = 0x70
@@ -26,9 +27,15 @@ T_MIN = 45.0  # Temperature offset
 class SHTC3:
     """Class for interfacing with the SHTC3 temperature and humidity sensor over I2C."""
 
-    def __init__(self, i2c: I2C):
+    def __init__(self, i2c=None):
         """Initialize the sensor with an I2C interface."""
-        self.i2c = i2c
+        if i2c != None:
+            self.i2c = i2c
+        else:
+            if uname().sysname == "esp32" or uname().sysname == "esp8266":
+                self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+            else:
+                raise Exception("Board not recognized, enter I2C pins manually")
         self._t = 0
         self._h = 0
 
@@ -138,3 +145,4 @@ class SHTC3:
         Call sample() before to update the value.
         """
         return self._h * H_K
+

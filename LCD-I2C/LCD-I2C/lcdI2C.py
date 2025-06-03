@@ -2,8 +2,9 @@
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: MicroPython library for the I2C controlled 16x2 LCD display
 # LAST UPDATED: 2025-05-23
-from machine import I2C
+from machine import I2C, Pin
 from time import sleep_ms, sleep_us
+from os import uname
 
 
 class LCDOutput:
@@ -42,7 +43,14 @@ class LCD_I2C:
     """Class for controlling a character LCD via an I2C I/O expander"""
 
     def __init__(self, i2c: I2C, address=0x20):
-        self.i2c = i2c
+        if i2c != None:
+            self.i2c = i2c
+        else:
+            if uname().sysname == "esp32" or uname().sysname == "esp8266":
+                self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+            else:
+                raise Exception("Board not recognized, enter I2C pins manually")
+        
         self._address = address
         self._output = LCDOutput()
         self._entryState = 0b10  # Left-to-right text entry mode
@@ -206,9 +214,9 @@ class LCD_I2C:
         sleep_us(37)
         for byte in charmap:
             self.write(byte)
-        self.setcursorOn(0, 0)
+        self.setCursor(0, 0)
 
-    def setcursorOn(self, col, row):
+    def setCursor(self, col, row):
         """Set the cursor to the specified column and row."""
         addr = 0x00 if row == 0 else 0x40
         addr += col

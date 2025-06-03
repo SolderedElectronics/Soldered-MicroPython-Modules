@@ -6,26 +6,33 @@
 
 from machine import I2C, Pin
 import time
-import lcdI2C
+from lcdI2C import LCD_I2C
 
-i2c = I2C(1, scl=Pin(22), sda=Pin(21), freq=100000)
+# If you aren't using the Qwiic connector, manually enter your I2C pins
+#i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+#lcd = LCD_I2C(i2c)
 
-lcd = LCD_I2C(i2c)
+# Initialize sensor over Qwiic
+lcd = LCD_I2C()
 
-
+#Turn on the backlight of the LCD
 lcd.backlight()
+
+#Start communication with the LCD over I2C
 lcd.begin()
 
 # Hello world example
-
-lcd.setcursorOn(0, 0)
+#Sets the cursor to the first character place in the first row
+lcd.setCursor(0, 0)
 lcd.print("Hello, World!")
-lcd.setcursorOn(0, 1)
+#Sets the cursor to the first character place in the second row
+lcd.setCursor(0, 1)
 lcd.print("Made by Soldered!")
 
 time.sleep(5.0)
 
-# Custom character example
+# Custom character example, Characters are in binary form, each row represents a row of pixels and a 1 represents that a pixel is turned on
+#A smiley face :)
 happy = [
     0b00000,
     0b10001,
@@ -37,6 +44,7 @@ happy = [
     0b00000,
 ]
 
+#A shocked face :o
 wow = [
     0b00000,
     0b10001,
@@ -48,18 +56,40 @@ wow = [
     0b00000,
 ]
 
-anchor = [0b01110, 0b01010, 0b01110, 0b00100, 0b10101, 0b10101, 0b01110, 0b00100]
+#An anchor
+anchor = [
+    0b01110, 
+    0b01010, 
+    0b01110, 
+    0b00100, 
+    0b10101, 
+    0b10101, 
+    0b01110, 
+    0b00100
+]
 
-snow = [0b01000, 0b11101, 0b01011, 0b00001, 0b00100, 0b01110, 0b00100, 0b10000]
+#A snowflake
+snow = [
+    0b01000,
+    0b11101, 
+    0b01011, 
+    0b00001, 
+    0b00100, 
+    0b01110, 
+    0b00100, 
+    0b10000
+]
 
+#Write the defined c haracters into memory
 lcd.createChar(0, happy)
 lcd.createChar(1, wow)
 lcd.createChar(2, anchor)
 lcd.createChar(3, snow)
 
+#Clear the screen
 lcd.clear()
 
-lcd.setcursorOn(0, 0)
+lcd.setCursor(0, 0)
 lcd.write(0)
 lcd.write(1)
 lcd.write(2)
@@ -70,6 +100,13 @@ time.sleep(5.0)
 # Autoscroll example
 
 lcd.clear()
+sentence="Autoscroll example"
+#When autoscroll is enabled, the characters will scroll to the left to make room for oncoming characters
 lcd.autoscroll()
-lcd.print("This is an autoscrolling example hihi")
-lcd.scrollDisplayLeft()
+#Set cursor to the last place in row
+lcd.setCursor(16,0)
+#Go through each character in sentence and print one every second
+for i in range (len(sentence)):
+    #Display the character onto the screen
+    lcd.print(sentence[i])
+    time.sleep(1.0)
