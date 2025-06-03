@@ -2,6 +2,7 @@
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: An example of using LCD to write text, draw
 #        custom characters and autoscroll
+# WORKS WITH: LCD display 16x2 I2C white/blue: www.solde.red/333171
 # LAST UPDATED: 2025-05-23
 
 from machine import I2C, Pin

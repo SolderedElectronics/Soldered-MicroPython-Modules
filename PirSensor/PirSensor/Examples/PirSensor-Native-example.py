@@ -2,6 +2,7 @@
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF:  An example showing how to detect movement
 #         via the PIR sensor over the DOUT pin
+# WORKS WITH: PIR Movement sensor board: www.solde.red/333083
 # LAST UPDATED: 2025-05-23
 from PirSensor import PIRSensor
 from machine import Pin

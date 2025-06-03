@@ -2,6 +2,7 @@
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: An example showing how to detect movement
 #        via the PIR sensor over the Qwiic connector
+# WORKS WITH: PIR Movement sensor board with easyC: www.solde.red/333179
 # LAST UPDATED: 2025-05-23
 from PirSensor import PIRSensor
 import time

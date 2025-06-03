@@ -1,7 +1,8 @@
-# FILE: drv8825-example.py
+# FILE: drv8825-motorRotationAndSleep.py
 # AUTHOR: Josip Šimun Kuči @ Soldered (based on DRV8825 by Rob Tillaart)
 # BRIEF: An example of using the DRV8825 stepper driver to control a motor and
 #        Stepping it in each direction, after which it goes into sleep
+# WORKS WITH: Stepper motor driver DRV8825 board: www.solde.red/333000
 # LAST UPDATED: 2025-05-23
 
 from drv8825 import DRV8825

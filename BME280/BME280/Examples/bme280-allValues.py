@@ -2,6 +2,7 @@
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: An example for the BME280 sensor that reads temperature, humidity,
 #        pressure and calculates the altitude using the pressure measurement
+# WORKS WITH: Enviromental sensor BME280 breakout: www.solde.red/333036
 # LAST UPDATED: 2025-05-23
 from machine import Pin, I2C
 from bme280 import BME280

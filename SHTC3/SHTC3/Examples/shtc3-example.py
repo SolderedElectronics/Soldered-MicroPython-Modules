@@ -1,6 +1,7 @@
 # FILE: shtc3-example.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: An example for using the SHTC3 to measure temperature and humidity
+# WORKS WITH: Temperature and humidity sensor SHTC3 breakout: www.solde.red/333032
 # LAST UPDATED: 2025-05-23
 
 from machine import Pin, I2C
