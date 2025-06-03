@@ -2,13 +2,19 @@
 
 ![](https://github.com/SolderedElectronics/Soldered-MicroPython-modules/blob/main/img/soldered_micropython.png)
 
+---
+
 ## Overview
 A collection of MicroPython drivers and modules for Soldered products. This library aims to provide plug-and-play support for sensors, displays, actuators, and other peripherals used with Soldered development boards. 
+
+---
 
 ## About
 Soldered MicroPython Modules is an open-source library of MicroPython drivers developed and maintained by Soldered for our range of DIY electronics modules, sensors, and development boards. The goal is to make it easy for makers, educators, and engineers to get started quickly with Soldered hardware using MicroPython—whether for prototyping, classroom learning, or embedded projects.
 
 Each module in the library is designed to be lightweight, readable, and compatible with a wide range of MicroPython-compatible microcontrollers.
+
+---
 
 ## Installation
 You can install a specific module using mpremote or manually downloading specific files onto the board using an IDE such as [Thonny](https://thonny.org/)
@@ -55,7 +61,29 @@ from bme280 import BME280
   ],
 ```
 
-### About Soldered
+---
+
+## Structure
+
+Each Module has its own folder with its respective package.json for usage with the above mentioned **mpremote installation**. There is also the module itself as well as a folder with examples of using the modules
+The structure is as follows:
+
+```
+Module_Name/
+   |
+   +--- package.json  <-- Configuration file used by the mpremote package, contains dependencies and links to download module remotely
+   |
+   +--- Module_Name/
+   |      +--- Module_Name.py  <-- The MicroPython module
+   |      |
+   |      `--- Examples/
+   |            |--- Module_Example.py	<-- An example of how to use the respective module 
+   |
+```
+
+---
+
+## About Soldered
 
 <img src="https://soldered.com/productdata/2023/01/soldered-logo-og.png" alt="soldered-logo" width="500"/>
 
@@ -65,11 +93,15 @@ At Soldered, we design and manufacture a wide selection of electronic products t
 - [Tutorials & Projects](https://soldered.com/learn)
 - [Community & Technical support](https://soldered.com/community)
 
-### Open-source license
+---
+
+## Open-source license
 
 Soldered invests vast amounts of time into hardware & software for these products, which are all open-source. Please support future development by buying one of our products.
 
-This repository is under the MIT license. Long story short, use these open-source files for any purpose you want to, as long as you apply the same open-source licence to it and disclose the original source. No warranty - all designs in this repository are distributed in the hope that they will be useful, but without any warranty. They are provided "AS IS", therefore without warranty of any kind, either expressed or implied. The entire quality and performance of what you do with the contents of this repository are your responsibility. In no event, Soldered (TAVU) will be liable for your damages, losses, including any general, special, incidental or consequential damage arising out of the use or inability to use the contents of this repository.
+This repository is under the MIT license, for more info, see LICENSE. Long story short, use these open-source files for any purpose you want to, as long as you apply the same open-source licence to it and disclose the original source. No warranty - all designs in this repository are distributed in the hope that they will be useful, but without any warranty. They are provided "AS IS", therefore without warranty of any kind, either expressed or implied. The entire quality and performance of what you do with the contents of this repository are your responsibility. In no event, Soldered (TAVU) will be liable for your damages, losses, including any general, special, incidental or consequential damage arising out of the use or inability to use the contents of this repository.
+
+---
 
 ## Have fun!
 
