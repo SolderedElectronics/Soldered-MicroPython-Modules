@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "lib/lcdI2C.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/LCD-I2C/LCD-I2C/lcdI2C.py"
+    ],
+    [
+      "Examples/lcdI2C-example.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/LCD-I2C/LCD-I2C/Examples/lcdI2C-example.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}
