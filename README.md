@@ -1,4 +1,6 @@
-# Soldered MicroPython modules
+# Soldered MicroPython Modules
+
+![](https://github.com/SolderedElectronics/Soldered-MicroPython-modules/blob/main/img/soldered_micropython.png)
 
 ## Overview
 A collection of MicroPython drivers and modules for Soldered products. This library aims to provide plug-and-play support for sensors, displays, actuators, and other peripherals used with Soldered development boards. 
