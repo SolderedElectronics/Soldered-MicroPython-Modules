@@ -5,6 +5,8 @@
 
 import struct
 import time
+from machine import I2C, Pin
+from os import uname
 
 
 class BME280:
@@ -14,14 +16,21 @@ class BME280:
     """
 
     # Constructor
-    def __init__(self, i2c, address=0x76):
+    def __init__(self, i2c=None, address=0x76):
         """
         Initialize the BME280 sensor.
 
         :param i2c: Initialized I2C object
         :param address: I2C address of the sensor (default 0x76)
         """
-        self.i2c = i2c
+        if i2c != None:
+            self.i2c = i2c
+        else:
+            if uname().sysname == "esp32" or uname().sysname == "esp8266":
+                self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+            else:
+                raise Exception("Board not recognized, enter I2C pins manually")
+                
         self.address = address
         self._load_calibration_params()
         self._configure_sensor()
@@ -197,3 +206,4 @@ class BME280:
         data = self.i2c.readfrom_mem(self.address, 0xF7, 8)
         raw_press = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
         return 44330.0 * (1.0 - pow(self.readPressure(raw_press) / seaLevel, 0.1903))
+
