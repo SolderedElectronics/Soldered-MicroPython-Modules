@@ -16,15 +16,16 @@ bme280 = BME280()
 
 # Infinite loop
 while 1:
-    #Get the reading for the temperature, pressure and humidity from the sensor
+    # Read the temperature, humidity and pressure values and store them in their respective variables
     temp, pres, hum = bme280.readAllValues()
-
-    #Calculate the altitude using the measured pressure
+    # Calculate the altitude using the pressure read by the sensor
     altitude = bme280.calculateAltitude()
 
-    #Print the values that were read with two decimal points
+    # Print the measured values, each in their own line
     print("Temperature: {:.2f} °C".format(temp))
     print("Pressure: {:.2f} hPa".format(pres))
     print("Humidity: {:.2f} %".format(hum))
-    print("Altitude: {:.2f} m \n".format(altitude))
+    print("Altitude: {:.2f} m".format(altitude))
+
+    # Pause for 5 seconds
     time.sleep(5.0)
