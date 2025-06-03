@@ -145,4 +145,3 @@ class SHTC3:
         Call sample() before to update the value.
         """
         return self._h * H_K
-

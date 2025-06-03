@@ -50,7 +50,7 @@ class LCD_I2C:
                 self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter I2C pins manually")
-        
+
         self._address = address
         self._output = LCDOutput()
         self._entryState = 0b10  # Left-to-right text entry mode

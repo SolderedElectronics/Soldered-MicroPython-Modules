@@ -8,8 +8,8 @@ from bme280 import BME280
 import time
 
 # If you aren't using the Qwiic connector, manually enter your I2C pins
-#i2c = I2C(0, scl=Pin(22), sda=Pin(21))
-#bme280 = BME280(i2c)
+# i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+# bme280 = BME280(i2c)
 
 # Initialize sensor over Qwiic
 bme280 = BME280()

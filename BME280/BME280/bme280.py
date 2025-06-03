@@ -30,7 +30,7 @@ class BME280:
                 self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter I2C pins manually")
-                
+
         self.address = address
         self._load_calibration_params()
         self._configure_sensor()
@@ -206,4 +206,3 @@ class BME280:
         data = self.i2c.readfrom_mem(self.address, 0xF7, 8)
         raw_press = (data[0] << 12) | (data[1] << 4) | (data[2] >> 4)
         return 44330.0 * (1.0 - pow(self.readPressure(raw_press) / seaLevel, 0.1903))
-

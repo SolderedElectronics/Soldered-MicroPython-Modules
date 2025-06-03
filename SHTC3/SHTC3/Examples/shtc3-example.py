@@ -8,14 +8,14 @@ from shtc3 import SHTC3
 import time
 
 # If you aren't using the Qwiic connector, manually enter your I2C pins
-#i2c = I2C(0, scl=Pin(22), sda=Pin(21))
-#shtc3 = SHTC3(i2c)
+# i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+# shtc3 = SHTC3(i2c)
 
 # Initialize sensor over Qwiic
 shtc3 = SHTC3()
 
 
-#Infinite loop
+# Infinite loop
 while 1:
     # The sensor must sample the values before we can read them
     shtc3.sample()
@@ -24,9 +24,9 @@ while 1:
     temperature = shtc3.readTemperature()
     humidity = shtc3.readHumidity()
 
-    #Print out the read values
+    # Print out the read values
     print("Temperature: {:.2f} C".format(temperature))
     print("Humidity: {:.2f} %\n".format(humidity))
 
-    #Pause for 5 seconds
+    # Pause for 5 seconds
     time.sleep(5.0)

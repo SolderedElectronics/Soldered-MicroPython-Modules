@@ -14,7 +14,7 @@ pir.begin()
 while 1:
     # If movement is detected, the SOUT or DOUT pin will go into a HIGH state
     if pir.get_state():
-        #Inform the user that motion was detected
+        # Inform the user that motion was detected
         print("Motion detected!")
-        #Pause for 1 second
+        # Pause for 1 second
         time.sleep(1)
