@@ -1,4 +1,4 @@
-# FILE: drv8825-acceleration-example.py
+# FILE: drv8825-acceleration.py
 # AUTHOR: Soldered
 # BRIEF: An example of accelerating stepper motor.
 # LAST UPDATED: 2025-05-27

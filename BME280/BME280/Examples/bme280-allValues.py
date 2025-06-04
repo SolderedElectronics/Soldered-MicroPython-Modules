@@ -1,4 +1,4 @@
-# FILE: bme280.py
+# FILE: bme280-allValues.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: An example for the BME280 sensor that reads temperature, humidity,
 #        pressure and calculates the altitude using the pressure measurement
