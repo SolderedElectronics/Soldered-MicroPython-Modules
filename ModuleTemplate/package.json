@@ -1,9 +1,9 @@
 {
   "urls": [
-    ["github:SolderedElectronics/Soldered-Micropython-modules/main/ModuleTemplate/ModuleTemplate/ModuleTemplate.py", "ModuleTemplate.py"]
+    ["ModuleTemplate.py", "github:SolderedElectronics/Soldered-Micropython-modules/ModuleTemplate/ModuleTemplate/ModuleTemplate.py"]
   ],
   "deps": [
-    ["github:SolderedElectronics/Soldered-Micropython-modules/main/Qwiic/Qwiic.py", "Qwiic.py"]
+    ["Qwiic.py", "github:SolderedElectronics/Soldered-Micropython-modules/Qwiic/Qwiic.py"]
   ],
   "version": "0.2"
 }

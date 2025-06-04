@@ -1,7 +1,7 @@
 {
   "urls": [
     [
-      "lib/drv8825.py",
+      "drv8825.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/DRV8825/DRV8825/drv8825.py"
     ],
     [

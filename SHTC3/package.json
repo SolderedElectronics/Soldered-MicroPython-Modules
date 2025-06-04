@@ -1,7 +1,7 @@
 {
   "urls": [
     [
-      "lib/shtc3.py",
+      "shtc3.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/SHTC3/SHTC3/shtc3.py"
     ],
     [

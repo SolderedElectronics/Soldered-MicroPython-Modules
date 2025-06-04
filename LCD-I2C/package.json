@@ -1,7 +1,7 @@
 {
   "urls": [
     [
-      "lib/lcdI2C.py",
+      "lcdI2C.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/LCD-I2C/LCD-I2C/lcdI2C.py"
     ],
     [
