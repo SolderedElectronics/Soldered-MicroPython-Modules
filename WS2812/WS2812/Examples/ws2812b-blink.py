@@ -21,6 +21,7 @@ def set_color(r, g, b):
         np[i] = (r, g, b)         # Set the color for the current LED
         np.write()               # Update the strip (could be moved outside loop for efficiency)
 
+
 # === Blink loop ===
 # Continuously blink all LEDs on and off
 while True:

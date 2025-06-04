@@ -23,12 +23,18 @@ You can install a specific module using mpremote or manually downloading specifi
 After [**installing the mpremote package**](https://docs.micropython.org/en/latest/reference/mpremote.html), flash a module to the board using the following command:
 
 ```sh
-  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/main/ENTER-MODULE-HERE
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
 ```
+Or, if you're running a Windows OS:
+
+```sh
+  python -m mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
+```
+
 For example, downloading the BME280 module looks like this:
 
 ```sh
-  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/main/BME280
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/BME280
 ```
 
 The module can now be imported and used on your board:
@@ -57,7 +63,7 @@ from bme280 import BME280
 
 ```json
 "deps": [
-    ["github:SolderedElectronics/Soldered-Micropython-modules/main/Qwiic/Qwiic.py", "main"]
+    ["github:SolderedElectronics/Soldered-Micropython-modules/Qwiic/Qwiic.py", "main"]
   ],
 ```
 
@@ -90,7 +96,7 @@ Module_Name/
 At Soldered, we design and manufacture a wide selection of electronic products to help you turn your ideas into acts and bring you one step closer to your final project. Our products are intented for makers and crafted in-house by our experienced team in Osijek, Croatia. We believe that sharing is a crucial element for improvement and innovation, and we work hard to stay connected with all our makers regardless of their skill or experience level. Therefore, all our products are open-source. Finally, we always have your back. If you face any problem concerning either your shopping experience or your electronics project, our team will help you deal with it, offering efficient customer service and cost-free technical support anytime. Some of those might be useful for you:
 
 - [Web Store](https://www.soldered.com/shop)
-- [Tutorials & Projects](https://soldered.com/learn)
+- [Documentation](https://soldered.com/documentation/)
 - [Community & Technical support](https://soldered.com/community)
 
 ---
@@ -99,7 +105,7 @@ At Soldered, we design and manufacture a wide selection of electronic products t
 
 Soldered invests vast amounts of time into hardware & software for these products, which are all open-source. Please support future development by buying one of our products.
 
-This repository is under the MIT license, for more info, see LICENSE. Long story short, use these open-source files for any purpose you want to, as long as you apply the same open-source licence to it and disclose the original source. No warranty - all designs in this repository are distributed in the hope that they will be useful, but without any warranty. They are provided "AS IS", therefore without warranty of any kind, either expressed or implied. The entire quality and performance of what you do with the contents of this repository are your responsibility. In no event, Soldered (TAVU) will be liable for your damages, losses, including any general, special, incidental or consequential damage arising out of the use or inability to use the contents of this repository.
+This repository is under the MIT license, for more info, see [LICENSE](/LICENSE). Long story short, use these open-source files for any purpose you want to, as long as you apply the same open-source licence to it and disclose the original source. No warranty - all designs in this repository are distributed in the hope that they will be useful, but without any warranty. They are provided "AS IS", therefore without warranty of any kind, either expressed or implied. The entire quality and performance of what you do with the contents of this repository are your responsibility. In no event, Soldered (TAVU) will be liable for your damages, losses, including any general, special, incidental or consequential damage arising out of the use or inability to use the contents of this repository.
 
 ---
 
