@@ -23,12 +23,12 @@ You can install a specific module using mpremote or manually downloading specifi
 After [**installing the mpremote package**](https://docs.micropython.org/en/latest/reference/mpremote.html), flash a module to the board using the following command:
 
 ```sh
-  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/main/ENTER-MODULE-HERE
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
 ```
 For example, downloading the BME280 module looks like this:
 
 ```sh
-  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/main/BME280
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/BME280
 ```
 
 The module can now be imported and used on your board:
@@ -57,7 +57,7 @@ from bme280 import BME280
 
 ```json
 "deps": [
-    ["github:SolderedElectronics/Soldered-Micropython-modules/main/Qwiic/Qwiic.py", "main"]
+    ["github:SolderedElectronics/Soldered-Micropython-modules/Qwiic/Qwiic.py", "main"]
   ],
 ```
 
