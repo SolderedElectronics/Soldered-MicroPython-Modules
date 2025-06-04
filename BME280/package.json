@@ -1,11 +1,11 @@
 {
   "urls": [
     [
-      "lib/bme280.py",
+      "bme280.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/BME280/BME280/bme280.py"
     ],
     [
-      "Examples/bme280-allValues.py",
+      "/Examples/bme280-allValues.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/BME280/BME280/Examples/bme280-allValues.py"
     ]
   ],
