@@ -25,6 +25,12 @@ After [**installing the mpremote package**](https://docs.micropython.org/en/late
 ```sh
   mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
 ```
+Or, if you're running a Windows OS:
+
+```sh
+  python -m mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
+```
+
 For example, downloading the BME280 module looks like this:
 
 ```sh
