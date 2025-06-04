@@ -5,6 +5,10 @@
       "github:SolderedElectronics/Soldered-MicroPython-Modules/DRV8825/DRV8825/drv8825.py"
     ],
     [
+      "Examples/drv8825-acceleration.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/DRV8825/DRV8825/Examples/drv8825-acceleration.py"
+    ],
+    [
       "Examples/drv8825-motorRotationAndSleep.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/DRV8825/DRV8825/Examples/drv8825-motorRotationAndSleep.py"
     ]
