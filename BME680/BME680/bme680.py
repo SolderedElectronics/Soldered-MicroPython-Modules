@@ -20,19 +20,20 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
-# FILE: BME680.py 
+# FILE: BME680.py
 # AUTHORS: Limor 'Ladyada' Fried of Adafruit
 #           and many more contributors
 # MODIFIED BY: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the Bosch BME680 enviromental sensor
-# LAST UPDATED: 2025-06-05 
+# LAST UPDATED: 2025-06-05
 
 import time
 import math
-from machine import I2C,Pin
+from machine import I2C, Pin
 from micropython import const
 from os import uname
 from ubinascii import hexlify as hex
+
 try:
     import struct
 except ImportError:
@@ -66,32 +67,64 @@ _BME680_FILTERSIZES = (0, 1, 3, 7, 15, 31, 63, 127)
 
 _BME680_RUNGAS = const(0x10)
 
-_LOOKUP_TABLE_1 = (2147483647.0, 2147483647.0, 2147483647.0, 2147483647.0, 2147483647.0,
-                   2126008810.0, 2147483647.0, 2130303777.0, 2147483647.0, 2147483647.0,
-                   2143188679.0, 2136746228.0, 2147483647.0, 2126008810.0, 2147483647.0,
-                   2147483647.0)
+_LOOKUP_TABLE_1 = (
+    2147483647.0,
+    2147483647.0,
+    2147483647.0,
+    2147483647.0,
+    2147483647.0,
+    2126008810.0,
+    2147483647.0,
+    2130303777.0,
+    2147483647.0,
+    2147483647.0,
+    2143188679.0,
+    2136746228.0,
+    2147483647.0,
+    2126008810.0,
+    2147483647.0,
+    2147483647.0,
+)
 
-_LOOKUP_TABLE_2 = (4096000000.0, 2048000000.0, 1024000000.0, 512000000.0, 255744255.0, 127110228.0,
-                   64000000.0, 32258064.0, 16016016.0, 8000000.0, 4000000.0, 2000000.0, 1000000.0,
-                   500000.0, 250000.0, 125000.0)
+_LOOKUP_TABLE_2 = (
+    4096000000.0,
+    2048000000.0,
+    1024000000.0,
+    512000000.0,
+    255744255.0,
+    127110228.0,
+    64000000.0,
+    32258064.0,
+    16016016.0,
+    8000000.0,
+    4000000.0,
+    2000000.0,
+    1000000.0,
+    500000.0,
+    250000.0,
+    125000.0,
+)
 
 
 def _read24(arr):
     """Parse an unsigned 24-bit value as a floating point and return it."""
     ret = 0.0
-    #print([hex(i) for i in arr])
+    # print([hex(i) for i in arr])
     for b in arr:
         ret *= 256.0
         ret += float(b & 0xFF)
     return ret
 
-address=0x76
+
+address = 0x76
+
 
 class BME680:
     """Driver from BME680 air quality sensor
 
-       :param int refresh_rate: Maximum number of readings per second. Faster property reads
-         will be from the previous reading."""
+    :param int refresh_rate: Maximum number of readings per second. Faster property reads
+      will be from the previous reading."""
+
     def __init__(self, i2c=None, refresh_rate=10):
         if i2c != None:
             self.i2c = i2c
@@ -107,7 +140,7 @@ class BME680:
 
         chip_id = self._read_byte(_BME680_REG_CHIPID)
         if chip_id != _BME680_CHIPID:
-            raise RuntimeError('Failed to find BME680! Chip ID 0x%x' % chip_id)
+            raise RuntimeError("Failed to find BME680! Chip ID 0x%x" % chip_id)
 
         self._read_calibration()
 
@@ -182,7 +215,7 @@ class BME680:
     def readTemperature(self):
         """The compensated temperature in degrees celsius."""
         self._perform_reading()
-        calc_temp = (((self._t_fine * 5) + 128) / 256)
+        calc_temp = ((self._t_fine * 5) + 128) / 256
         return calc_temp / 100
 
     def readPressure(self):
@@ -193,30 +226,48 @@ class BME680:
         var2 = (var2 * self._pressure_calibration[5]) / 4
         var2 = var2 + (var1 * self._pressure_calibration[4] * 2)
         var2 = (var2 / 4) + (self._pressure_calibration[3] * 65536)
-        var1 = (((((var1 / 4) * (var1 / 4)) / 8192) *
-                (self._pressure_calibration[2] * 32) / 8) +
-                ((self._pressure_calibration[1] * var1) / 2))
+        var1 = (
+            (((var1 / 4) * (var1 / 4)) / 8192)
+            * (self._pressure_calibration[2] * 32)
+            / 8
+        ) + ((self._pressure_calibration[1] * var1) / 2)
         var1 = var1 / 262144
         var1 = ((32768 + var1) * self._pressure_calibration[0]) / 32768
         calc_pres = 1048576 - self._adc_pres
         calc_pres = (calc_pres - (var2 / 4096)) * 3125
         calc_pres = (calc_pres / var1) * 2
-        var1 = (self._pressure_calibration[8] * (((calc_pres / 8) * (calc_pres / 8)) / 8192)) / 4096
+        var1 = (
+            self._pressure_calibration[8] * (((calc_pres / 8) * (calc_pres / 8)) / 8192)
+        ) / 4096
         var2 = ((calc_pres / 4) * self._pressure_calibration[7]) / 8192
         var3 = (((calc_pres / 256) ** 3) * self._pressure_calibration[9]) / 131072
-        calc_pres += ((var1 + var2 + var3 + (self._pressure_calibration[6] * 128)) / 16)
-        return calc_pres/100
+        calc_pres += (var1 + var2 + var3 + (self._pressure_calibration[6] * 128)) / 16
+        return calc_pres / 100
 
     def readHumidity(self):
         """The relative humidity in RH %"""
         self._perform_reading()
         temp_scaled = ((self._t_fine * 5) + 128) / 256
-        var1 = ((self._adc_hum - (self._humidity_calibration[0] * 16)) -
-                ((temp_scaled * self._humidity_calibration[2]) / 200))
-        var2 = (self._humidity_calibration[1] *
-                (((temp_scaled * self._humidity_calibration[3]) / 100) +
-                 (((temp_scaled * ((temp_scaled * self._humidity_calibration[4]) / 100)) /
-                   64) / 100) + 16384)) / 1024
+        var1 = (self._adc_hum - (self._humidity_calibration[0] * 16)) - (
+            (temp_scaled * self._humidity_calibration[2]) / 200
+        )
+        var2 = (
+            self._humidity_calibration[1]
+            * (
+                ((temp_scaled * self._humidity_calibration[3]) / 100)
+                + (
+                    (
+                        (
+                            temp_scaled
+                            * ((temp_scaled * self._humidity_calibration[4]) / 100)
+                        )
+                        / 64
+                    )
+                    / 100
+                )
+                + 16384
+            )
+        ) / 1024
         var3 = var1 * var2
         var4 = self._humidity_calibration[5] * 128
         var4 = (var4 + ((temp_scaled * self._humidity_calibration[6]) / 100)) / 16
@@ -233,31 +284,39 @@ class BME680:
 
     def calculateAltitude(self):
         """The altitude based on current ``pressure`` vs the sea level pressure
-           (``sea_level_pressure``) - which you must enter ahead of time)"""
-        pressure = self.readPressure() # in Si units for hPascal
-        return 44330.77 * (1.0 - math.pow(pressure / self.sea_level_pressure, 0.1902632))
+        (``sea_level_pressure``) - which you must enter ahead of time)"""
+        pressure = self.readPressure()  # in Si units for hPascal
+        return 44330.77 * (
+            1.0 - math.pow(pressure / self.sea_level_pressure, 0.1902632)
+        )
 
     def readGas(self):
         """The gas resistance in mohms"""
         self._perform_reading()
-        var1 = ((1340 + (5 * self._sw_err)) * (_LOOKUP_TABLE_1[self._gas_range])) / 65536
+        var1 = (
+            (1340 + (5 * self._sw_err)) * (_LOOKUP_TABLE_1[self._gas_range])
+        ) / 65536
         var2 = ((self._adc_gas * 32768) - 16777216) + var1
         var3 = (_LOOKUP_TABLE_2[self._gas_range] * var1) / 512
         calc_gas_res = (var3 + (var2 / 2)) / var2
-        return calc_gas_res/100
+        return calc_gas_res / 100
 
     def _perform_reading(self):
         """Perform a single-shot reading from the sensor and fill internal data structure for
-           calculations"""
-        expired = time.ticks_diff(self._last_reading, time.ticks_ms()) * time.ticks_diff(0, 1)
+        calculations"""
+        expired = time.ticks_diff(
+            self._last_reading, time.ticks_ms()
+        ) * time.ticks_diff(0, 1)
         if 0 <= expired < self._min_refresh_time:
             time.sleep_ms(self._min_refresh_time - expired)
 
         # set filter
         self._write(_BME680_REG_CONFIG, [self._filter << 2])
         # turn on temp oversample & pressure oversample
-        self._write(_BME680_REG_CTRL_MEAS,
-                    [(self._temp_oversample << 5)|(self._pressure_oversample << 2)])
+        self._write(
+            _BME680_REG_CTRL_MEAS,
+            [(self._temp_oversample << 5) | (self._pressure_oversample << 2)],
+        )
         # turn on humidity oversample
         self._write(_BME680_REG_CTRL_HUM, [self._humidity_oversample])
         # gas measurements enabled
@@ -275,8 +334,8 @@ class BME680:
 
         self._adc_pres = _read24(data[2:5]) / 16
         self._adc_temp = _read24(data[5:8]) / 16
-        self._adc_hum = struct.unpack('>H', bytes(data[8:10]))[0]
-        self._adc_gas = int(struct.unpack('>H', bytes(data[13:15]))[0] / 64)
+        self._adc_hum = struct.unpack(">H", bytes(data[8:10]))[0]
+        self._adc_gas = int(struct.unpack(">H", bytes(data[13:15]))[0] / 64)
         self._gas_range = data[14] & 0x0F
 
         var1 = (self._adc_temp / 8) - (self._temp_calibration[0] * 2)
@@ -291,11 +350,13 @@ class BME680:
         coeff = self._read(_BME680_BME680_COEFF_ADDR1, 25)
         coeff += self._read(_BME680_BME680_COEFF_ADDR2, 16)
 
-        coeff = list(struct.unpack('<hbBHhbBhhbbHhhBBBHbbbBbHhbb', bytes(coeff[1:39])))
+        coeff = list(struct.unpack("<hbBHhbBhhbbHhhBBBHbbbBbHhbb", bytes(coeff[1:39])))
         # print("\n\n",coeff)
         coeff = [float(i) for i in coeff]
         self._temp_calibration = [coeff[x] for x in [23, 0, 1]]
-        self._pressure_calibration = [coeff[x] for x in [3, 4, 5, 7, 8, 10, 9, 12, 13, 14]]
+        self._pressure_calibration = [
+            coeff[x] for x in [3, 4, 5, 7, 8, 10, 9, 12, 13, 14]
+        ]
         self._humidity_calibration = [coeff[x] for x in [17, 16, 18, 19, 20, 21, 22]]
         self._gas_calibration = [coeff[x] for x in [25, 24, 26]]
 
@@ -307,14 +368,14 @@ class BME680:
         self._heat_range = (self._read_byte(0x02) & 0x30) / 16
         self._heat_val = self._read_byte(0x00)
         self._sw_err = (self._read_byte(0x04) & 0xF0) / 16
-    
+
     def readAllValues(self):
         temperature = self.readTemperature()
         pressure = self.readPressure()
         humidity = self.readHumidity()
         gas = self.readGas()
-        
-        return temperature,pressure,humidity,gas
+
+        return temperature, pressure, humidity, gas
 
     def _read_byte(self, register):
         return self._read(register, 1)[0]
