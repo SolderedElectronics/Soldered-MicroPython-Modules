@@ -1,5 +1,6 @@
 from micropython import const
 
+
 # Register Addresses
 LTR507_ALS_CONTR_REG = const(0x80)
 LTR507_PS_CONTR_REG = const(0x81)
