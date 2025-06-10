@@ -1,11 +1,10 @@
 # FILE: Qwiic.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: MicroPython module for Qwiic functionalities
-# LAST UPDATED: 2025-05-23
-from machine import I2C
+# LAST UPDATED: 2025-06-10
+from machine import I2C, Pin
 import time
 from os import uname
-
 
 class Qwiic:
     def __init__(self, i2c=None, address: int = 0x30, native: bool = False):
