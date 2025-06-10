@@ -6,15 +6,15 @@
     ],
     [
       "ltr507_Config.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/LTR507/LTR507/ltr507_Config.py"
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/LTR507/LTR507/ltr507_config.py"
     ],
     [
       "Examples/ltr507-CustomConfiguration.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/LTR507/LTR507/Examples/ltr507-CustomConfiguration.py"
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/LTR507/LTR507/Examples/ltr507-customConfiguration.py"
     ],
     [
       "Examples/ltr507-LightAndProximity.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/LTR507/LTR507/Examples/ltr507-LightAndProximity.py"
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/LTR507/LTR507/Examples/ltr507-lightAndProximity.py"
     ]
   ],
   "deps": [],
