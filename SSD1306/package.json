@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "ssd1306.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/SSD1306/SSD1306/ssd1306.py"
+    ],
+    [
+      "Examples/ssd1306-drawingExample.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/SSD1306/SSD1306/Examples/ssd1306-drawingExample.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}
