@@ -1,12 +1,13 @@
-# FILE: LTR507.py 
+# FILE: LTR507.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: A Micropython module for the LTR-507 Light and proximity sensor
-# LAST UPDATED: 2025-06-10 
+# LAST UPDATED: 2025-06-10
 
 from machine import I2C, Pin
 from os import uname
 from time import sleep_ms
 from ltr507_config import *
+
 
 class LTR507:
     def __init__(self, i2c=None, address=0x3A):
@@ -165,7 +166,9 @@ class LTR507:
         """
         val = self._read_register(LTR507_ALS_MEAS_PATE_REG)[0]
         val &= ~LTR507_ALS_ADC_BIT_WIDTH_MASK
-        val |= (bitwidth << LTR507_ALS_ADC_BIT_WIDTH_SHIFT) & LTR507_ALS_ADC_BIT_WIDTH_MASK
+        val |= (
+            bitwidth << LTR507_ALS_ADC_BIT_WIDTH_SHIFT
+        ) & LTR507_ALS_ADC_BIT_WIDTH_MASK
         self._write_register(LTR507_ALS_MEAS_PATE_REG, val)
 
     def set_als_meas_rate(self, rate):
