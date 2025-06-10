@@ -1,15 +1,16 @@
-# FILE: ssd1306.py 
+# FILE: ssd1306.py
 # AUTHOR: Adafruit
 # MODIFIED BY: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the SSD1306 display that communicates via I2C
-# LAST UPDATED: 2025-06-10 
+# LAST UPDATED: 2025-06-10
 
 from micropython import const
 import framebuf
 from os import uname
-from machine import I2C,Pin
-SSD1306_WIDTH=128
-SSD1306_HEIGHT=64
+from machine import I2C, Pin
+
+SSD1306_WIDTH = 128
+SSD1306_HEIGHT = 64
 
 # register definitions
 SET_CONTRAST = const(0x81)
@@ -37,7 +38,7 @@ SET_CHARGE_PUMP = const(0x8D)
 class SSD1306(framebuf.FrameBuffer):
     def __init__(self, i2c=None, addr=0x3C, external_vcc=False):
         if i2c != None:
-                self.i2c = i2c
+            self.i2c = i2c
         else:
             if uname().sysname == "esp32" or uname().sysname == "esp8266":
                 self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
@@ -109,7 +110,7 @@ class SSD1306(framebuf.FrameBuffer):
     def rotate(self, rotate):
         self.write_cmd(SET_COM_OUT_DIR | ((rotate & 1) << 3))
         self.write_cmd(SET_SEG_REMAP | (rotate & 1))
-    
+
     def write_cmd(self, cmd):
         self.temp[0] = 0x80  # Co=1, D/C#=0
         self.temp[1] = cmd
