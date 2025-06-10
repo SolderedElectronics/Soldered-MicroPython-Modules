@@ -1,4 +1,4 @@
-# FILE: ltr507-CustomConfiguration.py 
+# FILE: ltr507-CustomConfiguration.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF:  An example showing how to initialize the LTR-507 sensor and get light and proximity measurements
 # WORKS WITH: Digital light & proximity sensor LTR-507 breakout: www.solde.red/333063
@@ -19,13 +19,13 @@ VCC------------------------->ANODE (+)
 """
 
 # If you aren't using the Qwiic connector, manually enter your I2C pins
-#i2c = I2C(0, scl=Pin(22), sda=Pin(21))
-#sensor = LTR507(i2c)
+# i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+# sensor = LTR507(i2c)
 
-#Initialize I2C communication with the sensor over Qwiic
+# Initialize I2C communication with the sensor over Qwiic
 sensor = LTR507()
 
-#Set up the sensor with its default values
+# Set up the sensor with its default values
 sensor.begin()
 # You can change the following settings:
 
@@ -95,9 +95,9 @@ sensor.set_ps_num_pulses(1)
 
 # Main loop
 while True:
-    #Measure the light intensity from the sensor in lux 
+    # Measure the light intensity from the sensor in lux
     lux = sensor.getLightIntensity()
-    #Measure the proximity value of the sensor
+    # Measure the proximity value of the sensor
     prox = sensor.getProximity()
 
     # Print the readings
