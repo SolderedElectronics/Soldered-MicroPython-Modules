@@ -6,6 +6,7 @@ from machine import I2C, Pin
 import time
 from os import uname
 
+
 class Qwiic:
     def __init__(self, i2c=None, address: int = 0x30, native: bool = False):
         """
