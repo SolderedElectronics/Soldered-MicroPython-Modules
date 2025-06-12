@@ -1,8 +1,8 @@
-# FILE: UltrasonicSensor-readDistanceNative.py 
+# FILE: UltrasonicSensor-readDistanceNative.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF:  An example showing how to read the distance of the Native Ultrasonic sensor
 # WORKS WITH: Ultrasonic module HC-SR04: www.solde.red/101202
-# LAST UPDATED: 2025-06-12 
+# LAST UPDATED: 2025-06-12
 
 from machine import I2C, Pin
 from UltrasonicSensor import UltrasonicSensor
