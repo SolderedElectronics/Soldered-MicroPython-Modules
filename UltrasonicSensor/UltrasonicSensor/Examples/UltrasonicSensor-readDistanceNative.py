@@ -9,7 +9,7 @@ from UltrasonicSensor import UltrasonicSensor
 import time
 
 # Create sensor instance
-sensor = UltrasonicSensor(trig_pin=2,echo_pin=35)
+sensor = UltrasonicSensor(trig_pin=2, echo_pin=35)
 
 while True:
     time.sleep(0.1)  # Small delay for measurement
