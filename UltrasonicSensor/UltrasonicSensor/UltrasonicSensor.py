@@ -1,22 +1,26 @@
-# FILE: UltrasonicSensor.py 
+# FILE: UltrasonicSensor.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the HC-SR04 UltraSonic sensor. Supports both the Native and Qwiic version
-# LAST UPDATED: 2025-06-12 
+# LAST UPDATED: 2025-06-12
 
 
 # Import Qwiic base class for I2C devices
 from Qwiic import Qwiic
+
 # Import Pin and I2C classes for GPIO and I2C operations
 from machine import I2C, Pin
+
 # Used to detect the board type (ESP32, ESP8266, etc.)
 from os import uname
+
 # Time module used for precise delays and measuring pulse duration
 import time
 
 # Register addresses for I2C communication with a supported ultrasonic module
-TAKE_MEAS_REG = 0       # Command register to start measurement
-DISTANCE_REG = 1        # Register where distance in cm is stored (from external sensor)
-DURATION_REG = 2        # Register where echo pulse duration is stored (from external sensor)
+TAKE_MEAS_REG = 0  # Command register to start measurement
+DISTANCE_REG = 1  # Register where distance in cm is stored (from external sensor)
+DURATION_REG = 2  # Register where echo pulse duration is stored (from external sensor)
+
 
 class UltrasonicSensor(Qwiic):
     """
@@ -24,6 +28,7 @@ class UltrasonicSensor(Qwiic):
     In native mode, it uses GPIO pins to trigger and read echo.
     In I2C mode, it uses a pre-programmed I2C-based ultrasonic sensor.
     """
+
     def __init__(self, i2c=None, address=0x30, echo_pin=None, trig_pin=None):
         """
         Initializes the sensor either in native GPIO mode or I2C mode.
@@ -124,4 +129,3 @@ class UltrasonicSensor(Qwiic):
             # Read distance from I2C register
             data = self.read_register(DISTANCE_REG, 2)
             return data[1] << 8 | data[0]
-
