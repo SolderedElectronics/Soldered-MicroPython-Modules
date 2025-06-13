@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "UltrasonicSensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/UltrasonicSensor/UltrasonicSensor/UltrasonicSensor.py"
+    ],
+    [
+      "Examples/UltrasonicSensor-readDistanceNative.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/UltrasonicSensor/UltrasonicSensor/Examples/UltrasonicSensor-readDistanceNative.py"
+    ],
+    [
+      "Examples/UltrasonicSensor-readDistanceQwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/UltrasonicSensor/UltrasonicSensor/Examples/UltrasonicSensor-readDistanceQwiic.py"
+    ],
+    [
+      "Qwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Qwiic/Qwiic.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

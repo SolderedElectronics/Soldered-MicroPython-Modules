@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "PirSensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/PirSensor/PirSensor/PirSensor.py"
+    ],
+    [
+      "Examples/PirSensor-Native-example.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/PirSensor/PirSensor/Examples/PirSensor-Native-example.py"
+    ],
+    [
+      "Examples/PirSensor-Qwiic-example.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/PirSensor/PirSensor/Examples/PirSensor-Qwiic-example.py"
+    ],
+    [
+      "Qwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Qwiic/Qwiic.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

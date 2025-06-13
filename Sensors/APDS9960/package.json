@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "apds9960.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/APDS9960/APDS9960/apds9960.py"
+    ],
+    [
+      "Examples/apds9960-colors.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/APDS9960/APDS9960/Examples/apds9960-colors.py"
+    ],
+    [
+      "Examples/apds9960-gestures.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/APDS9960/APDS9960/Examples/apds9960-gestures.py"
+    ],
+    [
+      "Examples/apds9960-proximity.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/APDS9960/APDS9960/Examples/apds9960-proximity.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

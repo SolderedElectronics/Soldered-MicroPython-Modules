@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "bme280.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BME280/BME280/bme280.py"
+    ],
+    [
+      "/Examples/bme280-allValues.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BME280/BME280/Examples/bme280-allValues.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

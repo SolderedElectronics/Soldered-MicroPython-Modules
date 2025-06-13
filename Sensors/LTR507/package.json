@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "ltr507.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LTR507/LTR507/ltr507.py"
+    ],
+    [
+      "ltr507_config.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LTR507/LTR507/ltr507_config.py"
+    ],
+    [
+      "Examples/ltr507-customConfiguration.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LTR507/LTR507/Examples/ltr507-customConfiguration.py"
+    ],
+    [
+      "Examples/ltr507-lightAndProximity.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LTR507/LTR507/Examples/ltr507-lightAndProximity.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

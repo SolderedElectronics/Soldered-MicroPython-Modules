@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "shtc3.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SHTC3/SHTC3/shtc3.py"
+    ],
+    [
+      "Examples/shtc3-example.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SHTC3/SHTC3/Examples/shtc3-example.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}
