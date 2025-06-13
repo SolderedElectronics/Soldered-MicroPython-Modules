@@ -1,6 +1,7 @@
 import os
 from datetime import date
 
+
 def create_module_structure(module_name):
     today = date.today().isoformat()
 
@@ -31,14 +32,15 @@ def create_module_structure(module_name):
 """
 
     # Write files
-    with open(module_file, 'w') as f:
+    with open(module_file, "w") as f:
         f.write(module_content)
-    with open(example_file, 'w') as f:
+    with open(example_file, "w") as f:
         f.write(example_content)
 
     print(f"\n✅ Created module structure for '{module_name}':")
     print(f"  - {module_file}")
     print(f"  - {example_file}")
+
 
 if __name__ == "__main__":
     try:
