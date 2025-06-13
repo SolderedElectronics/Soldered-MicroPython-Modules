@@ -23,18 +23,18 @@ You can install a specific module using mpremote or manually downloading specifi
 After [**installing the mpremote package**](https://docs.micropython.org/en/latest/reference/mpremote.html), flash a module to the board using the following command:
 
 ```sh
-  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/CATEGORY/ENTER-MODULE-HERE
 ```
 Or, if you're running a Windows OS:
 
 ```sh
-  python -m mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/ENTER-MODULE-HERE
+  python -m mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/CATEGORY/ENTER-MODULE-HERE
 ```
 
 For example, downloading the BME280 module looks like this:
 
 ```sh
-  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/BME280
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/Sensors/BME280
 ```
 
 The module can now be imported and used on your board:
@@ -85,6 +85,7 @@ Module_Name/
    |      `--- Examples/
    |            |--- Module_Example.py	<-- An example of how to use the respective module 
    |
+   +--- README.md  <-- Installation guide for the specific module
 ```
 
 ---
