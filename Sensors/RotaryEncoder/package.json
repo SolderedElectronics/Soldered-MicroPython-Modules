@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "RotaryEncoder.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/RotaryEncoder/RotaryEncoder/RotaryEncoder.py"
+    ],
+    [
+      "Examples/RotaryEncoder-basicFunctionalities.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/RotaryEncoder/RotaryEncoder/Examples/RotaryEncoder-basicFunctionalities.py"
+    ],
+    [
+      "Examples/RotaryEncoder-rotaryCounter.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/RotaryEncoder/RotaryEncoder/Examples/RotaryEncoder-rotaryCounter.py"
+    ],
+    [
+      "Qwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Qwiic/Qwiic.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}
