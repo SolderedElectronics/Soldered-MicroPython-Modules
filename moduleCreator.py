@@ -2,11 +2,11 @@ import os
 from datetime import date
 
 
-def create_module_structure(module_name):
+def create_module_structure(base_category, module_name):
     today = date.today().isoformat()
 
     # Format names
-    root_dir = module_name
+    root_dir = os.path.join(base_category, module_name)
     module_dir = os.path.join(root_dir, module_name)
     examples_dir = os.path.join(module_dir, "Examples")
 
@@ -37,17 +37,34 @@ def create_module_structure(module_name):
     with open(example_file, "w") as f:
         f.write(example_content)
 
-    print(f"\n✅ Created module structure for '{module_name}':")
+    print(f"\nCreated module structure for '{module_name}' in category '{base_category}':")
     print(f"  - {module_file}")
     print(f"  - {example_file}")
 
 
 if __name__ == "__main__":
+    categories = {
+        "1": "Sensors",
+        "2": "Actuators",
+        "3": "Communication",
+        "4": "Displays"
+    }
+
     try:
-        module_name = input("Enter the module name: ").strip()
-        if not module_name:
-            print("❌ Module name cannot be empty.")
+        print("Select a category for the module:")
+        for key, name in categories.items():
+            print(f"  {key}. {name}")
+
+        choice = input("Enter the number corresponding to the category: ").strip()
+        base_category = categories.get(choice)
+
+        if not base_category:
+            print("Invalid category selection.")
         else:
-            create_module_structure(module_name)
+            module_name = input("Enter the module name: ").strip()
+            if not module_name:
+                print("Module name cannot be empty.")
+            else:
+                create_module_structure(base_category, module_name)
     except Exception as e:
-        print(f"❌ Error: {e}")
+        print(f"Error: {e}")
