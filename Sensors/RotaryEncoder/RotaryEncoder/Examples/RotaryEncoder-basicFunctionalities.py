@@ -1,8 +1,8 @@
-# FILE: RotaryEncoder-rotaryCounter.py 
+# FILE: RotaryEncoder-rotaryCounter.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF:  An example showing all of the basic functionalities of the Rotary Encoder board
 # WORKS WITH: Rotary encoder board with Qwiic: www.solde.red/333188
-# LAST UPDATED: 2025-06-16 
+# LAST UPDATED: 2025-06-16
 
 # Import all constants and the RotaryEncoder class from the module
 from RotaryEncoder import *
@@ -18,9 +18,8 @@ while 1:
     # Fetch the current state of the rotary encoder or button
     state = rotary.getState()
 
-    # Check if the state is not idle 
+    # Check if the state is not idle
     if state != ROTARY_IDLE:
-        
         # If button was clicked
         if state == BTN_CLICK:
             print("Button clicked.")
@@ -32,16 +31,15 @@ while 1:
         # If the encoder was pressed for long
         elif state == BTN_LONG_PRESS:
             print("Long press.")
-            
+
         # The encoder goes into this state after the long press was released
         elif state == BTN_LONG_RELEASE:
             print("Long release.")
-        
+
         # If the encoder was rotated clockwise
         elif state == ROTARY_CCW:
             print("Rotated counter-clockwise.")
-        
+
         # If the encoder was rotated counter - clockwise
         elif state == ROTARY_CW:
             print("Rotated clockwise.")
-        
