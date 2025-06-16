@@ -37,7 +37,9 @@ def create_module_structure(base_category, module_name):
     with open(example_file, "w") as f:
         f.write(example_content)
 
-    print(f"\nCreated module structure for '{module_name}' in category '{base_category}':")
+    print(
+        f"\nCreated module structure for '{module_name}' in category '{base_category}':"
+    )
     print(f"  - {module_file}")
     print(f"  - {example_file}")
 
@@ -47,7 +49,7 @@ if __name__ == "__main__":
         "1": "Sensors",
         "2": "Actuators",
         "3": "Communication",
-        "4": "Displays"
+        "4": "Displays",
     }
 
     try:
