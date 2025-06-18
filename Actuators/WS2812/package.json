@@ -7,6 +7,10 @@
     [
       "Examples/ws2812b-simple-fade.py",
       "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/WS2812/WS2812/Examples/ws2812b-simple-fade.py"
+    ],
+    [
+      "Examples/ws2812b-pulse.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/WS2812/WS2812/Examples/ws2812b-pulse.py"
     ]
   ],
   "deps": [],
