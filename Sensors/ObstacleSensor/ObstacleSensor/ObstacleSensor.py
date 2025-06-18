@@ -41,7 +41,7 @@ class ObstacleSensor(Qwiic):
                 i2c = i2c
             else:
                 # Auto-configure I2C for known board types (e.g., ESP32, ESP8266)
-                if uname().sysname in ("esp32", "esp8266"):
+                if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
                     i2c = I2C(0, scl=Pin(22), sda=Pin(21))  # Default Qwiic pins
                 else:
                     raise Exception("Board not recognized, enter I2C pins manually")

@@ -68,7 +68,7 @@ class HallEffectAnalog(Qwiic):
     def getMilliTeslas(self) -> float:
         value = self.getReading()
         if self.native:
-            if uname().sysname == "esp32":
+            if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
                 if value >= 2710:
                     return (value - 2710.0) * (20.47 - 0.0) / (4095.0 - 2710.0) + 0.0
                 else:

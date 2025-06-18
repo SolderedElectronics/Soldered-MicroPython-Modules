@@ -34,7 +34,7 @@ class RotaryEncoder(Qwiic):
             i2c = i2c  # Use provided I2C interface
         else:
             # Auto-select I2C pins for supported boards
-            if uname().sysname == "esp32" or uname().sysname == "esp8266":
+            if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
                 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter I2C pins manually")
