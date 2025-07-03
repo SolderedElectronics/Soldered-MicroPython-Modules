@@ -23,7 +23,7 @@ class AD8495:
         self._adc = ADC(Pin(pin))
         self._resolution = 2**resolution_bits-1
         self._vref = reference_voltage
-        self._voltage_offset_constant = 2.4 if reference_voltage == 3.3 else 1.65
+        self._voltage_offset_constant = 2.5
         self._lsb = self._vref / self._resolution
         self._offset = 0.0
         self._deg_per_mv = 1.0 / 0.005  # 5 mV/°C
