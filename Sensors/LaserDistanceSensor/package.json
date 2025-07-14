@@ -1,0 +1,26 @@
+{
+  "urls": [
+    [
+      "VL53L1X.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LaserDistanceSensor/LaserDistanceSensor/VL53L1X.py"
+    ],
+    [
+      "VL53L1X_config.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LaserDistanceSensor/LaserDistanceSensor/VL53L1X_config.py"
+    ],
+    [
+      "Examples/LaserDistanceSensor-ContinousMeasurement.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LaserDistanceSensor/LaserDistanceSensor/Examples/LaserDistanceSensor-ContinousMeasurement.py"
+    ],
+    [
+      "Examples/LaserDistanceSensor-DetailedMeasurement.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LaserDistanceSensor/LaserDistanceSensor/Examples/LaserDistanceSensor-DetailedMeasurement.py"
+    ],
+    [
+      "Examples/LaserDistanceSensor-MeasureOnInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LaserDistanceSensor/LaserDistanceSensor/Examples/LaserDistanceSensor-MeasureOnInterrupt.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
