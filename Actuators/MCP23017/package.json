@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "mcp23017.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP23017/MCP23017/mcp23017.py"
+    ],
+    [
+      "Examples/mcp23017-interrupts.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP23017/MCP23017/Examples/mcp23017-interrupts.py"
+    ],
+    [
+      "Examples/mcp23017-portConfigLists.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP23017/MCP23017/Examples/mcp23017-portConfigLists.py"
+    ],
+    [
+      "Examples/mcp23017-portConfigMethods.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP23017/MCP23017/Examples/mcp23017-portConfigMethods.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
