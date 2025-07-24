@@ -1,0 +1,18 @@
+{
+  "urls": [
+    [
+      "bme688.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BME688/BME688/bme688.py"
+    ],
+    [
+      "bme688_const.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BME688/BME688/bme688_const.py"
+    ],
+    [
+      "Examples/bme688-readAllValues.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BME688/BME688/Examples/bme688-readAllValues.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
