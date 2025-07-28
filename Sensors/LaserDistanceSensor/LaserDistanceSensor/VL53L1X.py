@@ -1,17 +1,19 @@
-# FILE: VL53L1X.py 
+# FILE: VL53L1X.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BASED ON: vl53l1x_pico module by drakxtwo (https://github.com/drakxtwo)
 # BRIEF: A micropython module for the VL53L1X laser distance sensor
-# LAST UPDATED: 2025-07-14 
+# LAST UPDATED: 2025-07-14
 
 from VL53L1X_config import *
 import machine
 from os import uname
 from machine import I2C, Pin
 
-class VL53L1X:
 
-    def __init__(self, i2c=None, address=0x29, interruptPin=None, interruptCallback=None):
+class VL53L1X:
+    def __init__(
+        self, i2c=None, address=0x29, interruptPin=None, interruptCallback=None
+    ):
         """
         Initialize the VL53L1X sensor over I2C.
         Optionally set up GPIO interrupt handling if interruptPin and interruptCallback are provided.
@@ -33,10 +35,14 @@ class VL53L1X:
 
         # Read Model ID and check if it's the expected one
         if self.read_model_id() != 0xEACC:
-            raise RuntimeError('Failed to find expected ID register values. Check wiring!')
+            raise RuntimeError(
+                "Failed to find expected ID register values. Check wiring!"
+            )
 
         # Load default configuration to sensor starting at register 0x2D
-        self.i2c.writeto_mem(self.address, 0x2D, VL51L1X_DEFAULT_CONFIGURATION, addrsize=16)
+        self.i2c.writeto_mem(
+            self.address, 0x2D, VL51L1X_DEFAULT_CONFIGURATION, addrsize=16
+        )
 
         # Apply part-to-part offset correction
         # OFFSET = OUTER_OFFSET_MM * 4 (as per ST datasheet)
@@ -47,11 +53,14 @@ class VL53L1X:
         # Set up interrupt pin if configured
         if interruptPin and interruptCallback:
             self.interruptPin = machine.Pin(interruptPin, machine.Pin.IN)
-            self.interruptPin.irq(trigger=machine.Pin.IRQ_FALLING, handler=self.interruptCallback)
+            self.interruptPin.irq(
+                trigger=machine.Pin.IRQ_FALLING, handler=self.interruptCallback
+            )
             self.enable_interrupt()
         elif interruptPin and not interruptCallback:
-            raise RuntimeError("If using the interrupt feature, you must also set the interrupt callback function!")
-
+            raise RuntimeError(
+                "If using the interrupt feature, you must also set the interrupt callback function!"
+            )
 
     def writeReg(self, reg, value):
         """Write an 8-bit value to a 16-bit register address."""
@@ -82,10 +91,11 @@ class VL53L1X:
         machine.lightsleep(100)
         self.writeReg(0x0000, 0x01)  # Re-enable device
 
-
     def read(self):
         """Read the current measured distance in mm (simplified)."""
-        data = self.i2c.readfrom_mem(self.address, 0x0089, 17, addrsize=16)  # RESULT__RANGE_STATUS
+        data = self.i2c.readfrom_mem(
+            self.address, 0x0089, 17, addrsize=16
+        )  # RESULT__RANGE_STATUS
         return (data[13] << 8) + data[14]  # final_crosstalk_corrected_range_mm_sd0
 
     def readDetailed(self):
@@ -132,8 +142,9 @@ class VL53L1X:
 
         return range_mm, status, peak_signal_crosstalk_corrected, ambient
 
-
-    def set_distance_threshold_interrupt(self, low_mm, high_mm, window='in', int_on_no_target=False):
+    def set_distance_threshold_interrupt(
+        self, low_mm, high_mm, window="in", int_on_no_target=False
+    ):
         """
         Configure a distance threshold interrupt window.
         An interrupt will trigger based on whether the measured range
@@ -144,13 +155,13 @@ class VL53L1X:
         SYSTEM__THRESH_LOW = 0x0074
 
         # Convert window type to bit pattern
-        if window == 'in':
+        if window == "in":
             config_val = 3  # Trigger when inside window
-        elif window == 'out':
+        elif window == "out":
             config_val = 2  # Trigger when outside window
-        elif window == 'below':
+        elif window == "below":
             config_val = 0
-        elif window == 'above':
+        elif window == "above":
             config_val = 1
         else:
             raise ValueError("window must be 'in', 'out', 'below', or 'above'")
@@ -161,25 +172,23 @@ class VL53L1X:
 
         # Set new interrupt mode
         if int_on_no_target:
-            temp |= ((config_val & 0x07) | 0x40)  # Enable "no target" flag (bit 6)
+            temp |= (config_val & 0x07) | 0x40  # Enable "no target" flag (bit 6)
         else:
-            temp |= (config_val & 0x07)
+            temp |= config_val & 0x07
 
         # Apply config and threshold values
         self.writeReg(SYSTEM__INTERRUPT_CONFIG_GPIO, temp)
         self.writeReg16Bit(SYSTEM__THRESH_LOW, low_mm)
         self.writeReg16Bit(SYSTEM__THRESH_HIGH, high_mm)
 
-
     def start_ranging(self):
         """Start continuous ranging mode."""
-        self.writeReg(0x86, 0x01)   # SYSTEM__INTERRUPT_CLEAR: clear interrupt
-        self.writeReg(0x87, 0x40)   # SYSTEM__MODE_START: start ranging (continuous)
+        self.writeReg(0x86, 0x01)  # SYSTEM__INTERRUPT_CLEAR: clear interrupt
+        self.writeReg(0x87, 0x40)  # SYSTEM__MODE_START: start ranging (continuous)
 
     def stop_ranging(self):
         """Stop ranging (sets SYSTEM__MODE_START to 0)."""
         self.writeReg(0x000, 0x00)  # SYSTEM__MODE_START: 0 = stop
-
 
     def enable_interrupt(self):
         """

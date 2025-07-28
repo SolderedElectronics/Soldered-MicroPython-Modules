@@ -1,7 +1,7 @@
-# FILE: ad8495-measureTemperature&Voltage.py 
+# FILE: ad8495-measureTemperature&Voltage.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
-# BRIEF:  
-# LAST UPDATED: 2025-07-02 
+# BRIEF:
+# LAST UPDATED: 2025-07-02
 
 from ad8495 import AD8495
 from time import sleep
@@ -12,7 +12,7 @@ from time import sleep
 sensor = AD8495(pin=32, resolution_bits=12, reference_voltage=3.3)
 
 # Optional: apply a temperature offset for calibration
-#sensor.setTemperatureOffset(4.0)  # uncomment to shift temperature readings by 4°C
+# sensor.setTemperatureOffset(4.0)  # uncomment to shift temperature readings by 4°C
 
 print("AD8495 Thermocouple Reader (ESP32)")
 print("Sampling every 2 seconds...")
@@ -20,7 +20,7 @@ print("Sampling every 2 seconds...")
 # Infinite loop
 while True:
     # Get temperature readings in celsius and fahrenheit as well as the raw voltage reading
-    tempC = sensor.getTemperatureC(samples=10) 
+    tempC = sensor.getTemperatureC(samples=10)
     tempF = sensor.getTemperatureF(samples=10)
     voltage = sensor.readVoltage(samples=10)
 

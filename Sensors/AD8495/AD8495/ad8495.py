@@ -1,9 +1,10 @@
-# FILE: AD8495.py 
+# FILE: AD8495.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the AD8495 Thermocouple amplifier
-# LAST UPDATED: 2025-07-02 
+# LAST UPDATED: 2025-07-02
 
 from machine import ADC, Pin
+
 
 class AD8495:
     """
@@ -21,7 +22,7 @@ class AD8495:
             reference_voltage (float): Reference voltage for ADC (typically 3.3V).
         """
         self._adc = ADC(Pin(pin))
-        self._resolution = 2**resolution_bits-1
+        self._resolution = 2**resolution_bits - 1
         self._vref = reference_voltage
         self._voltage_offset_constant = 2.5
         self._lsb = self._vref / self._resolution
@@ -71,7 +72,6 @@ class AD8495:
         temp_c = (voltage - self._voltage_offset_constant) / 0.005
         return temp_c + self._offset
 
-
     def getTemperatureF(self, samples=1):
         """
         Get temperature in Fahrenheit.
@@ -84,7 +84,6 @@ class AD8495:
         """
         return self.getTemperatureC(samples) * 1.8 + 32.0
 
-
     def getSetpointVoltage(self, temperature_c):
         """
         Convert a temperature in Celsius to the equivalent voltage output by the sensor.
@@ -96,13 +95,13 @@ class AD8495:
             float: Equivalent voltage in volts.
         """
         return temperature_c / self._deg_per_mv
-    
+
     def setVoltageOffset(self, newOffset):
         """
         Set the offset voltage used to calculate temperature
-        
+
         Args:
             newOffset (float): Offset in Volts
-            
+
         """
         self._voltage_offset_constant = newOffset

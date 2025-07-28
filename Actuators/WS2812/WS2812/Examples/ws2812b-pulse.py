@@ -9,7 +9,9 @@ import time  # Provides delay and sleep functions
 
 # === Configuration ===
 PIN = 33  # GPIO pin number connected to the data line of the WS2812B LED strip
-NUM_PIXELS = 10  # Total number of LEDs in the strip (you can change this to match your setup)
+NUM_PIXELS = (
+    10  # Total number of LEDs in the strip (you can change this to match your setup)
+)
 
 # === Setup ===
 # Create a NeoPixel object to control the LED strip
@@ -21,7 +23,7 @@ np = neopixel.NeoPixel(machine.Pin(PIN), NUM_PIXELS)
 brightness_level = 1.0
 
 # === Main Loop ===
-# This loop continuously fades the brightness of the LEDs down to a low value, 
+# This loop continuously fades the brightness of the LEDs down to a low value,
 # pauses, then fades it back up to full brightness, creating a "breathing" or pulse effect.
 while True:
     # === Fade Out Loop ===
@@ -30,7 +32,7 @@ while True:
         # Set all LEDs to white color (RGB: 255, 255, 255)
         for i in range(NUM_PIXELS):
             np[i] = (255, 255, 255)
-        
+
         # Apply the current brightness level
         np.brightness(brightness_level)
 

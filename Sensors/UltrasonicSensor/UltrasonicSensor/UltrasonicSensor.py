@@ -47,7 +47,11 @@ class UltrasonicSensor(Qwiic):
                 i2c = i2c
             else:
                 # Auto-select Qwiic for CONNECT boards
-                if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
+                if uname().sysname in (
+                    "esp32",
+                    "esp8266",
+                    "Soldered Dasduino CONNECTPLUS",
+                ):
                     i2c = I2C(0, scl=Pin(22), sda=Pin(21))
                 else:
                     raise Exception("Board not recognized, enter I2C pins manually")

@@ -1,13 +1,14 @@
-# FILE: ObstacleSensor.py 
+# FILE: ObstacleSensor.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the Qwiic and native versions of the Obstacle Sensor breakout
-# LAST UPDATED: 2025-06-18 
+# LAST UPDATED: 2025-06-18
 
 from os import uname
 from Qwiic import Qwiic
 from machine import Pin, I2C, ADC
 
 READ_ADDRESS = 0  # Address/register from which to read analog data via I2C
+
 
 class ObstacleSensor(Qwiic):
     def __init__(self, i2c=None, address=0x30, digital_pin=None, analog_pin=None):
@@ -41,7 +42,11 @@ class ObstacleSensor(Qwiic):
                 i2c = i2c
             else:
                 # Auto-configure I2C for known board types (e.g., ESP32, ESP8266)
-                if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
+                if uname().sysname in (
+                    "esp32",
+                    "esp8266",
+                    "Soldered Dasduino CONNECTPLUS",
+                ):
                     i2c = I2C(0, scl=Pin(22), sda=Pin(21))  # Default Qwiic pins
                 else:
                     raise Exception("Board not recognized, enter I2C pins manually")
@@ -62,7 +67,7 @@ class ObstacleSensor(Qwiic):
         else:
             # Read 2 bytes from I2C and convert to integer
             data = self.read_register(READ_ADDRESS, 2)
-            value = (data[0] << 8 | data[1])
+            value = data[0] << 8 | data[1]
             return value
 
     def setTreshold(self, value: int):
@@ -80,7 +85,7 @@ class ObstacleSensor(Qwiic):
                 raise Exception("Treshold value should be between 0 and 1023!")
             data = [0x02, 0, 0]  # Command format: 0x02 + 2 bytes for threshold
             data[1] = (value & 0xFF00) >> 8  # MSB
-            data[2] = (value & 0xFF)        # LSB
+            data[2] = value & 0xFF  # LSB
             self.treshold = value
             self.send_data(data)
 
@@ -107,4 +112,6 @@ class ObstacleSensor(Qwiic):
         if self.native:
             return self.digital_pin.value()
         else:
-            return self.analogRead() < self.treshold  # Compare analog value to threshold
+            return (
+                self.analogRead() < self.treshold
+            )  # Compare analog value to threshold

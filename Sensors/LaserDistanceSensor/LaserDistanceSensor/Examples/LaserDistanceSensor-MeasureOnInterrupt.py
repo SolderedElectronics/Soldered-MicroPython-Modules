@@ -1,10 +1,10 @@
-# FILE: LaserDistanceSensor-MeasureOnInterrupt.py 
+# FILE: LaserDistanceSensor-MeasureOnInterrupt.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
-# BRIEF:  An example showing how to configure the sensor to 
+# BRIEF:  An example showing how to configure the sensor to
 #         initiate an interrupt when the millimeter measurement is within,
 #         outside, below or above a certain threshold
 # WORKS WITH: Laser distance sensor VL53L1X breakout: www.solde.red/333064
-# LAST UPDATED: 2025-07-14 
+# LAST UPDATED: 2025-07-14
 
 from machine import I2C, Pin
 from VL53L1X import VL53L1X
@@ -13,11 +13,13 @@ import time
 # Global variable that checks if an interrupt was detected
 detected = 0
 
+
 # Function that executes when an interrupt happens
 def my_interrupt_handler(pin):
     global detected
     # Set the variable to 1 if an interrupt was triggered
     detected = 1
+
 
 # Initialize the sensor and define the interrupt pin as well as the handler function
 # that will be called. The pin defined must be connected to the GPIO1 pin on the breakout board!
@@ -34,7 +36,9 @@ sensor = VL53L1X(interruptPin=34, interruptCallback=my_interrupt_handler)
 #                                       - out (will be triggered if the range is outside the threshold specified)
 #                                       - above (triggered if the measurement is above the upper defined threshold)
 #                                       - below (triggered if the measurement is below the lower defined threshold)
-sensor.set_distance_threshold_interrupt(100, 300, window='out')  # Trigger when outside of 100–300mm
+sensor.set_distance_threshold_interrupt(
+    100, 300, window="out"
+)  # Trigger when outside of 100–300mm
 
 # Infinite loop
 while True:
@@ -44,6 +48,6 @@ while True:
     if detected:
         dist = sensor.read()  # Save the sensor measurement into a variable
         print("Object outside of range window!")
-        print("Distance:", dist, "mm") # Print out the distance to the console
+        print("Distance:", dist, "mm")  # Print out the distance to the console
 
-        detected = 0 # reset the detection variable
+        detected = 0  # reset the detection variable

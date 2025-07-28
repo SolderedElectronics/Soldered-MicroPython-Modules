@@ -1,4 +1,4 @@
-# FILE: mcp23017.py 
+# FILE: mcp23017.py
 # AUTHOR: Mike Causer (https://github.com/mcauser)
 # MODIFIED BY: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the MCP23017 IO Expander Breakout board
@@ -30,34 +30,33 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
 
-__version__ = '0.1.4'
+__version__ = "0.1.4"
 
 from os import uname
 from machine import I2C, Pin
 
 
-
 # register addresses in port=0, bank=1 mode (easier maths to convert)
-_MCP_IODIR        = const(0x00) # R/W I/O Direction Register
-_MCP_IPOL         = const(0x01) # R/W Input Polarity Port Register
-_MCP_GPINTEN      = const(0x02) # R/W Interrupt-on-Change Pins
-_MCP_DEFVAL       = const(0x03) # R/W Default Value Register
-_MCP_INTCON       = const(0x04) # R/W Interrupt-on-Change Control Register
-_MCP_IOCON        = const(0x05) # R/W Configuration Register
-_MCP_GPPU         = const(0x06) # R/W Pull-Up Resistor Register
-_MCP_INTF         = const(0x07) # R   Interrupt Flag Register (read clears)
-_MCP_INTCAP       = const(0x08) # R   Interrupt Captured Value For Port Register
-_MCP_GPIO         = const(0x09) # R/W General Purpose I/O Port Register
-_MCP_OLAT         = const(0x0a) # R/W Output Latch Register
+_MCP_IODIR = const(0x00)  # R/W I/O Direction Register
+_MCP_IPOL = const(0x01)  # R/W Input Polarity Port Register
+_MCP_GPINTEN = const(0x02)  # R/W Interrupt-on-Change Pins
+_MCP_DEFVAL = const(0x03)  # R/W Default Value Register
+_MCP_INTCON = const(0x04)  # R/W Interrupt-on-Change Control Register
+_MCP_IOCON = const(0x05)  # R/W Configuration Register
+_MCP_GPPU = const(0x06)  # R/W Pull-Up Resistor Register
+_MCP_INTF = const(0x07)  # R   Interrupt Flag Register (read clears)
+_MCP_INTCAP = const(0x08)  # R   Interrupt Captured Value For Port Register
+_MCP_GPIO = const(0x09)  # R/W General Purpose I/O Port Register
+_MCP_OLAT = const(0x0A)  # R/W Output Latch Register
 
 # Config register (IOCON) bits
 _MCP_IOCON_INTPOL = const(2)
-_MCP_IOCON_ODR    = const(4)
+_MCP_IOCON_ODR = const(4)
 # _MCP_IOCON_HAEN = const(8) # no used - for spi flavour of this chip
 _MCP_IOCON_DISSLW = const(16)
-_MCP_IOCON_SEQOP  = const(32)
+_MCP_IOCON_SEQOP = const(32)
 _MCP_IOCON_MIRROR = const(64)
-_MCP_IOCON_BANK   = const(128)
+_MCP_IOCON_BANK = const(128)
 
 
 # Arduino-like constants
@@ -65,31 +64,29 @@ OUTPUT = const(0)
 INPUT = const(1)
 INPUT_PULLUP = const(3)
 
-LOW= const(0)
+LOW = const(0)
 HIGH = const(1)
 
-A0=const(0)
-A1=const(1)
-A2=const(2)
-A3=const(3)
-A4=const(4)
-A5=const(5)
-A6=const(6)
-A7=const(7)
+A0 = const(0)
+A1 = const(1)
+A2 = const(2)
+A3 = const(3)
+A4 = const(4)
+A5 = const(5)
+A6 = const(6)
+A7 = const(7)
 
-B0=const(8)
-B1=const(9)
-B2=const(10)
-B3=const(11)
-B4=const(12)
-B5=const(13)
-B6=const(14)
-B7=const(15)
-
-
+B0 = const(8)
+B1 = const(9)
+B2 = const(10)
+B3 = const(11)
+B4 = const(12)
+B5 = const(13)
+B6 = const(14)
+B7 = const(15)
 
 
-class Port():
+class Port:
     # represents one of the two 8-bit ports
     def __init__(self, port, mcp):
         self._port = port & 1  # 0=PortA, 1=PortB
@@ -110,11 +107,15 @@ class Port():
             setattr(self, reg, getattr(self, reg) & ~bit)
 
     def _read(self, reg):
-        return self._mcp.i2c.readfrom_mem(self._mcp._address, self._which_reg(reg), 1)[0]
+        return self._mcp.i2c.readfrom_mem(self._mcp._address, self._which_reg(reg), 1)[
+            0
+        ]
 
     def _write(self, reg, val):
-        val &= 0xff
-        self._mcp.i2c.writeto_mem(self._mcp._address, self._which_reg(reg), bytearray([val]))
+        val &= 0xFF
+        self._mcp.i2c.writeto_mem(
+            self._mcp._address, self._which_reg(reg), bytearray([val])
+        )
         # if writing to the config register, make a copy in mcp so that it knows
         # which bank you're using for subsequent writes
         if reg == _MCP_IOCON:
@@ -123,6 +124,7 @@ class Port():
     @property
     def mode(self):
         return self._read(_MCP_IODIR)
+
     @mode.setter
     def mode(self, val):
         self._write(_MCP_IODIR, val)
@@ -130,6 +132,7 @@ class Port():
     @property
     def input_polarity(self):
         return self._read(_MCP_IPOL)
+
     @input_polarity.setter
     def input_polarity(self, val):
         self._write(_MCP_IPOL, val)
@@ -137,6 +140,7 @@ class Port():
     @property
     def interrupt_enable(self):
         return self._read(_MCP_GPINTEN)
+
     @interrupt_enable.setter
     def interrupt_enable(self, val):
         self._write(_MCP_GPINTEN, val)
@@ -144,6 +148,7 @@ class Port():
     @property
     def default_value(self):
         return self._read(_MCP_DEFVAL)
+
     @default_value.setter
     def default_value(self, val):
         self._write(_MCP_DEFVAL, val)
@@ -151,6 +156,7 @@ class Port():
     @property
     def interrupt_compare_default(self):
         return self._read(_MCP_INTCON)
+
     @interrupt_compare_default.setter
     def interrupt_compare_default(self, val):
         self._write(_MCP_INTCON, val)
@@ -158,6 +164,7 @@ class Port():
     @property
     def io_config(self):
         return self._read(_MCP_IOCON)
+
     @io_config.setter
     def io_config(self, val):
         self._write(_MCP_IOCON, val)
@@ -165,6 +172,7 @@ class Port():
     @property
     def pullup(self):
         return self._read(_MCP_GPPU)
+
     @pullup.setter
     def pullup(self, val):
         self._write(_MCP_GPPU, val)
@@ -182,6 +190,7 @@ class Port():
     @property
     def gpio(self):
         return self._read(_MCP_GPIO)
+
     @gpio.setter
     def gpio(self, val):
         # writing to this register modifies the OLAT register for pins configured as output
@@ -190,13 +199,14 @@ class Port():
     @property
     def output_latch(self):
         return self._read(_MCP_OLAT)
+
     @output_latch.setter
     def output_latch(self, val):
         # modifies the output latches on pins configured as outputs
         self._write(_MCP_OLAT, val)
 
 
-class MCP23017():
+class MCP23017:
     def __init__(self, i2c=None, address=0x27):
         if i2c != None:
             self.i2c = i2c
@@ -214,23 +224,33 @@ class MCP23017():
     def init(self):
         # error if device not found at i2c addr
         if self.i2c.scan().count(self._address) == 0:
-            raise OSError('MCP23017 not found at I2C address {:#x}'.format(self._address))
+            raise OSError(
+                "MCP23017 not found at I2C address {:#x}".format(self._address)
+            )
 
         self.porta = Port(0, self)
         self.portb = Port(1, self)
 
-        self.io_config = 0x00      # io expander configuration - same on both ports, only need to write once
+        self.io_config = 0x00  # io expander configuration - same on both ports, only need to write once
 
         # Reset to all inputs with no pull-ups and no inverted polarity.
-        self.mode = 0xFFFF                       # in/out direction (0=out, 1=in)
-        self.input_polarity = 0x0000             # invert port input polarity (0=normal, 1=invert)
-        self.interrupt_enable = 0x0000           # int on change pins (0=disabled, 1=enabled)
-        self.default_value = 0x0000              # default value for int on change
+        self.mode = 0xFFFF  # in/out direction (0=out, 1=in)
+        self.input_polarity = 0x0000  # invert port input polarity (0=normal, 1=invert)
+        self.interrupt_enable = 0x0000  # int on change pins (0=disabled, 1=enabled)
+        self.default_value = 0x0000  # default value for int on change
         self.interrupt_compare_default = 0x0000  # int on change control (0=compare to prev val, 1=compare to def val)
-        self.pullup = 0x0000                     # gpio weak pull up resistor - when configured as input (0=disabled, 1=enabled)
-        self.gpio = 0x0000                       # port (0=logic low, 1=logic high)
+        self.pullup = 0x0000  # gpio weak pull up resistor - when configured as input (0=disabled, 1=enabled)
+        self.gpio = 0x0000  # port (0=logic low, 1=logic high)
 
-    def config(self, interrupt_polarity=None, interrupt_open_drain=None, sda_slew=None, sequential_operation=None, interrupt_mirror=None, bank=None):
+    def config(
+        self,
+        interrupt_polarity=None,
+        interrupt_open_drain=None,
+        sda_slew=None,
+        sequential_operation=None,
+        interrupt_mirror=None,
+        bank=None,
+    ):
         io_config = self.porta.io_config
 
         if interrupt_polarity is not None:
@@ -253,7 +273,9 @@ class MCP23017():
         if sequential_operation is not None:
             # 0: Enabled, address pointer increments
             # 1: Disabled, address pointer fixed
-            io_config = self._flip_bit(io_config, sequential_operation, _MCP_IOCON_SEQOP)
+            io_config = self._flip_bit(
+                io_config, sequential_operation, _MCP_IOCON_SEQOP
+            )
         if interrupt_mirror is not None:
             # 0: Independent INTA,INTB pins
             # 1: Internally linked INTA,INTB pins
@@ -274,40 +296,52 @@ class MCP23017():
             value &= ~bit
         return value
 
-    def pin(self, pin, mode=None, value=None, pullup=None, polarity=None, interrupt_enable=None, interrupt_compare_default=None, default_value=None):
+    def pin(
+        self,
+        pin,
+        mode=None,
+        value=None,
+        pullup=None,
+        polarity=None,
+        interrupt_enable=None,
+        interrupt_compare_default=None,
+        default_value=None,
+    ):
         assert 0 <= pin <= 15
         port = self.portb if pin // 8 else self.porta
-        bit = (1 << (pin % 8))
+        bit = 1 << (pin % 8)
         if mode == INPUT_PULLUP:
-            pullup=1
+            pullup = 1
         if mode is not None:
             # 0: Pin is configured as an output
             # 1: Pin is configured as an input
-            port._flip_property_bit('mode', mode & 1, bit)
+            port._flip_property_bit("mode", mode & 1, bit)
         if value is not None:
             # 0: Pin is set to logic low
             # 1: Pin is set to logic high
-            port._flip_property_bit('gpio', value & 1, bit)
+            port._flip_property_bit("gpio", value & 1, bit)
         if pullup is not None:
             # 0: Weak pull-up 100k ohm resistor disabled
             # 1: Weak pull-up 100k ohm resistor enabled
-            port._flip_property_bit('pullup', pullup & 1, bit)
+            port._flip_property_bit("pullup", pullup & 1, bit)
         if polarity is not None:
             # 0: GPIO register bit reflects the same logic state of the input pin
             # 1: GPIO register bit reflects the opposite logic state of the input pin
-            port._flip_property_bit('input_polarity', polarity & 1, bit)
+            port._flip_property_bit("input_polarity", polarity & 1, bit)
         if interrupt_enable is not None:
             # 0: Disables GPIO input pin for interrupt-on-change event
             # 1: Enables GPIO input pin for interrupt-on-change event
-            port._flip_property_bit('interrupt_enable', interrupt_enable & 1, bit)
+            port._flip_property_bit("interrupt_enable", interrupt_enable & 1, bit)
         if interrupt_compare_default is not None:
             # 0: Pin value is compared against the previous pin value
             # 1: Pin value is compared against the associated bit in the DEFVAL register
-            port._flip_property_bit('interrupt_compare_default', interrupt_compare_default & 1, bit)
+            port._flip_property_bit(
+                "interrupt_compare_default", interrupt_compare_default & 1, bit
+            )
         if default_value is not None:
             # 0: Default value for comparison in interrupt, when configured to compare against DEFVAL register
             # 1: Default value for comparison in interrupt, when configured to compare against DEFVAL register
-            port._flip_property_bit('default_value', default_value & 1, bit)
+            port._flip_property_bit("default_value", default_value & 1, bit)
         if value is None:
             return port.gpio & bit == bit
 
@@ -327,52 +361,60 @@ class MCP23017():
     @property
     def mode(self):
         return self.porta.mode | (self.portb.mode << 8)
+
     @mode.setter
     def mode(self, val):
         self.porta.mode = val
-        self.portb.mode = (val >> 8)
+        self.portb.mode = val >> 8
 
     # input_polarity (IPOL register)
     @property
     def input_polarity(self):
         return self.porta.input_polarity | (self.portb.input_polarity << 8)
+
     @input_polarity.setter
     def input_polarity(self, val):
         self.porta.input_polarity = val
-        self.portb.input_polarity = (val >> 8)
+        self.portb.input_polarity = val >> 8
 
     # interrupt_enable (GPINTEN register)
     @property
     def interrupt_enable(self):
         return self.porta.interrupt_enable | (self.portb.interrupt_enable << 8)
+
     @interrupt_enable.setter
     def interrupt_enable(self, val):
         self.porta.interrupt_enable = val
-        self.portb.interrupt_enable = (val >> 8)
+        self.portb.interrupt_enable = val >> 8
 
     # default_value (DEFVAL register)
     @property
     def default_value(self):
         return self.porta.default_value | (self.portb.default_value << 8)
+
     @default_value.setter
     def default_value(self, val):
         self.porta.default_value = val
-        self.portb.default_value = (val >> 8)
+        self.portb.default_value = val >> 8
 
     # interrupt_compare_default (INTCON register)
     @property
     def interrupt_compare_default(self):
-        return self.porta.interrupt_compare_default | (self.portb.interrupt_compare_default << 8)
+        return self.porta.interrupt_compare_default | (
+            self.portb.interrupt_compare_default << 8
+        )
+
     @interrupt_compare_default.setter
     def interrupt_compare_default(self, val):
         self.porta.interrupt_compare_default = val
-        self.portb.interrupt_compare_default = (val >> 8)
+        self.portb.interrupt_compare_default = val >> 8
 
     # io_config (IOCON register)
     # This register is duplicated in each port. Changing one changes both.
     @property
     def io_config(self):
         return self.porta.io_config
+
     @io_config.setter
     def io_config(self, val):
         self.porta.io_config = val
@@ -381,10 +423,11 @@ class MCP23017():
     @property
     def pullup(self):
         return self.porta.pullup | (self.portb.pullup << 8)
+
     @pullup.setter
     def pullup(self, val):
         self.porta.pullup = val
-        self.portb.pullup = (val >> 8)
+        self.portb.pullup = val >> 8
 
     # interrupt_flag (INTF register)
     # read only
@@ -402,33 +445,39 @@ class MCP23017():
     @property
     def gpio(self):
         return self.porta.gpio | (self.portb.gpio << 8)
+
     @gpio.setter
     def gpio(self, val):
         self.porta.gpio = val
-        self.portb.gpio = (val >> 8)
+        self.portb.gpio = val >> 8
 
     # output_latch (OLAT register)
     @property
     def output_latch(self):
         return self.porta.output_latch | (self.portb.output_latch << 8)
+
     @output_latch.setter
     def output_latch(self, val):
         self.porta.output_latch = val
-        self.portb.output_latch = (val >> 8)
+        self.portb.output_latch = val >> 8
 
     # list interface
     # mcp[pin] lazy creates a VirtualPin(pin, port)
     def __getitem__(self, pin):
         assert 0 <= pin <= 15
         if not pin in self._virtual_pins:
-            self._virtual_pins[pin] = VirtualPin(pin, self.portb if pin // 8 else self.porta)
+            self._virtual_pins[pin] = VirtualPin(
+                pin, self.portb if pin // 8 else self.porta
+            )
         return self._virtual_pins[pin]
 
-class VirtualPin():
+
+class VirtualPin:
     def __init__(self, pin, port):
         self._pin = pin % 8
         self._bit = 1 << self._pin
         self._port = port
+
     def __call__(self):
         return self.value()
 
@@ -447,14 +496,14 @@ class VirtualPin():
 
     def input(self, pull=None):
         # if pull, enable pull up, else read
-        self._port.mode = self._flip_bit(self._port.mode, 1) # mode = input
+        self._port.mode = self._flip_bit(self._port.mode, 1)  # mode = input
         if pull is not None:
-            self._port.pullup = self._flip_bit(self._port.pullup, pull & 1) # toggle pull up
+            self._port.pullup = self._flip_bit(
+                self._port.pullup, pull & 1
+            )  # toggle pull up
 
     def output(self, val=None):
         # if val, write, else read
-        self._port.mode = self._flip_bit(self._port.mode, 0) # mode = output
+        self._port.mode = self._flip_bit(self._port.mode, 0)  # mode = output
         if val is not None:
             self._port.gpio = self._flip_bit(self._port.gpio, val & 1)
-
-
