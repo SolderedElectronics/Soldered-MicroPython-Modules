@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "ad8495.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AD8495/AD8495/ad8495.py"
+    ],
+    [
+      "Examples/ad8495-measureTemperature&Voltage.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AD8495/AD8495/Examples/ad8495-measureTemperature&Voltage.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

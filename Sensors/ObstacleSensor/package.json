@@ -1,0 +1,30 @@
+{
+  "urls": [
+    [
+      "ObstacleSensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ObstacleSensor/ObstacleSensor/ObstacleSensor.py"
+    ],
+    [
+      "Examples/ObstacleSensor-analogReadNative.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ObstacleSensor/ObstacleSensor/Examples/ObstacleSensor-analogReadNative.py"
+    ],
+    [
+      "Examples/ObstacleSensor-analogReadQwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ObstacleSensor/ObstacleSensor/Examples/ObstacleSensor-analogReadQwiic.py"
+    ],
+    [
+      "Examples/ObstacleSensor-digitalReadNative.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ObstacleSensor/ObstacleSensor/Examples/ObstacleSensor-digitalReadNative.py"
+    ],
+    [
+      "Examples/ObstacleSensor-digitalReadQwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ObstacleSensor/ObstacleSensor/Examples/ObstacleSensor-digitalReadQwiic.py"
+    ],
+    [
+      "Qwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Qwiic/Qwiic.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}

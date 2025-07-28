@@ -32,7 +32,7 @@ class BMP180:
         if i2c != None:
             self.i2c = i2c
         else:
-            if uname().sysname == "esp32" or uname().sysname == "esp8266":
+            if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
                 self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter I2C pins manually")
