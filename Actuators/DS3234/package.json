@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "ds3234.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/DS3234/DS3234/ds3234.py"
+    ],
+    [
+      "Examples/ds3234-deepSleep.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/DS3234/DS3234/Examples/ds3234-deepSleep.py"
+    ],
+    [
+      "Examples/ds3234-writeSRAM.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/DS3234/DS3234/Examples/ds3234-writeSRAM.py"
+    ],
+    [
+      "Examples/ds3234-simpleRTC.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/DS3234/DS3234/Examples/ds3234-simpleRTC.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}
