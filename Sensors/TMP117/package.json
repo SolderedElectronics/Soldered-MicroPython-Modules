@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "tmp117.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/TMP117/TMP117/tmp117.py"
+    ],
+    [
+      "Examples/tmp117-simpleRead.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/TMP117/TMP117/Examples/tmp117-simpleRead.py"
+    ],
+    [
+      "Examples/tmp117-alarmPin.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/TMP117/TMP117/Examples/tmp117-alarmPin.py"
+    ],
+    [
+      "Examples/tmp117-customConfig.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/TMP117/TMP117/Examples/tmp117-customConfig.py"
+    ]
+  ],
+  "deps": [],
+  "version": "0.2"
+}
