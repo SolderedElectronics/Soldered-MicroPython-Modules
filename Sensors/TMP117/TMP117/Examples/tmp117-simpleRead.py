@@ -1,9 +1,9 @@
-# FILE: tmp117-simpleRead.py 
+# FILE: tmp117-simpleRead.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF:  Example showing how to take a simple temperature
 #         measurement every 100ms in Celsius
 # WORKS WITH: Temperature Sensor TMP117 Breakout: www.solde.red/333175
-# LAST UPDATED: 2025-09-22 
+# LAST UPDATED: 2025-09-22
 
 from machine import I2C, Pin
 import tmp117

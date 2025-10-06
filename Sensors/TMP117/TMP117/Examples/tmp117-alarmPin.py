@@ -1,10 +1,10 @@
-# FILE: tmp117-simplePin.py 
+# FILE: tmp117-simplePin.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF:  Example showing how to detect and configure an interrupt
-#         on the ALR (alarm) Pin when the LOW or HIGH temperature treshold 
+#         on the ALR (alarm) Pin when the LOW or HIGH temperature treshold
 #         is crossed
 # WORKS WITH: Temperature Sensor TMP117 Breakout: www.solde.red/333175
-# LAST UPDATED: 2025-09-22 
+# LAST UPDATED: 2025-09-22
 from machine import I2C, Pin
 import tmp117
 import time
@@ -19,6 +19,7 @@ sensor = tmp117.TMP117(i2c, addr=0x49)
 # Initialize with default settings
 sensor.init()
 
+
 # Set alert callback
 def alert_callback(pin):
     alert_type = sensor.getAlertType()
@@ -26,6 +27,7 @@ def alert_callback(pin):
         print("High temperature alert!")
     elif alert_type == tmp117.TMP117_ALERT.LOWALERT:
         print("Low temperature alert!")
+
 
 # Set at what pin the ALR pin of the Breakout is connected to, as well
 # as the function that will be called when an interrupt happens on that pin

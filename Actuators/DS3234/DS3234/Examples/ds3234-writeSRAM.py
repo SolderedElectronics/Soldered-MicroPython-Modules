@@ -1,9 +1,9 @@
-# FILE: DS3234-writeSRAM.py 
+# FILE: DS3234-writeSRAM.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
-# BRIEF: Example showing how to write and retrieve 
+# BRIEF: Example showing how to write and retrieve
 #        data from RTC SRAM
 # WORKS WITH: DS3234 RTC Breakout: www.solde.red/333358
-# LAST UPDATED: 2025-09-15 
+# LAST UPDATED: 2025-09-15
 
 import machine
 import time
@@ -15,8 +15,15 @@ DS3234_CS_PIN = 5  # DS3234 RTC Chip-select pin
 
 # Initialize SPI and CS pin
 # Using VSPI (SPI ID 2) with default ESP32 pins
-spi = machine.SPI(2, baudrate=1000000, polarity=1, phase=1,
-                  sck=machine.Pin(18), mosi=machine.Pin(23), miso=machine.Pin(19))
+spi = machine.SPI(
+    2,
+    baudrate=1000000,
+    polarity=1,
+    phase=1,
+    sck=machine.Pin(18),
+    mosi=machine.Pin(23),
+    miso=machine.Pin(19),
+)
 cs_pin = machine.Pin(DS3234_CS_PIN, machine.Pin.OUT)
 
 # Create an instance of the RTC object
@@ -36,7 +43,11 @@ sram_address = 161  # == 0xA1
 # Choose some data to store in SRAM
 data_byte = 42
 
-print("Writing a byte with value", data_byte, "to memory address 0x{:02X}.".format(sram_address))
+print(
+    "Writing a byte with value",
+    data_byte,
+    "to memory address 0x{:02X}.".format(sram_address),
+)
 
 # Do the writing here...
 # Note: If you have battery support on your RTC module, this value
@@ -46,7 +57,11 @@ rtc.writeToSRAM(sram_address, data_byte)
 # Now we read the value back from SRAM
 read_back_byte = rtc.readFromSRAM(sram_address)
 
-print("We have read back a byte with value", read_back_byte, "from memory address 0x{:02X}.".format(sram_address))
+print(
+    "We have read back a byte with value",
+    read_back_byte,
+    "from memory address 0x{:02X}.".format(sram_address),
+)
 
 """ Write and read several bytes to/from an array """
 
@@ -56,7 +71,11 @@ write_buffer = bytearray([101, 102, 103, 104, 199, 255])
 # Get the length of the array to write
 length = len(write_buffer)
 
-print("Writing", length, "byte(s) to SRAM, starting at address 0x{:02X}.".format(sram_address))
+print(
+    "Writing",
+    length,
+    "byte(s) to SRAM, starting at address 0x{:02X}.".format(sram_address),
+)
 print("Values to write:", " ".join(str(b) for b in write_buffer))
 
 # Now we do the writing
@@ -68,8 +87,10 @@ read_buffer = bytearray(length)
 # Now read back the stored data into read_buffer
 read_data = rtc.readFromSRAMBuffer(sram_address, length)
 
-print("Data we have read back starting from SRAM address 0x{:02X}:".format(sram_address), 
-      " ".join(str(b) for b in read_data))
+print(
+    "Data we have read back starting from SRAM address 0x{:02X}:".format(sram_address),
+    " ".join(str(b) for b in read_data),
+)
 
 """ Write and read other data types directly to/from SRAM """
 
@@ -88,44 +109,55 @@ print("Data we have read back starting from SRAM address 0x{:02X}:".format(sram_
 uint16_data = 32769
 
 # write uint16_t to SRAM
-print("Writing a uint16_t with value", uint16_data, "to memory address 0x{:02X}.".format(sram_address))
+print(
+    "Writing a uint16_t with value",
+    uint16_data,
+    "to memory address 0x{:02X}.".format(sram_address),
+)
 
-rtc.writeToSRAMValue(sram_address, uint16_data, 'uint16')
+rtc.writeToSRAMValue(sram_address, uint16_data, "uint16")
 
 # And now read the value back:
-read_back_uint16 = rtc.readFromSRAMValue(sram_address, 'uint16')
+read_back_uint16 = rtc.readFromSRAMValue(sram_address, "uint16")
 
-print("We have read back a uint16_t with value", read_back_uint16, "from memory address 0x{:02X}.".format(sram_address))
+print(
+    "We have read back a uint16_t with value",
+    read_back_uint16,
+    "from memory address 0x{:02X}.".format(sram_address),
+)
 
 print("Written and read uint16_t values are equal:", uint16_data == read_back_uint16)
 
 # Example 2: Using a signed integer this time
 int32_data = -128653
-rtc.writeToSRAMValue(sram_address, int32_data, 'int32')
+rtc.writeToSRAMValue(sram_address, int32_data, "int32")
 
-read_back_int32 = rtc.readFromSRAMValue(sram_address, 'int32')
+read_back_int32 = rtc.readFromSRAMValue(sram_address, "int32")
 
 print("Written and read int32_t values are equal:", int32_data == read_back_int32)
 
 # Example 3: Using a floating point
 float_data = 3.14159265358979  # the number pi
-rtc.writeToSRAMValue(sram_address, float_data, 'float')
+rtc.writeToSRAMValue(sram_address, float_data, "float")
 
-read_back_float = rtc.readFromSRAMValue(sram_address, 'float')
+read_back_float = rtc.readFromSRAMValue(sram_address, "float")
 
-print("Written and read float values are equal:", abs(float_data - read_back_float) < 0.0001)
+print(
+    "Written and read float values are equal:",
+    abs(float_data - read_back_float) < 0.0001,
+)
 
 # Example 4: Using a string (custom implementation)
 string_data = "Hello RTC!"
 string_address = sram_address + 20  # Different address to avoid overlap
 
 # Convert string to bytes and write
-string_bytes = string_data.encode('utf-8')
+string_bytes = string_data.encode("utf-8")
 rtc.writeToSRAMBuffer(string_address, string_bytes)
 
 # Read back and convert to string
 read_string_bytes = rtc.readFromSRAMBuffer(string_address, len(string_bytes))
-read_string = read_string_bytes.decode('utf-8')
+read_string = read_string_bytes.decode("utf-8")
 
 print("Original string:", string_data)
 print("Read back string:", read_string)
