@@ -1,0 +1,18 @@
+{
+  "urls": [
+    [
+      "rfid.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/RFID/RFID/rfid.py"
+    ],
+    [
+      "Examples/RFID-UARTExample.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/RFID/RFID/Examples/RFID-UARTExample.py"
+    ],
+    [
+      "Examples/RFID-I2CExample.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/RFID/RFID/Examples/RFID-I2CExample.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
