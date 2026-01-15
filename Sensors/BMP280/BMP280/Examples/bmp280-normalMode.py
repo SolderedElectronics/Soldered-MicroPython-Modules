@@ -6,6 +6,7 @@
 
 from machine import Pin, I2C
 from bmp280 import BMP280
+
 # Import constants from separate file to keep examples stable if defaults change.
 from bmp280_constants import (
     NORMAL_MODE,
@@ -24,7 +25,9 @@ import time
 bmp280 = BMP280()
 
 # Configure sampling rates and filter
-bmp280.setOversampling(presOversampling=OVERSAMPLING_X4, tempOversampling=OVERSAMPLING_X2)
+bmp280.setOversampling(
+    presOversampling=OVERSAMPLING_X4, tempOversampling=OVERSAMPLING_X2
+)
 bmp280.setIIRFilter(IIR_FILTER_4)
 bmp280.setStandbyTime(STANDBY_1000MS)
 bmp280.setMode(NORMAL_MODE)

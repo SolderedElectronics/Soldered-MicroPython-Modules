@@ -37,7 +37,9 @@ class BMP280:
         self.config = 0x00
 
         if not self.begin():
-            raise Exception("BMP280 initialization failed! Check wiring and I2C address.")
+            raise Exception(
+                "BMP280 initialization failed! Check wiring and I2C address."
+            )
 
     def _read8(self, register):
         """Read a single byte from a register."""
@@ -114,7 +116,11 @@ class BMP280:
 
     def setOversampling(self, presOversampling, tempOversampling):
         """Set oversampling for pressure and temperature."""
-        self.ctrlMeas = ((tempOversampling & 0x07) << 5) | ((presOversampling & 0x07) << 2) | (self.ctrlMeas & 0x03)
+        self.ctrlMeas = (
+            ((tempOversampling & 0x07) << 5)
+            | ((presOversampling & 0x07) << 2)
+            | (self.ctrlMeas & 0x03)
+        )
         self._write8(BMP280_CTRL_MEAS, self.ctrlMeas)
 
     def setIIRFilter(self, iirFilter):

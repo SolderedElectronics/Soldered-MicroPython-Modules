@@ -6,6 +6,7 @@
 
 from machine import Pin, I2C
 from bmp280 import BMP280
+
 # Import constants from separate file to keep examples stable if defaults change.
 from bmp280_constants import (
     SLEEP_MODE,
@@ -23,7 +24,9 @@ import time
 bmp280 = BMP280()
 
 # Configure low-power sampling
-bmp280.setOversampling(presOversampling=OVERSAMPLING_X1, tempOversampling=OVERSAMPLING_X1)
+bmp280.setOversampling(
+    presOversampling=OVERSAMPLING_X1, tempOversampling=OVERSAMPLING_X1
+)
 bmp280.setIIRFilter(IIR_FILTER_OFF)
 bmp280.setMode(SLEEP_MODE)
 

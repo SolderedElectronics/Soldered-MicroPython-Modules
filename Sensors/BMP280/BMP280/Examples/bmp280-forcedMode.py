@@ -6,6 +6,7 @@
 
 from machine import Pin, I2C
 from bmp280 import BMP280
+
 # Import constants from separate file to keep examples stable if defaults change.
 from bmp280_constants import (
     FORCED_MODE,
@@ -23,11 +24,12 @@ import time
 bmp280 = BMP280()
 
 # Configure sampling rates and filter
-bmp280.setOversampling(presOversampling=OVERSAMPLING_X8, tempOversampling=OVERSAMPLING_X2)
+bmp280.setOversampling(
+    presOversampling=OVERSAMPLING_X8, tempOversampling=OVERSAMPLING_X2
+)
 bmp280.setIIRFilter(IIR_FILTER_2)
 bmp280.setMode(FORCED_MODE)
 while True:
-
     temperature, pressure, altitude = bmp280.getMeasurements()
     print("{:.2f}*C   {:.2f}hPa   {:.2f}m".format(temperature, pressure, altitude))
     time.sleep(1)
