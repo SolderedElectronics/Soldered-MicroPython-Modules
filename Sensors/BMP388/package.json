@@ -1,0 +1,34 @@
+{
+  "urls": [
+    [
+      "bmp388.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/bmp388.py"
+    ],
+    [
+      "bmp388_constants.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/bmp388_constants.py"
+    ],
+    [
+      "Examples/bmp388-allValues.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/Examples/bmp388-allValues.py"
+    ],
+    [
+      "Examples/bmp388-forcedMeasurement.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/Examples/bmp388-forcedMeasurement.py"
+    ],
+    [
+      "Examples/bmp388-forcedModeWithInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/Examples/bmp388-forcedModeWithInterrupt.py"
+    ],
+    [
+      "Examples/bmp388-normalModeWithInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/Examples/bmp388-normalModeWithInterrupt.py"
+    ],
+    [
+      "Examples/bmp388-normalModeWithFifo.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP388/BMP388/Examples/bmp388-normalModeWithFifo.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
