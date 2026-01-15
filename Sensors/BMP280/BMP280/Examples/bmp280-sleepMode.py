@@ -6,6 +6,7 @@
 
 from machine import Pin, I2C
 from bmp280 import BMP280
+# Import constants from separate file to keep examples stable if defaults change.
 from bmp280_constants import (
     SLEEP_MODE,
     FORCED_MODE,
