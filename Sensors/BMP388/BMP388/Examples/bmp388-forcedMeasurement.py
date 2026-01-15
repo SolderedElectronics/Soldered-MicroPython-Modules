@@ -26,7 +26,9 @@ while True:
     while True:
         temperature, pressure, altitude = bmp388.getMeasurements()
         if temperature is not None:
-            print("{:.2f}*C   {:.2f}hPa   {:.2f}m".format(temperature, pressure, altitude))
+            print(
+                "{:.2f}*C   {:.2f}hPa   {:.2f}m".format(temperature, pressure, altitude)
+            )
             break
         time.sleep(0.02)
 

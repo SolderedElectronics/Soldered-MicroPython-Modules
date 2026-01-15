@@ -16,6 +16,7 @@ def interruptHandler(pin):
     global dataReady
     dataReady = True
 
+
 # If you aren't using the Qwiic connector, manually enter your I2C pins
 # i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 # bmp388 = BMP388(i2c)
@@ -43,6 +44,8 @@ while True:
     if dataReady:
         temperature, pressure, altitude = bmp388.getMeasurements()
         if temperature is not None:
-            print("{:.2f}*C   {:.2f}hPa   {:.2f}m".format(temperature, pressure, altitude))
+            print(
+                "{:.2f}*C   {:.2f}hPa   {:.2f}m".format(temperature, pressure, altitude)
+            )
         dataReady = False
     time.sleep(0.01)
