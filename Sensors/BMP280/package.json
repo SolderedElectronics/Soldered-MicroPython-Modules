@@ -1,0 +1,26 @@
+{
+  "urls": [
+    [
+      "bmp280.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP280/BMP280/bmp280.py"
+    ],
+    [
+      "bmp280_constants.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP280/BMP280/bmp280_constants.py"
+    ],
+    [
+      "Examples/bmp280-normalMode.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP280/BMP280/Examples/bmp280-normalMode.py"
+    ],
+    [
+      "Examples/bmp280-forcedMode.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP280/BMP280/Examples/bmp280-forcedMode.py"
+    ],
+    [
+      "Examples/bmp280-sleepMode.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BMP280/BMP280/Examples/bmp280-sleepMode.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
