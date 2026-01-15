@@ -39,9 +39,11 @@ while True:
     if status == FIFO_DATA_READY:
         for i in range(len(temperatures)):
             altitude = altitudes[i] if i < len(altitudes) else 0.0
-            print("{}: {:.2f}*C   {:.2f}hPa   {:.2f}m".format(
-                i + 1, temperatures[i], pressures[i], altitude
-            ))
+            print(
+                "{}: {:.2f}*C   {:.2f}hPa   {:.2f}m".format(
+                    i + 1, temperatures[i], pressures[i], altitude
+                )
+            )
 
         print("Sensor Time: {} ms".format(sensorTime))
         print()
