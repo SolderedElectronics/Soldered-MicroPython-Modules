@@ -16,6 +16,42 @@ Each module in the library is designed to be lightweight, readable, and compatib
 
 ---
 
+## Currently available MicroPython modules
+
+### Sensors
+- [AD8495](Sensors/AD8495/)
+- [APDS9960](Sensors/APDS9960/)
+- [BME280](Sensors/BME280/)
+- [BME680](Sensors/BME680/)
+- [BME688](Sensors/BME688/)
+- [BMP180](Sensors/BMP180/)
+- [BMP280](Sensors/BMP280/)
+- [BMP388](Sensors/BMP388/)
+- [HallEffect](Sensors/HallEffect/)
+- [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
+- [LTR507](Sensors/LTR507/)
+- [ObstacleSensor](Sensors/ObstacleSensor/)
+- [PirSensor](Sensors/PirSensor/)
+- [RotaryEncoder](Sensors/RotaryEncoder/)
+- [SHTC3](Sensors/SHTC3/)
+- [TMP117](Sensors/TMP117/)
+- [UltrasonicSensor](Sensors/UltrasonicSensor/)
+
+### Actuators
+- [DRV8825](Actuators/DRV8825/)
+- [DS3234](Actuators/DS3234/)
+- [MCP23017](Actuators/MCP23017/)
+- [WS2812](Actuators/WS2812/)
+
+### Communication
+- [RFID](Communication/RFID/)
+
+### Displays
+- [LCD-I2C](Displays/LCD-I2C/)
+- [SSD1306](Displays/SSD1306/)
+
+---
+
 ## Installation
 You can install a specific module using mpremote or manually downloading specific files onto the board using an IDE such as [Thonny](https://thonny.org/)
 
