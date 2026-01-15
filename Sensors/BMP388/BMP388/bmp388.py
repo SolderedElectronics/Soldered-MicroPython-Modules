@@ -9,6 +9,7 @@ from machine import I2C, Pin
 from os import uname
 from bmp388_constants import *
 
+
 class BMP388:
     """
     MicroPython class for the Bosch BMP388 temperature and pressure sensor.
@@ -42,7 +43,9 @@ class BMP388:
         self.ifConfig = 0x00
         self.altEnable = False
         if not self.begin():
-            raise Exception("BMP388 initialization failed! Check wiring and I2C address.")
+            raise Exception(
+                "BMP388 initialization failed! Check wiring and I2C address."
+            )
 
     # Read 8-bit unsigned value from a register
     def _read8(self, register):
@@ -54,7 +57,9 @@ class BMP388:
             value = data[0]
             return value
         except OSError as e:
-            raise Exception(f"I2C read error at address 0x{self.address:02X}, register 0x{register:02X}: {e}")
+            raise Exception(
+                f"I2C read error at address 0x{self.address:02X}, register 0x{register:02X}: {e}"
+            )
 
     # Read multiple bytes from a register
     def _readBytes(self, register, length):
@@ -65,7 +70,9 @@ class BMP388:
             data = self.i2c.readfrom(self.address, length)
             return data
         except OSError as e:
-            raise Exception(f"I2C read error at address 0x{self.address:02X}, register 0x{register:02X}: {e}")
+            raise Exception(
+                f"I2C read error at address 0x{self.address:02X}, register 0x{register:02X}: {e}"
+            )
 
     # Write a byte to a register
     def _write8(self, register, value):
@@ -77,7 +84,9 @@ class BMP388:
             self.i2c.writeto(self.address, bytes([register, value]))
             time.sleep_us(100)  # Small delay to ensure write completes
         except OSError as e:
-            raise Exception(f"I2C write error at address 0x{self.address:02X}, register 0x{register:02X}: {e}")
+            raise Exception(
+                f"I2C write error at address 0x{self.address:02X}, register 0x{register:02X}: {e}"
+            )
 
     def _waitCmdReady(self, timeoutMs=100):
         """Wait until the sensor reports cmd_rdy in STATUS (bit 4)."""
@@ -105,20 +114,24 @@ class BMP388:
 
         # Unpack parameters matching the datasheet layout
         # All values are little-endian
-        self.param_T1 = struct.unpack("<H", rawParams[0:2])[0]      # uint16_t at offset 0
-        self.param_T2 = struct.unpack("<H", rawParams[2:4])[0]      # uint16_t at offset 2
-        self.param_T3 = struct.unpack("b", rawParams[4:5])[0]       # int8_t at offset 4
-        self.param_P1 = struct.unpack("<h", rawParams[5:7])[0]      # int16_t at offset 5
-        self.param_P2 = struct.unpack("<h", rawParams[7:9])[0]      # int16_t at offset 7
-        self.param_P3 = struct.unpack("b", rawParams[9:10])[0]      # int8_t at offset 9
-        self.param_P4 = struct.unpack("b", rawParams[10:11])[0]     # int8_t at offset 10
-        self.param_P5 = struct.unpack("<H", rawParams[11:13])[0]    # uint16_t at offset 11
-        self.param_P6 = struct.unpack("<H", rawParams[13:15])[0]    # uint16_t at offset 13
-        self.param_P7 = struct.unpack("b", rawParams[15:16])[0]     # int8_t at offset 15
-        self.param_P8 = struct.unpack("b", rawParams[16:17])[0]     # int8_t at offset 16
-        self.param_P9 = struct.unpack("<h", rawParams[17:19])[0]   # int16_t at offset 17
-        self.param_P10 = struct.unpack("b", rawParams[19:20])[0]   # int8_t at offset 19
-        self.param_P11 = struct.unpack("b", rawParams[20:21])[0]    # int8_t at offset 20
+        self.param_T1 = struct.unpack("<H", rawParams[0:2])[0]  # uint16_t at offset 0
+        self.param_T2 = struct.unpack("<H", rawParams[2:4])[0]  # uint16_t at offset 2
+        self.param_T3 = struct.unpack("b", rawParams[4:5])[0]  # int8_t at offset 4
+        self.param_P1 = struct.unpack("<h", rawParams[5:7])[0]  # int16_t at offset 5
+        self.param_P2 = struct.unpack("<h", rawParams[7:9])[0]  # int16_t at offset 7
+        self.param_P3 = struct.unpack("b", rawParams[9:10])[0]  # int8_t at offset 9
+        self.param_P4 = struct.unpack("b", rawParams[10:11])[0]  # int8_t at offset 10
+        self.param_P5 = struct.unpack("<H", rawParams[11:13])[
+            0
+        ]  # uint16_t at offset 11
+        self.param_P6 = struct.unpack("<H", rawParams[13:15])[
+            0
+        ]  # uint16_t at offset 13
+        self.param_P7 = struct.unpack("b", rawParams[15:16])[0]  # int8_t at offset 15
+        self.param_P8 = struct.unpack("b", rawParams[16:17])[0]  # int8_t at offset 16
+        self.param_P9 = struct.unpack("<h", rawParams[17:19])[0]  # int16_t at offset 17
+        self.param_P10 = struct.unpack("b", rawParams[19:20])[0]  # int8_t at offset 19
+        self.param_P11 = struct.unpack("b", rawParams[20:21])[0]  # int8_t at offset 20
 
         # Convert to floating point parameters
         self.floatParam_T1 = float(self.param_T1) / pow(2.0, -8.0)
@@ -171,7 +184,7 @@ class BMP388:
 
         # Load calibration parameters (must be done after reset and chip ID check)
         self._loadCalibrationParams()
-        
+
         # Small delay after loading calibration
         time.sleep_ms(10)
 
@@ -192,14 +205,14 @@ class BMP388:
         self.pwrCtrl |= 0x01  # Set press_en (bit 0)
         self.pwrCtrl |= 0x02  # Set temp_en (bit 1)
         # Now set mode bits (bits 4-5)
-        self.pwrCtrl |= ((mode & 0x03) << 4)
-        
+        self.pwrCtrl |= (mode & 0x03) << 4
+
         # Write the complete register value in one go
         if not self._waitCmdReady(timeoutMs=100):
             pass
         self._write8(BMP388_PWR_CTRL, self.pwrCtrl)
         time.sleep_ms(50)  # Wait for register to update
-        
+
         # Verify the write succeeded
         verify = self._read8(BMP388_PWR_CTRL)
         if verify != self.pwrCtrl:
@@ -211,15 +224,17 @@ class BMP388:
             verify = self._read8(BMP388_PWR_CTRL)
             if verify != self.pwrCtrl:
                 pass
-        
+
         # Update internal state to match what's actually in the register
         self.pwrCtrl = verify
-        
+
         # Verify mode was set
         finalPwrCtrl = self._read8(BMP388_PWR_CTRL)
         finalMode = (finalPwrCtrl & 0x30) >> 4
         if finalMode != mode:
-            print(f"Warning: Failed to set mode. Expected {mode}, got {finalMode}. PWR_CTRL=0x{finalPwrCtrl:02X}")
+            print(
+                f"Warning: Failed to set mode. Expected {mode}, got {finalMode}. PWR_CTRL=0x{finalPwrCtrl:02X}"
+            )
 
         return True
 
@@ -240,13 +255,15 @@ class BMP388:
         # Bits 2-3 are reserved and must be 0 (already cleared by masking with 0x03)
         # Clear mode bits (4-5), then set new mode
         self.pwrCtrl = (currentPwrCtrl & 0x03) | ((mode & 0x03) << 4)
-        
+
         # Write the complete register value
         if not self._waitCmdReady(timeoutMs=100):
             pass
         self._write8(BMP388_PWR_CTRL, self.pwrCtrl)
-        time.sleep_ms(20)  # Wait longer for register to update (sensor may need time to process mode change)
-        
+        time.sleep_ms(
+            20
+        )  # Wait longer for register to update (sensor may need time to process mode change)
+
         # Verify the write succeeded
         verifyPwrCtrl = self._read8(BMP388_PWR_CTRL)
         if verifyPwrCtrl != self.pwrCtrl:
@@ -267,7 +284,7 @@ class BMP388:
             verifyPwrCtrl = self._read8(BMP388_PWR_CTRL)
             if verifyPwrCtrl != self.pwrCtrl:
                 pass
-        
+
         # Update internal state to match what's actually in the register
         self.pwrCtrl = verifyPwrCtrl
 
@@ -318,7 +335,9 @@ class BMP388:
 
         if debug:
             currentPwrCtrl = self._read8(BMP388_PWR_CTRL)
-            print(f"INT_STATUS: 0x{intStatus:02X} (drdy={drdy}), PWR_CTRL: 0x{currentPwrCtrl:02X} (mode={mode})")
+            print(
+                f"INT_STATUS: 0x{intStatus:02X} (drdy={drdy}), PWR_CTRL: 0x{currentPwrCtrl:02X} (mode={mode})"
+            )
 
         if drdy:
             # If in FORCED_MODE, switch back to SLEEP_MODE
@@ -469,10 +488,14 @@ class BMP388:
 
         return (temperature, pressure, altitude)
 
-    def enableInterrupt(self, outputDrive=PUSH_PULL, activeLevel=ACTIVE_HIGH, latchConfig=UNLATCHED):
+    def enableInterrupt(
+        self, outputDrive=PUSH_PULL, activeLevel=ACTIVE_HIGH, latchConfig=UNLATCHED
+    ):
         """Enable data-ready interrupt on the INT pin."""
-        self.intCtrl = (latchConfig & 0x01) << 2 | (activeLevel & 0x01) << 1 | (outputDrive & 0x01)
-        self.intCtrl |= (1 << 6)
+        self.intCtrl = (
+            (latchConfig & 0x01) << 2 | (activeLevel & 0x01) << 1 | (outputDrive & 0x01)
+        )
+        self.intCtrl |= 1 << 6
         self._write8(BMP388_INT_CTRL, self.intCtrl)
 
     def disableInterrupt(self):
@@ -495,11 +518,24 @@ class BMP388:
         self.intCtrl = (self.intCtrl & ~0x04) | ((latchConfig & 0x01) << 2)
         self._write8(BMP388_INT_CTRL, self.intCtrl)
 
-    def enableFIFO(self, pressEnable=PRESS_ENABLED, altEnable=ALT_ENABLED, timeEnable=TIME_ENABLED,
-                   subsampling=SUBSAMPLING_OFF, dataSelect=FILTERED, stopOnFull=STOP_ON_FULL_ENABLED):
+    def enableFIFO(
+        self,
+        pressEnable=PRESS_ENABLED,
+        altEnable=ALT_ENABLED,
+        timeEnable=TIME_ENABLED,
+        subsampling=SUBSAMPLING_OFF,
+        dataSelect=FILTERED,
+        stopOnFull=STOP_ON_FULL_ENABLED,
+    ):
         """Enable FIFO operation with the selected configuration."""
         self.altEnable = altEnable == ALT_ENABLED
-        self.fifoConfig1 = (1 << 4) | ((pressEnable & 0x01) << 3) | ((timeEnable & 0x01) << 2) | ((stopOnFull & 0x01) << 1) | 0x01
+        self.fifoConfig1 = (
+            (1 << 4)
+            | ((pressEnable & 0x01) << 3)
+            | ((timeEnable & 0x01) << 2)
+            | ((stopOnFull & 0x01) << 1)
+            | 0x01
+        )
         self.fifoConfig2 = ((dataSelect & 0x07) << 3) | (subsampling & 0x07)
         self._write8(BMP388_FIFO_CONFIG_1, self.fifoConfig1)
         self._write8(BMP388_FIFO_CONFIG_2, self.fifoConfig2)
@@ -513,7 +549,9 @@ class BMP388:
         """Set FIFO watermark based on number of measurements."""
         fifoPress = (self.fifoConfig1 >> 3) & 0x01
         fifoTemp = (self.fifoConfig1 >> 4) & 0x01
-        fifoWatermark = noOfMeasurements * ((fifoPress | fifoTemp) + 3 * fifoPress + 3 * fifoTemp)
+        fifoWatermark = noOfMeasurements * (
+            (fifoPress | fifoTemp) + 3 * fifoPress + 3 * fifoTemp
+        )
         return self.setFIFOWatermark(fifoWatermark)
 
     def setFIFOWatermark(self, fifoWatermark):
@@ -549,7 +587,9 @@ class BMP388:
 
     def setFIFODataSelect(self, dataSelect):
         """Set FIFO data selection (filtered or unfiltered)."""
-        self.fifoConfig2 = (self.fifoConfig2 & ~(0x07 << 3)) | ((dataSelect & 0x07) << 3)
+        self.fifoConfig2 = (self.fifoConfig2 & ~(0x07 << 3)) | (
+            (dataSelect & 0x07) << 3
+        )
         self._write8(BMP388_FIFO_CONFIG_2, self.fifoConfig2)
 
     def setFIFOStopOnFull(self, stopOnFull):
@@ -619,9 +659,13 @@ class BMP388:
         status = FIFO_CONFIG_ERROR if configError else FIFO_DATA_READY
         return (status, temperatures, pressures, altitudes, sensorTime)
 
-    def enableFIFOInterrupt(self, outputDrive=PUSH_PULL, activeLevel=ACTIVE_HIGH, latchConfig=UNLATCHED):
+    def enableFIFOInterrupt(
+        self, outputDrive=PUSH_PULL, activeLevel=ACTIVE_HIGH, latchConfig=UNLATCHED
+    ):
         """Enable FIFO watermark/full interrupts on the INT pin."""
-        self.intCtrl = (latchConfig & 0x01) << 2 | (activeLevel & 0x01) << 1 | (outputDrive & 0x01)
+        self.intCtrl = (
+            (latchConfig & 0x01) << 2 | (activeLevel & 0x01) << 1 | (outputDrive & 0x01)
+        )
         self.intCtrl |= (1 << 3) | (1 << 4)
         self._write8(BMP388_INT_CTRL, self.intCtrl)
 
@@ -651,7 +695,9 @@ class BMP388:
 
     def setI2CWatchdogTimeout(self, watchdogTimeout):
         """Set I2C watchdog timeout."""
-        self.ifConfig = (self._read8(BMP388_IF_CONFIG) & ~(1 << 2)) | ((watchdogTimeout & 0x01) << 2)
+        self.ifConfig = (self._read8(BMP388_IF_CONFIG) & ~(1 << 2)) | (
+            (watchdogTimeout & 0x01) << 2
+        )
         self._write8(BMP388_IF_CONFIG, self.ifConfig)
 
     def fifoReady(self):
@@ -666,7 +712,7 @@ class BMP388:
         """
         Read and return compensated temperature, pressure, and altitude values.
 
-        :return: (temperature °C, pressure hPa, altitude m) 
+        :return: (temperature °C, pressure hPa, altitude m)
         """
         return self.getMeasurements()
 
