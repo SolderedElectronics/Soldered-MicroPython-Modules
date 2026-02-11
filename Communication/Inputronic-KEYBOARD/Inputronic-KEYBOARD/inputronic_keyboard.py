@@ -119,7 +119,9 @@ class InputronicKeyboard:
         # Init chip
         ok = self.begin(rows=rows, cols=cols)
         if not ok:
-            raise Exception("InputronicKeyboard initialization failed! Check wiring and I2C address.")
+            raise Exception(
+                "InputronicKeyboard initialization failed! Check wiring and I2C address."
+            )
 
     # ----------------------------
     # Low-level I2C helpers
@@ -243,7 +245,9 @@ class InputronicKeyboard:
             _ = self._read8(TCA8418_REG_GPIO_INT_STAT_2)
             _ = self._read8(TCA8418_REG_GPIO_INT_STAT_3)
             # clear global INT flags
-            self._write8(TCA8418_REG_INT_STAT, (TCA8418_STAT_GPI_INT | TCA8418_STAT_K_INT))
+            self._write8(
+                TCA8418_REG_INT_STAT, (TCA8418_STAT_GPI_INT | TCA8418_STAT_K_INT)
+            )
         except OSError:
             pass
 
@@ -447,10 +451,16 @@ class InputronicKeyboard:
 
     def set_active_keymap(self, keymap_id):
         self._active_id = IKMAP_LOWER if keymap_id == IKMAP_LOWER else IKMAP_UPPER
-        self._active_map = INPUTRONIC_KEYMAP_LOWER if self._active_id == IKMAP_LOWER else INPUTRONIC_KEYMAP_UPPER
+        self._active_map = (
+            INPUTRONIC_KEYMAP_LOWER
+            if self._active_id == IKMAP_LOWER
+            else INPUTRONIC_KEYMAP_UPPER
+        )
 
     def toggle_active_keymap(self):
-        self.set_active_keymap(IKMAP_LOWER if self._active_id == IKMAP_UPPER else IKMAP_UPPER)
+        self.set_active_keymap(
+            IKMAP_LOWER if self._active_id == IKMAP_UPPER else IKMAP_UPPER
+        )
 
     def get_active_keymap(self):
         return self._active_id
@@ -459,7 +469,9 @@ class InputronicKeyboard:
     # Convenience input methods
     # ----------------------------
 
-    def string_input(self, max_len=64, timeout_ms=0, end_label="ENTER", backspace_label="BACK"):
+    def string_input(
+        self, max_len=64, timeout_ms=0, end_label="ENTER", backspace_label="BACK"
+    ):
         """
         Blocking string input. Returns collected string.
         timeout_ms=0 means no timeout.
@@ -471,7 +483,9 @@ class InputronicKeyboard:
         t0 = time.ticks_ms()
 
         def expired():
-            return (timeout_ms > 0) and (time.ticks_diff(time.ticks_ms(), t0) >= timeout_ms)
+            return (timeout_ms > 0) and (
+                time.ticks_diff(time.ticks_ms(), t0) >= timeout_ms
+            )
 
         while True:
             if expired():
@@ -510,6 +524,7 @@ class InputronicKeyboard:
 
         If cb is None: prints to stdout.
         """
+
         def default_cb(ev_type, ch, row, col, label, user):
             # MicroPython: use print with end=
             if ev_type == TYPE_CHAR:

@@ -22,6 +22,7 @@ INPUTRONIC_SHIFT_MAP = {
     # ".": ">",
 }
 
+
 def inputronic_apply_shift(ch: str):
     """
     Apply shift mapping to a single-character string.

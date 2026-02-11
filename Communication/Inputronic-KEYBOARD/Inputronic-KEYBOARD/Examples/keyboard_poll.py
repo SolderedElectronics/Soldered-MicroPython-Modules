@@ -53,17 +53,23 @@ def main():
             # Format: PRESS    Row: x   Col: y   Label: ...   Char: 'c' or (n/a)
             if ch is not None:
                 print(
-                    "PRESS\tRow:", row,
-                    "\tCol:", col,
-                    "\tLabel:", label,
-                    "\tChar: '{}'".format(ch)
+                    "PRESS\tRow:",
+                    row,
+                    "\tCol:",
+                    col,
+                    "\tLabel:",
+                    label,
+                    "\tChar: '{}'".format(ch),
                 )
             else:
                 print(
-                    "PRESS\tRow:", row,
-                    "\tCol:", col,
-                    "\tLabel:", label,
-                    "\tChar: (n/a)"
+                    "PRESS\tRow:",
+                    row,
+                    "\tCol:",
+                    col,
+                    "\tLabel:",
+                    label,
+                    "\tChar: (n/a)",
                 )
 
         time.sleep_ms(1)

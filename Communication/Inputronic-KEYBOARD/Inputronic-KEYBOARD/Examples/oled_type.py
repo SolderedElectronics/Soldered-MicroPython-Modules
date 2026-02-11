@@ -10,7 +10,7 @@ SCREEN_WIDTH = 128
 SCREEN_HEIGHT = 64
 CHAR_W = 8
 CHAR_H = 8
-COLS = SCREEN_WIDTH // CHAR_W   # 16
+COLS = SCREEN_WIDTH // CHAR_W  # 16
 ROWS = SCREEN_HEIGHT // CHAR_H  # 8
 
 
@@ -52,7 +52,9 @@ def redraw_oled(display, text):
 def main():
     print()
     print("Soldered Inputronic Keyboard - OledType Example (MicroPython)")
-    print("SPACE=' ' | BACK=Backspace | ENTER=Newline | CAPS=Toggle Case | SHIFT=Modifier")
+    print(
+        "SPACE=' ' | BACK=Backspace | ENTER=Newline | CAPS=Toggle Case | SHIFT=Modifier"
+    )
     print()
 
     # Init OLED (your driver auto-inits I2C if not given)

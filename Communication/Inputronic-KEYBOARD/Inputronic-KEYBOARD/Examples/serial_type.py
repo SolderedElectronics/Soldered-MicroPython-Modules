@@ -20,7 +20,9 @@ def main():
 
     print()
     print("Soldered Inputronic Keyboard - SerialType (Polling)")
-    print("SPACE=' ' | BACK=Backspace | ENTER=Newline | CAPS=Toggle Case | SHIFT=Modifier")
+    print(
+        "SPACE=' ' | BACK=Backspace | ENTER=Newline | CAPS=Toggle Case | SHIFT=Modifier"
+    )
     print()
 
     # Init keyboard
@@ -40,10 +42,8 @@ def main():
 
     # Main loop
     while True:
-
         # Process all pending keyboard events
         while kbd.events_available() > 0:
-
             ev = kbd.read_mapped_event()
             if ev is None:
                 break
