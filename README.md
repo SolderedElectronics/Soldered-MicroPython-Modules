@@ -45,6 +45,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 
 ### Communication
 - [RFID](Communication/RFID/)
+- [Inputronic-KEYBOARD](Communication/Inputronic-KEYBOARD)
 
 ### Displays
 - [LCD-I2C](Displays/LCD-I2C/)
