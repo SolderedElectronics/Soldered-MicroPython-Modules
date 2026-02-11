@@ -1,5 +1,5 @@
 # FILE: inputronic_keyboard.py
-# AUTHOR: (port) ChatGPT based on Soldered Arduino library
+# AUTHOR: Marko Toldi @ Soldered
 # BRIEF: MicroPython driver for Soldered Inputronic Keyboard (TI TCA8418)
 # LAST UPDATED: 2026-02-11
 

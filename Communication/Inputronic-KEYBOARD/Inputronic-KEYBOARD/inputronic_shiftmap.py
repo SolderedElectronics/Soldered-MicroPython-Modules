@@ -1,5 +1,5 @@
 # FILE: inputronic_shiftmap.py
-# AUTHOR: (port) ChatGPT based on Soldered Arduino library
+# AUTHOR: Marko Toldi @ Soldered
 # BRIEF: SHIFT character mapping for Soldered Inputronic Keyboard
 # LAST UPDATED: 2026-02-11
 

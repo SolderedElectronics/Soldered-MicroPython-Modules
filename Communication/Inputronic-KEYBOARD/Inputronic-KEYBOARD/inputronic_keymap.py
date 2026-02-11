@@ -1,5 +1,5 @@
 # FILE: inputronic_keymap.py
-# AUTHOR: (port) ChatGPT based on Soldered Arduino library
+# AUTHOR: Marko Toldi @ Soldered
 # BRIEF: Default keymaps for Soldered Inputronic Keyboard (8x10)
 # LAST UPDATED: 2026-02-11
 
