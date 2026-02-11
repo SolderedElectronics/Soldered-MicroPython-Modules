@@ -1,0 +1,30 @@
+{
+  "urls": [
+    [
+      "inputronic_keyboard.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/inputronic_keyboard.py"
+    ],
+    [
+      "inputronic_keymap.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/inputronic_keymap.py"
+    ],
+    [
+      "inputronic_shiftmap.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/inputronic_shiftmap.py"
+    ],
+    [
+      "Examples/keyboard_poll.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/Examples/keyboard_poll.py"
+    ],
+    [
+      "Examples/serial_type.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/Examples/serial_type.py"
+    ],
+    [
+      "Examples/oled_type.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/Examples/oled_type.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
