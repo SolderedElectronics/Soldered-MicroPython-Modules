@@ -1,0 +1,58 @@
+{
+  "urls": [
+    [
+      "bhi385.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/bhi385.py"
+    ],
+    [
+      "bhi385_firmware.bin",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/bhi385_firmware.bin"
+    ],
+    [
+      "bhi385_firmware_klio.bin",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/bhi385_firmware_klio.bin"
+    ],
+    [
+      "Examples/bhi385-readAccelGyro.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-readAccelGyro.py"
+    ],
+    [
+      "Examples/bhi385-readAccelGyroInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-readAccelGyroInterrupt.py"
+    ],
+    [
+      "Examples/bhi385-gameRotationVector.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-gameRotationVector.py"
+    ],
+    [
+      "Examples/bhi385-stepCounter.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-stepCounter.py"
+    ],
+    [
+      "Examples/bhi385-singleTap.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-singleTap.py"
+    ],
+    [
+      "Examples/bhi385-singleTapInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-singleTapInterrupt.py"
+    ],
+    [
+      "Examples/bhi385-doubleTap.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-doubleTap.py"
+    ],
+    [
+      "Examples/bhi385-doubleTapInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-doubleTapInterrupt.py"
+    ],
+    [
+      "Examples/bhi385-wristGestureDetect.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-wristGestureDetect.py"
+    ],
+    [
+      "Examples/bhi385-wristGestureDetectInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BHI385/BHI385/Examples/bhi385-wristGestureDetectInterrupt.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
