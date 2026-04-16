@@ -21,6 +21,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 ### Sensors
 - [AD8495](Sensors/AD8495/)
 - [APDS9960](Sensors/APDS9960/)
+- [BHI385](Sensors/BHI385/)
 - [BME280](Sensors/BME280/)
 - [BME680](Sensors/BME680/)
 - [BME688](Sensors/BME688/)
