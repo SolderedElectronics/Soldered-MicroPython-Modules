@@ -67,14 +67,16 @@ while True:
     accel_str = ""
     if imu.accelUpdated():
         accel_str = "{:.4f}  {:.4f}  {:.4f}".format(
-            imu.getAccelX(), imu.getAccelY(), imu.getAccelZ())
+            imu.getAccelX(), imu.getAccelY(), imu.getAccelZ()
+        )
     else:
         accel_str = "N/A        N/A        N/A"
 
     gyro_str = ""
     if imu.gyroUpdated():
         gyro_str = "{:.4f}  {:.4f}  {:.4f}".format(
-            imu.getGyroX(), imu.getGyroY(), imu.getGyroZ())
+            imu.getGyroX(), imu.getGyroY(), imu.getGyroZ()
+        )
     else:
         gyro_str = "N/A         N/A         N/A"
 

@@ -49,9 +49,11 @@ imu.disableDebug()
 # Attach interrupt AFTER firmware is loaded and sensors are configured
 int_fired = False
 
+
 def on_bhi385_int(pin):
     global int_fired
     int_fired = True
+
 
 int_pin = Pin(INT_PIN, Pin.IN)
 int_pin.irq(trigger=Pin.IRQ_RISING, handler=on_bhi385_int)

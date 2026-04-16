@@ -53,9 +53,11 @@ imu.disableDebug()
 # the initial boot interrupt does not trigger the handler early.
 int_fired = False
 
+
 def on_bhi385_int(pin):
     global int_fired
     int_fired = True
+
 
 int_pin = Pin(INT_PIN, Pin.IN)
 int_pin.irq(trigger=Pin.IRQ_RISING, handler=on_bhi385_int)
@@ -74,16 +76,23 @@ while True:
     printed = False
 
     if imu.accelUpdated():
-        print("{:.3f}  {:.3f}  {:.3f}".format(
-            imu.getAccelX(), imu.getAccelY(), imu.getAccelZ()), end="")
+        print(
+            "{:.3f}  {:.3f}  {:.3f}".format(
+                imu.getAccelX(), imu.getAccelY(), imu.getAccelZ()
+            ),
+            end="",
+        )
         printed = True
 
     if imu.gyroUpdated():
         if not printed:
             # Pad accel columns if accel was not in this packet
             print("N/A          N/A          N/A", end="")
-        print("  {:.3f}  {:.3f}  {:.3f}".format(
-            imu.getGyroX(), imu.getGyroY(), imu.getGyroZ()))
+        print(
+            "  {:.3f}  {:.3f}  {:.3f}".format(
+                imu.getGyroX(), imu.getGyroY(), imu.getGyroZ()
+            )
+        )
         printed = True
     elif printed:
         print()

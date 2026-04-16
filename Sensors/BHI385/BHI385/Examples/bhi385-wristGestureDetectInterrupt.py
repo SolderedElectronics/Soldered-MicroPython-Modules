@@ -12,11 +12,15 @@
 # LAST UPDATED: 2026-04-15
 
 from machine import Pin, I2C
-from bhi385 import (BHI385, BHI385_I2C_ADDR_HIGH, BHI385_WRIST_LEFT,
-                    BHI385_WRIST_GEST_NONE,
-                    BHI385_WRIST_GEST_SHAKE_JIGGLE,
-                    BHI385_WRIST_GEST_FLICK_IN,
-                    BHI385_WRIST_GEST_FLICK_OUT)
+from bhi385 import (
+    BHI385,
+    BHI385_I2C_ADDR_HIGH,
+    BHI385_WRIST_LEFT,
+    BHI385_WRIST_GEST_NONE,
+    BHI385_WRIST_GEST_SHAKE_JIGGLE,
+    BHI385_WRIST_GEST_FLICK_IN,
+    BHI385_WRIST_GEST_FLICK_OUT,
+)
 import time
 
 # GPIO connected to the BHI385 INT pin — change as needed
@@ -69,9 +73,11 @@ imu.disableDebug()
 # Attach interrupt AFTER firmware is loaded and sensors are configured
 int_fired = False
 
+
 def on_bhi385_int(pin):
     global int_fired
     int_fired = True
+
 
 int_pin = Pin(INT_PIN, Pin.IN)
 int_pin.irq(trigger=Pin.IRQ_RISING, handler=on_bhi385_int)

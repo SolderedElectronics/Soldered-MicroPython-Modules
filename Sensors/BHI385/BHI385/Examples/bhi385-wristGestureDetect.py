@@ -9,10 +9,14 @@
 # LAST UPDATED: 2026-04-15
 
 from machine import Pin, I2C
-from bhi385 import (BHI385, BHI385_I2C_ADDR_HIGH, BHI385_WRIST_LEFT,
-                    BHI385_WRIST_GEST_SHAKE_JIGGLE,
-                    BHI385_WRIST_GEST_FLICK_IN,
-                    BHI385_WRIST_GEST_FLICK_OUT)
+from bhi385 import (
+    BHI385,
+    BHI385_I2C_ADDR_HIGH,
+    BHI385_WRIST_LEFT,
+    BHI385_WRIST_GEST_SHAKE_JIGGLE,
+    BHI385_WRIST_GEST_FLICK_IN,
+    BHI385_WRIST_GEST_FLICK_OUT,
+)
 import time
 
 

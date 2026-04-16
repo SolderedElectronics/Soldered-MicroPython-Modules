@@ -51,9 +51,11 @@ while True:
     imu.update()
 
     if imu.quatUpdated():
-        print("{:.4f}      {:.4f}      {:.4f}      {:.4f}".format(
-            imu.getQuatX(), imu.getQuatY(),
-            imu.getQuatZ(), imu.getQuatW()))
+        print(
+            "{:.4f}      {:.4f}      {:.4f}      {:.4f}".format(
+                imu.getQuatX(), imu.getQuatY(), imu.getQuatZ(), imu.getQuatW()
+            )
+        )
 
     imu.clearUpdatedFlags()
     time.sleep_ms(20)

@@ -11,90 +11,90 @@ from os import uname
 # ---------------------------------------------------------------------------
 # I2C addresses (selected by HSDO pin)
 # ---------------------------------------------------------------------------
-BHI385_I2C_ADDR_LOW  = 0x28  # HSDO = GND
+BHI385_I2C_ADDR_LOW = 0x28  # HSDO = GND
 BHI385_I2C_ADDR_HIGH = 0x29  # HSDO = VDDIO
 
 # ---------------------------------------------------------------------------
 # Channel registers (DMA channels for bulk transfer)
 # ---------------------------------------------------------------------------
-BHI385_CH_CMD     = 0x00  # Host command input (write-only)
+BHI385_CH_CMD = 0x00  # Host command input (write-only)
 BHI385_CH_FIFO_WU = 0x01  # Wake-up FIFO output (read-only)
 BHI385_CH_FIFO_NW = 0x02  # Non-wake-up FIFO output (read-only)
-BHI385_CH_STATUS  = 0x03  # Status and debug FIFO output (read-only)
+BHI385_CH_STATUS = 0x03  # Status and debug FIFO output (read-only)
 
 # ---------------------------------------------------------------------------
 # Configuration registers
 # ---------------------------------------------------------------------------
-BHI385_REG_CHIP_CTRL      = 0x05
+BHI385_REG_CHIP_CTRL = 0x05
 BHI385_REG_HOST_INTF_CTRL = 0x06
-BHI385_REG_HOST_IRQ_CTRL  = 0x07
-BHI385_REG_RESET_REQ      = 0x14
-BHI385_REG_HOST_CTRL      = 0x16
-BHI385_REG_HOST_STATUS    = 0x17
+BHI385_REG_HOST_IRQ_CTRL = 0x07
+BHI385_REG_RESET_REQ = 0x14
+BHI385_REG_HOST_CTRL = 0x16
+BHI385_REG_HOST_STATUS = 0x17
 
 # ---------------------------------------------------------------------------
 # Identity and status registers
 # ---------------------------------------------------------------------------
-BHI385_REG_FUSER2_ID   = 0x1C  # Expected value: 0x89
-BHI385_REG_FUSER2_REV  = 0x1D  # 0x02 before firmware, 0x03 after
-BHI385_REG_ROM_VER_L   = 0x1E  # ROM version low byte  (0x2E)
-BHI385_REG_ROM_VER_H   = 0x1F  # ROM version high byte (0x14)
+BHI385_REG_FUSER2_ID = 0x1C  # Expected value: 0x89
+BHI385_REG_FUSER2_REV = 0x1D  # 0x02 before firmware, 0x03 after
+BHI385_REG_ROM_VER_L = 0x1E  # ROM version low byte  (0x2E)
+BHI385_REG_ROM_VER_H = 0x1F  # ROM version high byte (0x14)
 BHI385_REG_BOOT_STATUS = 0x25
-BHI385_REG_CHIP_ID     = 0x2B  # Expected value: 0x7C
-BHI385_REG_INT_STATUS  = 0x2D
-BHI385_REG_ERROR_VAL   = 0x2E
+BHI385_REG_CHIP_ID = 0x2B  # Expected value: 0x7C
+BHI385_REG_INT_STATUS = 0x2D
+BHI385_REG_ERROR_VAL = 0x2E
 
 # ---------------------------------------------------------------------------
 # Expected chip identity values
 # ---------------------------------------------------------------------------
-BHI385_CHIP_ID_VAL   = 0x7C
+BHI385_CHIP_ID_VAL = 0x7C
 BHI385_FUSER2_ID_VAL = 0x89
 
 # ---------------------------------------------------------------------------
 # Boot status register (0x25) bit masks
 # ---------------------------------------------------------------------------
-BHI385_BOOT_FLASH_DET      = 0x01
+BHI385_BOOT_FLASH_DET = 0x01
 BHI385_BOOT_FLASH_VER_DONE = 0x02
-BHI385_BOOT_FLASH_VER_ERR  = 0x04
-BHI385_BOOT_NO_FLASH       = 0x08
+BHI385_BOOT_FLASH_VER_ERR = 0x04
+BHI385_BOOT_NO_FLASH = 0x08
 BHI385_BOOT_HOST_IFACE_RDY = 0x10  # Bootloader or firmware ready for host
-BHI385_BOOT_FW_VER_DONE    = 0x20  # RAM firmware CRC check passed
-BHI385_BOOT_FW_VER_ERR     = 0x40  # RAM firmware CRC check failed
-BHI385_BOOT_FW_IDLE        = 0x80
+BHI385_BOOT_FW_VER_DONE = 0x20  # RAM firmware CRC check passed
+BHI385_BOOT_FW_VER_ERR = 0x40  # RAM firmware CRC check failed
+BHI385_BOOT_FW_IDLE = 0x80
 
 # ---------------------------------------------------------------------------
 # Interrupt status register (0x2D) bit masks
 # ---------------------------------------------------------------------------
-BHI385_INT_ASSERTED    = 0x01  # Interrupt is asserted
-BHI385_INT_FIFO_WU     = 0x02  # Wake-up FIFO data ready
+BHI385_INT_ASSERTED = 0x01  # Interrupt is asserted
+BHI385_INT_FIFO_WU = 0x02  # Wake-up FIFO data ready
 BHI385_INT_FIFO_WU_LAT = 0x04  # Wake-up FIFO latency threshold reached
-BHI385_INT_FIFO_NW     = 0x08  # Non-wake-up FIFO data ready
+BHI385_INT_FIFO_NW = 0x08  # Non-wake-up FIFO data ready
 BHI385_INT_FIFO_NW_LAT = 0x10  # Non-wake-up FIFO latency threshold reached
-BHI385_INT_STATUS_DBG  = 0x20  # Status / debug FIFO has data
+BHI385_INT_STATUS_DBG = 0x20  # Status / debug FIFO has data
 
 # ---------------------------------------------------------------------------
 # Host command IDs (written to channel 0x00)
 # ---------------------------------------------------------------------------
-BHI385_CMD_UPLOAD_FW        = 0x0002
-BHI385_CMD_BOOT_FW          = 0x0003
+BHI385_CMD_UPLOAD_FW = 0x0002
+BHI385_CMD_BOOT_FW = 0x0003
 BHI385_CMD_CONFIGURE_SENSOR = 0x000D
-BHI385_CMD_CHANGE_RANGE     = 0x000E
+BHI385_CMD_CHANGE_RANGE = 0x000E
 
 # ---------------------------------------------------------------------------
 # Virtual sensor IDs
 # ---------------------------------------------------------------------------
 BHI385_SENSOR_ACCEL_PASSTHROUGH = 1
-BHI385_SENSOR_ACCEL_RAW         = 3    # Raw accelerometer (non-wake-up)
-BHI385_SENSOR_ACCEL_CORRECTED   = 4    # Corrected accelerometer (non-wake-up)
-BHI385_SENSOR_GYRO_PASSTHROUGH  = 10
-BHI385_SENSOR_GYRO_RAW          = 12   # Raw gyroscope (non-wake-up)
-BHI385_SENSOR_GYRO_CORRECTED    = 13   # Corrected gyroscope (non-wake-up)
-BHI385_SENSOR_GAMERV            = 37   # Game rotation vector (non-wake-up)
-BHI385_SENSOR_STC               = 52   # Step counter (non-wake-up)
-BHI385_SENSOR_STC_LP            = 136  # Step counter Low Power — used by bsxsam_lite firmware
-BHI385_SENSOR_MULTI_TAP         = 153  # Multi-tap detect (wake-up)
-BHI385_SENSOR_WRIST_GEST        = 156  # Wrist gesture detect Low Power (wake-up)
-BHI385_SENSOR_WRIST_WEAR        = 158  # Wrist wear wakeup (wake-up)
+BHI385_SENSOR_ACCEL_RAW = 3  # Raw accelerometer (non-wake-up)
+BHI385_SENSOR_ACCEL_CORRECTED = 4  # Corrected accelerometer (non-wake-up)
+BHI385_SENSOR_GYRO_PASSTHROUGH = 10
+BHI385_SENSOR_GYRO_RAW = 12  # Raw gyroscope (non-wake-up)
+BHI385_SENSOR_GYRO_CORRECTED = 13  # Corrected gyroscope (non-wake-up)
+BHI385_SENSOR_GAMERV = 37  # Game rotation vector (non-wake-up)
+BHI385_SENSOR_STC = 52  # Step counter (non-wake-up)
+BHI385_SENSOR_STC_LP = 136  # Step counter Low Power — used by bsxsam_lite firmware
+BHI385_SENSOR_MULTI_TAP = 153  # Multi-tap detect (wake-up)
+BHI385_SENSOR_WRIST_GEST = 156  # Wrist gesture detect Low Power (wake-up)
+BHI385_SENSOR_WRIST_WEAR = 158  # Wrist wear wakeup (wake-up)
 
 # Parameter page command ID for multi-tap enable configuration
 BHI385_PARAM_MULTI_TAP_ENABLE = 0x0D01
@@ -110,91 +110,91 @@ BHI385_HIF_CTRL_ASYNC_STATUS = 0x80
 # FIFO system event IDs
 # Total size = 1 (ID byte) + payload bytes shown in comment
 # ---------------------------------------------------------------------------
-BHI385_FIFO_PAD             = 0x00  # Padding (1 byte total)
+BHI385_FIFO_PAD = 0x00  # Padding (1 byte total)
 BHI385_FIFO_TS_SMALL_DLT_WU = 0xF5  # WU small delta timestamp  (2 bytes total)
 BHI385_FIFO_TS_LARGE_DLT_WU = 0xF6  # WU large delta timestamp  (3 bytes total)
-BHI385_FIFO_TS_FULL_WU      = 0xF7  # WU full timestamp         (6 bytes total)
-BHI385_FIFO_META_WU         = 0xF8  # WU meta event             (4 bytes total)
-BHI385_FIFO_DEBUG_MSG       = 0xFA  # Debug message             (18 bytes total)
-BHI385_FIFO_TS_SMALL_DLT    = 0xFB  # NW small delta timestamp  (2 bytes total)
-BHI385_FIFO_TS_LARGE_DLT    = 0xFC  # NW large delta timestamp  (3 bytes total)
-BHI385_FIFO_TS_FULL         = 0xFD  # NW full timestamp         (6 bytes total)
-BHI385_FIFO_META            = 0xFE  # NW meta event             (4 bytes total)
-BHI385_FIFO_FILLER          = 0xFF  # Filler byte               (1 byte total)
+BHI385_FIFO_TS_FULL_WU = 0xF7  # WU full timestamp         (6 bytes total)
+BHI385_FIFO_META_WU = 0xF8  # WU meta event             (4 bytes total)
+BHI385_FIFO_DEBUG_MSG = 0xFA  # Debug message             (18 bytes total)
+BHI385_FIFO_TS_SMALL_DLT = 0xFB  # NW small delta timestamp  (2 bytes total)
+BHI385_FIFO_TS_LARGE_DLT = 0xFC  # NW large delta timestamp  (3 bytes total)
+BHI385_FIFO_TS_FULL = 0xFD  # NW full timestamp         (6 bytes total)
+BHI385_FIFO_META = 0xFE  # NW meta event             (4 bytes total)
+BHI385_FIFO_FILLER = 0xFF  # Filler byte               (1 byte total)
 
 # ---------------------------------------------------------------------------
 # Accelerometer sensitivity in LSB/g per dynamic range setting
 # ---------------------------------------------------------------------------
-BHI385_ACCEL_SENS_4G  = 8192.0
-BHI385_ACCEL_SENS_8G  = 4096.0
+BHI385_ACCEL_SENS_4G = 8192.0
+BHI385_ACCEL_SENS_8G = 4096.0
 BHI385_ACCEL_SENS_16G = 2048.0
 BHI385_ACCEL_SENS_32G = 1024.0
 
 # ---------------------------------------------------------------------------
 # Gyroscope sensitivity in LSB/(deg/s) per full-scale range setting
 # ---------------------------------------------------------------------------
-BHI385_GYRO_SENS_125DPS  = 262.144
-BHI385_GYRO_SENS_250DPS  = 131.072
-BHI385_GYRO_SENS_500DPS  = 65.536
+BHI385_GYRO_SENS_125DPS = 262.144
+BHI385_GYRO_SENS_250DPS = 131.072
+BHI385_GYRO_SENS_500DPS = 65.536
 BHI385_GYRO_SENS_1000DPS = 32.768
 BHI385_GYRO_SENS_2000DPS = 16.384
 
 # ---------------------------------------------------------------------------
 # Timing constants (from datasheet)
 # ---------------------------------------------------------------------------
-BHI385_T_BOOT_BL_MS = 5     # Bootloader ready timeout (max 1.3 ms, use 5 ms)
-BHI385_T_BOOT_FW_MS = 500   # Firmware boot timeout (typical 81 ms)
-BHI385_T_FW_VER_MS  = 5000  # Firmware CRC verify timeout (conservative)
+BHI385_T_BOOT_BL_MS = 5  # Bootloader ready timeout (max 1.3 ms, use 5 ms)
+BHI385_T_BOOT_FW_MS = 500  # Firmware boot timeout (typical 81 ms)
+BHI385_T_FW_VER_MS = 5000  # Firmware CRC verify timeout (conservative)
 
 # ---------------------------------------------------------------------------
 # Buffer and chunk sizes
 # ---------------------------------------------------------------------------
-BHI385_FIFO_BUF_SIZE  = 256  # Maximum FIFO read buffer
-BHI385_I2C_CHUNK_SIZE = 28   # Max data bytes per I2C write (Wire buffer safe limit)
+BHI385_FIFO_BUF_SIZE = 256  # Maximum FIFO read buffer
+BHI385_I2C_CHUNK_SIZE = 28  # Max data bytes per I2C write (Wire buffer safe limit)
 
 # ---------------------------------------------------------------------------
 # Accelerometer dynamic range options (in g)
 # ---------------------------------------------------------------------------
-BHI385_ACCEL_4G  = 4
-BHI385_ACCEL_8G  = 8
+BHI385_ACCEL_4G = 4
+BHI385_ACCEL_8G = 8
 BHI385_ACCEL_16G = 16
 BHI385_ACCEL_32G = 32
 
 # ---------------------------------------------------------------------------
 # Gyroscope full-scale range options (in deg/s)
 # ---------------------------------------------------------------------------
-BHI385_GYRO_125DPS  = 125
-BHI385_GYRO_250DPS  = 250
-BHI385_GYRO_500DPS  = 500
+BHI385_GYRO_125DPS = 125
+BHI385_GYRO_250DPS = 250
+BHI385_GYRO_500DPS = 500
 BHI385_GYRO_1000DPS = 1000
 BHI385_GYRO_2000DPS = 2000
 
 # ---------------------------------------------------------------------------
 # Wrist gesture identifiers
 # ---------------------------------------------------------------------------
-BHI385_WRIST_GEST_NONE         = 0  # No gesture / unknown
+BHI385_WRIST_GEST_NONE = 0  # No gesture / unknown
 BHI385_WRIST_GEST_SHAKE_JIGGLE = 3  # Wrist shake / jiggle
-BHI385_WRIST_GEST_FLICK_IN     = 4  # Arm flick in
-BHI385_WRIST_GEST_FLICK_OUT    = 5  # Arm flick out
+BHI385_WRIST_GEST_FLICK_IN = 4  # Arm flick in
+BHI385_WRIST_GEST_FLICK_OUT = 5  # Arm flick out
 
 # ---------------------------------------------------------------------------
 # Tap type bitmask values
 # As an event value: which tap was detected (one bit set at a time).
 # As a config mask: OR together tap types to detect.
 # ---------------------------------------------------------------------------
-BHI385_TAP_NONE          = 0  # No tap
-BHI385_TAP_SINGLE        = 1  # Single tap
-BHI385_TAP_DOUBLE        = 2  # Double tap
+BHI385_TAP_NONE = 0  # No tap
+BHI385_TAP_SINGLE = 1  # Single tap
+BHI385_TAP_DOUBLE = 2  # Double tap
 BHI385_TAP_DOUBLE_SINGLE = 3  # Double and single tap
-BHI385_TAP_TRIPLE        = 4  # Triple tap
+BHI385_TAP_TRIPLE = 4  # Triple tap
 BHI385_TAP_TRIPLE_SINGLE = 5  # Triple and single tap
 BHI385_TAP_TRIPLE_DOUBLE = 6  # Triple and double tap
-BHI385_TAP_ALL           = 7  # All tap types enabled
+BHI385_TAP_ALL = 7  # All tap types enabled
 
 # ---------------------------------------------------------------------------
 # Wrist hand options
 # ---------------------------------------------------------------------------
-BHI385_WRIST_LEFT  = 0  # Device worn on the left wrist (firmware default)
+BHI385_WRIST_LEFT = 0  # Device worn on the left wrist (firmware default)
 BHI385_WRIST_RIGHT = 1  # Device worn on the right wrist
 
 
@@ -297,12 +297,19 @@ class BHI385:
             if fuser2_rev:
                 print("[BHI385] Fuser2 Rev: 0x{:02X}".format(fuser2_rev[0]))
             if rom_ver_h and rom_ver_l:
-                print("[BHI385] ROM version: 0x{:02X}{:02X}".format(rom_ver_h[0], rom_ver_l[0]))
+                print(
+                    "[BHI385] ROM version: 0x{:02X}{:02X}".format(
+                        rom_ver_h[0], rom_ver_l[0]
+                    )
+                )
 
         if self.getChipId() != BHI385_CHIP_ID_VAL:
             if self._dbg:
-                print("[BHI385] begin: FAILED: chip ID mismatch (got 0x{:02X}, expected 0x{:02X})".format(
-                    self.getChipId(), BHI385_CHIP_ID_VAL))
+                print(
+                    "[BHI385] begin: FAILED: chip ID mismatch (got 0x{:02X}, expected 0x{:02X})".format(
+                        self.getChipId(), BHI385_CHIP_ID_VAL
+                    )
+                )
             return False
 
         self._initialized = True
@@ -331,27 +338,39 @@ class BHI385:
 
         if self._dbg:
             print("[BHI385] loadFirmware: firmware size = {} bytes".format(fw_len))
-            print("[BHI385] loadFirmware: boot status before upload = 0x{:02X}".format(
-                self.getBootStatus()))
+            print(
+                "[BHI385] loadFirmware: boot status before upload = 0x{:02X}".format(
+                    self.getBootStatus()
+                )
+            )
 
         # Step 1: send the 4-byte "Upload to Program RAM" command header.
         # Format: [CMD_ID_L][CMD_ID_H][WORD_COUNT_L][WORD_COUNT_H]
         # WORD_COUNT = ceil(fw_len / 4) — firmware size in 32-bit words, not bytes.
         fw_len_rounded = (fw_len + 3) & ~3
         word_count = fw_len_rounded // 4
-        header = bytes([
-            BHI385_CMD_UPLOAD_FW & 0xFF,
-            (BHI385_CMD_UPLOAD_FW >> 8) & 0xFF,
-            word_count & 0xFF,
-            (word_count >> 8) & 0xFF,
-        ])
+        header = bytes(
+            [
+                BHI385_CMD_UPLOAD_FW & 0xFF,
+                (BHI385_CMD_UPLOAD_FW >> 8) & 0xFF,
+                word_count & 0xFF,
+                (word_count >> 8) & 0xFF,
+            ]
+        )
 
         if self._dbg:
             fw_preview = " ".join("{:02X}".format(b) for b in firmware[:32])
-            print("[BHI385] loadFirmware: firmware first 32 bytes: {}".format(fw_preview))
-            print("[BHI385] loadFirmware: word count = {} ({} bytes rounded)".format(
-                word_count, fw_len_rounded))
-            print("[BHI385] loadFirmware: [1/5] writing upload command header... ", end="")
+            print(
+                "[BHI385] loadFirmware: firmware first 32 bytes: {}".format(fw_preview)
+            )
+            print(
+                "[BHI385] loadFirmware: word count = {} ({} bytes rounded)".format(
+                    word_count, fw_len_rounded
+                )
+            )
+            print(
+                "[BHI385] loadFirmware: [1/5] writing upload command header... ", end=""
+            )
 
         if not self._channel_write(BHI385_CH_CMD, header):
             if self._dbg:
@@ -367,8 +386,11 @@ class BHI385:
         # receive buffer before the next transaction arrives.
         if self._dbg:
             num_chunks = fw_len // BHI385_I2C_CHUNK_SIZE + 1
-            print("[BHI385] loadFirmware: [2/5] uploading {} chunks @ {} bytes each...".format(
-                num_chunks, BHI385_I2C_CHUNK_SIZE))
+            print(
+                "[BHI385] loadFirmware: [2/5] uploading {} chunks @ {} bytes each...".format(
+                    num_chunks, BHI385_I2C_CHUNK_SIZE
+                )
+            )
 
         offset = 0
         report_step = max(fw_len // 10, 1)
@@ -377,65 +399,86 @@ class BHI385:
         while offset < fw_len:
             chunk = min(fw_len - offset, BHI385_I2C_CHUNK_SIZE)
             try:
-                self._i2c.writeto_mem(self._addr, BHI385_CH_CMD,
-                                      firmware[offset:offset + chunk])
+                self._i2c.writeto_mem(
+                    self._addr, BHI385_CH_CMD, firmware[offset : offset + chunk]
+                )
             except OSError as e:
                 if self._dbg:
-                    print("[BHI385] loadFirmware: [2/5] FAILED at offset {}/{} ({})".format(
-                        offset, fw_len, e))
+                    print(
+                        "[BHI385] loadFirmware: [2/5] FAILED at offset {}/{} ({})".format(
+                            offset, fw_len, e
+                        )
+                    )
                 return False
 
             time.sleep_us(500)
             offset += chunk
 
             if self._dbg and offset >= next_report:
-                print("[BHI385] loadFirmware: [2/5]   {}% ({}/{} bytes)".format(
-                    (offset * 100) // fw_len, offset, fw_len))
+                print(
+                    "[BHI385] loadFirmware: [2/5]   {}% ({}/{} bytes)".format(
+                        (offset * 100) // fw_len, offset, fw_len
+                    )
+                )
                 next_report += report_step
 
         if self._dbg:
             print("[BHI385] loadFirmware: [2/5] upload complete")
             err_now = self._i2c_read_reg(BHI385_REG_ERROR_VAL, 1)
-            print("[BHI385] loadFirmware: [2/5] post-upload boot status = 0x{:02X}, "
-                  "error = 0x{:02X}".format(
-                      self.getBootStatus(), err_now[0] if err_now else 0))
+            print(
+                "[BHI385] loadFirmware: [2/5] post-upload boot status = 0x{:02X}, "
+                "error = 0x{:02X}".format(
+                    self.getBootStatus(), err_now[0] if err_now else 0
+                )
+            )
 
         # Step 3: wait for CRC verify result.
         # Bit 5 (FW_VER_DONE) or bit 6 (FW_VER_ERR) will be set when the ROM
         # bootloader finishes checking the uploaded image.
         if self._dbg:
-            print("[BHI385] loadFirmware: [3/5] waiting for CRC verify "
-                  "(timeout {} ms)...".format(BHI385_T_FW_VER_MS))
+            print(
+                "[BHI385] loadFirmware: [3/5] waiting for CRC verify "
+                "(timeout {} ms)...".format(BHI385_T_FW_VER_MS)
+            )
 
         if not self._poll_boot_status(
-                BHI385_BOOT_FW_VER_DONE | BHI385_BOOT_FW_VER_ERR, BHI385_T_FW_VER_MS):
+            BHI385_BOOT_FW_VER_DONE | BHI385_BOOT_FW_VER_ERR, BHI385_T_FW_VER_MS
+        ):
             if self._dbg:
-                print("[BHI385] loadFirmware: [3/5] TIMEOUT, "
-                      "boot status = 0x{:02X}".format(self.getBootStatus()))
+                print(
+                    "[BHI385] loadFirmware: [3/5] TIMEOUT, "
+                    "boot status = 0x{:02X}".format(self.getBootStatus())
+                )
             return False
 
         boot_st = self.getBootStatus()
         if self._dbg:
-            print("[BHI385] loadFirmware: [3/5] boot status after verify = "
-                  "0x{:02X}".format(boot_st))
+            print(
+                "[BHI385] loadFirmware: [3/5] boot status after verify = "
+                "0x{:02X}".format(boot_st)
+            )
 
         if boot_st & BHI385_BOOT_FW_VER_ERR:
             if self._dbg:
                 err_val = self._i2c_read_reg(BHI385_REG_ERROR_VAL, 1)
-                print("[BHI385] loadFirmware: [3/5] FAILED: CRC mismatch, "
-                      "error = 0x{:02X}".format(err_val[0] if err_val else 0))
+                print(
+                    "[BHI385] loadFirmware: [3/5] FAILED: CRC mismatch, "
+                    "error = 0x{:02X}".format(err_val[0] if err_val else 0)
+                )
             return False
 
         if self._dbg:
             print("[BHI385] loadFirmware: [3/5] CRC OK")
 
         # Step 4: send the "Boot Program RAM" command.
-        boot_cmd = bytes([
-            BHI385_CMD_BOOT_FW & 0xFF,
-            (BHI385_CMD_BOOT_FW >> 8) & 0xFF,
-            0x00,
-            0x00,
-        ])
+        boot_cmd = bytes(
+            [
+                BHI385_CMD_BOOT_FW & 0xFF,
+                (BHI385_CMD_BOOT_FW >> 8) & 0xFF,
+                0x00,
+                0x00,
+            ]
+        )
 
         if self._dbg:
             print("[BHI385] loadFirmware: [4/5] sending boot command... ", end="")
@@ -450,20 +493,26 @@ class BHI385:
 
         # Step 5: wait for firmware to boot and host interface to become ready.
         if self._dbg:
-            print("[BHI385] loadFirmware: [5/5] waiting for firmware boot "
-                  "(timeout {} ms)...".format(BHI385_T_BOOT_FW_MS))
+            print(
+                "[BHI385] loadFirmware: [5/5] waiting for firmware boot "
+                "(timeout {} ms)...".format(BHI385_T_BOOT_FW_MS)
+            )
 
         time.sleep_ms(85)  # Typical firmware boot time is 81 ms
 
         if not self._poll_boot_status(BHI385_BOOT_HOST_IFACE_RDY, BHI385_T_BOOT_FW_MS):
             if self._dbg:
-                print("[BHI385] loadFirmware: [5/5] TIMEOUT, "
-                      "boot status = 0x{:02X}".format(self.getBootStatus()))
+                print(
+                    "[BHI385] loadFirmware: [5/5] TIMEOUT, "
+                    "boot status = 0x{:02X}".format(self.getBootStatus())
+                )
             return False
 
         if self._dbg:
-            print("[BHI385] loadFirmware: [5/5] firmware booted. "
-                  "Boot status = 0x{:02X}".format(self.getBootStatus()))
+            print(
+                "[BHI385] loadFirmware: [5/5] firmware booted. "
+                "Boot status = 0x{:02X}".format(self.getBootStatus())
+            )
 
         # Clear HOST_INTERFACE_CTRL (0x06) to release AP_SUSPENDED. While
         # AP_SUSPENDED is set the firmware buffers all sensor events internally
@@ -696,8 +745,13 @@ class BHI385:
 
     def getQuatData(self):
         """Return last quaternion reading as (x, y, z, w, accuracyDeg) tuple."""
-        return (self._quat[0], self._quat[1], self._quat[2],
-                self._quat[3], self._quat[4])
+        return (
+            self._quat[0],
+            self._quat[1],
+            self._quat[2],
+            self._quat[3],
+            self._quat[4],
+        )
 
     def getStepCount(self):
         """Return cumulative step count."""
@@ -821,10 +875,16 @@ class BHI385:
         while offset < length:
             chunk = min(length - offset, BHI385_I2C_CHUNK_SIZE)
             try:
-                self._i2c.writeto_mem(self._addr, channel, data[offset:offset + chunk])
+                self._i2c.writeto_mem(
+                    self._addr, channel, data[offset : offset + chunk]
+                )
             except OSError as e:
                 if self._dbg:
-                    print("[BHI385] channel write failed ch 0x{:02X}: {}".format(channel, e))
+                    print(
+                        "[BHI385] channel write failed ch 0x{:02X}: {}".format(
+                            channel, e
+                        )
+                    )
                 return False
             offset += chunk
         return True
@@ -900,7 +960,7 @@ class BHI385:
         pkt[1] = (cmd_id >> 8) & 0xFF
         pkt[2] = padded_param_len & 0xFF
         pkt[3] = (padded_param_len >> 8) & 0xFF
-        pkt[4:4 + param_len] = params
+        pkt[4 : 4 + param_len] = params
 
         return self._channel_write(BHI385_CH_CMD, pkt)
 
@@ -915,13 +975,17 @@ class BHI385:
         :return: True on success
         """
         rate_bytes = struct.pack("<f", rate_hz)
-        params = (bytes([sensor_id])
-                  + rate_bytes
-                  + bytes([
-                      latency_ms & 0xFF,
-                      (latency_ms >> 8) & 0xFF,
-                      (latency_ms >> 16) & 0xFF,
-                  ]))
+        params = (
+            bytes([sensor_id])
+            + rate_bytes
+            + bytes(
+                [
+                    latency_ms & 0xFF,
+                    (latency_ms >> 8) & 0xFF,
+                    (latency_ms >> 16) & 0xFF,
+                ]
+            )
+        )
         return self._send_command(BHI385_CMD_CONFIGURE_SENSOR, params)
 
     def _change_sensor_range(self, sensor_id, range_val):
@@ -964,8 +1028,9 @@ class BHI385:
         # channel operates in synchronous parameter-response mode
         hif_ctrl_data = self._i2c_read_reg(BHI385_REG_HOST_INTF_CTRL, 1)
         hif_ctrl_saved = hif_ctrl_data[0] if hif_ctrl_data else 0
-        self._i2c_write_reg(BHI385_REG_HOST_INTF_CTRL,
-                            hif_ctrl_saved & ~BHI385_HIF_CTRL_ASYNC_STATUS)
+        self._i2c_write_reg(
+            BHI385_REG_HOST_INTF_CTRL, hif_ctrl_saved & ~BHI385_HIF_CTRL_ASYNC_STATUS
+        )
 
         # Send read-request: cmd=0x0E38, 4-byte payload = [ctrl_read=0x87, 0, 0, 0]
         read_req = bytes([0x38, 0x0E, 0x04, 0x00, 0x87, 0x00, 0x00, 0x00])
@@ -998,18 +1063,28 @@ class BHI385:
             remain = resp[2] | (resp[3] << 8)
             ctrl_code = resp[4]
 
-            if code == BHI385_PARAM_WRIST_GEST_PHY and remain == 21 and ctrl_code == 0x07:
+            if (
+                code == BHI385_PARAM_WRIST_GEST_PHY
+                and remain == 21
+                and ctrl_code == 0x07
+            ):
                 # resp[5..24] = config[0..19]; device_pos is at config[18] = resp[23]
                 resp[23] = hand
                 # Write back: cmd=0x0E38, payload=[ctrl_code=0x07][config[0..19]] = 21 bytes
-                success = self._send_command(BHI385_PARAM_WRIST_GEST_PHY,
-                                             bytes(resp[4:25]))
+                success = self._send_command(
+                    BHI385_PARAM_WRIST_GEST_PHY, bytes(resp[4:25])
+                )
             elif self._dbg:
-                print("[BHI385] _set_wrist_gesture_phys_param: unexpected response "
-                      "code=0x{:04X} remain={} ctrlCode=0x{:02X}".format(
-                          code, remain, ctrl_code))
+                print(
+                    "[BHI385] _set_wrist_gesture_phys_param: unexpected response "
+                    "code=0x{:04X} remain={} ctrlCode=0x{:02X}".format(
+                        code, remain, ctrl_code
+                    )
+                )
         elif self._dbg:
-            print("[BHI385] _set_wrist_gesture_phys_param: timeout waiting for STATUS FIFO")
+            print(
+                "[BHI385] _set_wrist_gesture_phys_param: timeout waiting for STATUS FIFO"
+            )
 
         # Restore HOST_INTF_CTRL
         self._i2c_write_reg(BHI385_REG_HOST_INTF_CTRL, hif_ctrl_saved)
@@ -1066,15 +1141,15 @@ class BHI385:
 
         # --- WU FIFO system events (0xF5-0xF8) ---
         if event_id == BHI385_FIFO_TS_SMALL_DLT_WU:
-            return 2   # 1 ID + 1 delta byte
+            return 2  # 1 ID + 1 delta byte
         if event_id == BHI385_FIFO_TS_LARGE_DLT_WU:
-            return 3   # 1 ID + 2 delta bytes
+            return 3  # 1 ID + 2 delta bytes
         if event_id == BHI385_FIFO_TS_FULL_WU:
-            return 6   # 1 ID + 5 timestamp bytes
+            return 6  # 1 ID + 5 timestamp bytes
         if event_id == BHI385_FIFO_META_WU:
-            return 4   # 1 ID + 3 meta bytes
+            return 4  # 1 ID + 3 meta bytes
         if event_id == 0xF9:
-            return 1   # Invalid — skip to avoid loop
+            return 1  # Invalid — skip to avoid loop
         if event_id == BHI385_FIFO_DEBUG_MSG:
             return 18  # 1 ID + 17 debug bytes
 
@@ -1155,10 +1230,12 @@ class BHI385:
         # --- Step counter event (5 bytes: ID + uint32 LE step count) ---
         if event_id == self._stc_sensor_id:
             if offset + 5 <= length:
-                self._step_count = (buf[offset + 1]
-                                    | (buf[offset + 2] << 8)
-                                    | (buf[offset + 3] << 16)
-                                    | (buf[offset + 4] << 24))
+                self._step_count = (
+                    buf[offset + 1]
+                    | (buf[offset + 2] << 8)
+                    | (buf[offset + 3] << 16)
+                    | (buf[offset + 4] << 24)
+                )
                 self._step_updated = True
             return 5
 
