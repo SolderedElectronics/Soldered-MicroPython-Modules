@@ -1,0 +1,26 @@
+{
+  "urls": [
+    [
+      "de2120.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/DE2120/DE2120/de2120.py"
+    ],
+    [
+      "Examples/de2120-continuousRead.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/DE2120/DE2120/Examples/de2120-continuousRead.py"
+    ],
+    [
+      "Examples/de2120-readBarcode.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/DE2120/DE2120/Examples/de2120-readBarcode.py"
+    ],
+    [
+      "Examples/de2120-sendCommand.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/DE2120/DE2120/Examples/de2120-sendCommand.py"
+    ],
+    [
+      "Examples/de2120-serialSettings.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/DE2120/DE2120/Examples/de2120-serialSettings.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
