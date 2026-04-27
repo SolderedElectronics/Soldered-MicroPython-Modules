@@ -62,6 +62,8 @@ while True:
     if heading < 0.0:
         heading += 360.0
 
-    print("{:.1f}\t\t{}\t\t{}\t\t{}\t\t{}".format(heading, headingLabel(heading), x, y, z))
+    print(
+        "{:.1f}\t\t{}\t\t{}\t\t{}\t\t{}".format(heading, headingLabel(heading), x, y, z)
+    )
 
     time.sleep_ms(200)

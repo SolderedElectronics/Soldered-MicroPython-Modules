@@ -217,7 +217,9 @@ class DE2120:
     def changeReadingArea(self, percent):
         """Set scanning area as a percentage of the frame: 100, 80, 60, 40, or 20."""
         arg = _AREA_MAP.get(percent)
-        return self._sendCommand(PROPERTY_READING_AREA, arg) if arg is not None else False
+        return (
+            self._sendCommand(PROPERTY_READING_AREA, arg) if arg is not None else False
+        )
 
     def enableImageFlipping(self):
         return self._sendCommand(PROPERTY_MIRROR_FLIP, "1")
@@ -232,7 +234,9 @@ class DE2120:
         """
         if 0 <= repeat_interval <= 3:
             self._sendCommand(PROPERTY_READING_MODE, "CNT")
-            return self._sendCommand(PROPERTY_CONTINUOUS_MODE_INTERVAL, str(repeat_interval))
+            return self._sendCommand(
+                PROPERTY_CONTINUOUS_MODE_INTERVAL, str(repeat_interval)
+            )
         return False
 
     def disableContinuousRead(self):

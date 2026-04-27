@@ -25,12 +25,15 @@ print("Scanner online!")
 poll = uselect.poll()
 poll.register(sys.stdin, uselect.POLLIN)
 
+
 def stdin_available():
     return bool(poll.poll(0))
+
 
 def flush_stdin():
     while stdin_available():
         sys.stdin.read(1)
+
 
 while True:
     flush_stdin()
@@ -49,10 +52,10 @@ while True:
 
     cmd = sys.stdin.read(1)
 
-    if cmd == 'y':
+    if cmd == "y":
         print("Code ID will be displayed on scan")
         scanner.sendCommand("CIDENA", "1")
-    elif cmd == 'n':
+    elif cmd == "n":
         print("Code ID will NOT be displayed on scan")
         scanner.sendCommand("CIDENA", "0")
     else:

@@ -23,12 +23,15 @@ print("Scanner online!")
 poll = uselect.poll()
 poll.register(sys.stdin, uselect.POLLIN)
 
+
 def stdin_available():
     return bool(poll.poll(0))
+
 
 def flush_stdin():
     while stdin_available():
         sys.stdin.read(1)
+
 
 def wait_for_key():
     """Block until a key is typed, printing any scanned barcodes in the meantime."""
@@ -40,6 +43,7 @@ def wait_for_key():
         time.sleep_ms(200)
     return sys.stdin.read(1)
 
+
 def menu_flashlight():
     flush_stdin()
     print()
@@ -50,14 +54,15 @@ def menu_flashlight():
     print("Select an option number:")
 
     cmd = wait_for_key()
-    if cmd == '1':
+    if cmd == "1":
         print("White scan light on")
         scanner.lightOn()
-    elif cmd == '2':
+    elif cmd == "2":
         print("White scan light off")
         scanner.lightOff()
     else:
         print("Command not recognized")
+
 
 def menu_reticle():
     flush_stdin()
@@ -69,14 +74,15 @@ def menu_reticle():
     print("Select an option number:")
 
     cmd = wait_for_key()
-    if cmd == '1':
+    if cmd == "1":
         print("Red scan reticle on")
         scanner.reticleOn()
-    elif cmd == '2':
+    elif cmd == "2":
         print("Red scan reticle off")
         scanner.reticleOff()
     else:
         print("Command not recognized")
+
 
 def menu_reading_area():
     flush_stdin()
@@ -91,13 +97,14 @@ def menu_reading_area():
     print("Select an option number:")
 
     cmd = wait_for_key()
-    areas = {'1': 100, '2': 80, '3': 60, '4': 40, '5': 20}
+    areas = {"1": 100, "2": 80, "3": 60, "4": 40, "5": 20}
     if cmd in areas:
         pct = areas[cmd]
         print("Scanning {}% of frame".format(pct))
         scanner.changeReadingArea(pct)
     else:
         print("Command not recognized")
+
 
 def menu_reading_mode():
     flush_stdin()
@@ -110,17 +117,18 @@ def menu_reading_mode():
     print("Select an option number:")
 
     cmd = wait_for_key()
-    if cmd == '1':
+    if cmd == "1":
         print("Manual Trigger Mode enabled")
         scanner.disableMotionSense()
-    elif cmd == '2':
+    elif cmd == "2":
         print("Continuous Read Mode enabled")
         scanner.enableContinuousRead()
-    elif cmd == '3':
+    elif cmd == "3":
         print("Motion Trigger Mode enabled")
         scanner.enableMotionSense()
     else:
         print("Command not recognized")
+
 
 def menu_symbologies():
     flush_stdin()
@@ -134,20 +142,21 @@ def menu_symbologies():
     print("Select an option number:")
 
     cmd = wait_for_key()
-    if cmd == '1':
+    if cmd == "1":
         print("1D Symbologies enabled")
         scanner.enableAll1D()
-    elif cmd == '2':
+    elif cmd == "2":
         print("1D Symbologies disabled")
         scanner.disableAll1D()
-    elif cmd == '3':
+    elif cmd == "3":
         print("2D Symbologies enabled")
         scanner.enableAll2D()
-    elif cmd == '4':
+    elif cmd == "4":
         print("2D Symbologies disabled")
         scanner.disableAll2D()
     else:
         print("Command not recognized")
+
 
 while True:
     flush_stdin()
@@ -167,19 +176,19 @@ while True:
 
     cmd = wait_for_key()
 
-    if cmd == '1':
+    if cmd == "1":
         scanner.startScan()
-    elif cmd == '2':
+    elif cmd == "2":
         scanner.stopScan()
-    elif cmd == '3':
+    elif cmd == "3":
         menu_flashlight()
-    elif cmd == '4':
+    elif cmd == "4":
         menu_reticle()
-    elif cmd == '5':
+    elif cmd == "5":
         menu_reading_area()
-    elif cmd == '6':
+    elif cmd == "6":
         menu_reading_mode()
-    elif cmd == '7':
+    elif cmd == "7":
         menu_symbologies()
     else:
         print("Command not recognized")

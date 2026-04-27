@@ -25,9 +25,11 @@ expander.setInterrupt(PCAL6416A_A1, True)
 
 int_flag = False
 
+
 def isr(pin):
     global int_flag
     int_flag = True
+
 
 # D2 on most boards — adjust if needed
 int_pin = Pin(2, Pin.IN, Pin.PULL_UP)

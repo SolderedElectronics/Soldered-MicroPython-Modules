@@ -104,7 +104,9 @@ class IIS2DULPX:
         self._write_reg(_REG_I3C_IF_CTRL, i3c | (1 << 5))
 
         # Accelerometer data lives in the main register bank; embedded bank reads as zeros here
-        self._write_reg(_REG_FUNC_CFG_ACCESS, self._read_reg(_REG_FUNC_CFG_ACCESS) & 0x7F)
+        self._write_reg(
+            _REG_FUNC_CFG_ACCESS, self._read_reg(_REG_FUNC_CFG_ACCESS) & 0x7F
+        )
 
         # BDU + no embedded funcs + address auto-increment (iis2dulpx_init_set SENSOR_ONLY_ON)
         ctrl4 = self._read_reg(_REG_CTRL4)
@@ -230,10 +232,14 @@ class IIS2DULPX:
             "FreeFallStatus": 0,
             "TapStatus": 0,
             "DoubleTapStatus": 0,
-            "WakeUpStatus": 1 if (wakeup_enabled and ((all_int_src >> 1) & 0x01)) else 0,
+            "WakeUpStatus": 1
+            if (wakeup_enabled and ((all_int_src >> 1) & 0x01))
+            else 0,
             "StepStatus": 0,
             "TiltStatus": 0,
-            "D6DOrientationStatus": 1 if (sixd_enabled and ((all_int_src >> 5) & 0x01)) else 0,
+            "D6DOrientationStatus": 1
+            if (sixd_enabled and ((all_int_src >> 5) & 0x01))
+            else 0,
             "SleepStatus": 0,
         }
 
@@ -292,7 +298,7 @@ class IIS2DULPX:
 
         interrupt_cfg = self._read_reg(_REG_INTERRUPT_CFG)
         if threshold_mg < small_step * 63.0:
-            interrupt_cfg |= (1 << 5)
+            interrupt_cfg |= 1 << 5
             wk_ths = int(threshold_mg / small_step)
         elif threshold_mg < large_step * 63.0:
             interrupt_cfg &= ~(1 << 5)
@@ -319,7 +325,7 @@ class IIS2DULPX:
             dur_ext &= ~(1 << 4)
             wake_dur_bits = duration
         else:
-            dur_ext |= (1 << 4)
+            dur_ext |= 1 << 4
             wake_dur_bits = {3: 0, 7: 1, 11: 2, 15: 3}[duration]
 
         wake_up_dur = (wake_up_dur & ~(0b11 << 5)) | ((wake_dur_bits & 0b11) << 5)
