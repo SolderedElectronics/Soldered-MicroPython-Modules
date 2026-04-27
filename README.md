@@ -31,6 +31,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [BMP388](Sensors/BMP388/)
 - [DE2120](Sensors/DE2120/)
 - [HallEffect](Sensors/HallEffect/)
+- [IIS2DULPX](Sensors/IIS2DULPX/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
 - [LTR507](Sensors/LTR507/)
 - [ObstacleSensor](Sensors/ObstacleSensor/)

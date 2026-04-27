@@ -1,0 +1,18 @@
+{
+  "urls": [
+    [
+      "iis2dulpx.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/IIS2DULPX/IIS2DULPX/iis2dulpx.py"
+    ],
+    [
+      "Examples/iis2dulpx-serialPlotter.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/IIS2DULPX/IIS2DULPX/Examples/iis2dulpx-serialPlotter.py"
+    ],
+    [
+      "Examples/iis2dulpx-interruptWakeup.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/IIS2DULPX/IIS2DULPX/Examples/iis2dulpx-interruptWakeup.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
