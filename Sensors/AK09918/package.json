@@ -1,0 +1,30 @@
+{
+  "urls": [
+    [
+      "ak09918.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AK09918/AK09918/ak09918.py"
+    ],
+    [
+      "ak09918_constants.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AK09918/AK09918/ak09918_constants.py"
+    ],
+    [
+      "Examples/ak09918-readValues.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AK09918/AK09918/Examples/ak09918-readValues.py"
+    ],
+    [
+      "Examples/ak09918-compassHeading.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AK09918/AK09918/Examples/ak09918-compassHeading.py"
+    ],
+    [
+      "Examples/ak09918-singleMeasurement.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AK09918/AK09918/Examples/ak09918-singleMeasurement.py"
+    ],
+    [
+      "Examples/ak09918-selfTest.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AK09918/AK09918/Examples/ak09918-selfTest.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

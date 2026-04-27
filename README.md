@@ -20,6 +20,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 
 ### Sensors
 - [AD8495](Sensors/AD8495/)
+- [AK09918 (3-Axis Digital Compass)](Sensors/AK09918/)
 - [APDS9960](Sensors/APDS9960/)
 - [BHI385](Sensors/BHI385/)
 - [BME280](Sensors/BME280/)
@@ -28,7 +29,9 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [BMP180](Sensors/BMP180/)
 - [BMP280](Sensors/BMP280/)
 - [BMP388](Sensors/BMP388/)
+- [DE2120](Sensors/DE2120/)
 - [HallEffect](Sensors/HallEffect/)
+- [IIS2DULPX](Sensors/IIS2DULPX/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
 - [LTR507](Sensors/LTR507/)
 - [ObstacleSensor](Sensors/ObstacleSensor/)
@@ -45,6 +48,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [WS2812](Actuators/WS2812/)
 
 ### Communication
+- [PCAL6416A](Communication/PCAL6416A/)
 - [RFID](Communication/RFID/)
 - [Inputronic-KEYBOARD](Communication/Inputronic-KEYBOARD)
 
