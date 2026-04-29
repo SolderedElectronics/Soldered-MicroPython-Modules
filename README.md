@@ -44,6 +44,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 ### Actuators
 - [DRV8825](Actuators/DRV8825/)
 - [DS3234](Actuators/DS3234/)
+- [MCP47A1](Actuators/MCP47A1/)
 - [MCP23017](Actuators/MCP23017/)
 - [WS2812](Actuators/WS2812/)
 

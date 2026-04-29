@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "mcp47a1.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP47A1/MCP47A1/mcp47a1.py"
+    ],
+    [
+      "Examples/mcp47a1-setVoltage.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP47A1/MCP47A1/Examples/mcp47a1-setVoltage.py"
+    ],
+    [
+      "Examples/mcp47a1-getVoltage.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP47A1/MCP47A1/Examples/mcp47a1-getVoltage.py"
+    ],
+    [
+      "Examples/mcp47a1-waveformGenerator.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP47A1/MCP47A1/Examples/mcp47a1-waveformGenerator.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
