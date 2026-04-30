@@ -34,10 +34,12 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [IIS2DULPX](Sensors/IIS2DULPX/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
 - [LTR507](Sensors/LTR507/)
+- [MQSensors](Sensors/MQSensors/)
 - [ObstacleSensor](Sensors/ObstacleSensor/)
 - [PirSensor](Sensors/PirSensor/)
 - [RotaryEncoder](Sensors/RotaryEncoder/)
 - [SHTC3](Sensors/SHTC3/)
+- [SliderPotentiometer](Sensors/SliderPotentiometer/)
 - [TMP117](Sensors/TMP117/)
 - [UltrasonicSensor](Sensors/UltrasonicSensor/)
 
@@ -46,12 +48,14 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [DS3234](Actuators/DS3234/)
 - [MCP47A1](Actuators/MCP47A1/)
 - [MCP23017](Actuators/MCP23017/)
+- [PCF85063A](Actuators/PCF85063A/)
 - [WS2812](Actuators/WS2812/)
 
 ### Communication
 - [Inputronic-BRIDGE](Communication/Inputronic-BRIDGE/)
 - [PCAL6416A](Communication/PCAL6416A/)
 - [RFID](Communication/RFID/)
+- [TCA9548A](Communication/TCA9548A/)
 
 ### Displays
 - [LCD-I2C](Displays/LCD-I2C/)
