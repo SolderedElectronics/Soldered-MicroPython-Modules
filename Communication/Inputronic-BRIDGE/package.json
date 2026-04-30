@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "inputronic_bridge.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-BRIDGE/Inputronic-BRIDGE/inputronic_bridge.py"
+    ],
+    [
+      "Examples/pollingEvents.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-BRIDGE/Inputronic-BRIDGE/Examples/pollingEvents.py"
+    ],
+    [
+      "Examples/interruptEvents.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-BRIDGE/Inputronic-BRIDGE/Examples/interruptEvents.py"
+    ],
+    [
+      "Examples/rawHIDReadings.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-BRIDGE/Inputronic-BRIDGE/Examples/rawHIDReadings.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
