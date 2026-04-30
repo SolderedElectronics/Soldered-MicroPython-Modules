@@ -1,0 +1,18 @@
+{
+  "urls": [
+    [
+      "SliderPotentiometer.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SliderPotentiometer/SliderPotentiometer/SliderPotentiometer.py"
+    ],
+    [
+      "Examples/SliderPotentiometer-readValue.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SliderPotentiometer/SliderPotentiometer/Examples/SliderPotentiometer-readValue.py"
+    ],
+    [
+      "Examples/SliderPotentiometer-readValueQwiic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SliderPotentiometer/SliderPotentiometer/Examples/SliderPotentiometer-readValueQwiic.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
