@@ -49,6 +49,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [WS2812](Actuators/WS2812/)
 
 ### Communication
+- [Inputronic-BRIDGE](Communication/Inputronic-BRIDGE/)
 - [PCAL6416A](Communication/PCAL6416A/)
 - [RFID](Communication/RFID/)
 
