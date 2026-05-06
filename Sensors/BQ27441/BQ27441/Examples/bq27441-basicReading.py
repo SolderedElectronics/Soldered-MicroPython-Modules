@@ -1,5 +1,5 @@
-# FILE: ReadBatteryStats.py
-# AUTHOR: Ported to MicroPython from Arduino example by Robert Peric @ soldered.com
+# FILE: bq27441-basicReading.py
+# AUTHOR: Fran Fodor @ Soldered
 # BRIEF: Basic example showing how to read all battery stats from the BQ27441.
 #
 #        NOTE: It is IMPORTANT to connect the battery because this module gets

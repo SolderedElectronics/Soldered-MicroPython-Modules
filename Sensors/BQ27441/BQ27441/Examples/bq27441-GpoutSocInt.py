@@ -1,5 +1,5 @@
-# FILE: BQ27441GpoutSocInt.py
-# AUTHOR: Ported to MicroPython from Arduino example by Robert Peric @ soldered.com
+# FILE: bq27441-GpoutSocInt.py
+# AUTHOR: Fran Fodor @ Soldered
 # BRIEF: Demonstrates how to use the BQ27441's SOC_INT function on GPOUT.
 #        In this mode GPOUT will pulse every time the state-of-charge (SoC)
 #        goes up or down by a set percentage interval.

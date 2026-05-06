@@ -1,5 +1,5 @@
-# FILE: BQ27441GpoutBatLow.py
-# AUTHOR: Ported to MicroPython from Arduino example by Robert Peric @ soldered.com
+# FILE: bq27441-GpoutBatLow.py
+# AUTHOR: Fran Fodor @ Soldered
 # BRIEF: Demonstrates how to use the BQ27441's BAT_LOW function on GPOUT.
 #        In this mode GPOUT will become active whenever the battery goes
 #        below a set threshold.

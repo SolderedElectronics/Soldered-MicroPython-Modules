@@ -1,5 +1,5 @@
-# FILE: ExtendedBatteryConfiguration.py
-# AUTHOR: Ported to MicroPython from Arduino example by Robert Peric @ soldered.com
+# FILE: bq27441-extendedBatteryConfiguration.py
+# AUTHOR: Fran Fodor @ Soldered
 # BRIEF: Shows how the BQ27441-G1 can be used for extended battery configuration,
 #        including setting taper rate and terminate voltage.
 #
