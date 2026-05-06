@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "max7219.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MAX7219/MAX7219/max7219.py"
+    ],
+    [
+      "Examples/max7219-basic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MAX7219/MAX7219/Examples/max7219-basic.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

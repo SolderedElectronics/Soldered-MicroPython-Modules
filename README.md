@@ -33,6 +33,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [DE2120](Sensors/DE2120/)
 - [HallEffect](Sensors/HallEffect/)
 - [IIS2DULPX](Sensors/IIS2DULPX/)
+- [INA219](Sensors/INA219/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
 - [LTR507](Sensors/LTR507/)
 - [MQSensors](Sensors/MQSensors/)
@@ -47,6 +48,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 ### Actuators
 - [DRV8825](Actuators/DRV8825/)
 - [DS3234](Actuators/DS3234/)
+- [MAX7219](Actuators/MAX7219/)
 - [MCP47A1](Actuators/MCP47A1/)
 - [MCP23017](Actuators/MCP23017/)
 - [PCF85063A](Actuators/PCF85063A/)
