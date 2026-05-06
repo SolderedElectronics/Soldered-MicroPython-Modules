@@ -29,6 +29,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [BMP180](Sensors/BMP180/)
 - [BMP280](Sensors/BMP280/)
 - [BMP388](Sensors/BMP388/)
+- [BQ27441](Sensors/BQ27441/)
 - [DE2120](Sensors/DE2120/)
 - [HallEffect](Sensors/HallEffect/)
 - [IIS2DULPX](Sensors/IIS2DULPX/)

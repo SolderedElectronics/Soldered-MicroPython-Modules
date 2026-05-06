@@ -1,0 +1,26 @@
+{
+  "urls": [
+    [
+      "bq27441.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BQ27441/BQ27441/bq27441.py"
+    ],
+    [
+      "Examples/bq27441-basicReading.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BQ27441/BQ27441/Examples/bq27441-basicReading.py"
+    ],
+    [
+      "Examples/bq27441-extendedBatteryConfiguration.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BQ27441/BQ27441/Examples/bq27441-extendedBatteryConfiguration.py"
+    ],
+    [
+      "Examples/bq27441-GpoutBatLow.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BQ27441/BQ27441/Examples/bq27441-GpoutBatLow.py"
+    ],
+    [
+      "Examples/bq27441-GpoutSocInt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/BQ27441/BQ27441/Examples/bq27441-GpoutSocInt.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
