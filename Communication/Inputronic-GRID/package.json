@@ -1,0 +1,26 @@
+{
+  "urls": [
+    [
+      "inputronic_grid.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/inputronic_grid.py"
+    ],
+    [
+      "Examples/ReadButtons.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/Examples/ReadButtons.py"
+    ],
+    [
+      "Examples/SetLEDs.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/Examples/SetLEDs.py"
+    ],
+    [
+      "Examples/ButtonLEDControl.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/Examples/ButtonLEDControl.py"
+    ],
+    [
+      "Examples/ChangeAddress.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/Examples/ChangeAddress.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
