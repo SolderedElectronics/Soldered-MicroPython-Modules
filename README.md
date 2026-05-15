@@ -53,6 +53,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [MCP23017](Actuators/MCP23017/)
 - [PCF85063A](Actuators/PCF85063A/)
 - [WS2812](Actuators/WS2812/)
+- [WS2812Grid](Actuators/WS2812Grid/)
 
 ### Communication
 - [Inputronic-BRIDGE](Communication/Inputronic-BRIDGE/)
