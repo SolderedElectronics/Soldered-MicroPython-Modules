@@ -20,6 +20,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 
 ### Sensors
 - [AD8495](Sensors/AD8495/)
+- [ADS1219](Sensors/ADS1219/)
 - [AK09918 (3-Axis Digital Compass)](Sensors/AK09918/)
 - [APDS9960](Sensors/APDS9960/)
 - [BHI385](Sensors/BHI385/)
