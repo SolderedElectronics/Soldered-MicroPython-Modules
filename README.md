@@ -48,6 +48,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [UltrasonicSensor](Sensors/UltrasonicSensor/)
 
 ### Actuators
+- [ButtonLedBuzzerBoard](Actuators/ButtonLedBuzzerBoard/)
 - [DRV8825](Actuators/DRV8825/)
 - [DS3234](Actuators/DS3234/)
 - [MAX7219](Actuators/MAX7219/)
