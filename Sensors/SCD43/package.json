@@ -1,0 +1,46 @@
+{
+  "urls": [
+    [
+      "scd43.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/scd43.py"
+    ],
+    [
+      "Examples/BasicReadings.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/BasicReadings.py"
+    ],
+    [
+      "Examples/AlternateWire.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/AlternateWire.py"
+    ],
+    [
+      "Examples/DisableAutoCalibration.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/DisableAutoCalibration.py"
+    ],
+    [
+      "Examples/LowPowerReadings.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/LowPowerReadings.py"
+    ],
+    [
+      "Examples/PersistSettings.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/PersistSettings.py"
+    ],
+    [
+      "Examples/SelfTestFactoryReset.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/SelfTestFactoryReset.py"
+    ],
+    [
+      "Examples/SensorVariant.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/SensorVariant.py"
+    ],
+    [
+      "Examples/SignalCompensation.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/SignalCompensation.py"
+    ],
+    [
+      "Examples/SingleShot.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SCD43/SCD43/Examples/SingleShot.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
