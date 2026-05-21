@@ -33,6 +33,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [BQ27441](Sensors/BQ27441/)
 - [DE2120](Sensors/DE2120/)
 - [HallEffect](Sensors/HallEffect/)
+- [HX711](Sensors/HX711/)
 - [IIS2DULPX](Sensors/IIS2DULPX/)
 - [INA219](Sensors/INA219/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)

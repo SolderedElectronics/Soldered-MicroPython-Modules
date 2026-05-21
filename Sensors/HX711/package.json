@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "hx711.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HX711/HX711/hx711.py"
+    ],
+    [
+      "Examples/hx711-basic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HX711/HX711/Examples/hx711-basic.py"
+    ],
+    [
+      "Examples/hx711-deepSleep.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HX711/HX711/Examples/hx711-deepSleep.py"
+    ],
+    [
+      "Examples/hx711-calibrate.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HX711/HX711/Examples/hx711-calibrate.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}
