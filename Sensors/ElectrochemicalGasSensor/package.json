@@ -1,0 +1,38 @@
+{
+  "urls": [
+    [
+      "electrochemical_gas_sensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/electrochemical_gas_sensor.py"
+    ],
+    [
+      "ads1115.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/ads1115.py"
+    ],
+    [
+      "lmp91000.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/lmp91000.py"
+    ],
+    [
+      "Examples/electrochemical-singleSensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/Examples/electrochemical-singleSensor.py"
+    ],
+    [
+      "Examples/electrochemical-averagedMeasurement.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/Examples/electrochemical-averagedMeasurement.py"
+    ],
+    [
+      "Examples/electrochemical-calibrateSensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/Examples/electrochemical-calibrateSensor.py"
+    ],
+    [
+      "Examples/electrochemical-customConfig.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/Examples/electrochemical-customConfig.py"
+    ],
+    [
+      "Examples/electrochemical-twoSensors.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/Examples/electrochemical-twoSensors.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

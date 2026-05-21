@@ -32,6 +32,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [BMP388](Sensors/BMP388/)
 - [BQ27441](Sensors/BQ27441/)
 - [DE2120](Sensors/DE2120/)
+- [ElectrochemicalGasSensor](Sensors/ElectrochemicalGasSensor/)
 - [HallEffect](Sensors/HallEffect/)
 - [HX711](Sensors/HX711/)
 - [IIS2DULPX](Sensors/IIS2DULPX/)
