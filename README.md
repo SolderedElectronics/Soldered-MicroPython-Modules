@@ -68,6 +68,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [PCAL6416A](Communication/PCAL6416A/)
 - [RFID](Communication/RFID/)
 - [TCA9548A](Communication/TCA9548A/)
+- [uBloxGNSS](Communication/uBloxGNSS/)
 
 ### Displays
 - [LCD-I2C](Displays/LCD-I2C/)
