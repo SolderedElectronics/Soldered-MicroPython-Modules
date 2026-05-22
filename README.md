@@ -64,6 +64,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 ### Communication
 - [Inputronic-BRIDGE](Communication/Inputronic-BRIDGE/)
 - [Inputronic-GRID](Communication/Inputronic-GRID/)
+- [MCP2518](Communication/MCP2518/)
 - [PCAL6416A](Communication/PCAL6416A/)
 - [RFID](Communication/RFID/)
 - [TCA9548A](Communication/TCA9548A/)
