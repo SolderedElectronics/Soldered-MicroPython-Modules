@@ -1,4 +1,4 @@
-# FILE: relay-1ch.py
+# FILE: Relay-1ch.py
 # AUTHOR: Fran Fodor @ Soldered
 # BRIEF: 1-channel relay control example - toggles relay on and off.
 # WORKS WITH: Relay board (1CH): solde.red/333025
@@ -11,7 +11,7 @@
 
 from machine import I2C, Pin
 import time
-from relay import Relay, CHANNEL1
+from Relay import Relay, CHANNEL1
 
 # Initialize I2C and relay board
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))

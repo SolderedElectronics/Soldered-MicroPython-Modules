@@ -1,20 +1,20 @@
 {
   "urls": [
     [
-      "relay.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/relay.py"
+      "Relay.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Relay.py"
     ],
     [
-      "Examples/relay-1ch.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Examples/relay-1ch.py"
+      "Examples/Relay-1ch.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Examples/Relay-1ch.py"
     ],
     [
-      "Examples/relay-2ch.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Examples/relay-2ch.py"
+      "Examples/Relay-2ch.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Examples/Relay-2ch.py"
     ],
     [
-      "Examples/relay-4ch.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Examples/relay-4ch.py"
+      "Examples/Relay-4ch.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/Relay/Relay/Examples/Relay-4ch.py"
     ]
   ],
   "deps": [],

@@ -3,7 +3,7 @@
 # LAST UPDATED: 2026-02-11
 
 import time
-from inputronic_keyboard import InputronicKeyboard
+from InputronicKeyboard import InputronicKeyboard
 from ssd1306 import SSD1306
 
 SCREEN_WIDTH = 128

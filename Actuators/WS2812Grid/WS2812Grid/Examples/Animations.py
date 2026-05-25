@@ -7,7 +7,7 @@
 # LAST UPDATED: 2026-05-12
 
 from machine import Pin
-from ws2812_grid import WS2812Grid
+from WS2812Grid import WS2812Grid
 import time
 
 PIN = Pin(6, Pin.OUT)

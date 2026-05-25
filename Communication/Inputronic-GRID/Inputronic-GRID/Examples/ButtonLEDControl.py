@@ -10,7 +10,7 @@
 # LAST UPDATED: 2026-05-12
 
 from machine import I2C, Pin
-from inputronic_grid import InputronicGrid
+from InputronicGrid import InputronicGrid
 import time
 
 # If you aren't using the Qwiic connector, manually enter your I2C pins:

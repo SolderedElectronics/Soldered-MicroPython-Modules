@@ -9,7 +9,7 @@
 # LAST UPDATED: 2026-04-30
 
 from machine import I2C, SPI, UART, Pin
-from inputronic_bridge import InputronicBridge, PROTOCOL_I2C, PROTOCOL_UART, PROTOCOL_SPI
+from InputronicBridge import InputronicBridge, PROTOCOL_I2C, PROTOCOL_UART, PROTOCOL_SPI
 import time
 
 # Pin on this MCU connected to the BRIDGE interrupt output.

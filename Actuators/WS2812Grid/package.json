@@ -1,8 +1,8 @@
 {
   "urls": [
     [
-      "ws2812_grid.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/WS2812Grid/WS2812Grid/ws2812_grid.py"
+      "WS2812Grid.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/WS2812Grid/WS2812Grid/WS2812Grid.py"
     ],
     [
       "Examples/SetPixel.py",

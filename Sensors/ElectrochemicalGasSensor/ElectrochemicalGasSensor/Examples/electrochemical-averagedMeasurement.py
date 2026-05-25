@@ -12,7 +12,7 @@
 
 from machine import I2C, Pin
 import time
-from electrochemical_gas_sensor import ElectrochemicalGasSensor, SENSOR_O3
+from ElectrochemicalGasSensor import ElectrochemicalGasSensor, SENSOR_O3
 
 # How many readings to average and how many seconds to wait between them
 NUM_READINGS          = 5

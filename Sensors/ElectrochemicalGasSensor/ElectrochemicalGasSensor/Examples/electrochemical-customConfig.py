@@ -12,7 +12,7 @@
 
 from machine import I2C, Pin
 import time
-from electrochemical_gas_sensor import (
+from ElectrochemicalGasSensor import (
     ElectrochemicalGasSensor, SensorConfig,
     TIA_GAIN_35_KOHM, RLOAD_10_OHM, REF_EXTERNAL,
     INTERNAL_ZERO_67_PERCENT, BIAS_SIGN_NEGATIVE, BIAS_0_PERCENT,

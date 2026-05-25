@@ -5,7 +5,7 @@
 # WORKS WITH: 125kHz RFID tag reader board: www.solde.red/333154
 # LAST UPDATED: 2025-10-06
 # Import needed libraries
-from rfid import RFID
+from RFID import RFID
 from machine import I2C, Pin
 
 """

@@ -1,4 +1,4 @@
-# FILE: relay-2ch.py
+# FILE: Relay-2ch.py
 # AUTHOR: Fran Fodor @ Soldered
 # BRIEF: 2-channel relay control example - toggles each relay on and off in sequence.
 # WORKS WITH: Relay board (2CH): solde.red/333025
@@ -11,7 +11,7 @@
 
 from machine import I2C, Pin
 import time
-from relay import Relay, CHANNEL1, CHANNEL2
+from Relay import Relay, CHANNEL1, CHANNEL2
 
 # Initialize I2C and relay board
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))

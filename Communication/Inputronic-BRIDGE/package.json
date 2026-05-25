@@ -1,8 +1,8 @@
 {
   "urls": [
     [
-      "inputronic_bridge.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-BRIDGE/Inputronic-BRIDGE/inputronic_bridge.py"
+      "InputronicBridge.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-BRIDGE/Inputronic-BRIDGE/InputronicBridge.py"
     ],
     [
       "Examples/pollingEvents.py",

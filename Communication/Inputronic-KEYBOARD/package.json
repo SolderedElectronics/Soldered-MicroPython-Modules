@@ -1,16 +1,16 @@
 {
   "urls": [
     [
-      "inputronic_keyboard.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/inputronic_keyboard.py"
+      "InputronicKeyboard.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/InputronicKeyboard.py"
     ],
     [
-      "inputronic_keymap.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/inputronic_keymap.py"
+      "InputronicKeymap.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/InputronicKeymap.py"
     ],
     [
-      "inputronic_shiftmap.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/inputronic_shiftmap.py"
+      "InputronicShiftmap.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-KEYBOARD/Inputronic-KEYBOARD/InputronicShiftmap.py"
     ],
     [
       "Examples/keyboard_poll.py",

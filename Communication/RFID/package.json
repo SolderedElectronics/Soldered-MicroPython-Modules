@@ -1,8 +1,8 @@
 {
   "urls": [
     [
-      "rfid.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/RFID/RFID/rfid.py"
+      "RFID.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/RFID/RFID/RFID.py"
     ],
     [
       "Examples/RFID-UARTExample.py",

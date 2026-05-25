@@ -20,7 +20,7 @@
 
 from machine import I2C, Pin
 import time
-from electrochemical_gas_sensor import ElectrochemicalGasSensor, SENSOR_O3
+from ElectrochemicalGasSensor import ElectrochemicalGasSensor, SENSOR_O3
 
 # Initialize shared I2C bus
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))

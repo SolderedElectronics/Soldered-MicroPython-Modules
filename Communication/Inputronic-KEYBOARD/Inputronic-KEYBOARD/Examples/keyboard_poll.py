@@ -6,7 +6,7 @@ import time
 from machine import I2C, Pin
 from os import uname
 
-from inputronic_keyboard import InputronicKeyboard
+from InputronicKeyboard import InputronicKeyboard
 
 
 def make_i2c():

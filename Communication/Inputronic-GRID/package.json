@@ -1,8 +1,8 @@
 {
   "urls": [
     [
-      "inputronic_grid.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/inputronic_grid.py"
+      "InputronicGrid.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/Inputronic-GRID/Inputronic-GRID/InputronicGrid.py"
     ],
     [
       "Examples/ReadButtons.py",

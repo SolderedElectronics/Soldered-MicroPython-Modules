@@ -12,7 +12,7 @@
 
 from machine import I2C, Pin
 import time
-from electrochemical_gas_sensor import ElectrochemicalGasSensor, SENSOR_O3
+from ElectrochemicalGasSensor import ElectrochemicalGasSensor, SENSOR_O3
 
 # This value is added to the voltage read from the ADC.
 # In an environment with 0 of the target gas, the reading after calibration

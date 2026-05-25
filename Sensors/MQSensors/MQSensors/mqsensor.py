@@ -1,4 +1,4 @@
-# FILE: mqsensor.py
+# FILE: MQSensor.py
 # AUTHOR: Fran Fodor @ Soldered
 # BRIEF: A MicroPython module for the MQ gas sensor family, supports native and Qwiic modes
 # LAST UPDATED: 2026-04-30

@@ -1,4 +1,4 @@
-# FILE: relay.py
+# FILE: Relay.py
 # AUTHOR: Fran Fodor @ Soldered
 # BRIEF: MicroPython library for the Soldered Relay board with Qwiic/I2C
 # LAST UPDATED: 2026-05-21

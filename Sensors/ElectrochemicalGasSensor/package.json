@@ -1,8 +1,8 @@
 {
   "urls": [
     [
-      "electrochemical_gas_sensor.py",
-      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/electrochemical_gas_sensor.py"
+      "ElectrochemicalGasSensor.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ElectrochemicalGasSensor/ElectrochemicalGasSensor/ElectrochemicalGasSensor.py"
     ],
     [
       "ads1115.py",
