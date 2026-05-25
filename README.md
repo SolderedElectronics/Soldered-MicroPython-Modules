@@ -46,6 +46,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [RotaryEncoder](Sensors/RotaryEncoder/)
 - [SCD43](Sensors/SCD43/)
 - [SHTC3](Sensors/SHTC3/)
+- [SimpleSensor](Sensors/SimpleSensor/)
 - [SliderPotentiometer](Sensors/SliderPotentiometer/)
 - [TMP117](Sensors/TMP117/)
 - [UltrasonicSensor](Sensors/UltrasonicSensor/)
