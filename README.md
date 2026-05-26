@@ -59,6 +59,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [MAX7219](Actuators/MAX7219/)
 - [MCP47A1](Actuators/MCP47A1/)
 - [MCP23017](Actuators/MCP23017/)
+- [MCP4018](Actuators/MCP4018/)
 - [PCF85063A](Actuators/PCF85063A/)
 - [Relay](Actuators/Relay/)
 - [WS2812](Actuators/WS2812/)
