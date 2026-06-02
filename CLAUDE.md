@@ -35,6 +35,8 @@ Categories: `Sensors/`, `Actuators/`, `Communication/`, `Displays/`
 |------|-----------|---------|
 | Module .py (descriptive) | `PascalCase.py` | `SimpleSensor.py`, `ObstacleSensor.py` |
 | Module .py (chip/IC name) | `lowercase.py` | `bmp388.py`, `ads1x15.py` |
+| Folder name (chip/IC name) | `UPPERCASE` (match chip name) | `LSM9DS1/`, `BMP388/` — folder uppercase, .py inside lowercase |
+| Folder name (descriptive) | `PascalCase` (match .py name) | `SimpleSensor/`, `ObstacleSensor/` |
 | Support/constants | merge into main .py, no separate file | — |
 | Example files | `ModuleName-featureVariant.py` | `SimpleSensor-rainNative.py` |
 | Example variant suffixes | `Native` for GPIO/ADC, `I2C` for I2C/easyC | `SimpleSensor-rainI2C.py` |

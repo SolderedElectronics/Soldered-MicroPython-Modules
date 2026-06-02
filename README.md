@@ -39,6 +39,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [IIS2DULPX](Sensors/IIS2DULPX/)
 - [INA219](Sensors/INA219/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
+- [LSM9DS1](Sensors/LSM9DS1/)
 - [LTR507](Sensors/LTR507/)
 - [MQSensors](Sensors/MQSensors/)
 - [ObstacleSensor](Sensors/ObstacleSensor/)
