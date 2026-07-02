@@ -1,0 +1,15 @@
+{
+    "urls": [
+        ["lsm6dso.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/lsm6dso.py"],
+        ["Examples/lsm6dso-basicI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-basicI2C.py"],
+        ["Examples/lsm6dso-freeFallI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-freeFallI2C.py"],
+        ["Examples/lsm6dso-tiltI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-tiltI2C.py"],
+        ["Examples/lsm6dso-tapI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-tapI2C.py"],
+        ["Examples/lsm6dso-doubleTapI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-doubleTapI2C.py"],
+        ["Examples/lsm6dso-wakeUpI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-wakeUpI2C.py"],
+        ["Examples/lsm6dso-pedometerI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-pedometerI2C.py"],
+        ["Examples/lsm6dso-6dOrientationI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM6DSO/LSM6DSO/Examples/lsm6dso-6dOrientationI2C.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}

@@ -41,6 +41,8 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [INA219](Sensors/INA219/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
 - [L86M33](Sensors/L86M33/)
+- [LSM6DS3](Sensors/LSM6DS3/)
+- [LSM6DSO](Sensors/LSM6DSO/)
 - [LSM9DS1](Sensors/LSM9DS1/)
 - [LTR507](Sensors/LTR507/)
 - [MQSensors](Sensors/MQSensors/)
