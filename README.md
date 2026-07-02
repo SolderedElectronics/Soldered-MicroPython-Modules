@@ -24,6 +24,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [ADS1X15](Sensors/ADS1X15/)
 - [AK09918 (3-Axis Digital Compass)](Sensors/AK09918/)
 - [APDS9960](Sensors/APDS9960/)
+- [AS5600](Sensors/AS5600/)
 - [BHI385](Sensors/BHI385/)
 - [BME280](Sensors/BME280/)
 - [BME680](Sensors/BME680/)

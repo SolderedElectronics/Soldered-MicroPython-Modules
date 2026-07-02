@@ -1,0 +1,15 @@
+{
+    "urls": [
+        ["as5600.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/as5600.py"],
+        ["Examples/as5600-readAngleI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-readAngleI2C.py"],
+        ["Examples/as5600-directionI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-directionI2C.py"],
+        ["Examples/as5600-offsetI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-offsetI2C.py"],
+        ["Examples/as5600-angularSpeedI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-angularSpeedI2C.py"],
+        ["Examples/as5600-readMagnitudeI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-readMagnitudeI2C.py"],
+        ["Examples/as5600-statusI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-statusI2C.py"],
+        ["Examples/as5600-outputModeAnalogI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-outputModeAnalogI2C.py"],
+        ["Examples/as5600-outputModePWMI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/AS5600/AS5600/Examples/as5600-outputModePWMI2C.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}
