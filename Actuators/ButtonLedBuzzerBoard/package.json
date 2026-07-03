@@ -1,0 +1,30 @@
+{
+  "urls": [
+    [
+      "ButtonLedBuzzerBoard.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard.py"
+    ],
+    [
+      "Examples/ButtonLedBuzzerBoard-fullDemo.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard/Examples/ButtonLedBuzzerBoard-fullDemo.py"
+    ],
+    [
+      "Examples/ButtonLedBuzzerBoard-buzzer.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard/Examples/ButtonLedBuzzerBoard-buzzer.py"
+    ],
+    [
+      "Examples/ButtonLedBuzzerBoard-buttons.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard/Examples/ButtonLedBuzzerBoard-buttons.py"
+    ],
+    [
+      "Examples/ButtonLedBuzzerBoard-buttonInteraction.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard/Examples/ButtonLedBuzzerBoard-buttonInteraction.py"
+    ],
+    [
+      "Examples/ButtonLedBuzzerBoard-leds.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/ButtonLedBuzzerBoard/ButtonLedBuzzerBoard/Examples/ButtonLedBuzzerBoard-leds.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

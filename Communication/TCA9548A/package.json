@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "tca9548a.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/TCA9548A/TCA9548A/tca9548a.py"
+    ],
+    [
+      "Examples/tca9548a-writeRegister.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/TCA9548A/TCA9548A/Examples/tca9548a-writeRegister.py"
+    ],
+    [
+      "Examples/tca9548a-portScanner.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/TCA9548A/TCA9548A/Examples/tca9548a-portScanner.py"
+    ],
+    [
+      "Examples/tca9548a-multipleVsSingle.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/TCA9548A/TCA9548A/Examples/tca9548a-multipleVsSingle.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

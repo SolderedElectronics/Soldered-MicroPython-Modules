@@ -1,0 +1,22 @@
+{
+  "urls": [
+    [
+      "pcf85063a.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCF85063A/PCF85063A/pcf85063a.py"
+    ],
+    [
+      "Examples/pcf85063a-alarmInterrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCF85063A/PCF85063A/Examples/pcf85063a-alarmInterrupt.py"
+    ],
+    [
+      "Examples/pcf85063a-basic.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCF85063A/PCF85063A/Examples/pcf85063a-basic.py"
+    ],
+    [
+      "Examples/pcf85063a-timer.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCF85063A/PCF85063A/Examples/pcf85063a-timer.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

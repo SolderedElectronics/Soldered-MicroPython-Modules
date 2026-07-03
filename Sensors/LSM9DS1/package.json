@@ -1,0 +1,12 @@
+{
+    "urls": [
+        ["lsm9ds1.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM9DS1/LSM9DS1/lsm9ds1.py"],
+        ["Examples/lsm9ds1-accelerometerI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM9DS1/LSM9DS1/Examples/lsm9ds1-accelerometerI2C.py"],
+        ["Examples/lsm9ds1-magnetometerI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM9DS1/LSM9DS1/Examples/lsm9ds1-magnetometerI2C.py"],
+        ["Examples/lsm9ds1-basicI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM9DS1/LSM9DS1/Examples/lsm9ds1-basicI2C.py"],
+        ["Examples/lsm9ds1-settingsI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM9DS1/LSM9DS1/Examples/lsm9ds1-settingsI2C.py"],
+        ["Examples/lsm9ds1-interruptsI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/LSM9DS1/LSM9DS1/Examples/lsm9ds1-interruptsI2C.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}

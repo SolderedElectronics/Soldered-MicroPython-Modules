@@ -1,4 +1,4 @@
-# FILE: rfid.py
+# FILE: RFID.py
 # AUTHOR: Josip Šimun Kuči @ Soldered
 # BRIEF: A MicroPython module for the RFID 125kHz reader board
 # LAST UPDATED: 2025-10-06

@@ -1,0 +1,26 @@
+{
+  "urls": [
+    [
+      "ads1219.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ADS1219/ADS1219/ads1219.py"
+    ],
+    [
+      "Examples/ads1219-single-shot.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ADS1219/ADS1219/Examples/ads1219-single-shot.py"
+    ],
+    [
+      "Examples/ads1219-multiplexer.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ADS1219/ADS1219/Examples/ads1219-multiplexer.py"
+    ],
+    [
+      "Examples/ads1219-interrupt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ADS1219/ADS1219/Examples/ads1219-interrupt.py"
+    ],
+    [
+      "Examples/ads1219-continuous.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/ADS1219/ADS1219/Examples/ads1219-continuous.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

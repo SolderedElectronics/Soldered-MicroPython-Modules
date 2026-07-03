@@ -1,0 +1,14 @@
+{
+  "urls": [
+    [
+      "ina219.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/INA219/INA219/ina219.py"
+    ],
+    [
+      "Examples/ina219-simple.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/INA219/INA219/Examples/ina219-simple.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

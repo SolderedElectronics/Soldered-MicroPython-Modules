@@ -1,0 +1,10 @@
+{
+    "urls": [
+        ["mcp4018.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP4018/MCP4018/mcp4018.py"],
+        ["Examples/mcp4018-setDigipotI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP4018/MCP4018/Examples/mcp4018-setDigipotI2C.py"],
+        ["Examples/mcp4018-getDigipotI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP4018/MCP4018/Examples/mcp4018-getDigipotI2C.py"],
+        ["Examples/mcp4018-serialControlI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/MCP4018/MCP4018/Examples/mcp4018-serialControlI2C.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}

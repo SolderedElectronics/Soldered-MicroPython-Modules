@@ -1,0 +1,19 @@
+{
+    "urls": [
+        ["SimpleSensor.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/SimpleSensor.py"],
+        ["SimpleRainSensor.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/SimpleRainSensor.py"],
+        ["SimpleSoilSensor.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/SimpleSoilSensor.py"],
+        ["SimpleLightSensor.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/SimpleLightSensor.py"],
+        ["SimpleFireSensor.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/SimpleFireSensor.py"],
+        ["Examples/SimpleSensor-rainI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-rainI2C.py"],
+        ["Examples/SimpleSensor-rainNative.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-rainNative.py"],
+        ["Examples/SimpleSensor-soilI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-soilI2C.py"],
+        ["Examples/SimpleSensor-soilNative.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-soilNative.py"],
+        ["Examples/SimpleSensor-lightI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-lightI2C.py"],
+        ["Examples/SimpleSensor-lightNative.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-lightNative.py"],
+        ["Examples/SimpleSensor-fireI2C.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-fireI2C.py"],
+        ["Examples/SimpleSensor-fireNative.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/SimpleSensor/SimpleSensor/Examples/SimpleSensor-fireNative.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}

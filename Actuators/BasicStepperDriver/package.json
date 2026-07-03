@@ -1,0 +1,42 @@
+{
+  "urls": [
+    [
+      "BasicStepperDriver.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/BasicStepperDriver.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-constantSpeed.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-constantSpeed.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-blocking.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-blocking.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-bounce.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-bounce.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-multipleSteppers.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-multipleSteppers.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-overshoot.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-overshoot.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-proportionalControl.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-proportionalControl.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-quickstop.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-quickstop.py"
+    ],
+    [
+      "Examples/BasicStepperDriver-random.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/BasicStepperDriver/BasicStepperDriver/Examples/BasicStepperDriver-random.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

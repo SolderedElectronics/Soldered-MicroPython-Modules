@@ -1,0 +1,42 @@
+{
+  "urls": [
+    [
+      "mcp2518fd.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/mcp2518fd.py"
+    ],
+    [
+      "Examples/mcp2518fd-send.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-send.py"
+    ],
+    [
+      "Examples/mcp2518fd-recv.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-recv.py"
+    ],
+    [
+      "Examples/mcp2518fd-fd-send.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-fd-send.py"
+    ],
+    [
+      "Examples/mcp2518fd-fd-recv.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-fd-recv.py"
+    ],
+    [
+      "Examples/mcp2518fd-recv-filt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-recv-filt.py"
+    ],
+    [
+      "Examples/mcp2518fd-fd-recv-filt.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-fd-recv-filt.py"
+    ],
+    [
+      "Examples/mcp2518fd-recv-int.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-recv-int.py"
+    ],
+    [
+      "Examples/mcp2518fd-fd-recv-int.py",
+      "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/MCP2518/MCP2518/Examples/mcp2518fd-fd-recv-int.py"
+    ]
+  ],
+  "deps": [],
+  "version": "1.0"
+}

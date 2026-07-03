@@ -20,8 +20,11 @@ Each module in the library is designed to be lightweight, readable, and compatib
 
 ### Sensors
 - [AD8495](Sensors/AD8495/)
+- [ADS1219](Sensors/ADS1219/)
+- [ADS1X15](Sensors/ADS1X15/)
 - [AK09918 (3-Axis Digital Compass)](Sensors/AK09918/)
 - [APDS9960](Sensors/APDS9960/)
+- [AS5600](Sensors/AS5600/)
 - [BHI385](Sensors/BHI385/)
 - [BME280](Sensors/BME280/)
 - [BME680](Sensors/BME680/)
@@ -29,32 +32,60 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [BMP180](Sensors/BMP180/)
 - [BMP280](Sensors/BMP280/)
 - [BMP388](Sensors/BMP388/)
+- [BQ27441](Sensors/BQ27441/)
 - [DE2120](Sensors/DE2120/)
+- [ElectrochemicalGasSensor](Sensors/ElectrochemicalGasSensor/)
 - [HallEffect](Sensors/HallEffect/)
+- [HX711](Sensors/HX711/)
 - [IIS2DULPX](Sensors/IIS2DULPX/)
+- [INA219](Sensors/INA219/)
+- [L86M33](Sensors/L86M33/)
 - [LaserDistanceSensor](Sensors/LaserDistanceSensor/)
+- [LSM6DS3](Sensors/LSM6DS3/)
+- [LSM6DSO](Sensors/LSM6DSO/)
+- [LSM9DS1](Sensors/LSM9DS1/)
 - [LTR507](Sensors/LTR507/)
+- [MQSensors](Sensors/MQSensors/)
 - [ObstacleSensor](Sensors/ObstacleSensor/)
 - [PirSensor](Sensors/PirSensor/)
 - [RotaryEncoder](Sensors/RotaryEncoder/)
+- [SCD43](Sensors/SCD43/)
 - [SHTC3](Sensors/SHTC3/)
+- [SimpleSensor](Sensors/SimpleSensor/)
+- [SliderPotentiometer](Sensors/SliderPotentiometer/)
 - [TMP117](Sensors/TMP117/)
 - [UltrasonicSensor](Sensors/UltrasonicSensor/)
 
 ### Actuators
+- [BasicStepperDriver](Actuators/BasicStepperDriver/)
+- [ButtonLedBuzzerBoard](Actuators/ButtonLedBuzzerBoard/)
 - [DRV8825](Actuators/DRV8825/)
 - [DS3234](Actuators/DS3234/)
+- [MAX7219](Actuators/MAX7219/)
 - [MCP23017](Actuators/MCP23017/)
+- [MCP4018](Actuators/MCP4018/)
+- [MCP47A1](Actuators/MCP47A1/)
+- [PCF85063A](Actuators/PCF85063A/)
+- [Relay](Actuators/Relay/)
 - [WS2812](Actuators/WS2812/)
+- [WS2812Grid](Actuators/WS2812Grid/)
 
 ### Communication
+- [Inputronic-BRIDGE](Communication/Inputronic-BRIDGE/)
+- [Inputronic-GRID](Communication/Inputronic-GRID/)
+- [Inputronic-KEYBOARD](Communication/Inputronic-KEYBOARD)
+- [MCP2518](Communication/MCP2518/)
 - [PCAL6416A](Communication/PCAL6416A/)
 - [RFID](Communication/RFID/)
-- [Inputronic-KEYBOARD](Communication/Inputronic-KEYBOARD)
+- [TCA9548A](Communication/TCA9548A/)
+- [uBloxGNSS](Communication/uBloxGNSS/)
 
 ### Displays
 - [LCD-I2C](Displays/LCD-I2C/)
 - [SSD1306](Displays/SSD1306/)
+
+### Power&Batteries
+- [HUSB238](Power&Batteries/HUSB238/)
 
 ---
 
@@ -134,7 +165,7 @@ Module_Name/
 
 ## About Soldered
 
-<img src="https://soldered.com/productdata/2023/01/soldered-logo-og.png" alt="soldered-logo" width="500"/>
+<img src="https://raw.githubusercontent.com/SolderedElectronics/Soldered-Generic-Arduino-Library/dev/extras/Soldered-logo-color.png" alt="soldered-logo" width="500"/>
 
 At Soldered, we design and manufacture a wide selection of electronic products to help you turn your ideas into acts and bring you one step closer to your final project. Our products are intented for makers and crafted in-house by our experienced team in Osijek, Croatia. We believe that sharing is a crucial element for improvement and innovation, and we work hard to stay connected with all our makers regardless of their skill or experience level. Therefore, all our products are open-source. Finally, we always have your back. If you face any problem concerning either your shopping experience or your electronics project, our team will help you deal with it, offering efficient customer service and cost-free technical support anytime. Some of those might be useful for you:
 
