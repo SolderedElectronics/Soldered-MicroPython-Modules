@@ -120,8 +120,17 @@ _PEDO_CMD_REG = 0x183
 _XL_ODR_STEPS = (12.5, 26, 52, 104, 208, 417, 833, 1667, 3333, 6667)
 _G_ODR_STEPS = _XL_ODR_STEPS
 _ODR_XL_MAP = {
-    0: 0x00, 12.5: 0x10, 26: 0x20, 52: 0x30, 104: 0x40,
-    208: 0x50, 417: 0x60, 833: 0x70, 1667: 0x80, 3333: 0x90, 6667: 0xA0,
+    0: 0x00,
+    12.5: 0x10,
+    26: 0x20,
+    52: 0x30,
+    104: 0x40,
+    208: 0x50,
+    417: 0x60,
+    833: 0x70,
+    1667: 0x80,
+    3333: 0x90,
+    6667: 0xA0,
 }
 _ODR_G_MAP = dict(_ODR_XL_MAP)
 _ODR_XL_MAP_REV = {v: k for k, v in _ODR_XL_MAP.items()}
@@ -459,7 +468,15 @@ class LSM6DSO:
             fs = 4 if fullScale <= 4.0 else 8 if fullScale <= 8.0 else 32
             code = _FS_XL_CODE_LSM6DSO32[fs]
         else:
-            fs = 2 if fullScale <= 2.0 else 4 if fullScale <= 4.0 else 8 if fullScale <= 8.0 else 16
+            fs = (
+                2
+                if fullScale <= 2.0
+                else 4
+                if fullScale <= 4.0
+                else 8
+                if fullScale <= 8.0
+                else 16
+            )
             code = _FS_XL_CODE_LSM6DSO[fs]
         self._updateReg(_CTRL1_XL, 0x0C, code)
         return True
@@ -485,7 +502,15 @@ class LSM6DSO:
         if fullScale <= 125.0:
             self._updateReg(_CTRL2_G, 0x02, 0x02)
         else:
-            fs = 245 if fullScale <= 245.0 else 500 if fullScale <= 500.0 else 1000 if fullScale <= 1000.0 else 2000
+            fs = (
+                245
+                if fullScale <= 245.0
+                else 500
+                if fullScale <= 500.0
+                else 1000
+                if fullScale <= 1000.0
+                else 2000
+            )
             self._updateReg(_CTRL2_G, 0x02, 0x00)
             self._updateReg(_CTRL2_G, 0x0C, _FS_G_MAP[fs])
         return True
@@ -566,7 +591,9 @@ class LSM6DSO:
         time.sleep_ms(10)
 
         cur = self._lnPgReadByte(_PEDO_CMD_REG)
-        self._lnPgWriteByte(_PEDO_CMD_REG, cur & 0xFA)  # base mode: fp_rejection_en=0, ad_det_en=0
+        self._lnPgWriteByte(
+            _PEDO_CMD_REG, cur & 0xFA
+        )  # base mode: fp_rejection_en=0, ad_det_en=0
 
         self._embUpdateReg(_EMB_FUNC_EN_A, 0x08, 0x08)  # pedo_en = 1
         self._embUpdateReg(_EMB_FUNC_INT1, 0x08, 0x08)  # int1_step_detector = 1
@@ -955,8 +982,12 @@ class LSM6DSO:
     def _updateInterruptsEnable(self):
         md1 = self._readReg(_MD1_CFG)
         md2 = self._readReg(_MD2_CFG)
-        basicMask = 0x04 | 0x08 | 0x10 | 0x20 | 0x40  # 6d, doubleTap, freeFall, wakeUp, singleTap
-        self._updateReg(_TAP_CFG2, 0x80, 0x80 if (md1 & basicMask) or (md2 & basicMask) else 0x00)
+        basicMask = (
+            0x04 | 0x08 | 0x10 | 0x20 | 0x40
+        )  # 6d, doubleTap, freeFall, wakeUp, singleTap
+        self._updateReg(
+            _TAP_CFG2, 0x80, 0x80 if (md1 & basicMask) or (md2 & basicMask) else 0x00
+        )
 
     def _updateEmbFuncRoute(self):
         embInt1 = self._embReadReg(_EMB_FUNC_INT1)

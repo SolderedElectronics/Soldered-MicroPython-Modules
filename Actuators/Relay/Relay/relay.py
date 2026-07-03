@@ -38,7 +38,9 @@ class Relay:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
         self._channelState = [0, 0, 0, 0]

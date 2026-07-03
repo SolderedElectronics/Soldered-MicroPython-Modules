@@ -22,15 +22,15 @@ while not adc.begin():
     time.sleep_ms(1000)
 
 adc.setGain(0)
-adc.setMode(0)      # continuous conversion
-adc.requestADC(0)   # start first conversion on AIN0
+adc.setMode(0)  # continuous conversion
+adc.requestADC(0)  # start first conversion on AIN0
 
 print("ADS1X15 initialized, continuous mode")
 
 while True:
     if adc.isReady():
         raw = adc.getValue()
-        v   = adc.toVoltage(raw)
+        v = adc.toVoltage(raw)
         print("AIN0: raw={:6d}  voltage={:.4f} V".format(raw, v))
-        adc.requestADC(0)   # re-arm next conversion
+        adc.requestADC(0)  # re-arm next conversion
     time.sleep_ms(10)

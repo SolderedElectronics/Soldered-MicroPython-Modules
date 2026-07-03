@@ -16,4 +16,4 @@ while True:
     stepper.moveTo(500)
     while stepper.currentPosition() != 300:  # Run at full speed to position 300
         stepper.run()
-    stepper.runToNewPosition(0)              # Overshoot then back to 0
+    stepper.runToNewPosition(0)  # Overshoot then back to 0

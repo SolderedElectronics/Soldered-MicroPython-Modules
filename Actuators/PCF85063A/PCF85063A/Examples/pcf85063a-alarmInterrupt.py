@@ -1,6 +1,6 @@
 # FILE: pcf85063a-alarmInterrupt.py
 # AUTHOR: Fran Fodor @ Soldered
-# BRIEF: Sets the time and alarm and goes to sleep. Wakes up on RTC interrupt. 
+# BRIEF: Sets the time and alarm and goes to sleep. Wakes up on RTC interrupt.
 #        File must be saved as main.py on MicroPython device.
 # WORKS WITH: PCF85063A RTC Expander breakout: www.solde.red/333051
 # LAST UPDATED: 2026-04-30
@@ -22,24 +22,47 @@ esp32.wake_on_ext0(pin=wake_pin, level=esp32.WAKEUP_ALL_LOW)
 # Init RTC
 rtc = PCF85063A()
 
+
 def print_current_time():
     year, month, day, weekday, hour, minute, second = rtc.get_time()
-    weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
-                "Thursday", "Friday", "Saturday"]
-    print("{} , {:02d}.{:02d}.{:04d} {:02d}:{:02d}:{:02d}".format(
-        weekdays[weekday], day, month, year, hour, minute, second
-    ))
+    weekdays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ]
+    print(
+        "{} , {:02d}.{:02d}.{:04d} {:02d}:{:02d}:{:02d}".format(
+            weekdays[weekday], day, month, year, hour, minute, second
+        )
+    )
+
 
 def check_alarm():
     alarm_day, alarm_weekday, alarm_hour, alarm_minute, alarm_second = rtc.get_alarm()
-    weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday",
-                "Thursday", "Friday", "Saturday"]
+    weekdays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ]
     print("Alarm is set to match:")
-    if alarm_weekday != 99: print(weekdays[alarm_weekday], end=", ")
-    if alarm_day      != 99: print("Date:", alarm_day, end=" ")
-    if alarm_hour     != 99: print("hour:", alarm_hour, end=" ")
-    if alarm_minute   != 99: print("minute:", alarm_minute, end=" ")
-    if alarm_second   != 99: print("second:", alarm_second, end=" ")
+    if alarm_weekday != 99:
+        print(weekdays[alarm_weekday], end=", ")
+    if alarm_day != 99:
+        print("Date:", alarm_day, end=" ")
+    if alarm_hour != 99:
+        print("hour:", alarm_hour, end=" ")
+    if alarm_minute != 99:
+        print("minute:", alarm_minute, end=" ")
+    if alarm_second != 99:
+        print("second:", alarm_second, end=" ")
     print()
 
 

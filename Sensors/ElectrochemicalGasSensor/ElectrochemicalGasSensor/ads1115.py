@@ -7,12 +7,12 @@ import time
 
 # Registers
 _REG_CONVERT = 0x00
-_REG_CONFIG  = 0x01
+_REG_CONFIG = 0x01
 
 # Config register bits
 _OS_START_SINGLE = 0x8000
-_OS_NOT_BUSY     = 0x8000
-_MODE_SINGLE     = 0x0100
+_OS_NOT_BUSY = 0x8000
+_MODE_SINGLE = 0x0100
 
 # PGA gain register values
 _PGA_6_144V = 0x0000
@@ -70,8 +70,14 @@ class ADS1115:
     def readADC(self, pin):
         """Single-ended read on pin 0-3. Returns signed int16."""
         readmode = (4 + pin) << 12
-        config = (_OS_START_SINGLE | readmode | self._gain_reg |
-                  _MODE_SINGLE | self._datarate | _COMP_DEFAULTS)
+        config = (
+            _OS_START_SINGLE
+            | readmode
+            | self._gain_reg
+            | _MODE_SINGLE
+            | self._datarate
+            | _COMP_DEFAULTS
+        )
         self._writeRegister(_REG_CONFIG, config)
         while not self._conversionDone():
             time.sleep_ms(1)
@@ -93,7 +99,9 @@ class ADS1115:
         return raw
 
     def _writeRegister(self, reg, value):
-        self._i2c.writeto(self._address, bytes([reg, (value >> 8) & 0xFF, value & 0xFF]))
+        self._i2c.writeto(
+            self._address, bytes([reg, (value >> 8) & 0xFF, value & 0xFF])
+        )
 
     def _readRegister(self, reg):
         self._i2c.writeto(self._address, bytes([reg]))

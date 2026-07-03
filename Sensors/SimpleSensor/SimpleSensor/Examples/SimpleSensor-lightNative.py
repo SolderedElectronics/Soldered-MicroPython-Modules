@@ -26,6 +26,9 @@ while True:
     value = sensor.getValue()
     light = sensor.isLightDetected()
 
-    print("Raw: {:4d}  Resistance: {:8.1f} Ohm  Light%: {:6.2f}%  Light detected: {}".format(
-        raw, resistance, value, light))
+    print(
+        "Raw: {:4d}  Resistance: {:8.1f} Ohm  Light%: {:6.2f}%  Light detected: {}".format(
+            raw, resistance, value, light
+        )
+    )
     time.sleep(1)

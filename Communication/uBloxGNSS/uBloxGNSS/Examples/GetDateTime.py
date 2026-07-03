@@ -19,15 +19,17 @@ print("u-blox GNSS ready.\n")
 while True:
     if gnss.getPVT():
         if gnss.getDateValid() and gnss.getTimeValid():
-            year  = gnss.getYear()
+            year = gnss.getYear()
             month = gnss.getMonth()
-            day   = gnss.getDay()
-            hour  = gnss.getHour()
+            day = gnss.getDay()
+            hour = gnss.getHour()
             minute = gnss.getMinute()
             second = gnss.getSecond()
-            nano  = gnss.getNanosecond()
-            print(f"{year:04d}-{month:02d}-{day:02d}  "
-                  f"{hour:02d}:{minute:02d}:{second:02d}.{nano // 1000000:03d} UTC")
+            nano = gnss.getNanosecond()
+            print(
+                f"{year:04d}-{month:02d}-{day:02d}  "
+                f"{hour:02d}:{minute:02d}:{second:02d}.{nano // 1000000:03d} UTC"
+            )
         else:
             print("Date/time not yet valid")
     else:

@@ -3,16 +3,16 @@
 # BRIEF: MicroPython driver for LMP91000 analog frontend (helper for ElectrochemicalGasSensor)
 # LAST UPDATED: 2026-05-21
 
-_LMP_ADDR        = 0x48
-_STATUS_REG      = 0x00
-_LOCK_REG        = 0x01
-_TIACN_REG       = 0x10
-_REFCN_REG       = 0x11
-_MODECN_REG      = 0x12
+_LMP_ADDR = 0x48
+_STATUS_REG = 0x00
+_LOCK_REG = 0x01
+_TIACN_REG = 0x10
+_REFCN_REG = 0x11
+_MODECN_REG = 0x12
 
-_WRITE_LOCK      = 0x01
-_WRITE_UNLOCK    = 0x00
-_READY           = 0x01
+_WRITE_LOCK = 0x01
+_WRITE_UNLOCK = 0x00
+_READY = 0x01
 
 
 class LMP91000:

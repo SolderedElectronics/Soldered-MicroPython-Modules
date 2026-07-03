@@ -16,7 +16,9 @@ ANALOG_PIN = 34  # ESP32 default
 sensor = MQ135(analog_pin=ANALOG_PIN)
 
 print("MQ135 - Calibration")
-print("Note: make sure you are in clean air and the sensor has been pre-heating for ~24 hours")
+print(
+    "Note: make sure you are in clean air and the sensor has been pre-heating for ~24 hours"
+)
 print("Counter | R0 value")
 
 counter = 1

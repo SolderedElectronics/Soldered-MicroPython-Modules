@@ -11,62 +11,64 @@ import time
 HUSB238_ADDRESS = 0x08
 
 # Register map
-HUSB238_REG_PD_STATUS0  = 0x00
-HUSB238_REG_PD_STATUS1  = 0x01
-HUSB238_REG_SRC_PDO_5V  = 0x02
-HUSB238_REG_SRC_PDO_9V  = 0x03
+HUSB238_REG_PD_STATUS0 = 0x00
+HUSB238_REG_PD_STATUS1 = 0x01
+HUSB238_REG_SRC_PDO_5V = 0x02
+HUSB238_REG_SRC_PDO_9V = 0x03
 HUSB238_REG_SRC_PDO_12V = 0x04
 HUSB238_REG_SRC_PDO_15V = 0x05
 HUSB238_REG_SRC_PDO_18V = 0x06
 HUSB238_REG_SRC_PDO_20V = 0x07
-HUSB238_REG_SRC_PDO     = 0x08
-HUSB238_REG_GO_COMMAND  = 0x09
+HUSB238_REG_SRC_PDO = 0x08
+HUSB238_REG_GO_COMMAND = 0x09
 
 # GO_COMMAND values
 HUSB238_CMD_REQUEST_PDO = 0x01
-HUSB238_CMD_HARD_RESET  = 0x10
+HUSB238_CMD_HARD_RESET = 0x10
 
 ###########################
 # Voltage codes           #
 # (status read side, PD_STATUS0[7:4], sequential)
 ###########################
 HUSB238_VOLTAGE_UNATTACHED = 0
-HUSB238_VOLTAGE_5V         = 1
-HUSB238_VOLTAGE_9V         = 2
-HUSB238_VOLTAGE_12V        = 3
-HUSB238_VOLTAGE_15V        = 4
-HUSB238_VOLTAGE_18V        = 5
-HUSB238_VOLTAGE_20V        = 6
+HUSB238_VOLTAGE_5V = 1
+HUSB238_VOLTAGE_9V = 2
+HUSB238_VOLTAGE_12V = 3
+HUSB238_VOLTAGE_15V = 4
+HUSB238_VOLTAGE_18V = 5
+HUSB238_VOLTAGE_20V = 6
 
 ###########################
 # PD select codes         #
 # (request side, SRC_PDO[7:4], NOT sequential on this chip)
 ###########################
 HUSB238_PD_SEL_NONE = 0b0000
-HUSB238_PD_SEL_5V   = 0b0001
-HUSB238_PD_SEL_9V   = 0b0010
-HUSB238_PD_SEL_12V  = 0b0011
-HUSB238_PD_SEL_15V  = 0b1000
-HUSB238_PD_SEL_18V  = 0b1001
-HUSB238_PD_SEL_20V  = 0b1010
+HUSB238_PD_SEL_5V = 0b0001
+HUSB238_PD_SEL_9V = 0b0010
+HUSB238_PD_SEL_12V = 0b0011
+HUSB238_PD_SEL_15V = 0b1000
+HUSB238_PD_SEL_18V = 0b1001
+HUSB238_PD_SEL_20V = 0b1010
 
 ###########################
 # PD response codes       #
 # (PD_STATUS1[5:3], chip's response to last GO_COMMAND request)
 ###########################
-HUSB238_RESPONSE_NONE              = 0b000
-HUSB238_RESPONSE_SUCCESS           = 0b001
-HUSB238_RESPONSE_INVALID_CMD       = 0b011
-HUSB238_RESPONSE_NOT_SUPPORTED     = 0b100
-HUSB238_RESPONSE_TRANSACTION_FAIL  = 0b101
+HUSB238_RESPONSE_NONE = 0b000
+HUSB238_RESPONSE_SUCCESS = 0b001
+HUSB238_RESPONSE_INVALID_CMD = 0b011
+HUSB238_RESPONSE_NOT_SUPPORTED = 0b100
+HUSB238_RESPONSE_TRANSACTION_FAIL = 0b101
 
 ###########################
 # requestPD() outcomes    #
 ###########################
-HUSB238_REQUEST_OK                  = "OK"                   # source switched voltage successfully
-HUSB238_REQUEST_UNSUPPORTED_VOLTAGE = "UNSUPPORTED_VOLTAGE"   # voltage not one of 5/9/12/15/18/20
-HUSB238_REQUEST_NOT_OFFERED         = "NOT_OFFERED"           # source does not advertise this voltage
-HUSB238_REQUEST_REJECTED            = "REJECTED"              # source rejected the request
+HUSB238_REQUEST_OK = "OK"  # source switched voltage successfully
+HUSB238_REQUEST_UNSUPPORTED_VOLTAGE = (
+    "UNSUPPORTED_VOLTAGE"  # voltage not one of 5/9/12/15/18/20
+)
+HUSB238_REQUEST_NOT_OFFERED = "NOT_OFFERED"  # source does not advertise this voltage
+HUSB238_REQUEST_REJECTED = "REJECTED"  # source rejected the request
 
 
 class HUSB238:

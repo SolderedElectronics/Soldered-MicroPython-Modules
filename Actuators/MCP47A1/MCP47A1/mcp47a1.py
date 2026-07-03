@@ -8,6 +8,7 @@ from os import uname
 
 MCP47A1_I2C_ADDR = 0x2E
 
+
 class MCP47A1:
     """
     MicroPython class for the MCP47A1 DAC.
@@ -29,24 +30,22 @@ class MCP47A1:
                 self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
             else:
                 raise Exception("Board not recognized, enter I2C pins manually")
-        
+
         self.address = address
 
-
     def writeByte(self, val):
-      """
-      Set voltage at with digital word (byte).
+        """
+        Set voltage at with digital word (byte).
 
-      :param val: DAC digital word (byte) in range from 0 to 64
-      """
-      try:
-          buf = bytes([0x00, int(val)])
-          self.i2c.writeto(self.address, buf)
-          return True
-      except Exception as e:
-          print("Write error:", e)
-          return False
-
+        :param val: DAC digital word (byte) in range from 0 to 64
+        """
+        try:
+            buf = bytes([0x00, int(val)])
+            self.i2c.writeto(self.address, buf)
+            return True
+        except Exception as e:
+            print("Write error:", e)
+            return False
 
     def readByte(self):
         """
@@ -77,13 +76,13 @@ class MCP47A1:
     def dacVcc(self, vcc):
         """
         Set supply voltage of DAC (needed for calculation).
-        
-        Use if only if you are VCC pin instead of easyC connector. 
+
+        Use if only if you are VCC pin instead of easyC connector.
         Default value is 3.3V (easyC * voltage).
 
         :param vcc: Supply voltage of DAC (in range from 1.8V to 5.5V)
         """
-        if (vcc > 5 or vcc < 1.8):
+        if vcc > 5 or vcc < 1.8:
             return
         self.dacSupply = vcc
 

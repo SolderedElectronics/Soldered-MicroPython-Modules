@@ -29,6 +29,6 @@ print("Reading AIN0(+) vs AIN1(-)")
 
 while True:
     raw = adc.readADC_Differential_0_1()
-    v   = adc.toVoltage(raw)
+    v = adc.toVoltage(raw)
     print("Diff 0-1: raw={:6d}  voltage={:.4f} V".format(raw, v))
     time.sleep_ms(500)

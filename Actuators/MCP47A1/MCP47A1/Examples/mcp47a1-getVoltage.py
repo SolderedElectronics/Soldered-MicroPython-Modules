@@ -1,6 +1,6 @@
 # FILE: mcp47a1-getVoltage.py
 # AUTHOR: Fran Fodor @ Soldered
-# BRIEF: This example sets desired voltage on DACs output and then reads set voltage from DAC and prints it. 
+# BRIEF: This example sets desired voltage on DACs output and then reads set voltage from DAC and prints it.
 #        You can use a voltmeter to measure volttage on DACs output.
 # WORKS WITH: DAC 6-Bit 1-Channel MCP47A1 Breakout: www.solde.red/333052
 # LAST UPDATED: 2026-04-29
@@ -15,8 +15,10 @@ from mcp47a1 import MCP47A1
 # Initialize DAC over Qwiic
 mcp47a1 = MCP47A1()
 
+
 def printVoltage(v):
     print("DAC output: {:.2f} V".format(v))
+
 
 while True:
     mcp47a1.setVoltage(0)

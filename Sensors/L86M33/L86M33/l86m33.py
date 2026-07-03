@@ -29,7 +29,7 @@ def _atol(term):
     if not term:
         return 0
     i = 0
-    negative = term[0] == '-'
+    negative = term[0] == "-"
     if negative:
         i = 1
     j = i
@@ -45,18 +45,18 @@ def _parse_decimal(term):
     """Parse a (potentially negative) number with up to 2 decimal digits (-xxxx.yy) into value*100."""
     if not term:
         return 0
-    negative = term[0] == '-'
+    negative = term[0] == "-"
     start = 1 if negative else 0
     i = start
     while i < len(term) and term[i].isdigit():
         i += 1
     ret = 100 * (int(term[start:i]) if i > start else 0)
-    if i < len(term) and term[i] == '.':
-        frac = term[i + 1:]
+    if i < len(term) and term[i] == ".":
+        frac = term[i + 1 :]
         if len(frac) >= 1 and frac[0].isdigit():
-            ret += 10 * (ord(frac[0]) - ord('0'))
+            ret += 10 * (ord(frac[0]) - ord("0"))
             if len(frac) >= 2 and frac[1].isdigit():
-                ret += ord(frac[1]) - ord('0')
+                ret += ord(frac[1]) - ord("0")
     return -ret if negative else ret
 
 
@@ -75,11 +75,11 @@ def _parse_degrees(term, deg):
     multiplier = 10000000
     ten_millionths_of_minutes = minutes * multiplier
     deg.deg = left_of_decimal // 100
-    if i < len(term) and term[i] == '.':
+    if i < len(term) and term[i] == ".":
         j = i + 1
         while j < len(term) and term[j].isdigit():
             multiplier //= 10
-            ten_millionths_of_minutes += (ord(term[j]) - ord('0')) * multiplier
+            ten_millionths_of_minutes += (ord(term[j]) - ord("0")) * multiplier
             j += 1
     deg.billionths = (5 * ten_millionths_of_minutes + 1) // 3
     deg.negative = False
@@ -517,13 +517,29 @@ class GNSS:
         :param course: float, course in degrees
         :returns: str, e.g. "N", "NNE", "NE", ...
         """
-        directions = ("N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
-                      "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW")
+        directions = (
+            "N",
+            "NNE",
+            "NE",
+            "ENE",
+            "E",
+            "ESE",
+            "SE",
+            "SSE",
+            "S",
+            "SSW",
+            "SW",
+            "WSW",
+            "W",
+            "WNW",
+            "NW",
+            "NNW",
+        )
         direction = int((course + 11.25) / 22.5)
         return directions[direction % 16]
 
     def _onTermComplete(self, c):
-        term = ''.join(self._term_chars)
+        term = "".join(self._term_chars)
         is_valid_sentence = self._endOfTermHandler(term)
         self._cur_term_number += 1
         self._term_chars = []
@@ -573,15 +589,23 @@ class GNSS:
             if n == 1:  # time, both sentence types
                 self.time.setTime(term)
             elif t == _SENTENCE_GPRMC and n == 2:  # GPRMC validity
-                self._sentence_has_fix = term[0] == 'A'
-            elif (t == _SENTENCE_GPRMC and n == 3) or (t == _SENTENCE_GPGGA and n == 2):  # latitude
+                self._sentence_has_fix = term[0] == "A"
+            elif (t == _SENTENCE_GPRMC and n == 3) or (
+                t == _SENTENCE_GPGGA and n == 2
+            ):  # latitude
                 self.location.setLatitude(term)
-            elif (t == _SENTENCE_GPRMC and n == 4) or (t == _SENTENCE_GPGGA and n == 3):  # N/S
-                self.location.raw_new_lat.negative = term[0] == 'S'
-            elif (t == _SENTENCE_GPRMC and n == 5) or (t == _SENTENCE_GPGGA and n == 4):  # longitude
+            elif (t == _SENTENCE_GPRMC and n == 4) or (
+                t == _SENTENCE_GPGGA and n == 3
+            ):  # N/S
+                self.location.raw_new_lat.negative = term[0] == "S"
+            elif (t == _SENTENCE_GPRMC and n == 5) or (
+                t == _SENTENCE_GPGGA and n == 4
+            ):  # longitude
                 self.location.setLongitude(term)
-            elif (t == _SENTENCE_GPRMC and n == 6) or (t == _SENTENCE_GPGGA and n == 5):  # E/W
-                self.location.raw_new_lng.negative = term[0] == 'W'
+            elif (t == _SENTENCE_GPRMC and n == 6) or (
+                t == _SENTENCE_GPGGA and n == 5
+            ):  # E/W
+                self.location.raw_new_lng.negative = term[0] == "W"
             elif t == _SENTENCE_GPRMC and n == 7:  # speed
                 self.speed.set(term)
             elif t == _SENTENCE_GPRMC and n == 8:  # course
@@ -589,7 +613,7 @@ class GNSS:
             elif t == _SENTENCE_GPRMC and n == 9:  # date
                 self.date.setDate(term)
             elif t == _SENTENCE_GPGGA and n == 6:  # fix quality
-                self._sentence_has_fix = term[0] > '0'
+                self._sentence_has_fix = term[0] > "0"
             elif t == _SENTENCE_GPGGA and n == 7:  # satellites used
                 self.satellites.set(term)
             elif t == _SENTENCE_GPGGA and n == 8:  # HDOP
@@ -601,23 +625,23 @@ class GNSS:
 
     @staticmethod
     def _fromHex(a):
-        if 'A' <= a <= 'F':
-            return ord(a) - ord('A') + 10
-        elif 'a' <= a <= 'f':
-            return ord(a) - ord('a') + 10
+        if "A" <= a <= "F":
+            return ord(a) - ord("A") + 10
+        elif "a" <= a <= "f":
+            return ord(a) - ord("a") + 10
         else:
-            return ord(a) - ord('0')
+            return ord(a) - ord("0")
 
     def _sendChecksum(self, s):
         checksum = 0
         for ch in s[1:]:
             checksum ^= ord(ch)
         checksum &= 0xFF
-        self.uart.write('*')
+        self.uart.write("*")
         self.uart.write(self._intToHexChar(checksum // 16))
         self.uart.write(self._intToHexChar(checksum % 16))
-        self.uart.write('\r\n')
+        self.uart.write("\r\n")
 
     @staticmethod
     def _intToHexChar(c):
-        return chr(ord('A') + (c - 10)) if c >= 10 else chr(ord('0') + c)
+        return chr(ord("A") + (c - 10)) if c >= 10 else chr(ord("0") + c)

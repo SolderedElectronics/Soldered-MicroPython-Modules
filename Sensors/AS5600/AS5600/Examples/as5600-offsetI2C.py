@@ -15,7 +15,9 @@ while not sensor.magnetDetected():
 
 while True:
     sensor.setOffset(0)  # Reset the offset to 0
-    print("Measurement without offset:\t{:.2f}".format(sensor.rawAngle() * RAW_TO_DEGREES))
+    print(
+        "Measurement without offset:\t{:.2f}".format(sensor.rawAngle() * RAW_TO_DEGREES)
+    )
 
     sensor.setOffset(45)  # Set offset to 45 degrees
     print("Measurement with offset:\t{:.2f}".format(sensor.rawAngle() * RAW_TO_DEGREES))

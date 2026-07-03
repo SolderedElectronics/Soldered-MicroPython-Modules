@@ -41,7 +41,7 @@ print("Temperature offset after: ", round(sensor.getTemperatureOffset(), 2), "C"
 
 # --- Sensor altitude ---
 print("Sensor altitude before:", sensor.getSensorAltitude(), "m")
-sensor.setSensorAltitude(150)     # set to your installation altitude in metres
+sensor.setSensorAltitude(150)  # set to your installation altitude in metres
 print("Sensor altitude after: ", sensor.getSensorAltitude(), "m")
 
 # --- Ambient pressure (overrides altitude-based compensation) ---

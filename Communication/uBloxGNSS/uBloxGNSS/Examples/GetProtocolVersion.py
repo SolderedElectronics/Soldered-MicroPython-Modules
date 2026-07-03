@@ -17,7 +17,7 @@ if not gnss.begin(i2c):
 print("u-blox GNSS ready.\n")
 
 high = gnss.getProtocolVersionHigh()
-low  = gnss.getProtocolVersionLow()
+low = gnss.getProtocolVersionLow()
 
 if high is not None:
     print(f"Protocol version: {high}.{low:02d}")

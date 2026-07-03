@@ -5,7 +5,12 @@
 
 from machine import I2C, Pin
 import time
-from gnss_ublox import SolderedGNSS, DYN_MODEL_PORTABLE, DYN_MODEL_PEDESTRIAN, DYN_MODEL_AUTOMOTIVE
+from gnss_ublox import (
+    SolderedGNSS,
+    DYN_MODEL_PORTABLE,
+    DYN_MODEL_PEDESTRIAN,
+    DYN_MODEL_AUTOMOTIVE,
+)
 
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 gnss = SolderedGNSS()

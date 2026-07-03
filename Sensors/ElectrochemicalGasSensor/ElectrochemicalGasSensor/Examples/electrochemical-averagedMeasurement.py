@@ -15,7 +15,7 @@ import time
 from ElectrochemicalGasSensor import ElectrochemicalGasSensor, SENSOR_O3
 
 # How many readings to average and how many seconds to wait between them
-NUM_READINGS          = 5
+NUM_READINGS = 5
 SECS_BETWEEN_READINGS = 3
 
 # Initialize I2C

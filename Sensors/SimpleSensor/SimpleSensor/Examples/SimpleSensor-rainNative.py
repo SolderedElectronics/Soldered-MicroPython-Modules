@@ -26,6 +26,9 @@ while True:
     value = sensor.getValue()
     raining = sensor.isRaining()
 
-    print("Raw: {:4d}  Resistance: {:8.1f} Ohm  Rain%: {:6.2f}%  Raining: {}".format(
-        raw, resistance, value, raining))
+    print(
+        "Raw: {:4d}  Resistance: {:8.1f} Ohm  Rain%: {:6.2f}%  Raining: {}".format(
+            raw, resistance, value, raining
+        )
+    )
     time.sleep(1)

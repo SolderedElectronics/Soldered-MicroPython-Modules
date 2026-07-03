@@ -18,7 +18,7 @@ BATTERY_CAPACITY = 600
 
 SOCI_SET = 15  # Interrupt set threshold at 15%
 SOCI_CLR = 20  # Interrupt clear threshold at 20%
-SOCF_SET = 5   # Final threshold set at 5%
+SOCF_SET = 5  # Final threshold set at 5%
 SOCF_CLR = 10  # Final threshold clear at 10%
 
 # Pin connected to BQ27441's GPOUT pin
@@ -47,12 +47,12 @@ def setup_bq27441():
     # In this example we manually enter and exit config mode. By controlling
     # config mode manually, you can set the chip up faster -- completing all
     # of the setup in a single config mode sweep.
-    lipo.enterConfig()                              # Must be in config mode to set values below
-    lipo.setCapacity(BATTERY_CAPACITY)              # Set the battery capacity
-    lipo.setGPOUTPolarity(False)                    # Set GPOUT to active-low
-    lipo.setGPOUTFunction(BAT_LOW)                  # Set GPOUT to BAT_LOW mode
-    lipo.setSOC1Thresholds(SOCI_SET, SOCI_CLR)     # Set SOCI set and clear thresholds
-    lipo.setSOCFThresholds(SOCF_SET, SOCF_CLR)     # Set SOCF set and clear thresholds
+    lipo.enterConfig()  # Must be in config mode to set values below
+    lipo.setCapacity(BATTERY_CAPACITY)  # Set the battery capacity
+    lipo.setGPOUTPolarity(False)  # Set GPOUT to active-low
+    lipo.setGPOUTFunction(BAT_LOW)  # Set GPOUT to BAT_LOW mode
+    lipo.setSOC1Thresholds(SOCI_SET, SOCI_CLR)  # Set SOCI set and clear thresholds
+    lipo.setSOCFThresholds(SOCF_SET, SOCF_CLR)  # Set SOCF set and clear thresholds
     lipo.exitConfig()
 
     # Read back from the chip to confirm the changes
@@ -73,17 +73,19 @@ def setup_bq27441():
 
 
 def print_battery_stats():
-    soc          = lipo.soc()              # Read state-of-charge (%)
-    volts        = lipo.voltage()          # Read battery voltage (mV)
-    current      = lipo.current(AVG)      # Read average current (mA)
-    full_cap     = lipo.capacity(FULL)    # Read full capacity (mAh)
-    capacity     = lipo.capacity(REMAIN)  # Read remaining capacity (mAh)
-    pwr          = lipo.power()            # Read average power draw (mW)
-    health       = lipo.soh()             # Read state-of-health (%)
+    soc = lipo.soc()  # Read state-of-charge (%)
+    volts = lipo.voltage()  # Read battery voltage (mV)
+    current = lipo.current(AVG)  # Read average current (mA)
+    full_cap = lipo.capacity(FULL)  # Read full capacity (mAh)
+    capacity = lipo.capacity(REMAIN)  # Read remaining capacity (mAh)
+    pwr = lipo.power()  # Read average power draw (mW)
+    health = lipo.soh()  # Read state-of-health (%)
 
-    print("{}% | {} mV | {} mA | {}/{} mAh | {} mW | {}% | flags: 0x{:04X}".format(
-        soc, volts, current, capacity, full_cap, pwr, health, lipo.flags()
-    ))
+    print(
+        "{}% | {} mV | {} mA | {}/{} mAh | {} mW | {}% | flags: 0x{:04X}".format(
+            soc, volts, current, capacity, full_cap, pwr, health, lipo.flags()
+        )
+    )
 
 
 # Run setup

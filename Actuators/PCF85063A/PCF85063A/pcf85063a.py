@@ -94,13 +94,13 @@ class PCF85063A:
         """
         data = self.i2c.readfrom_mem(self.address, PCF85063A_SECOND_ADDR, 7)
 
-        second  = bcd_to_dec(data[0] & 0x7F)
-        minute  = bcd_to_dec(data[1] & 0x7F)
-        hour    = bcd_to_dec(data[2] & 0x3F)
-        day     = bcd_to_dec(data[3] & 0x3F)
+        second = bcd_to_dec(data[0] & 0x7F)
+        minute = bcd_to_dec(data[1] & 0x7F)
+        hour = bcd_to_dec(data[2] & 0x3F)
+        day = bcd_to_dec(data[3] & 0x3F)
         weekday = bcd_to_dec(data[4] & 0x07)
-        month   = bcd_to_dec(data[5] & 0x1F)
-        year    = bcd_to_dec(data[6]) + 1970
+        month = bcd_to_dec(data[5] & 0x1F)
+        year = bcd_to_dec(data[6]) + 1970
 
         return (year, month, day, weekday, hour, minute, second)
 
@@ -118,15 +118,17 @@ class PCF85063A:
         """
         year_rtc = year - 1970
 
-        data = bytes([
-            dec_to_bcd(second),
-            dec_to_bcd(minute),
-            dec_to_bcd(hour),
-            dec_to_bcd(day),
-            dec_to_bcd(weekday),
-            dec_to_bcd(month),
-            dec_to_bcd(year_rtc)
-        ])
+        data = bytes(
+            [
+                dec_to_bcd(second),
+                dec_to_bcd(minute),
+                dec_to_bcd(hour),
+                dec_to_bcd(day),
+                dec_to_bcd(weekday),
+                dec_to_bcd(month),
+                dec_to_bcd(year_rtc),
+            ]
+        )
 
         self.i2c.writeto_mem(self.address, PCF85063A_SECOND_ADDR, data)
 
@@ -188,7 +190,9 @@ class PCF85063A:
 
     # ---- alarm ----
 
-    def set_alarm(self, alarm_second, alarm_minute, alarm_hour, alarm_day, alarm_weekday):
+    def set_alarm(
+        self, alarm_second, alarm_minute, alarm_hour, alarm_day, alarm_weekday
+    ):
         """
         Configure the alarm and enable the alarm interrupt on the INT pin.
 
@@ -201,6 +205,7 @@ class PCF85063A:
         :param alarm_day: Day of month to match (1-31), or 99 to ignore
         :param alarm_weekday: Day of week to match (0=Sunday, 6=Saturday), or 99 to ignore
         """
+
         def encode_alarm(val, min_val, max_val):
             if val < 99:
                 val = max(min_val, min(val, max_val))
@@ -213,13 +218,15 @@ class PCF85063A:
         control_2 &= ~PCF85063A_ALARM_AF
         self.i2c.writeto_mem(self.address, PCF85063A_CTRL_2, bytes([control_2]))
 
-        data = bytes([
-            encode_alarm(alarm_second,  0, 59),
-            encode_alarm(alarm_minute,  0, 59),
-            encode_alarm(alarm_hour,    0, 23),
-            encode_alarm(alarm_day,     1, 31),
-            encode_alarm(alarm_weekday, 0,  6),
-        ])
+        data = bytes(
+            [
+                encode_alarm(alarm_second, 0, 59),
+                encode_alarm(alarm_minute, 0, 59),
+                encode_alarm(alarm_hour, 0, 23),
+                encode_alarm(alarm_day, 1, 31),
+                encode_alarm(alarm_weekday, 0, 6),
+            ]
+        )
 
         self.i2c.writeto_mem(self.address, PCF85063A_SECOND_ALARM, data)
 
@@ -232,6 +239,7 @@ class PCF85063A:
         :return: Tuple (alarm_day, alarm_weekday, alarm_hour, alarm_minute, alarm_second)
                  Any field set to 99 is not active in the alarm match.
         """
+
         def decode_alarm(val, mask):
             if val & PCF85063A_ALARM:
                 return 99
@@ -239,10 +247,10 @@ class PCF85063A:
 
         data = self.i2c.readfrom_mem(self.address, PCF85063A_SECOND_ALARM, 5)
 
-        alarm_second  = decode_alarm(data[0], 0x7F)
-        alarm_minute  = decode_alarm(data[1], 0x7F)
-        alarm_hour    = decode_alarm(data[2], 0x3F)
-        alarm_day     = decode_alarm(data[3], 0x3F)
+        alarm_second = decode_alarm(data[0], 0x7F)
+        alarm_minute = decode_alarm(data[1], 0x7F)
+        alarm_hour = decode_alarm(data[2], 0x3F)
+        alarm_day = decode_alarm(data[3], 0x3F)
         alarm_weekday = decode_alarm(data[4], 0x07)
 
         return (alarm_day, alarm_weekday, alarm_hour, alarm_minute, alarm_second)
@@ -323,15 +331,15 @@ class PCF85063A:
 
         # Build timer mode register
         timer_mode = 0
-        timer_mode |= PCF85063A_TIMER_TE          # enable timer
+        timer_mode |= PCF85063A_TIMER_TE  # enable timer
 
         if int_enable:
-            timer_mode |= PCF85063A_TIMER_TIE     # interrupt enable
+            timer_mode |= PCF85063A_TIMER_TIE  # interrupt enable
 
         if int_pulse:
-            timer_mode |= PCF85063A_TIMER_TI_TP   # pulse mode
+            timer_mode |= PCF85063A_TIMER_TI_TP  # pulse mode
 
-        timer_mode |= (source_clock << 3)         # clock source
+        timer_mode |= source_clock << 3  # clock source
 
         data = bytes([value, timer_mode])
         self.i2c.writeto_mem(self.address, PCF85063A_TIMER_VAL, data)

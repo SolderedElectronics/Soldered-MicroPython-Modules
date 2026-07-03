@@ -7,22 +7,22 @@
 
 from machine import SPI, Pin
 import time
-from max7219 import (MAX7219, PAROLA_HW, GENERIC_HW,
-                         INTENSITY, ON, OFF, TSL)
+from max7219 import MAX7219, PAROLA_HW, GENERIC_HW, INTENSITY, ON, OFF, TSL
 
 # -------------------------------------------------------------------------
 # Configuration — adjust these for your hardware
 # -------------------------------------------------------------------------
-NUM_DEVICES = 3          # Number of 8x8 modules daisy-chained
-CS_PIN      = 5          # Chip select GPIO pin  (LOAD)
+NUM_DEVICES = 3  # Number of 8x8 modules daisy-chained
+CS_PIN = 5  # Chip select GPIO pin  (LOAD)
 MODULE_TYPE = PAROLA_HW  # Parola hardware modules
- 
+
 # -------------------------------------------------------------------------
 # Initialize SPI and the display
 # -------------------------------------------------------------------------
-spi = SPI(1, baudrate=8_000_000, polarity=0, phase=0,
-          sck=Pin(18), mosi=Pin(23))   # CLK_PIN=18 (SCK), DATA_PIN=23 (MOSI)
-cs  = Pin(CS_PIN, Pin.OUT, value=1)
+spi = SPI(
+    1, baudrate=8_000_000, polarity=0, phase=0, sck=Pin(18), mosi=Pin(23)
+)  # CLK_PIN=18 (SCK), DATA_PIN=23 (MOSI)
+cs = Pin(CS_PIN, Pin.OUT, value=1)
 
 mx = MAX7219(MODULE_TYPE, spi, cs, NUM_DEVICES)
 
@@ -40,10 +40,12 @@ SMILEY = [
     0b00111100,  # col 7
 ]
 
+
 def draw_smiley():
     mx.clear()
     for col, val in enumerate(SMILEY):
-        mx.setColumn(0, col, val)   # device 0, columns 0-7
+        mx.setColumn(0, col, val)  # device 0, columns 0-7
+
 
 def draw_checkerboard():
     mx.clear()
@@ -51,6 +53,7 @@ def draw_checkerboard():
         for r in range(8):
             # Alternating bits per row, inverted every row
             mx.setRow(dev, r, 0xAA if r % 2 == 0 else 0x55)
+
 
 # -------------------------------------------------------------------------
 # Setup
@@ -99,8 +102,8 @@ time.sleep(1)
 # -------------------------------------------------------------------------
 # Demo 5: Scrolling text — loops forever
 # -------------------------------------------------------------------------
-MESSAGE     = "Hello from MicroPython!"
-SCROLL_DELAY = 40   # ms per column shift — lower = faster
+MESSAGE = "Hello from MicroPython!"
+SCROLL_DELAY = 40  # ms per column shift — lower = faster
 
 print("Scrolling: '{}'".format(MESSAGE))
 print("(loops forever — press Ctrl+C to stop)")

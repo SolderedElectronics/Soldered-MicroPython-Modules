@@ -26,10 +26,10 @@ ledOn = [[False] * 4 for _ in range(4)]
 
 # Colors per row (R, G, B)
 rowColor = [
-    (255,   0,   0),  # row 0 — red
-    (  0, 255,   0),  # row 1 — green
-    (  0,   0, 255),  # row 2 — blue
-    (255, 128,   0),  # row 3 — orange
+    (255, 0, 0),  # row 0 — red
+    (0, 255, 0),  # row 1 — green
+    (0, 0, 255),  # row 2 — blue
+    (255, 128, 0),  # row 3 — orange
 ]
 
 # Previous pad state per [row][col] for edge detection
@@ -49,8 +49,11 @@ while True:
                 else:
                     grid.setLED(row, col, 0, 0, 0, 255)
 
-                print("Button (row {}, col {}) → LED {}".format(
-                    row, col, "ON" if ledOn[row][col] else "OFF"))
+                print(
+                    "Button (row {}, col {}) → LED {}".format(
+                        row, col, "ON" if ledOn[row][col] else "OFF"
+                    )
+                )
 
             prevState[row][col] = pressed
 

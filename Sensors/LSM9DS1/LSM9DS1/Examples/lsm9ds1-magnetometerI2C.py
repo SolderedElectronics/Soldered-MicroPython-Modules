@@ -15,8 +15,9 @@ print("X\tY\tZ")
 while True:
     if imu.magAvailable():
         imu.readMag()
-        print("{:.4f}\t{:.4f}\t{:.4f}".format(
-            imu.calcMag(imu.mx),
-            imu.calcMag(imu.my),
-            imu.calcMag(imu.mz)))
+        print(
+            "{:.4f}\t{:.4f}\t{:.4f}".format(
+                imu.calcMag(imu.mx), imu.calcMag(imu.my), imu.calcMag(imu.mz)
+            )
+        )
     time.sleep_ms(10)

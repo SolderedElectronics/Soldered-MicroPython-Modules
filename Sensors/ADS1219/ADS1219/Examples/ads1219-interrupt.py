@@ -24,9 +24,11 @@ adc = ADS1219(i2c)
 
 interrupt_seen = False
 
+
 def data_ready_isr(pin):
     global interrupt_seen
     interrupt_seen = True
+
 
 while not adc.begin():
     print("ADS1219 not found. Check wiring! Retrying...")

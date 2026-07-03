@@ -36,13 +36,13 @@ lipo.exitConfig()
 
 
 def print_battery_stats():
-    soc      = lipo.soc(FILTERED)    # Read state-of-charge (%)
-    volts    = lipo.voltage()         # Read battery voltage (mV)
-    current  = lipo.current(AVG)     # Read average current (mA)
-    full_cap = lipo.capacity(FULL)   # Read full capacity (mAh)
-    capacity = lipo.capacity(REMAIN) # Read remaining capacity (mAh)
-    pwr      = lipo.power()           # Read average power draw (mW)
-    health   = lipo.soh()            # Read state-of-health (%)
+    soc = lipo.soc(FILTERED)  # Read state-of-charge (%)
+    volts = lipo.voltage()  # Read battery voltage (mV)
+    current = lipo.current(AVG)  # Read average current (mA)
+    full_cap = lipo.capacity(FULL)  # Read full capacity (mAh)
+    capacity = lipo.capacity(REMAIN)  # Read remaining capacity (mAh)
+    pwr = lipo.power()  # Read average power draw (mW)
+    health = lipo.soh()  # Read state-of-health (%)
 
     print("SOC:      {}%".format(soc))
     print("Voltage:  {} mV".format(volts))

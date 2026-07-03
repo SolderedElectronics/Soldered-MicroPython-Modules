@@ -19,19 +19,23 @@ countdown_time = 5  # seconds
 print("Now is:")
 rtc.set_time(0, 54, 6, 6, 16, 5, 2020)
 
+
 def print_current_time():
     year, month, day, weekday, hour, minute, second = rtc.get_time()
 
     weekdays = [
-        "Sunday", "Monday", "Tuesday", "Wednesday",
-        "Thursday", "Friday", "Saturday"
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
     ]
 
     print(
         "{} , {:02d}.{:02d}.{:04d} {:02d}:{:02d}:{:02d}".format(
-            weekdays[weekday],
-            day, month, year,
-            hour, minute, second
+            weekdays[weekday], day, month, year, hour, minute, second
         )
     )
 
@@ -39,17 +43,10 @@ def print_current_time():
 while True:
     print_current_time()
 
-    print(
-        "Setting timer countdown, waking up in",
-        countdown_time,
-        "seconds."
-    )
+    print("Setting timer countdown, waking up in", countdown_time, "seconds.")
 
     rtc.set_timer(
-        PCF85063A_TIMER_CLOCK_1HZ,
-        countdown_time,
-        int_enable=False,
-        int_pulse=False
+        PCF85063A_TIMER_CLOCK_1HZ, countdown_time, int_enable=False, int_pulse=False
     )
 
     print("Waiting for a countdown")

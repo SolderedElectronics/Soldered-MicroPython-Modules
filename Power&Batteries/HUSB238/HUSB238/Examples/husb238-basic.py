@@ -13,8 +13,11 @@ husb238 = HUSB238(i2c)
 
 while True:
     if husb238.isAttached():
-        print("Attached, voltage: {} V, current: {} A".format(
-            husb238.getPDSrcVoltage(), husb238.getPDSrcCurrent()))
+        print(
+            "Attached, voltage: {} V, current: {} A".format(
+                husb238.getPDSrcVoltage(), husb238.getPDSrcCurrent()
+            )
+        )
     else:
         print("Not attached")
 

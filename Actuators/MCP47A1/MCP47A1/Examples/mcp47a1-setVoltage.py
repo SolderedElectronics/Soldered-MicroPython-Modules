@@ -15,8 +15,10 @@ from mcp47a1 import MCP47A1
 # Initialize DAC over Qwiic
 mcp47a1 = MCP47A1()
 
+
 def printVoltage(v):
     print("DAC output: {:.2f} V".format(v))
+
 
 while True:
     mcp47a1.setVoltage(0)

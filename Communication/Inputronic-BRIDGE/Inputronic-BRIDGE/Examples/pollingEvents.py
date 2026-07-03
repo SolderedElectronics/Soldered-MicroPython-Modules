@@ -34,8 +34,11 @@ while True:
 
     if events.mouse.valid:
         m = events.mouse
-        print("Mouse X:{} Y:{} L:{} R:{} Scroll:{}".format(
-            m.x, m.y, int(m.btnLeft), int(m.btnRight), m.scroll))
+        print(
+            "Mouse X:{} Y:{} L:{} R:{} Scroll:{}".format(
+                m.x, m.y, int(m.btnLeft), int(m.btnRight), m.scroll
+            )
+        )
 
     if events.midi.valid:
         mid = events.midi

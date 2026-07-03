@@ -10,7 +10,7 @@
 import neopixel
 from machine import Pin
 
-WS2812GRID_DEFAULT_WIDTH  = 8
+WS2812GRID_DEFAULT_WIDTH = 8
 WS2812GRID_DEFAULT_HEIGHT = 8
 
 
@@ -32,7 +32,9 @@ class WS2812Grid:
         grid.show()
     """
 
-    def __init__(self, pin, width=WS2812GRID_DEFAULT_WIDTH, height=WS2812GRID_DEFAULT_HEIGHT):
+    def __init__(
+        self, pin, width=WS2812GRID_DEFAULT_WIDTH, height=WS2812GRID_DEFAULT_HEIGHT
+    ):
         """
         Initialize the WS2812B grid driver.
 

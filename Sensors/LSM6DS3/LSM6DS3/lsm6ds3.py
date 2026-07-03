@@ -106,12 +106,28 @@ _CONFIG_PEDO_THS_MIN = 0x0F
 _XL_ODR_STEPS = (13, 26, 52, 104, 208, 416, 833, 1660, 3330, 6660)
 _G_ODR_STEPS = (13, 26, 52, 104, 208, 416, 833, 1660)
 _ODR_XL_MAP = {
-    0: 0x00, 13: 0x10, 26: 0x20, 52: 0x30, 104: 0x40,
-    208: 0x50, 416: 0x60, 833: 0x70, 1660: 0x80, 3330: 0x90, 6660: 0xA0,
+    0: 0x00,
+    13: 0x10,
+    26: 0x20,
+    52: 0x30,
+    104: 0x40,
+    208: 0x50,
+    416: 0x60,
+    833: 0x70,
+    1660: 0x80,
+    3330: 0x90,
+    6660: 0xA0,
 }
 _ODR_G_MAP = {
-    0: 0x00, 13: 0x10, 26: 0x20, 52: 0x30, 104: 0x40,
-    208: 0x50, 416: 0x60, 833: 0x70, 1660: 0x80,
+    0: 0x00,
+    13: 0x10,
+    26: 0x20,
+    52: 0x30,
+    104: 0x40,
+    208: 0x50,
+    416: 0x60,
+    833: 0x70,
+    1660: 0x80,
 }
 _ODR_XL_MAP_REV = {v: k for k, v in _ODR_XL_MAP.items()}
 _ODR_G_MAP_REV = {v: k for k, v in _ODR_G_MAP.items()}
@@ -382,7 +398,15 @@ class LSM6DS3:
         :param fullScale: float, requested full scale in g (snapped to 2/4/8/16)
         :returns: bool, True on success
         """
-        fs = 2 if fullScale <= 2.0 else 4 if fullScale <= 4.0 else 8 if fullScale <= 8.0 else 16
+        fs = (
+            2
+            if fullScale <= 2.0
+            else 4
+            if fullScale <= 4.0
+            else 8
+            if fullScale <= 8.0
+            else 16
+        )
         self._updateReg(_CTRL1_XL, 0x0C, _FS_XL_MAP[fs])
         return True
 
@@ -407,7 +431,15 @@ class LSM6DS3:
         if fullScale <= 125.0:
             self._updateReg(_CTRL2_G, 0x02, 0x02)
         else:
-            fs = 245 if fullScale <= 245.0 else 500 if fullScale <= 500.0 else 1000 if fullScale <= 1000.0 else 2000
+            fs = (
+                245
+                if fullScale <= 245.0
+                else 500
+                if fullScale <= 500.0
+                else 1000
+                if fullScale <= 1000.0
+                else 2000
+            )
             self._updateReg(_CTRL2_G, 0x02, 0x00)
             self._updateReg(_CTRL2_G, 0x0C, _FS_G_MAP[fs])
         return True

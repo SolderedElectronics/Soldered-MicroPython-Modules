@@ -32,8 +32,8 @@ if not sensor.stopPeriodicMeasurement():
     raise SystemExit
 
 # Apply desired configuration.
-sensor.setTemperatureOffset(4.0)               # degrees Celsius
-sensor.setSensorAltitude(0)                    # metres above sea level
+sensor.setTemperatureOffset(4.0)  # degrees Celsius
+sensor.setSensorAltitude(0)  # metres above sea level
 sensor.setAutomaticSelfCalibrationEnabled(True)
 sensor.setAutomaticSelfCalibrationTarget(400)  # ppm (outdoor fresh air)
 

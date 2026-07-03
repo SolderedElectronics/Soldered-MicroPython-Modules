@@ -22,149 +22,149 @@ BQ27441_I2C_TIMEOUT = 2000
 ###########################
 # Standard Commands       #
 ###########################
-BQ27441_COMMAND_CONTROL         = 0x00
-BQ27441_COMMAND_TEMP            = 0x02
-BQ27441_COMMAND_VOLTAGE         = 0x04
-BQ27441_COMMAND_FLAGS           = 0x06
-BQ27441_COMMAND_NOM_CAPACITY    = 0x08
-BQ27441_COMMAND_AVAIL_CAPACITY  = 0x0A
-BQ27441_COMMAND_REM_CAPACITY    = 0x0C
-BQ27441_COMMAND_FULL_CAPACITY   = 0x0E
-BQ27441_COMMAND_AVG_CURRENT     = 0x10
-BQ27441_COMMAND_STDBY_CURRENT   = 0x12
-BQ27441_COMMAND_MAX_CURRENT     = 0x14
-BQ27441_COMMAND_AVG_POWER       = 0x18
-BQ27441_COMMAND_SOC             = 0x1C
-BQ27441_COMMAND_INT_TEMP        = 0x1E
-BQ27441_COMMAND_SOH             = 0x20
-BQ27441_COMMAND_REM_CAP_UNFL    = 0x28
-BQ27441_COMMAND_REM_CAP_FIL     = 0x2A
-BQ27441_COMMAND_FULL_CAP_UNFL   = 0x2C
-BQ27441_COMMAND_FULL_CAP_FIL    = 0x2E
-BQ27441_COMMAND_SOC_UNFL        = 0x30
+BQ27441_COMMAND_CONTROL = 0x00
+BQ27441_COMMAND_TEMP = 0x02
+BQ27441_COMMAND_VOLTAGE = 0x04
+BQ27441_COMMAND_FLAGS = 0x06
+BQ27441_COMMAND_NOM_CAPACITY = 0x08
+BQ27441_COMMAND_AVAIL_CAPACITY = 0x0A
+BQ27441_COMMAND_REM_CAPACITY = 0x0C
+BQ27441_COMMAND_FULL_CAPACITY = 0x0E
+BQ27441_COMMAND_AVG_CURRENT = 0x10
+BQ27441_COMMAND_STDBY_CURRENT = 0x12
+BQ27441_COMMAND_MAX_CURRENT = 0x14
+BQ27441_COMMAND_AVG_POWER = 0x18
+BQ27441_COMMAND_SOC = 0x1C
+BQ27441_COMMAND_INT_TEMP = 0x1E
+BQ27441_COMMAND_SOH = 0x20
+BQ27441_COMMAND_REM_CAP_UNFL = 0x28
+BQ27441_COMMAND_REM_CAP_FIL = 0x2A
+BQ27441_COMMAND_FULL_CAP_UNFL = 0x2C
+BQ27441_COMMAND_FULL_CAP_FIL = 0x2E
+BQ27441_COMMAND_SOC_UNFL = 0x30
 
 ###########################
 # Control Sub-commands    #
 ###########################
-BQ27441_CONTROL_STATUS          = 0x00
-BQ27441_CONTROL_DEVICE_TYPE     = 0x01
-BQ27441_CONTROL_FW_VERSION      = 0x02
-BQ27441_CONTROL_DM_CODE         = 0x04
-BQ27441_CONTROL_PREV_MACWRITE   = 0x07
-BQ27441_CONTROL_CHEM_ID         = 0x08
-BQ27441_CONTROL_BAT_INSERT      = 0x0C
-BQ27441_CONTROL_BAT_REMOVE      = 0x0D
-BQ27441_CONTROL_SET_HIBERNATE   = 0x11
+BQ27441_CONTROL_STATUS = 0x00
+BQ27441_CONTROL_DEVICE_TYPE = 0x01
+BQ27441_CONTROL_FW_VERSION = 0x02
+BQ27441_CONTROL_DM_CODE = 0x04
+BQ27441_CONTROL_PREV_MACWRITE = 0x07
+BQ27441_CONTROL_CHEM_ID = 0x08
+BQ27441_CONTROL_BAT_INSERT = 0x0C
+BQ27441_CONTROL_BAT_REMOVE = 0x0D
+BQ27441_CONTROL_SET_HIBERNATE = 0x11
 BQ27441_CONTROL_CLEAR_HIBERNATE = 0x12
-BQ27441_CONTROL_SET_CFGUPDATE   = 0x13
+BQ27441_CONTROL_SET_CFGUPDATE = 0x13
 BQ27441_CONTROL_SHUTDOWN_ENABLE = 0x1B
-BQ27441_CONTROL_SHUTDOWN        = 0x1C
-BQ27441_CONTROL_SEALED          = 0x20
-BQ27441_CONTROL_PULSE_SOC_INT   = 0x23
-BQ27441_CONTROL_RESET           = 0x41
-BQ27441_CONTROL_SOFT_RESET      = 0x42
-BQ27441_CONTROL_EXIT_CFGUPDATE  = 0x43
-BQ27441_CONTROL_EXIT_RESIM      = 0x44
+BQ27441_CONTROL_SHUTDOWN = 0x1C
+BQ27441_CONTROL_SEALED = 0x20
+BQ27441_CONTROL_PULSE_SOC_INT = 0x23
+BQ27441_CONTROL_RESET = 0x41
+BQ27441_CONTROL_SOFT_RESET = 0x42
+BQ27441_CONTROL_EXIT_CFGUPDATE = 0x43
+BQ27441_CONTROL_EXIT_RESIM = 0x44
 
 ###########################
 # Control Status Bits     #
 ###########################
-BQ27441_STATUS_SHUTDOWNEN = (1 << 15)
-BQ27441_STATUS_WDRESET    = (1 << 14)
-BQ27441_STATUS_SS         = (1 << 13)
-BQ27441_STATUS_CALMODE    = (1 << 12)
-BQ27441_STATUS_CCA        = (1 << 11)
-BQ27441_STATUS_BCA        = (1 << 10)
-BQ27441_STATUS_QMAX_UP    = (1 << 9)
-BQ27441_STATUS_RES_UP     = (1 << 8)
-BQ27441_STATUS_INITCOMP   = (1 << 7)
-BQ27441_STATUS_HIBERNATE  = (1 << 6)
-BQ27441_STATUS_SLEEP      = (1 << 4)
-BQ27441_STATUS_LDMD       = (1 << 3)
-BQ27441_STATUS_RUP_DIS    = (1 << 2)
-BQ27441_STATUS_VOK        = (1 << 1)
+BQ27441_STATUS_SHUTDOWNEN = 1 << 15
+BQ27441_STATUS_WDRESET = 1 << 14
+BQ27441_STATUS_SS = 1 << 13
+BQ27441_STATUS_CALMODE = 1 << 12
+BQ27441_STATUS_CCA = 1 << 11
+BQ27441_STATUS_BCA = 1 << 10
+BQ27441_STATUS_QMAX_UP = 1 << 9
+BQ27441_STATUS_RES_UP = 1 << 8
+BQ27441_STATUS_INITCOMP = 1 << 7
+BQ27441_STATUS_HIBERNATE = 1 << 6
+BQ27441_STATUS_SLEEP = 1 << 4
+BQ27441_STATUS_LDMD = 1 << 3
+BQ27441_STATUS_RUP_DIS = 1 << 2
+BQ27441_STATUS_VOK = 1 << 1
 
 ###########################
 # Flags Bits              #
 ###########################
-BQ27441_FLAG_OT         = (1 << 15)
-BQ27441_FLAG_UT         = (1 << 14)
-BQ27441_FLAG_FC         = (1 << 9)
-BQ27441_FLAG_CHG        = (1 << 8)
-BQ27441_FLAG_OCVTAKEN   = (1 << 7)
-BQ27441_FLAG_ITPOR      = (1 << 5)
-BQ27441_FLAG_CFGUPMODE  = (1 << 4)
-BQ27441_FLAG_BAT_DET    = (1 << 3)
-BQ27441_FLAG_SOC1       = (1 << 2)
-BQ27441_FLAG_SOCF       = (1 << 1)
-BQ27441_FLAG_DSG        = (1 << 0)
+BQ27441_FLAG_OT = 1 << 15
+BQ27441_FLAG_UT = 1 << 14
+BQ27441_FLAG_FC = 1 << 9
+BQ27441_FLAG_CHG = 1 << 8
+BQ27441_FLAG_OCVTAKEN = 1 << 7
+BQ27441_FLAG_ITPOR = 1 << 5
+BQ27441_FLAG_CFGUPMODE = 1 << 4
+BQ27441_FLAG_BAT_DET = 1 << 3
+BQ27441_FLAG_SOC1 = 1 << 2
+BQ27441_FLAG_SOCF = 1 << 1
+BQ27441_FLAG_DSG = 1 << 0
 
 ###########################
 # Extended Data Commands  #
 ###########################
-BQ27441_EXTENDED_OPCONFIG  = 0x3A
-BQ27441_EXTENDED_CAPACITY  = 0x3C
+BQ27441_EXTENDED_OPCONFIG = 0x3A
+BQ27441_EXTENDED_CAPACITY = 0x3C
 BQ27441_EXTENDED_DATACLASS = 0x3E
 BQ27441_EXTENDED_DATABLOCK = 0x3F
 BQ27441_EXTENDED_BLOCKDATA = 0x40
-BQ27441_EXTENDED_CHECKSUM  = 0x60
-BQ27441_EXTENDED_CONTROL   = 0x61
+BQ27441_EXTENDED_CHECKSUM = 0x60
+BQ27441_EXTENDED_CONTROL = 0x61
 
 ###########################
 # Configuration Class IDs #
 ###########################
-BQ27441_ID_SAFETY          = 2
+BQ27441_ID_SAFETY = 2
 BQ27441_ID_CHG_TERMINATION = 36
-BQ27441_ID_CONFIG_DATA     = 48
-BQ27441_ID_DISCHARGE       = 49
-BQ27441_ID_REGISTERS       = 64
-BQ27441_ID_POWER           = 68
-BQ27441_ID_IT_CFG          = 80
-BQ27441_ID_CURRENT_THRESH  = 81
-BQ27441_ID_STATE           = 82
-BQ27441_ID_R_A_RAM         = 89
-BQ27441_ID_CALIB_DATA      = 104
-BQ27441_ID_CC_CAL          = 105
-BQ27441_ID_CURRENT         = 107
-BQ27441_ID_CODES           = 112
+BQ27441_ID_CONFIG_DATA = 48
+BQ27441_ID_DISCHARGE = 49
+BQ27441_ID_REGISTERS = 64
+BQ27441_ID_POWER = 68
+BQ27441_ID_IT_CFG = 80
+BQ27441_ID_CURRENT_THRESH = 81
+BQ27441_ID_STATE = 82
+BQ27441_ID_R_A_RAM = 89
+BQ27441_ID_CALIB_DATA = 104
+BQ27441_ID_CC_CAL = 105
+BQ27441_ID_CURRENT = 107
+BQ27441_ID_CODES = 112
 
 ###########################
 # OpConfig Bits           #
 ###########################
-BQ27441_OPCONFIG_BIE      = (1 << 13)
-BQ27441_OPCONFIG_BI_PU_EN = (1 << 12)
-BQ27441_OPCONFIG_GPIOPOL  = (1 << 11)
-BQ27441_OPCONFIG_SLEEP    = (1 << 5)
-BQ27441_OPCONFIG_RMFCC    = (1 << 4)
-BQ27441_OPCONFIG_BATLOWEN = (1 << 2)
-BQ27441_OPCONFIG_TEMPS    = (1 << 0)
+BQ27441_OPCONFIG_BIE = 1 << 13
+BQ27441_OPCONFIG_BI_PU_EN = 1 << 12
+BQ27441_OPCONFIG_GPIOPOL = 1 << 11
+BQ27441_OPCONFIG_SLEEP = 1 << 5
+BQ27441_OPCONFIG_RMFCC = 1 << 4
+BQ27441_OPCONFIG_BATLOWEN = 1 << 2
+BQ27441_OPCONFIG_TEMPS = 1 << 0
 
 # current() type constants
-AVG  = 0  # Average Current (default)
+AVG = 0  # Average Current (default)
 STBY = 1  # Standby Current
-MAX  = 2  # Max Current
+MAX = 2  # Max Current
 
 # capacity() type constants
-REMAIN     = 0  # Remaining Capacity (default)
-FULL       = 1  # Full Capacity
-AVAIL      = 2  # Available Capacity
+REMAIN = 0  # Remaining Capacity (default)
+FULL = 1  # Full Capacity
+AVAIL = 2  # Available Capacity
 AVAIL_FULL = 3  # Full Available Capacity
-REMAIN_F   = 4  # Remaining Capacity Filtered
-REMAIN_UF  = 5  # Remaining Capacity Unfiltered
-FULL_F     = 6  # Full Capacity Filtered
-FULL_UF    = 7  # Full Capacity Unfiltered
-DESIGN     = 8  # Design Capacity
+REMAIN_F = 4  # Remaining Capacity Filtered
+REMAIN_UF = 5  # Remaining Capacity Unfiltered
+FULL_F = 6  # Full Capacity Filtered
+FULL_UF = 7  # Full Capacity Unfiltered
+DESIGN = 8  # Design Capacity
 
 # soc() type constants
-FILTERED   = 0  # State of Charge Filtered (default)
+FILTERED = 0  # State of Charge Filtered (default)
 UNFILTERED = 1  # State of Charge Unfiltered
 
 # soh() type constants
-PERCENT  = 0  # State of Health Percentage (default)
+PERCENT = 0  # State of Health Percentage (default)
 SOH_STAT = 1  # State of Health Status Bits
 
 # temperature() type constants
-BATTERY       = 0  # Battery Temperature (default)
+BATTERY = 0  # Battery Temperature (default)
 INTERNAL_TEMP = 1  # Internal IC Temperature
 
 # setGPOUTFunction() type constants
@@ -194,10 +194,12 @@ class BQ27441:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
-        self._seal_flag = False          # Track if IC was sealed before config entry
+        self._seal_flag = False  # Track if IC was sealed before config entry
         self._user_config_control = False  # Track if user is managing config mode
 
     # -------------------------------------------------------------------------
@@ -342,7 +344,7 @@ class BQ27441:
         :return: State of health in % or status bits
         """
         raw = self._readWord(BQ27441_COMMAND_SOH)
-        soh_status  = (raw >> 8) & 0xFF
+        soh_status = (raw >> 8) & 0xFF
         soh_percent = raw & 0xFF
         return soh_percent if measure == PERCENT else soh_status
 
@@ -379,11 +381,15 @@ class BQ27441:
         :return: True on success
         """
         old = self._opConfig()
-        if (active_high and (old & BQ27441_OPCONFIG_GPIOPOL)) or \
-           (not active_high and not (old & BQ27441_OPCONFIG_GPIOPOL)):
+        if (active_high and (old & BQ27441_OPCONFIG_GPIOPOL)) or (
+            not active_high and not (old & BQ27441_OPCONFIG_GPIOPOL)
+        ):
             return True
-        new = (old | BQ27441_OPCONFIG_GPIOPOL) if active_high \
-              else (old & ~BQ27441_OPCONFIG_GPIOPOL)
+        new = (
+            (old | BQ27441_OPCONFIG_GPIOPOL)
+            if active_high
+            else (old & ~BQ27441_OPCONFIG_GPIOPOL)
+        )
         return self._writeOpConfig(new)
 
     def GPOUTFunction(self):
@@ -402,11 +408,15 @@ class BQ27441:
         :return: True on success
         """
         old = self._opConfig()
-        if (function and (old & BQ27441_OPCONFIG_BATLOWEN)) or \
-           (not function and not (old & BQ27441_OPCONFIG_BATLOWEN)):
+        if (function and (old & BQ27441_OPCONFIG_BATLOWEN)) or (
+            not function and not (old & BQ27441_OPCONFIG_BATLOWEN)
+        ):
             return True
-        new = (old | BQ27441_OPCONFIG_BATLOWEN) if function \
-              else (old & ~BQ27441_OPCONFIG_BATLOWEN)
+        new = (
+            (old | BQ27441_OPCONFIG_BATLOWEN)
+            if function
+            else (old & ~BQ27441_OPCONFIG_BATLOWEN)
+        )
         return self._writeOpConfig(new)
 
     def SOC1SetThreshold(self):
@@ -680,14 +690,18 @@ class BQ27441:
 
     def _blockDataClass(self, class_id):
         try:
-            self.i2c.writeto_mem(self.address, BQ27441_EXTENDED_DATACLASS, bytes([class_id]))
+            self.i2c.writeto_mem(
+                self.address, BQ27441_EXTENDED_DATACLASS, bytes([class_id])
+            )
             return True
         except:
             return False
 
     def _blockDataOffset(self, offset):
         try:
-            self.i2c.writeto_mem(self.address, BQ27441_EXTENDED_DATABLOCK, bytes([offset]))
+            self.i2c.writeto_mem(
+                self.address, BQ27441_EXTENDED_DATABLOCK, bytes([offset])
+            )
             return True
         except:
             return False

@@ -14,7 +14,13 @@ class SimpleFireSensor(SimpleSensor):
     Works in native mode (ADC + digital pin) or easyC I2C mode.
     """
 
-    def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=SIMPLE_SENSOR_I2C_ADDR):
+    def __init__(
+        self,
+        analog_pin=None,
+        digital_pin=None,
+        i2c=None,
+        address=SIMPLE_SENSOR_I2C_ADDR,
+    ):
         """
         Initialize the fire sensor.
         Pass analog_pin for native mode, or leave empty for easyC I2C mode.
@@ -24,7 +30,9 @@ class SimpleFireSensor(SimpleSensor):
         :param i2c: Initialized I2C object for easyC mode (optional, auto-detected on ESP32)
         :param address: I2C address for easyC mode, default 0x30, selectable 0x30-0x37
         """
-        super().__init__(analog_pin=analog_pin, digital_pin=digital_pin, i2c=i2c, address=address)
+        super().__init__(
+            analog_pin=analog_pin, digital_pin=digital_pin, i2c=i2c, address=address
+        )
 
     def isFireDetected(self) -> bool:
         """

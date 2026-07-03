@@ -13,10 +13,16 @@
 from machine import I2C, Pin
 import time
 from ElectrochemicalGasSensor import (
-    ElectrochemicalGasSensor, SensorConfig,
-    TIA_GAIN_35_KOHM, RLOAD_10_OHM, REF_EXTERNAL,
-    INTERNAL_ZERO_67_PERCENT, BIAS_SIGN_NEGATIVE, BIAS_0_PERCENT,
-    FET_SHORT_DISABLED, OP_MODE_3LEAD_AMP_CELL,
+    ElectrochemicalGasSensor,
+    SensorConfig,
+    TIA_GAIN_35_KOHM,
+    RLOAD_10_OHM,
+    REF_EXTERNAL,
+    INTERNAL_ZERO_67_PERCENT,
+    BIAS_SIGN_NEGATIVE,
+    BIAS_0_PERCENT,
+    FET_SHORT_DISABLED,
+    OP_MODE_3LEAD_AMP_CELL,
 )
 from ads1115 import ADS_GAIN_2_048V
 

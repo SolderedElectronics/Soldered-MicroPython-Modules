@@ -126,7 +126,7 @@ class QwiicSliderPotentiometer(SliderPotentiometer):
         """
         self._i2c.writeto(self._address, bytes([self._ANALOG_READ_REG]))
         raw = self._i2c.readfrom(self._address, 2)
-        return struct.unpack_from('<H', raw)[0]
+        return struct.unpack_from("<H", raw)[0]
 
     def max_value(self):
         """

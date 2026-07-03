@@ -21,7 +21,7 @@ DEFAULT_THRESHOLD = 50.0
 
 # easyC I2C command bytes sent to onboard ATtiny firmware
 CMD_SET_THRESHOLD = 0x01
-CMD_SET_LED       = 0x02
+CMD_SET_LED = 0x02
 
 
 class SimpleSensor:
@@ -31,7 +31,13 @@ class SimpleSensor:
     Works in native mode (ADC + digital pin) or easyC I2C mode.
     """
 
-    def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=SIMPLE_SENSOR_I2C_ADDR):
+    def __init__(
+        self,
+        analog_pin=None,
+        digital_pin=None,
+        i2c=None,
+        address=SIMPLE_SENSOR_I2C_ADDR,
+    ):
         """
         Initialize the sensor.
         Pass analog_pin for native mode, or leave empty for easyC I2C mode.
@@ -62,7 +68,11 @@ class SimpleSensor:
             if i2c is not None:
                 self.i2c = i2c
             else:
-                if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
+                if uname().sysname in (
+                    "esp32",
+                    "esp8266",
+                    "Soldered Dasduino CONNECTPLUS",
+                ):
                     self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
                 else:
                     raise Exception("Board not recognized, enter I2C pins manually")
@@ -127,7 +137,10 @@ class SimpleSensor:
         if not self.native:
             try:
                 raw = self._rawThreshold
-                self.i2c.writeto(self.address, bytes([CMD_SET_THRESHOLD, (raw >> 8) & 0xFF, raw & 0xFF]))
+                self.i2c.writeto(
+                    self.address,
+                    bytes([CMD_SET_THRESHOLD, (raw >> 8) & 0xFF, raw & 0xFF]),
+                )
             except OSError as e:
                 raise Exception("I2C write error: {}".format(e))
         return True
@@ -155,7 +168,9 @@ class SimpleSensor:
             try:
                 self.i2c.writeto(
                     self.address,
-                    bytes([CMD_SET_THRESHOLD, (raw_value >> 8) & 0xFF, raw_value & 0xFF]),
+                    bytes(
+                        [CMD_SET_THRESHOLD, (raw_value >> 8) & 0xFF, raw_value & 0xFF]
+                    ),
                 )
             except OSError as e:
                 raise Exception("I2C write error: {}".format(e))
@@ -195,7 +210,9 @@ class SimpleSensor:
         """
         self._highPercentage = high_percentage
         self._rawThreshold = int(
-            (1.0 - self._threshold / 100.0) * self._adcMax * (self._highPercentage / 100.0)
+            (1.0 - self._threshold / 100.0)
+            * self._adcMax
+            * (self._highPercentage / 100.0)
         )
 
     def getDigitalPin(self):

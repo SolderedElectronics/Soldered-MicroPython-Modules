@@ -12,13 +12,13 @@ from BasicStepperDriver import BasicStepper
 from machine import ADC, Pin
 
 ANALOG_IN = ADC(Pin(34))
-ANALOG_IN.atten(ADC.ATTN_11DB)   # Full 0-3.3V range
+ANALOG_IN.atten(ADC.ATTN_11DB)  # Full 0-3.3V range
 
 stepper = BasicStepper(BasicStepper.FULL4WIRE, 12, 13, 14, 15)
 stepper.setMaxSpeed(1000)
 
 while True:
-    analog_in = ANALOG_IN.read()   # 0-4095
+    analog_in = ANALOG_IN.read()  # 0-4095
     stepper.moveTo(analog_in)
     stepper.setSpeed(100)
     stepper.runSpeedToPosition()

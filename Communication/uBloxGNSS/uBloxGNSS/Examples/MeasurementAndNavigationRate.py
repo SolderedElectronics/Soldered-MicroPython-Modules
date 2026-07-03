@@ -17,7 +17,7 @@ if not gnss.begin(i2c):
 print("u-blox GNSS ready.\n")
 
 measRate = gnss.getMeasurementRate()
-navRate  = gnss.getNavigationRate()
+navRate = gnss.getNavigationRate()
 print(f"Current measurement rate: {measRate} ms  Navigation rate: {navRate} cycles")
 
 # Set 5 Hz (200 ms measurement period, 1 nav solution per measurement)
@@ -25,7 +25,9 @@ gnss.setNavigationFrequency(5)
 time.sleep_ms(100)
 
 measRate = gnss.getMeasurementRate()
-navRate  = gnss.getNavigationRate()
-navFreq  = gnss.getNavigationFrequency()
-print(f"Updated measurement rate : {measRate} ms  Navigation rate: {navRate} cycles  "
-      f"Nav frequency: {navFreq} Hz")
+navRate = gnss.getNavigationRate()
+navFreq = gnss.getNavigationFrequency()
+print(
+    f"Updated measurement rate : {measRate} ms  Navigation rate: {navRate} cycles  "
+    f"Nav frequency: {navFreq} Hz"
+)

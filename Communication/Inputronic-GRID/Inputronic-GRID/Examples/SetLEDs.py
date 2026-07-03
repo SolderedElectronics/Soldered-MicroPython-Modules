@@ -23,17 +23,22 @@ while True:
     # ── 1. Sweep individual LEDs ──────────────────────────────────────────
     for row in range(4):
         for col in range(4):
-            grid.setLED(row, col, 255, 0, 0, 255)   # red
+            grid.setLED(row, col, 255, 0, 0, 255)  # red
             time.sleep_ms(80)
-            grid.setLED(row, col, 0, 255, 0, 255)   # green
+            grid.setLED(row, col, 0, 255, 0, 255)  # green
             time.sleep_ms(80)
-            grid.setLED(row, col, 0, 0, 255, 255)   # blue
+            grid.setLED(row, col, 0, 0, 255, 255)  # blue
             time.sleep_ms(80)
-            grid.setLED(row, col, 0, 0, 0, 255)     # off
+            grid.setLED(row, col, 0, 0, 0, 255)  # off
 
     # ── 2. Solid fills ────────────────────────────────────────────────────
-    grid.setAllLEDs(255, 0,   0  ); time.sleep_ms(400)  # red
-    grid.setAllLEDs(0,   255, 0  ); time.sleep_ms(400)  # green
-    grid.setAllLEDs(0,   0,   255); time.sleep_ms(400)  # blue
-    grid.setAllLEDs(255, 255, 255); time.sleep_ms(400)  # white
-    grid.clearLEDs();               time.sleep_ms(300)
+    grid.setAllLEDs(255, 0, 0)
+    time.sleep_ms(400)  # red
+    grid.setAllLEDs(0, 255, 0)
+    time.sleep_ms(400)  # green
+    grid.setAllLEDs(0, 0, 255)
+    time.sleep_ms(400)  # blue
+    grid.setAllLEDs(255, 255, 255)
+    time.sleep_ms(400)  # white
+    grid.clearLEDs()
+    time.sleep_ms(300)

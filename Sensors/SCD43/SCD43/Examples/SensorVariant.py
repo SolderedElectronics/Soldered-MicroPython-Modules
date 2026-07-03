@@ -35,7 +35,9 @@ variant_names = {
     VARIANT_SCD42: "SCD42",
     VARIANT_SCD43: "SCD43",
 }
-print("Sensor variant:", variant_names.get(variant, "Unknown (0x{:04X})".format(variant)))
+print(
+    "Sensor variant:", variant_names.get(variant, "Unknown (0x{:04X})".format(variant))
+)
 
 # Read and display the unique serial number.
 serial = sensor.getSerialNumber()

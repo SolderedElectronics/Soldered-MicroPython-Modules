@@ -20,11 +20,13 @@ print("Time set!\n")
 
 while True:
     t = rtc.get_time()
-    
+
     year, month, day, weekday, hour, minute, second = t
-    
-    print("{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d} (wd: {})".format(
-        year, month, day, hour, minute, second, weekday
-    ))
-    
+
+    print(
+        "{:04d}-{:02d}-{:02d} {:02d}:{:02d}:{:02d} (wd: {})".format(
+            year, month, day, hour, minute, second, weekday
+        )
+    )
+
     time.sleep(1)

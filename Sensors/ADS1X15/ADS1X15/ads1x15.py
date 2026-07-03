@@ -10,14 +10,14 @@ import time
 ADS1X15_DEFAULT_ADDR = 0x48  # ADDR pin → GND; options: 0x48, 0x49, 0x4A, 0x4B
 
 # Register addresses
-ADS1X15_REG_CONVERT        = 0x00
-ADS1X15_REG_CONFIG         = 0x01
-ADS1X15_REG_LOW_THRESHOLD  = 0x02
+ADS1X15_REG_CONVERT = 0x00
+ADS1X15_REG_CONFIG = 0x01
+ADS1X15_REG_LOW_THRESHOLD = 0x02
 ADS1X15_REG_HIGH_THRESHOLD = 0x03
 
 # Bit 15 — OS
 ADS1X15_OS_START_SINGLE = 0x8000
-ADS1X15_OS_NOT_BUSY     = 0x8000
+ADS1X15_OS_NOT_BUSY = 0x8000
 
 # Bits 14:12 — MUX
 ADS1X15_MUX_DIFF_0_1 = 0x0000  # AIN0(+) vs AIN1(-)
@@ -35,7 +35,7 @@ ADS1X15_PGA_0_256V = 0x0A00  # ±0.256 V
 
 # Bit 8 — mode
 ADS1X15_MODE_CONTINUOUS = 0x0000
-ADS1X15_MODE_SINGLE     = 0x0100  # default
+ADS1X15_MODE_SINGLE = 0x0100  # default
 
 # Bits 7:5 — data rate index (0=slowest … 7=fastest, 4=default)
 # ADS1015: 0=128, 1=250, 2=490, 3=920, 4=1600, 5=2400, 6=3300, 7=3300 SPS
@@ -43,29 +43,29 @@ ADS1X15_MODE_SINGLE     = 0x0100  # default
 
 # Bit 4 — comparator mode
 ADS1X15_COMP_MODE_TRADITIONAL = 0x0000  # default
-ADS1X15_COMP_MODE_WINDOW      = 0x0010
+ADS1X15_COMP_MODE_WINDOW = 0x0010
 
 # Bit 3 — comparator polarity
-ADS1X15_COMP_POL_ACTIV_LOW  = 0x0000  # default
+ADS1X15_COMP_POL_ACTIV_LOW = 0x0000  # default
 ADS1X15_COMP_POL_ACTIV_HIGH = 0x0008
 
 # Bit 2 — comparator latch
 ADS1X15_COMP_NON_LATCH = 0x0000  # default
-ADS1X15_COMP_LATCH     = 0x0004
+ADS1X15_COMP_LATCH = 0x0004
 
 # Bits 1:0 — comparator queue
 ADS1X15_COMP_QUE_1_CONV = 0x0000  # assert after 1 conversion
 ADS1X15_COMP_QUE_2_CONV = 0x0001  # assert after 2 conversions
 ADS1X15_COMP_QUE_4_CONV = 0x0002  # assert after 4 conversions
-ADS1X15_COMP_QUE_NONE   = 0x0003  # disable comparator (default)
+ADS1X15_COMP_QUE_NONE = 0x0003  # disable comparator (default)
 
 ADS1015_CONVERSION_DELAY = 1  # ms
 ADS1115_CONVERSION_DELAY = 8  # ms
 
-ADS1X15_OK              =  0
+ADS1X15_OK = 0
 ADS1X15_INVALID_VOLTAGE = -100
-ADS1X15_INVALID_GAIN    =  0xFF
-ADS1X15_INVALID_MODE    =  0xFE
+ADS1X15_INVALID_GAIN = 0xFF
+ADS1X15_INVALID_MODE = 0xFE
 
 
 class ADS1X15:
@@ -86,10 +86,12 @@ class ADS1X15:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
-        self._err    = ADS1X15_OK
+        self._err = ADS1X15_OK
         self._reset()
 
     # -------------------------------------------------------------------------
@@ -112,12 +114,12 @@ class ADS1X15:
 
     def _reset(self):
         """Reset config fields to safe defaults."""
-        self.setGain(0)      # ±6.144 V — widest, safest range
-        self.setMode(1)      # single-shot
+        self.setGain(0)  # ±6.144 V — widest, safest range
+        self.setMode(1)  # single-shot
         self.setDataRate(4)  # mid-speed default
-        self._compMode       = 0
-        self._compPol        = 0  # active low
-        self._compLatch      = 0  # non-latching
+        self._compMode = 0
+        self._compPol = 0  # active low
+        self._compLatch = 0  # non-latching
         self._compQueConvert = 3  # comparator disabled
 
     # -------------------------------------------------------------------------
@@ -131,11 +133,11 @@ class ADS1X15:
         :param gain: 0=±6.144V, 1=±4.096V, 2=±2.048V, 4=±1.024V, 8=±0.512V, 16=±0.256V
         """
         _map = {
-            0:  ADS1X15_PGA_6_144V,
-            1:  ADS1X15_PGA_4_096V,
-            2:  ADS1X15_PGA_2_048V,
-            4:  ADS1X15_PGA_1_024V,
-            8:  ADS1X15_PGA_0_512V,
+            0: ADS1X15_PGA_6_144V,
+            1: ADS1X15_PGA_4_096V,
+            2: ADS1X15_PGA_2_048V,
+            4: ADS1X15_PGA_1_024V,
+            8: ADS1X15_PGA_0_512V,
             16: ADS1X15_PGA_0_256V,
         }
         self._gain = _map.get(gain, ADS1X15_PGA_6_144V)
@@ -474,21 +476,29 @@ class ADS1X15:
 
     def _requestADC(self, readmode):
         """Write config register to trigger one conversion."""
-        config  = ADS1X15_OS_START_SINGLE
+        config = ADS1X15_OS_START_SINGLE
         config |= readmode
         config |= self._gain
         config |= self._mode
         config |= self._datarate
-        config |= ADS1X15_COMP_MODE_WINDOW    if self._compMode  else ADS1X15_COMP_MODE_TRADITIONAL
-        config |= ADS1X15_COMP_POL_ACTIV_HIGH if self._compPol   else ADS1X15_COMP_POL_ACTIV_LOW
-        config |= ADS1X15_COMP_LATCH          if self._compLatch  else ADS1X15_COMP_NON_LATCH
+        config |= (
+            ADS1X15_COMP_MODE_WINDOW
+            if self._compMode
+            else ADS1X15_COMP_MODE_TRADITIONAL
+        )
+        config |= (
+            ADS1X15_COMP_POL_ACTIV_HIGH if self._compPol else ADS1X15_COMP_POL_ACTIV_LOW
+        )
+        config |= ADS1X15_COMP_LATCH if self._compLatch else ADS1X15_COMP_NON_LATCH
         config |= self._compQueConvert
         self._writeRegister(ADS1X15_REG_CONFIG, config)
 
     def _writeRegister(self, reg, value):
         """Write 16-bit value to a register (MSB first)."""
         try:
-            self.i2c.writeto(self.address, bytes([reg, (value >> 8) & 0xFF, value & 0xFF]))
+            self.i2c.writeto(
+                self.address, bytes([reg, (value >> 8) & 0xFF, value & 0xFF])
+            )
             return True
         except:
             return False
@@ -515,8 +525,10 @@ class ADS1015(ADS1X15):
         :param address: I2C address (default 0x48)
         """
         self._conversionDelay = ADS1015_CONVERSION_DELAY
-        self._bitShift        = 4  # 12-bit result stored in bits 15:4 of the conversion register
-        self._maxPorts        = 4
+        self._bitShift = (
+            4  # 12-bit result stored in bits 15:4 of the conversion register
+        )
+        self._maxPorts = 4
         super().__init__(i2c, address)
 
 
@@ -532,6 +544,6 @@ class ADS1115(ADS1X15):
         :param address: I2C address (default 0x48)
         """
         self._conversionDelay = ADS1115_CONVERSION_DELAY
-        self._bitShift        = 0  # full 16-bit result
-        self._maxPorts        = 4
+        self._bitShift = 0  # full 16-bit result
+        self._maxPorts = 4
         super().__init__(i2c, address)

@@ -26,6 +26,9 @@ while True:
     value = sensor.getValue()
     moist = sensor.isMoist()
 
-    print("Raw: {:4d}  Resistance: {:8.1f} Ohm  Moisture%: {:6.2f}%  Moist: {}".format(
-        raw, resistance, value, moist))
+    print(
+        "Raw: {:4d}  Resistance: {:8.1f} Ohm  Moisture%: {:6.2f}%  Moist: {}".format(
+            raw, resistance, value, moist
+        )
+    )
     time.sleep(1)

@@ -15,8 +15,9 @@ print("X\tY\tZ")
 while True:
     if imu.accelAvailable():
         imu.readAccel()
-        print("{:.4f}\t{:.4f}\t{:.4f}".format(
-            imu.calcAccel(imu.ax),
-            imu.calcAccel(imu.ay),
-            imu.calcAccel(imu.az)))
+        print(
+            "{:.4f}\t{:.4f}\t{:.4f}".format(
+                imu.calcAccel(imu.ax), imu.calcAccel(imu.ay), imu.calcAccel(imu.az)
+            )
+        )
     time.sleep_ms(10)

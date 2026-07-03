@@ -7,7 +7,13 @@
 # LAST UPDATED: 2026-04-30
 
 from machine import I2C, Pin
-from tca9548a import TCA9548A, TCA_CHANNEL_0, TCA_CHANNEL_3, TCA_CHANNEL_4, TCA_CHANNEL_7
+from tca9548a import (
+    TCA9548A,
+    TCA_CHANNEL_0,
+    TCA_CHANNEL_3,
+    TCA_CHANNEL_4,
+    TCA_CHANNEL_7,
+)
 import time
 
 # If you aren't using the Qwiic connector, manually enter your I2C pins:

@@ -11,15 +11,15 @@ import time
 ADS1219_DEFAULT_ADDR = 0x40
 
 # Commands
-ADS1219_CMD_RESET      = 0x06  # Soft reset — config returns to 0x00
+ADS1219_CMD_RESET = 0x06  # Soft reset — config returns to 0x00
 ADS1219_CMD_START_SYNC = 0x08  # Start or restart conversion
-ADS1219_CMD_POWERDOWN  = 0x02  # Enter power-down mode
-ADS1219_CMD_RDATA      = 0x10  # Read conversion result (3 bytes, big-endian)
+ADS1219_CMD_POWERDOWN = 0x02  # Enter power-down mode
+ADS1219_CMD_RDATA = 0x10  # Read conversion result (3 bytes, big-endian)
 
 # Register addresses
 ADS1219_REG_CFG_WRITE = 0x40  # Write configuration register
-ADS1219_REG_CFG_READ  = 0x20  # Read configuration register
-ADS1219_REG_STATUS    = 0x24  # Read status register
+ADS1219_REG_CFG_READ = 0x20  # Read configuration register
+ADS1219_REG_STATUS = 0x24  # Read status register
 
 ###########################
 # Mux constants           #
@@ -27,11 +27,11 @@ ADS1219_REG_STATUS    = 0x24  # Read status register
 ADS1219_MUX_DIFF_P0_N1 = 0  # Differential: AINP=AIN0, AINN=AIN1 (default)
 ADS1219_MUX_DIFF_P2_N3 = 1  # Differential: AINP=AIN2, AINN=AIN3
 ADS1219_MUX_DIFF_P1_N2 = 2  # Differential: AINP=AIN1, AINN=AIN2
-ADS1219_MUX_SINGLE_0   = 3  # Single-ended: AINP=AIN0, AINN=AGND
-ADS1219_MUX_SINGLE_1   = 4  # Single-ended: AINP=AIN1, AINN=AGND
-ADS1219_MUX_SINGLE_2   = 5  # Single-ended: AINP=AIN2, AINN=AGND
-ADS1219_MUX_SINGLE_3   = 6  # Single-ended: AINP=AIN3, AINN=AGND
-ADS1219_MUX_SHORTED    = 7  # Shorted: AINP=AINN=AVDD/2 (offset measurement)
+ADS1219_MUX_SINGLE_0 = 3  # Single-ended: AINP=AIN0, AINN=AGND
+ADS1219_MUX_SINGLE_1 = 4  # Single-ended: AINP=AIN1, AINN=AGND
+ADS1219_MUX_SINGLE_2 = 5  # Single-ended: AINP=AIN2, AINN=AGND
+ADS1219_MUX_SINGLE_3 = 6  # Single-ended: AINP=AIN3, AINN=AGND
+ADS1219_MUX_SHORTED = 7  # Shorted: AINP=AINN=AVDD/2 (offset measurement)
 
 ###########################
 # Gain constants          #
@@ -42,16 +42,16 @@ ADS1219_GAIN_4 = 1  # Gain = 4, full-scale = VREF/4
 ###########################
 # Data rate constants     #
 ###########################
-ADS1219_DR_20SPS   = 0  # 20 samples per second (default)
-ADS1219_DR_90SPS   = 1  # 90 samples per second
-ADS1219_DR_330SPS  = 2  # 330 samples per second
+ADS1219_DR_20SPS = 0  # 20 samples per second (default)
+ADS1219_DR_90SPS = 1  # 90 samples per second
+ADS1219_DR_330SPS = 2  # 330 samples per second
 ADS1219_DR_1000SPS = 3  # 1000 samples per second
 
 ###########################
 # Conversion mode consts  #
 ###########################
 ADS1219_MODE_SINGLE_SHOT = 0  # One conversion per startSync() call (default)
-ADS1219_MODE_CONTINUOUS  = 1  # Back-to-back conversions until powerDown()
+ADS1219_MODE_CONTINUOUS = 1  # Back-to-back conversions until powerDown()
 
 ###########################
 # Voltage reference consts#
@@ -81,10 +81,12 @@ class ADS1219:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
-        self._gain   = ADS1219_GAIN_1
+        self._gain = ADS1219_GAIN_1
         self._result = 0
 
     # -------------------------------------------------------------------------

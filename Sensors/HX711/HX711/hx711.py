@@ -11,14 +11,14 @@ HX711_DEFAULT_ADDRESS = 0x30
 
 # Gain settings
 GAIN_128 = 1  # Channel A, gain 128 (default)
-GAIN_64  = 3  # Channel A, gain 64
-GAIN_32  = 2  # Channel B, gain 32
+GAIN_64 = 3  # Channel A, gain 64
+GAIN_32 = 2  # Channel B, gain 32
 
 # Command bytes sent to board firmware
-_SET_GAIN_32   = 1
-_SET_GAIN_64   = 2
-_SET_GAIN_128  = 3
-_SET_SLEEP_ON  = 4
+_SET_GAIN_32 = 1
+_SET_GAIN_64 = 2
+_SET_GAIN_128 = 3
+_SET_SLEEP_ON = 4
 _SET_SLEEP_OFF = 5
 
 
@@ -43,7 +43,9 @@ class HX711:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
         self._gain = GAIN_128

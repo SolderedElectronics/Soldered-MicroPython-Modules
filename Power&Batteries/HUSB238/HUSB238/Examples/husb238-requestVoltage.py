@@ -30,6 +30,9 @@ elif result == HUSB238_REQUEST_REJECTED:
     print("Charger rejected the request")
 
 while requestOk:
-    print("Voltage: {} V, current: {} A".format(
-        husb238.getPDSrcVoltage(), husb238.getPDSrcCurrent()))
+    print(
+        "Voltage: {} V, current: {} A".format(
+            husb238.getPDSrcVoltage(), husb238.getPDSrcCurrent()
+        )
+    )
     time.sleep(1)

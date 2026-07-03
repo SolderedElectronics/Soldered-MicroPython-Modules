@@ -20,8 +20,10 @@ while True:
     if gnss.getPVT():
         alt_ellipsoid = gnss.getAltitude()
         alt_msl = gnss.getAltitudeMSL()
-        print(f"Altitude (ellipsoid): {alt_ellipsoid / 1000:.3f} m  "
-              f"Altitude (MSL): {alt_msl / 1000:.3f} m")
+        print(
+            f"Altitude (ellipsoid): {alt_ellipsoid / 1000:.3f} m  "
+            f"Altitude (MSL): {alt_msl / 1000:.3f} m"
+        )
     else:
         print("Waiting for valid PVT data...")
 

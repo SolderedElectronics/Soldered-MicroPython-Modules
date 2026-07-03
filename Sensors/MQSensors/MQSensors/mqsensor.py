@@ -205,7 +205,14 @@ class MQ2(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 9.83, 574.25, -2.222, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            9.83,
+            574.25,
+            -2.222,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -214,7 +221,14 @@ class MQ3(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 60.0, 0.3934, -1.504, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            60.0,
+            0.3934,
+            -1.504,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -223,7 +237,14 @@ class MQ4(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 4.4, 1012.7, -2.786, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            4.4,
+            1012.7,
+            -2.786,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -232,7 +253,14 @@ class MQ5(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 6.5, 80.897, -2.431, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            6.5,
+            80.897,
+            -2.431,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -241,7 +269,14 @@ class MQ6(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 10.0, 1009.2, -2.35, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            10.0,
+            1009.2,
+            -2.35,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -250,7 +285,14 @@ class MQ7(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 27.5, 99.042, -1.518, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            27.5,
+            99.042,
+            -1.518,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -259,7 +301,14 @@ class MQ8(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 70.0, 976.97, -0.688, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            70.0,
+            976.97,
+            -0.688,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -268,7 +317,14 @@ class MQ9(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_EXPONENTIAL, 9.6, 1000.5, -2.186, analog_pin, digital_pin, i2c, address
+            REGRESSION_EXPONENTIAL,
+            9.6,
+            1000.5,
+            -2.186,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -277,7 +333,14 @@ class MQ131(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_LINEAR, 1.0, 0.41195, -0.4708, analog_pin, digital_pin, i2c, address
+            REGRESSION_LINEAR,
+            1.0,
+            0.41195,
+            -0.4708,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -286,7 +349,14 @@ class MQ135(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_LINEAR, 1.0, -0.47712, 0.4491, analog_pin, digital_pin, i2c, address
+            REGRESSION_LINEAR,
+            1.0,
+            -0.47712,
+            0.4491,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -304,7 +374,14 @@ class MQ137(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_LINEAR, 1.0, -0.26406, -0.24143, analog_pin, digital_pin, i2c, address
+            REGRESSION_LINEAR,
+            1.0,
+            -0.26406,
+            -0.24143,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 
@@ -313,7 +390,14 @@ class MQ138(MQSensor):
 
     def __init__(self, analog_pin=None, digital_pin=None, i2c=None, address=0x30):
         super().__init__(
-            REGRESSION_LINEAR, 1.0, -0.4434, 0.15397, analog_pin, digital_pin, i2c, address
+            REGRESSION_LINEAR,
+            1.0,
+            -0.4434,
+            0.15397,
+            analog_pin,
+            digital_pin,
+            i2c,
+            address,
         )
 
 

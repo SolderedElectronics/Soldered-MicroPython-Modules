@@ -12,11 +12,11 @@ import time
 INA219_ADDRESS = 0x40
 
 # Register addresses
-INA219_REG_CONFIG      = 0x00
+INA219_REG_CONFIG = 0x00
 INA219_REG_SHUNTVOLTAGE = 0x01
-INA219_REG_BUSVOLTAGE  = 0x02
-INA219_REG_POWER       = 0x03
-INA219_REG_CURRENT     = 0x04
+INA219_REG_BUSVOLTAGE = 0x02
+INA219_REG_POWER = 0x03
+INA219_REG_CURRENT = 0x04
 INA219_REG_CALIBRATION = 0x05
 
 ###########################
@@ -28,15 +28,15 @@ INA219_RANGE_32V = 0b1  # Bus voltage range 32V (default)
 ###########################
 # Gain constants          #
 ###########################
-INA219_GAIN_40MV  = 0b00  # PGA gain ±40mV
-INA219_GAIN_80MV  = 0b01  # PGA gain ±80mV
+INA219_GAIN_40MV = 0b00  # PGA gain ±40mV
+INA219_GAIN_80MV = 0b01  # PGA gain ±80mV
 INA219_GAIN_160MV = 0b10  # PGA gain ±160mV
 INA219_GAIN_320MV = 0b11  # PGA gain ±320mV (default)
 
 ###########################
 # Bus resolution constants#
 ###########################
-INA219_BUS_RES_9BIT  = 0b0000  # 9-bit bus resolution
+INA219_BUS_RES_9BIT = 0b0000  # 9-bit bus resolution
 INA219_BUS_RES_10BIT = 0b0001  # 10-bit bus resolution
 INA219_BUS_RES_11BIT = 0b0010  # 11-bit bus resolution
 INA219_BUS_RES_12BIT = 0b0011  # 12-bit bus resolution (default)
@@ -44,29 +44,29 @@ INA219_BUS_RES_12BIT = 0b0011  # 12-bit bus resolution (default)
 ###########################
 # Shunt resolution consts #
 ###########################
-INA219_SHUNT_RES_9BIT_1S    = 0b0000  # 9-bit, 1 sample
-INA219_SHUNT_RES_10BIT_1S   = 0b0001  # 10-bit, 1 sample
-INA219_SHUNT_RES_11BIT_1S   = 0b0010  # 11-bit, 1 sample
-INA219_SHUNT_RES_12BIT_1S   = 0b0011  # 12-bit, 1 sample (default)
-INA219_SHUNT_RES_12BIT_2S   = 0b1001  # 12-bit, 2 samples averaged
-INA219_SHUNT_RES_12BIT_4S   = 0b1010  # 12-bit, 4 samples averaged
-INA219_SHUNT_RES_12BIT_8S   = 0b1011  # 12-bit, 8 samples averaged
-INA219_SHUNT_RES_12BIT_16S  = 0b1100  # 12-bit, 16 samples averaged
-INA219_SHUNT_RES_12BIT_32S  = 0b1101  # 12-bit, 32 samples averaged
-INA219_SHUNT_RES_12BIT_64S  = 0b1110  # 12-bit, 64 samples averaged
+INA219_SHUNT_RES_9BIT_1S = 0b0000  # 9-bit, 1 sample
+INA219_SHUNT_RES_10BIT_1S = 0b0001  # 10-bit, 1 sample
+INA219_SHUNT_RES_11BIT_1S = 0b0010  # 11-bit, 1 sample
+INA219_SHUNT_RES_12BIT_1S = 0b0011  # 12-bit, 1 sample (default)
+INA219_SHUNT_RES_12BIT_2S = 0b1001  # 12-bit, 2 samples averaged
+INA219_SHUNT_RES_12BIT_4S = 0b1010  # 12-bit, 4 samples averaged
+INA219_SHUNT_RES_12BIT_8S = 0b1011  # 12-bit, 8 samples averaged
+INA219_SHUNT_RES_12BIT_16S = 0b1100  # 12-bit, 16 samples averaged
+INA219_SHUNT_RES_12BIT_32S = 0b1101  # 12-bit, 32 samples averaged
+INA219_SHUNT_RES_12BIT_64S = 0b1110  # 12-bit, 64 samples averaged
 INA219_SHUNT_RES_12BIT_128S = 0b1111  # 12-bit, 128 samples averaged
 
 ###########################
 # Mode constants          #
 ###########################
-INA219_MODE_POWER_DOWN      = 0b000  # Power-down
-INA219_MODE_SHUNT_TRIG      = 0b001  # Shunt voltage, triggered
-INA219_MODE_BUS_TRIG        = 0b010  # Bus voltage, triggered
-INA219_MODE_SHUNT_BUS_TRIG  = 0b011  # Shunt and bus, triggered
-INA219_MODE_ADC_OFF         = 0b100  # ADC off (disabled)
-INA219_MODE_SHUNT_CONT      = 0b101  # Shunt voltage, continuous
-INA219_MODE_BUS_CONT        = 0b110  # Bus voltage, continuous
-INA219_MODE_SHUNT_BUS_CONT  = 0b111  # Shunt and bus, continuous (default)
+INA219_MODE_POWER_DOWN = 0b000  # Power-down
+INA219_MODE_SHUNT_TRIG = 0b001  # Shunt voltage, triggered
+INA219_MODE_BUS_TRIG = 0b010  # Bus voltage, triggered
+INA219_MODE_SHUNT_BUS_TRIG = 0b011  # Shunt and bus, triggered
+INA219_MODE_ADC_OFF = 0b100  # ADC off (disabled)
+INA219_MODE_SHUNT_CONT = 0b101  # Shunt voltage, continuous
+INA219_MODE_BUS_CONT = 0b110  # Bus voltage, continuous
+INA219_MODE_SHUNT_BUS_CONT = 0b111  # Shunt and bus, continuous (default)
 
 
 class INA219:
@@ -90,16 +90,18 @@ class INA219:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
 
         # Internal calibration values
         self._current_lsb = 0.0
-        self._power_lsb   = 0.0
+        self._power_lsb = 0.0
         self._v_shunt_max = 0.0
-        self._v_bus_max   = 0.0
-        self._r_shunt     = 0.0
+        self._v_bus_max = 0.0
+        self._r_shunt = 0.0
 
     # -------------------------------------------------------------------------
     # Initialization and configuration
@@ -117,12 +119,14 @@ class INA219:
         except:
             return False
 
-    def configure(self,
-                  range=INA219_RANGE_32V,
-                  gain=INA219_GAIN_320MV,
-                  bus_res=INA219_BUS_RES_12BIT,
-                  shunt_res=INA219_SHUNT_RES_12BIT_1S,
-                  mode=INA219_MODE_SHUNT_BUS_CONT):
+    def configure(
+        self,
+        range=INA219_RANGE_32V,
+        gain=INA219_GAIN_320MV,
+        bus_res=INA219_BUS_RES_12BIT,
+        shunt_res=INA219_SHUNT_RES_12BIT_1S,
+        mode=INA219_MODE_SHUNT_BUS_CONT,
+    ):
         """
         Configure the INA219 measurement range, gain, resolution, and mode.
 
@@ -283,7 +287,7 @@ class INA219:
 
         :return: Maximum current in Amps
         """
-        max_current  = self._current_lsb * 32767
+        max_current = self._current_lsb * 32767
         max_possible = self.getMaxPossibleCurrent()
         return min(max_current, max_possible)
 

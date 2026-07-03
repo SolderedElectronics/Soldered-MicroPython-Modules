@@ -239,7 +239,11 @@ class InputronicBridge:
                 if len(raw) > 1:
                     payloadLen = raw[0]
                     if 0 < payloadLen < _I2C_MAX_LEN and payloadLen <= len(raw) - 1:
-                        msg = bytes(raw[1 : payloadLen + 1]).decode("utf-8", "ignore").strip()
+                        msg = (
+                            bytes(raw[1 : payloadLen + 1])
+                            .decode("utf-8", "ignore")
+                            .strip()
+                        )
                         if msg == "TS;PONG;TE":
                             try:
                                 self._i2c.writeto(self._i2cAddr, b"ACK")
@@ -338,7 +342,7 @@ class InputronicBridge:
                 break
             fullMsg = self._uartBuffer[: tePos + 3]
             self.feedLine(fullMsg)
-            self._uartBuffer = self._uartBuffer[tePos + 3:].lstrip()
+            self._uartBuffer = self._uartBuffer[tePos + 3 :].lstrip()
 
     def _pollI2c(self):
         if self._i2c is None:
@@ -348,7 +352,12 @@ class InputronicBridge:
         if flag:
             self._interruptFlag = False
 
-        if self._interruptEnabled and not flag and not self._requestDescPending and not self._requestHidRawPending:
+        if (
+            self._interruptEnabled
+            and not flag
+            and not self._requestDescPending
+            and not self._requestHidRawPending
+        ):
             return
 
         if not self._interruptEnabled:
@@ -385,7 +394,12 @@ class InputronicBridge:
         if flag:
             self._interruptFlag = False
 
-        if self._interruptEnabled and not flag and not self._requestDescPending and not self._requestHidRawPending:
+        if (
+            self._interruptEnabled
+            and not flag
+            and not self._requestDescPending
+            and not self._requestHidRawPending
+        ):
             return
 
         if self._interruptEnabled and flag:
@@ -442,14 +456,17 @@ class InputronicBridge:
                     self._spiFrameStartMs = time.ticks_ms()
                 tePos = self._spiBuffer.find(";TE")
                 if tePos < 0:
-                    if self._spiFrameStartMs and time.ticks_diff(time.ticks_ms(), self._spiFrameStartMs) > 30:
+                    if (
+                        self._spiFrameStartMs
+                        and time.ticks_diff(time.ticks_ms(), self._spiFrameStartMs) > 30
+                    ):
                         self._spiBuffer = self._spiBuffer[3:]
                         self._spiFrameStartMs = 0
                         continue
                     break
                 fullMsg = self._spiBuffer[: tePos + 3]
                 self.feedLine(fullMsg)
-                self._spiBuffer = self._spiBuffer[tePos + 3:]
+                self._spiBuffer = self._spiBuffer[tePos + 3 :]
                 self._spiFrameStartMs = 0
 
     # ------------------------------------------------------------------
@@ -515,7 +532,7 @@ class InputronicBridge:
         start = msgIn.find("TS;MIDI;")
         if start < 0:
             return
-        payload = msgIn[start + 8:]
+        payload = msgIn[start + 8 :]
         tePos = payload.find(";TE")
         if tePos >= 0:
             payload = payload[:tePos]

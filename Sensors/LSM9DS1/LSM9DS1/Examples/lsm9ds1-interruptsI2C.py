@@ -10,28 +10,38 @@
 #   RDYM_PIN  → RDY-M  on breakout (mag data ready, active high)
 # NOTE: These pins are 3.3V only on the breakout!
 
-from lsm9ds1 import (LSM9DS1,
-                     XG_INT1, XG_INT2,
-                     ZHIE_G, XHIE_XL, XIEN,
-                     INT1_IG_G, INT_IG_XL, INT_DRDY_XL, INT_DRDY_G,
-                     INT_ACTIVE_LOW, INT_PUSH_PULL,
-                     X_AXIS, Z_AXIS)
+from lsm9ds1 import (
+    LSM9DS1,
+    XG_INT1,
+    XG_INT2,
+    ZHIE_G,
+    XHIE_XL,
+    XIEN,
+    INT1_IG_G,
+    INT_IG_XL,
+    INT_DRDY_XL,
+    INT_DRDY_G,
+    INT_ACTIVE_LOW,
+    INT_PUSH_PULL,
+    X_AXIS,
+    Z_AXIS,
+)
 from machine import Pin
 import time
 
 # Change these to the GPIO pins connected to the interrupt outputs
-INT1_PIN = Pin(2,  Pin.IN, Pin.PULL_UP)
-INT2_PIN = Pin(4,  Pin.IN, Pin.PULL_UP)
-INTM_PIN = Pin(5,  Pin.IN, Pin.PULL_UP)
+INT1_PIN = Pin(2, Pin.IN, Pin.PULL_UP)
+INT2_PIN = Pin(4, Pin.IN, Pin.PULL_UP)
+INTM_PIN = Pin(5, Pin.IN, Pin.PULL_UP)
 RDYM_PIN = Pin(14, Pin.IN)
 
 imu = LSM9DS1(auto_begin=False)
 imu.settings.gyro.latchInterrupt = False
-imu.settings.gyro.scale          = 245
-imu.settings.gyro.sampleRate     = 1   # 14.9 Hz
-imu.settings.accel.scale         = 2
-imu.settings.mag.scale           = 4
-imu.settings.mag.sampleRate      = 0   # 0.625 Hz
+imu.settings.gyro.scale = 245
+imu.settings.gyro.sampleRate = 1  # 14.9 Hz
+imu.settings.accel.scale = 2
+imu.settings.mag.scale = 4
+imu.settings.mag.sampleRate = 0  # 0.625 Hz
 imu.begin()
 
 # INT1 fires when gyro Z or accel X exceed threshold (active low, not latched)
@@ -56,12 +66,21 @@ while True:
         imu.readAccel()
         imu.readGyro()
         imu.readMag()
-        print("A: {:.2f}, {:.2f}, {:.2f}".format(
-            imu.calcAccel(imu.ax), imu.calcAccel(imu.ay), imu.calcAccel(imu.az)))
-        print("G: {:.2f}, {:.2f}, {:.2f}".format(
-            imu.calcGyro(imu.gx), imu.calcGyro(imu.gy), imu.calcGyro(imu.gz)))
-        print("M: {:.2f}, {:.2f}, {:.2f}".format(
-            imu.calcMag(imu.mx), imu.calcMag(imu.my), imu.calcMag(imu.mz)))
+        print(
+            "A: {:.2f}, {:.2f}, {:.2f}".format(
+                imu.calcAccel(imu.ax), imu.calcAccel(imu.ay), imu.calcAccel(imu.az)
+            )
+        )
+        print(
+            "G: {:.2f}, {:.2f}, {:.2f}".format(
+                imu.calcGyro(imu.gx), imu.calcGyro(imu.gy), imu.calcGyro(imu.gz)
+            )
+        )
+        print(
+            "M: {:.2f}, {:.2f}, {:.2f}".format(
+                imu.calcMag(imu.mx), imu.calcMag(imu.my), imu.calcMag(imu.mz)
+            )
+        )
         lastPrint = time.ticks_ms()
 
     # INT2: new accel/gyro data available (active low)
@@ -88,7 +107,9 @@ while True:
         print("\t\tMag int: 0x{:02X}".format(imu.getMagIntSrc()))
         while not INTM_PIN.value():
             pass
-        print("\t\tINTM Duration: {} ms".format(time.ticks_diff(time.ticks_ms(), start)))
+        print(
+            "\t\tINTM Duration: {} ms".format(time.ticks_diff(time.ticks_ms(), start))
+        )
 
     # RDY-M: new magnetometer data available (active high)
     if RDYM_PIN.value():

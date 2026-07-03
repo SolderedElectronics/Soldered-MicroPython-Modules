@@ -31,9 +31,13 @@ while True:
     board.setLED(1, 0, 255 if btn2 else 0, 0)
     board.setLED(2, 0, 0, 255 if btn1 else 0)
 
-    if btn3:       board.setBuzzer(3000)
-    elif btn2:     board.setBuzzer(2000)
-    elif btn1:     board.setBuzzer(1000)
-    else:          board.setBuzzer(0)
+    if btn3:
+        board.setBuzzer(3000)
+    elif btn2:
+        board.setBuzzer(2000)
+    elif btn1:
+        board.setBuzzer(1000)
+    else:
+        board.setBuzzer(0)
 
     time.sleep_ms(20)

@@ -17,8 +17,8 @@ printWiper(digipot)
 
 while True:
     ch = sys.stdin.read(1)
-    if ch == '+':
+    if ch == "+":
         digipot.increment()
-    elif ch == '-':
+    elif ch == "-":
         digipot.decrement()
     printWiper(digipot)

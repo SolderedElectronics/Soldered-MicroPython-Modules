@@ -9,8 +9,8 @@ import time  # Module used to pause the board
 
 # Connect sensor AO to ANALOG_PIN and DO to DIGITAL_PIN.
 # Change both pins to match your wiring.
-ANALOG_PIN = 34   # ESP32 default
-DIGITAL_PIN = 2   # ESP32 default
+ANALOG_PIN = 34  # ESP32 default
+DIGITAL_PIN = 2  # ESP32 default
 
 # Create an instance of the MQ135 sensor with both analog and digital pins
 sensor = MQ135(analog_pin=ANALOG_PIN, digital_pin=DIGITAL_PIN)

@@ -39,23 +39,40 @@ while True:
 
                 print("Location: ", end="")
                 if gps.location.isValid():
-                    print("{:.6f},{:.6f}".format(gps.location.lat(), gps.location.lng()), end="")
+                    print(
+                        "{:.6f},{:.6f}".format(gps.location.lat(), gps.location.lng()),
+                        end="",
+                    )
                 else:
                     print("INVALID", end="")
 
                 print("  Date/Time: ", end="")
                 if gps.date.isValid():
-                    print("{}/{}/{}".format(gps.date.month(), gps.date.day(), gps.date.year()), end="")
+                    print(
+                        "{}/{}/{}".format(
+                            gps.date.month(), gps.date.day(), gps.date.year()
+                        ),
+                        end="",
+                    )
                 else:
                     print("INVALID", end="")
 
                 print(" ", end="")
                 if gps.time.isValid():
-                    print("{:02d}:{:02d}:{:02d}.{:02d}".format(
-                        gps.time.hour(), gps.time.minute(), gps.time.second(), gps.time.centisecond()))
+                    print(
+                        "{:02d}:{:02d}:{:02d}.{:02d}".format(
+                            gps.time.hour(),
+                            gps.time.minute(),
+                            gps.time.second(),
+                            gps.time.centisecond(),
+                        )
+                    )
                 else:
                     print("INVALID")
 
     # No data in the first 5 seconds from startup? Something is wrong, check wiring!
-    if time.ticks_diff(time.ticks_ms(), start_time) > 5000 and gps.charsProcessed() < 10:
+    if (
+        time.ticks_diff(time.ticks_ms(), start_time) > 5000
+        and gps.charsProcessed() < 10
+    ):
         print("No GPS detected: check wiring.")

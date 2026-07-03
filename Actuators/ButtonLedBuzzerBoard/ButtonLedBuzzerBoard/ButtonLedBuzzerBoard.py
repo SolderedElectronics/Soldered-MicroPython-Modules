@@ -11,8 +11,8 @@ BLB_DEFAULT_ADDRESS = 0x30
 
 # Register addresses
 BLB_REG_BUTTONS = 0x00
-BLB_REG_LED     = 0x01
-BLB_REG_BUZZER  = 0x02
+BLB_REG_LED = 0x01
+BLB_REG_BUZZER = 0x02
 
 # Number of LEDs
 BLB_NUM_LEDS = 3
@@ -39,7 +39,9 @@ class ButtonLedBuzzerBoard:
             elif uname().sysname == "esp8266":
                 self.i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         self.address = address
         self._led_buf = bytearray(BLB_NUM_LEDS * 3)
@@ -54,7 +56,7 @@ class ButtonLedBuzzerBoard:
         """Set single LED by index (0-2) to given RGB color."""
         if index >= BLB_NUM_LEDS:
             return
-        self._led_buf[index * 3]     = r
+        self._led_buf[index * 3] = r
         self._led_buf[index * 3 + 1] = g
         self._led_buf[index * 3 + 2] = b
         self._writeLEDs()
@@ -62,7 +64,7 @@ class ButtonLedBuzzerBoard:
     def setAllLEDs(self, r, g, b):
         """Set all LEDs to same RGB color."""
         for i in range(BLB_NUM_LEDS):
-            self._led_buf[i * 3]     = r
+            self._led_buf[i * 3] = r
             self._led_buf[i * 3 + 1] = g
             self._led_buf[i * 3 + 2] = b
         self._writeLEDs()
@@ -83,7 +85,9 @@ class ButtonLedBuzzerBoard:
     def setBuzzer(self, freq):
         """Set buzzer frequency in Hz. Pass 0 to turn off."""
         try:
-            self.i2c.writeto(self.address, bytes([BLB_REG_BUZZER, (freq >> 8) & 0xFF, freq & 0xFF]))
+            self.i2c.writeto(
+                self.address, bytes([BLB_REG_BUZZER, (freq >> 8) & 0xFF, freq & 0xFF])
+            )
         except:
             pass
 

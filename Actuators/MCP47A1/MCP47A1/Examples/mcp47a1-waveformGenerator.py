@@ -1,7 +1,7 @@
 # FILE: mcp47a1-waveformGenerator.py
 # AUTHOR: Fran Fodor @ Soldered
-# BRIEF: This example shows how to generate simple wavefroms like sinewave, triangle wave and sawtooth wave. 
-#        You will need 330 Ohm resistor and LED. Connect LED and resistor at the output of a DAC. 
+# BRIEF: This example shows how to generate simple wavefroms like sinewave, triangle wave and sawtooth wave.
+#        You will need 330 Ohm resistor and LED. Connect LED and resistor at the output of a DAC.
 #        You can alternatively use oscilloscope or small speaker.
 # WORKS WITH: DAC 6-Bit 1-Channel MCP47A1 Breakout: www.solde.red/333052
 # LAST UPDATED: 2026-04-29
@@ -17,8 +17,9 @@ from mcp47a1 import MCP47A1
 # Initialize DAC over Qwiic
 mcp47a1 = MCP47A1()
 
-selectedWaveform = 0     # 0=sine, 1=triangle, 2=sawtooth
-waveformLUT = [0] * 65   # 65 samples (0–64)
+selectedWaveform = 0  # 0=sine, 1=triangle, 2=sawtooth
+waveformLUT = [0] * 65  # 65 samples (0–64)
+
 
 def make_lut(waveform):
     global waveformLUT
@@ -39,6 +40,7 @@ def make_lut(waveform):
     elif waveform == 2:  # Sawtooth
         for i in range(65):
             waveformLUT[i] = i
+
 
 make_lut(selectedWaveform)
 

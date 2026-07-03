@@ -10,74 +10,74 @@ import time
 
 # I2C addresses
 _AG_ADDR = 0x6B
-_M_ADDR  = 0x1E
+_M_ADDR = 0x1E
 
 # AG registers
-_ACT_THS          = 0x04
-_ACT_DUR          = 0x05
-_INT_GEN_CFG_XL   = 0x06
+_ACT_THS = 0x04
+_ACT_DUR = 0x05
+_INT_GEN_CFG_XL = 0x06
 _INT_GEN_THS_X_XL = 0x07
-_INT_GEN_DUR_XL   = 0x0A
-_INT1_CTRL        = 0x0C
-_INT2_CTRL        = 0x0D
-_WHO_AM_I_XG      = 0x0F
-_CTRL_REG1_G      = 0x10
-_CTRL_REG2_G      = 0x11
-_CTRL_REG3_G      = 0x12
-_ORIENT_CFG_G     = 0x13
-_INT_GEN_SRC_G    = 0x14
-_OUT_TEMP_L       = 0x15
-_STATUS_REG_0     = 0x17
-_OUT_X_L_G        = 0x18
-_CTRL_REG4        = 0x1E
-_CTRL_REG5_XL     = 0x1F
-_CTRL_REG6_XL     = 0x20
-_CTRL_REG7_XL     = 0x21
-_CTRL_REG8        = 0x22
-_CTRL_REG9        = 0x23
-_INT_GEN_SRC_XL   = 0x26
-_STATUS_REG_1     = 0x27
-_OUT_X_L_XL       = 0x28
-_FIFO_CTRL        = 0x2E
-_FIFO_SRC         = 0x2F
-_INT_GEN_CFG_G    = 0x30
+_INT_GEN_DUR_XL = 0x0A
+_INT1_CTRL = 0x0C
+_INT2_CTRL = 0x0D
+_WHO_AM_I_XG = 0x0F
+_CTRL_REG1_G = 0x10
+_CTRL_REG2_G = 0x11
+_CTRL_REG3_G = 0x12
+_ORIENT_CFG_G = 0x13
+_INT_GEN_SRC_G = 0x14
+_OUT_TEMP_L = 0x15
+_STATUS_REG_0 = 0x17
+_OUT_X_L_G = 0x18
+_CTRL_REG4 = 0x1E
+_CTRL_REG5_XL = 0x1F
+_CTRL_REG6_XL = 0x20
+_CTRL_REG7_XL = 0x21
+_CTRL_REG8 = 0x22
+_CTRL_REG9 = 0x23
+_INT_GEN_SRC_XL = 0x26
+_STATUS_REG_1 = 0x27
+_OUT_X_L_XL = 0x28
+_FIFO_CTRL = 0x2E
+_FIFO_SRC = 0x2F
+_INT_GEN_CFG_G = 0x30
 _INT_GEN_THS_XH_G = 0x31
-_INT_GEN_DUR_G    = 0x37
+_INT_GEN_DUR_G = 0x37
 
 # Magnetometer registers
-_WHO_AM_I_M   = 0x0F
-_CTRL_REG1_M  = 0x20
-_CTRL_REG2_M  = 0x21
-_CTRL_REG3_M  = 0x22
-_CTRL_REG4_M  = 0x23
-_CTRL_REG5_M  = 0x24
+_WHO_AM_I_M = 0x0F
+_CTRL_REG1_M = 0x20
+_CTRL_REG2_M = 0x21
+_CTRL_REG3_M = 0x22
+_CTRL_REG4_M = 0x23
+_CTRL_REG5_M = 0x24
 _STATUS_REG_M = 0x27
-_OUT_X_L_M    = 0x28
-_INT_CFG_M    = 0x30
-_INT_SRC_M    = 0x31
-_INT_THS_L_M  = 0x32
-_INT_THS_H_M  = 0x33
+_OUT_X_L_M = 0x28
+_INT_CFG_M = 0x30
+_INT_SRC_M = 0x31
+_INT_THS_L_M = 0x32
+_INT_THS_H_M = 0x33
 
 # Sensitivity constants (datasheet Table 3)
 _SENS_ACCEL = {2: 0.000061, 4: 0.000122, 8: 0.000244, 16: 0.000732}
-_SENS_GYRO  = {245: 0.00875, 500: 0.0175, 2000: 0.07}
-_SENS_MAG   = {4: 0.00014, 8: 0.00029, 12: 0.00043, 16: 0.00058}
+_SENS_GYRO = {245: 0.00875, 500: 0.0175, 2000: 0.07}
+_SENS_MAG = {4: 0.00014, 8: 0.00029, 12: 0.00043, 16: 0.00058}
 
 # Interrupt select
 XG_INT1 = _INT1_CTRL
 XG_INT2 = _INT2_CTRL
 
 # Interrupt generators (OR these together)
-INT_DRDY_XL    = 0x01
-INT_DRDY_G     = 0x02
-INT1_BOOT      = 0x04
+INT_DRDY_XL = 0x01
+INT_DRDY_G = 0x02
+INT1_BOOT = 0x04
 INT2_DRDY_TEMP = 0x04
-INT_FTH        = 0x08
-INT_OVR        = 0x10
-INT_FSS5       = 0x20
-INT_IG_XL      = 0x40
-INT1_IG_G      = 0x80
-INT2_INACT     = 0x80
+INT_FTH = 0x08
+INT_OVR = 0x10
+INT_FSS5 = 0x20
+INT_IG_XL = 0x40
+INT1_IG_G = 0x80
+INT2_INACT = 0x80
 
 # Accelerometer interrupt generators
 XLIE_XL = 0x01
@@ -86,7 +86,7 @@ YLIE_XL = 0x04
 YHIE_XL = 0x08
 ZLIE_XL = 0x10
 ZHIE_XL = 0x20
-GEN_6D  = 0x40
+GEN_6D = 0x40
 
 # Gyroscope interrupt generators
 XLIE_G = 0x01
@@ -103,67 +103,67 @@ XIEN = 0x80
 
 # Interrupt active level
 INT_ACTIVE_HIGH = 0
-INT_ACTIVE_LOW  = 1
+INT_ACTIVE_LOW = 1
 
 # Interrupt output type
-INT_PUSH_PULL  = 0
+INT_PUSH_PULL = 0
 INT_OPEN_DRAIN = 1
 
 # FIFO modes
-FIFO_OFF          = 0
-FIFO_THS          = 1
+FIFO_OFF = 0
+FIFO_THS = 1
 FIFO_CONT_TRIGGER = 3
-FIFO_OFF_TRIGGER  = 4
-FIFO_CONT         = 6
+FIFO_OFF_TRIGGER = 4
+FIFO_CONT = 6
 
 # Axes
-X_AXIS   = 0
-Y_AXIS   = 1
-Z_AXIS   = 2
+X_AXIS = 0
+Y_AXIS = 1
+Z_AXIS = 2
 ALL_AXIS = 3
 
 
 class _GyroSettings:
     def __init__(self):
-        self.enabled        = True
-        self.scale          = 245
-        self.sampleRate     = 6
-        self.bandwidth      = 0
+        self.enabled = True
+        self.scale = 245
+        self.sampleRate = 6
+        self.bandwidth = 0
         self.lowPowerEnable = False
-        self.HPFEnable      = False
-        self.HPFCutoff      = 0
-        self.flipX          = False
-        self.flipY          = False
-        self.flipZ          = False
-        self.enableX        = True
-        self.enableY        = True
-        self.enableZ        = True
+        self.HPFEnable = False
+        self.HPFCutoff = 0
+        self.flipX = False
+        self.flipY = False
+        self.flipZ = False
+        self.enableX = True
+        self.enableY = True
+        self.enableZ = True
         self.latchInterrupt = True
 
 
 class _AccelSettings:
     def __init__(self):
-        self.enabled          = True
-        self.scale            = 2
-        self.sampleRate       = 6
-        self.enableX          = True
-        self.enableY          = True
-        self.enableZ          = True
-        self.bandwidth        = -1
-        self.highResEnable    = False
+        self.enabled = True
+        self.scale = 2
+        self.sampleRate = 6
+        self.enableX = True
+        self.enableY = True
+        self.enableZ = True
+        self.bandwidth = -1
+        self.highResEnable = False
         self.highResBandwidth = 0
 
 
 class _MagSettings:
     def __init__(self):
-        self.enabled                = True
-        self.scale                  = 4
-        self.sampleRate             = 7
+        self.enabled = True
+        self.scale = 4
+        self.sampleRate = 7
         self.tempCompensationEnable = False
-        self.XYPerformance          = 3
-        self.ZPerformance           = 3
-        self.lowPowerEnable         = False
-        self.operatingMode          = 0
+        self.XYPerformance = 3
+        self.ZPerformance = 3
+        self.lowPowerEnable = False
+        self.operatingMode = 0
 
 
 class _TempSettings:
@@ -173,10 +173,10 @@ class _TempSettings:
 
 class IMUSettings:
     def __init__(self):
-        self.gyro  = _GyroSettings()
+        self.gyro = _GyroSettings()
         self.accel = _AccelSettings()
-        self.mag   = _MagSettings()
-        self.temp  = _TempSettings()
+        self.mag = _MagSettings()
+        self.temp = _TempSettings()
 
 
 class LSM9DS1:
@@ -204,9 +204,9 @@ class LSM9DS1:
         self.mx = self.my = self.mz = 0
         self.temperature = 0
 
-        self.gBias    = [0.0, 0.0, 0.0]
-        self.aBias    = [0.0, 0.0, 0.0]
-        self.mBias    = [0.0, 0.0, 0.0]
+        self.gBias = [0.0, 0.0, 0.0]
+        self.aBias = [0.0, 0.0, 0.0]
+        self.mBias = [0.0, 0.0, 0.0]
         self.gBiasRaw = [0, 0, 0]
         self.aBiasRaw = [0, 0, 0]
         self.mBiasRaw = [0, 0, 0]
@@ -231,7 +231,7 @@ class LSM9DS1:
         self._calcmRes()
 
         ag_id = self._readReg(_AG_ADDR, _WHO_AM_I_XG)
-        m_id  = self._readReg(_M_ADDR,  _WHO_AM_I_M)
+        m_id = self._readReg(_M_ADDR, _WHO_AM_I_M)
 
         if ag_id != 0x68 or m_id != 0x3D:
             raise Exception("LSM9DS1 not found! Check wiring.")
@@ -247,10 +247,10 @@ class LSM9DS1:
         if self.settings.gyro.enabled:
             reg = (self.settings.gyro.sampleRate & 0x07) << 5
         if self.settings.gyro.scale == 500:
-            reg |= (0x1 << 3)
+            reg |= 0x1 << 3
         elif self.settings.gyro.scale == 2000:
-            reg |= (0x3 << 3)
-        reg |= (self.settings.gyro.bandwidth & 0x3)
+            reg |= 0x3 << 3
+        reg |= self.settings.gyro.bandwidth & 0x3
         self._writeReg(_AG_ADDR, _CTRL_REG1_G, reg)
 
         self._writeReg(_AG_ADDR, _CTRL_REG2_G, 0x00)
@@ -261,32 +261,45 @@ class LSM9DS1:
         self._writeReg(_AG_ADDR, _CTRL_REG3_G, reg)
 
         reg = 0
-        if self.settings.gyro.enableZ:        reg |= 0x20
-        if self.settings.gyro.enableY:        reg |= 0x10
-        if self.settings.gyro.enableX:        reg |= 0x08
-        if self.settings.gyro.latchInterrupt: reg |= 0x02
+        if self.settings.gyro.enableZ:
+            reg |= 0x20
+        if self.settings.gyro.enableY:
+            reg |= 0x10
+        if self.settings.gyro.enableX:
+            reg |= 0x08
+        if self.settings.gyro.latchInterrupt:
+            reg |= 0x02
         self._writeReg(_AG_ADDR, _CTRL_REG4, reg)
 
         reg = 0
-        if self.settings.gyro.flipX: reg |= 0x20
-        if self.settings.gyro.flipY: reg |= 0x10
-        if self.settings.gyro.flipZ: reg |= 0x08
+        if self.settings.gyro.flipX:
+            reg |= 0x20
+        if self.settings.gyro.flipY:
+            reg |= 0x10
+        if self.settings.gyro.flipZ:
+            reg |= 0x08
         self._writeReg(_AG_ADDR, _ORIENT_CFG_G, reg)
 
     def _initAccel(self):
         reg = 0
-        if self.settings.accel.enableZ: reg |= 0x20
-        if self.settings.accel.enableY: reg |= 0x10
-        if self.settings.accel.enableX: reg |= 0x08
+        if self.settings.accel.enableZ:
+            reg |= 0x20
+        if self.settings.accel.enableY:
+            reg |= 0x10
+        if self.settings.accel.enableX:
+            reg |= 0x08
         self._writeReg(_AG_ADDR, _CTRL_REG5_XL, reg)
 
         reg = 0
         if self.settings.accel.enabled:
             reg |= (self.settings.accel.sampleRate & 0x07) << 5
         scale = self.settings.accel.scale
-        if scale == 4:    reg |= (0x2 << 3)
-        elif scale == 8:  reg |= (0x3 << 3)
-        elif scale == 16: reg |= (0x1 << 3)
+        if scale == 4:
+            reg |= 0x2 << 3
+        elif scale == 8:
+            reg |= 0x3 << 3
+        elif scale == 16:
+            reg |= 0x1 << 3
         if self.settings.accel.bandwidth >= 0:
             reg |= 0x04 | (self.settings.accel.bandwidth & 0x03)
         self._writeReg(_AG_ADDR, _CTRL_REG6_XL, reg)
@@ -298,24 +311,31 @@ class LSM9DS1:
 
     def _initMag(self):
         reg = 0
-        if self.settings.mag.tempCompensationEnable: reg |= 0x80
+        if self.settings.mag.tempCompensationEnable:
+            reg |= 0x80
         reg |= (self.settings.mag.XYPerformance & 0x3) << 5
         reg |= (self.settings.mag.sampleRate & 0x7) << 2
         self._writeReg(_M_ADDR, _CTRL_REG1_M, reg)
 
         reg = 0
         scale = self.settings.mag.scale
-        if scale == 8:    reg |= (0x1 << 5)
-        elif scale == 12: reg |= (0x2 << 5)
-        elif scale == 16: reg |= (0x3 << 5)
+        if scale == 8:
+            reg |= 0x1 << 5
+        elif scale == 12:
+            reg |= 0x2 << 5
+        elif scale == 16:
+            reg |= 0x3 << 5
         self._writeReg(_M_ADDR, _CTRL_REG2_M, reg)
 
         reg = 0
-        if self.settings.mag.lowPowerEnable: reg |= 0x20
-        reg |= (self.settings.mag.operatingMode & 0x3)
+        if self.settings.mag.lowPowerEnable:
+            reg |= 0x20
+        reg |= self.settings.mag.operatingMode & 0x3
         self._writeReg(_M_ADDR, _CTRL_REG3_M, reg)
 
-        self._writeReg(_M_ADDR, _CTRL_REG4_M, (self.settings.mag.ZPerformance & 0x3) << 2)
+        self._writeReg(
+            _M_ADDR, _CTRL_REG4_M, (self.settings.mag.ZPerformance & 0x3) << 2
+        )
         self._writeReg(_M_ADDR, _CTRL_REG5_M, 0x00)
 
     def _constrainScales(self):
@@ -370,7 +390,7 @@ class LSM9DS1:
     def readAccel(self):
         """Read accelerometer, store raw signed int16 values in ax, ay, az."""
         data = self._readRegs(_AG_ADDR, _OUT_X_L_XL, 6)
-        self.ax, self.ay, self.az = struct.unpack('<hhh', data)
+        self.ax, self.ay, self.az = struct.unpack("<hhh", data)
         if self._autoCalc:
             self.ax -= self.aBiasRaw[0]
             self.ay -= self.aBiasRaw[1]
@@ -379,7 +399,7 @@ class LSM9DS1:
     def readGyro(self):
         """Read gyroscope, store raw signed int16 values in gx, gy, gz."""
         data = self._readRegs(_AG_ADDR, _OUT_X_L_G, 6)
-        self.gx, self.gy, self.gz = struct.unpack('<hhh', data)
+        self.gx, self.gy, self.gz = struct.unpack("<hhh", data)
         if self._autoCalc:
             self.gx -= self.gBiasRaw[0]
             self.gy -= self.gBiasRaw[1]
@@ -388,12 +408,12 @@ class LSM9DS1:
     def readMag(self):
         """Read magnetometer, store raw signed int16 values in mx, my, mz."""
         data = self._readRegs(_M_ADDR, _OUT_X_L_M, 6)
-        self.mx, self.my, self.mz = struct.unpack('<hhh', data)
+        self.mx, self.my, self.mz = struct.unpack("<hhh", data)
 
     def readTemp(self):
         """Read temperature sensor, store result in self.temperature (degrees C)."""
         data = self._readRegs(_AG_ADDR, _OUT_TEMP_L, 2)
-        raw = struct.unpack('<h', data)[0]
+        raw = struct.unpack("<h", data)[0]
         self.temperature = 25 + (raw >> 8)
 
     # --- Calc (raw to physical units) ---
@@ -435,10 +455,10 @@ class LSM9DS1:
         """
         reg = self._readReg(_AG_ADDR, _CTRL_REG1_G) & 0xE7
         if scale == 500:
-            reg |= (0x1 << 3)
+            reg |= 0x1 << 3
             self.settings.gyro.scale = 500
         elif scale == 2000:
-            reg |= (0x3 << 3)
+            reg |= 0x3 << 3
             self.settings.gyro.scale = 2000
         else:
             self.settings.gyro.scale = 245
@@ -453,13 +473,13 @@ class LSM9DS1:
         """
         reg = self._readReg(_AG_ADDR, _CTRL_REG6_XL) & 0xE7
         if scale == 4:
-            reg |= (0x2 << 3)
+            reg |= 0x2 << 3
             self.settings.accel.scale = 4
         elif scale == 8:
-            reg |= (0x3 << 3)
+            reg |= 0x3 << 3
             self.settings.accel.scale = 8
         elif scale == 16:
-            reg |= (0x1 << 3)
+            reg |= 0x1 << 3
             self.settings.accel.scale = 16
         else:
             self.settings.accel.scale = 2
@@ -474,13 +494,13 @@ class LSM9DS1:
         """
         reg = self._readReg(_M_ADDR, _CTRL_REG2_M) & 0x9F
         if scale == 8:
-            reg |= (0x1 << 5)
+            reg |= 0x1 << 5
             self.settings.mag.scale = 8
         elif scale == 12:
-            reg |= (0x2 << 5)
+            reg |= 0x2 << 5
             self.settings.mag.scale = 12
         elif scale == 16:
-            reg |= (0x3 << 5)
+            reg |= 0x3 << 5
             self.settings.mag.scale = 16
         else:
             self.settings.mag.scale = 4
@@ -544,7 +564,9 @@ class LSM9DS1:
 
     # --- Interrupt configuration ---
 
-    def configInt(self, interrupt, generator, activeLow=INT_ACTIVE_LOW, pushPull=INT_PUSH_PULL):
+    def configInt(
+        self, interrupt, generator, activeLow=INT_ACTIVE_LOW, pushPull=INT_PUSH_PULL
+    ):
         """
         Configure INT1 or INT2 interrupt output.
 
@@ -572,7 +594,9 @@ class LSM9DS1:
         :param generator: OR'd combination of XHIE_XL/XLIE_XL/YHIE_XL/etc.
         :param andInterrupts: True = AND combination, False = OR
         """
-        self._writeReg(_AG_ADDR, _INT_GEN_CFG_XL, generator | (0x80 if andInterrupts else 0))
+        self._writeReg(
+            _AG_ADDR, _INT_GEN_CFG_XL, generator | (0x80 if andInterrupts else 0)
+        )
 
     def configAccelThs(self, threshold, axis, duration=0, wait=False):
         """
@@ -584,7 +608,9 @@ class LSM9DS1:
         :param wait: if True, wait duration samples before clearing interrupt
         """
         self._writeReg(_AG_ADDR, _INT_GEN_THS_X_XL + axis, threshold)
-        self._writeReg(_AG_ADDR, _INT_GEN_DUR_XL, (duration & 0x7F) | (0x80 if wait else 0))
+        self._writeReg(
+            _AG_ADDR, _INT_GEN_DUR_XL, (duration & 0x7F) | (0x80 if wait else 0)
+        )
 
     def configGyroInt(self, generator, aoi, latch):
         """
@@ -595,8 +621,10 @@ class LSM9DS1:
         :param latch: True to latch interrupt until cleared
         """
         reg = generator
-        if aoi:   reg |= 0x80
-        if latch: reg |= 0x40
+        if aoi:
+            reg |= 0x80
+        if latch:
+            reg |= 0x40
         self._writeReg(_AG_ADDR, _INT_GEN_CFG_G, reg)
 
     def configGyroThs(self, threshold, axis, duration, wait):
@@ -608,9 +636,13 @@ class LSM9DS1:
         :param duration: samples threshold must be exceeded
         :param wait: if True, wait duration samples before clearing
         """
-        self._writeReg(_AG_ADDR, _INT_GEN_THS_XH_G + (axis * 2),      (threshold >> 8) & 0x7F)
-        self._writeReg(_AG_ADDR, _INT_GEN_THS_XH_G + (axis * 2) + 1,   threshold & 0xFF)
-        self._writeReg(_AG_ADDR, _INT_GEN_DUR_G, (duration & 0x7F) | (0x80 if wait else 0))
+        self._writeReg(
+            _AG_ADDR, _INT_GEN_THS_XH_G + (axis * 2), (threshold >> 8) & 0x7F
+        )
+        self._writeReg(_AG_ADDR, _INT_GEN_THS_XH_G + (axis * 2) + 1, threshold & 0xFF)
+        self._writeReg(
+            _AG_ADDR, _INT_GEN_DUR_G, (duration & 0x7F) | (0x80 if wait else 0)
+        )
 
     def configMagInt(self, generator, activeLow, latch=True):
         """
@@ -621,9 +653,12 @@ class LSM9DS1:
         :param latch: True to latch interrupt
         """
         config = generator & 0xE0
-        if activeLow == INT_ACTIVE_HIGH: config |= 0x04
-        if not latch:                    config |= 0x02
-        if generator:                    config |= 0x01
+        if activeLow == INT_ACTIVE_HIGH:
+            config |= 0x04
+        if not latch:
+            config |= 0x02
+        if generator:
+            config |= 0x01
         self._writeReg(_M_ADDR, _INT_CFG_M, config)
 
     def configMagThs(self, threshold):
@@ -633,7 +668,7 @@ class LSM9DS1:
         :param threshold: 0-0x7FFF, raw magnetometer value
         """
         self._writeReg(_M_ADDR, _INT_THS_H_M, (threshold >> 8) & 0x7F)
-        self._writeReg(_M_ADDR, _INT_THS_L_M,  threshold & 0xFF)
+        self._writeReg(_M_ADDR, _INT_THS_L_M, threshold & 0xFF)
 
     def configInactivity(self, duration, threshold, sleepOn):
         """
@@ -643,7 +678,9 @@ class LSM9DS1:
         :param threshold: activity threshold 0-127
         :param sleepOn: True = sleep gyro on inactivity, False = power down
         """
-        self._writeReg(_AG_ADDR, _ACT_THS, (threshold & 0x7F) | (0x80 if sleepOn else 0))
+        self._writeReg(
+            _AG_ADDR, _ACT_THS, (threshold & 0x7F) | (0x80 if sleepOn else 0)
+        )
         self._writeReg(_AG_ADDR, _ACT_DUR, duration)
 
     def getGyroIntSrc(self):
@@ -741,9 +778,9 @@ class LSM9DS1:
 
         for i in range(3):
             self.gBiasRaw[i] = gBiasTemp[i] // samples
-            self.gBias[i]    = self.calcGyro(self.gBiasRaw[i])
+            self.gBias[i] = self.calcGyro(self.gBiasRaw[i])
             self.aBiasRaw[i] = aBiasTemp[i] // samples
-            self.aBias[i]    = self.calcAccel(self.aBiasRaw[i])
+            self.aBias[i] = self.calcAccel(self.aBiasRaw[i])
 
         self.enableFIFO(False)
         self.setFIFO(FIFO_OFF, 0x00)
@@ -765,18 +802,20 @@ class LSM9DS1:
                 pass
             self.readMag()
             for j, v in enumerate([self.mx, self.my, self.mz]):
-                if v > magMax[j]: magMax[j] = v
-                if v < magMin[j]: magMin[j] = v
+                if v > magMax[j]:
+                    magMax[j] = v
+                if v < magMin[j]:
+                    magMin[j] = v
 
         for j in range(3):
             self.mBiasRaw[j] = (magMax[j] + magMin[j]) // 2
-            self.mBias[j]    = self.calcMag(self.mBiasRaw[j])
+            self.mBias[j] = self.calcMag(self.mBiasRaw[j])
             if loadIn:
                 self._magOffset(j, self.mBiasRaw[j])
 
     def _magOffset(self, axis, offset):
         base = 0x05
-        self._writeReg(_M_ADDR, base + (2 * axis),      offset & 0xFF)
+        self._writeReg(_M_ADDR, base + (2 * axis), offset & 0xFF)
         self._writeReg(_M_ADDR, base + (2 * axis) + 1, (offset >> 8) & 0xFF)
 
     # --- Low-level I2C ---

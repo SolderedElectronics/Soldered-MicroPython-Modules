@@ -4,7 +4,7 @@
 #        including setting taper rate and terminate voltage.
 #
 #        NOTE: It is IMPORTANT to connect the battery because this module gets
-#        power from the battery and will not work without it!   
+#        power from the battery and will not work without it!
 # WORKS WITH: Fuel gauge BQ27441 breakout: solde.red/333065
 # LAST UPDATED: 2026-05-06
 
@@ -51,23 +51,23 @@ lipo.exitConfig()
 
 
 def print_battery_stats():
-    soc      = lipo.soc()             # Read state-of-charge (%)
-    volts    = lipo.voltage()         # Read battery voltage (mV)
-    current  = lipo.current(AVG)     # Read average current (mA)
-    full_cap = lipo.capacity(FULL)   # Read full capacity (mAh)
-    capacity = lipo.capacity(REMAIN) # Read remaining capacity (mAh)
-    pwr      = lipo.power()           # Read average power draw (mW)
-    health   = lipo.soh()            # Read state-of-health (%)
+    soc = lipo.soc()  # Read state-of-charge (%)
+    volts = lipo.voltage()  # Read battery voltage (mV)
+    current = lipo.current(AVG)  # Read average current (mA)
+    full_cap = lipo.capacity(FULL)  # Read full capacity (mAh)
+    capacity = lipo.capacity(REMAIN)  # Read remaining capacity (mAh)
+    pwr = lipo.power()  # Read average power draw (mW)
+    health = lipo.soh()  # Read state-of-health (%)
 
     line = "[{}] {}% | {} mV | {} mA | {}/{} mAh | {} mW | {}%".format(
         time.ticks_ms() // 1000, soc, volts, current, capacity, full_cap, pwr, health
     )
 
-    if lipo.chgFlag():   # Fast charging allowed
+    if lipo.chgFlag():  # Fast charging allowed
         line += " CHG"
-    if lipo.fcFlag():    # Full charge detected
+    if lipo.fcFlag():  # Full charge detected
         line += " FC"
-    if lipo.dsgFlag():   # Battery is discharging
+    if lipo.dsgFlag():  # Battery is discharging
         line += " DSG"
 
     print(line)

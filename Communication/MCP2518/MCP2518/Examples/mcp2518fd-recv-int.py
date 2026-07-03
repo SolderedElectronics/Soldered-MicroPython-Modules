@@ -20,22 +20,32 @@ import time
 from mcp2518fd import MCP2518FD, CAN_OK, CAN_MSGAVAIL, CAN_125KBPS, MCP2518FD_20MHz
 
 # Change these to match your wiring
-PIN_CS   = 5
+PIN_CS = 5
 PIN_MOSI = 23
 PIN_MISO = 19
-PIN_SCK  = 18
-PIN_INT  = 4
+PIN_SCK = 18
+PIN_INT = 4
 
-spi = SPI(1, baudrate=4000000, polarity=0, phase=0, firstbit=SPI.MSB,
-          sck=Pin(PIN_SCK), mosi=Pin(PIN_MOSI), miso=Pin(PIN_MISO))
+spi = SPI(
+    1,
+    baudrate=4000000,
+    polarity=0,
+    phase=0,
+    firstbit=SPI.MSB,
+    sck=Pin(PIN_SCK),
+    mosi=Pin(PIN_MOSI),
+    miso=Pin(PIN_MISO),
+)
 
 CAN = MCP2518FD(cs_pin=PIN_CS, spi=spi)
 
 flag_recv = False
 
+
 def can_isr(pin):
     global flag_recv
     flag_recv = True
+
 
 # -------------------------------------------------------------------------
 # Setup

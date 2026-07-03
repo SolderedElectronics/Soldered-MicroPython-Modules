@@ -19,7 +19,7 @@ info = gnss.getModuleInfo()
 if info:
     print(f"SW version : {info.get('swVersion', 'N/A')}")
     print(f"HW version : {info.get('hwVersion', 'N/A')}")
-    for i, ext in enumerate(info.get('extensions', [])):
+    for i, ext in enumerate(info.get("extensions", [])):
         print(f"Extension {i}: {ext}")
 else:
     print("Could not retrieve module info.")

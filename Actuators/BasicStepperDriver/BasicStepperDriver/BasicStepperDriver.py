@@ -23,8 +23,8 @@ class BasicStepper:
     """
 
     # Motor interface types
-    FUNCTION  = 0  # Callback functions (forward/backward)
-    DRIVER    = 1  # Step/Direction driver (A4988, DRV8825, TMC2208, ...)
+    FUNCTION = 0  # Callback functions (forward/backward)
+    DRIVER = 1  # Step/Direction driver (A4988, DRV8825, TMC2208, ...)
     FULL2WIRE = 2  # 2-wire bipolar
     FULL3WIRE = 3  # 3-wire (e.g. HDD spindle)
     FULL4WIRE = 4  # 4-wire full step
@@ -32,15 +32,14 @@ class BasicStepper:
     HALF4WIRE = 8  # 4-wire half step
 
     _DIRECTION_CCW = 0
-    _DIRECTION_CW  = 1
+    _DIRECTION_CW = 1
 
     # Step sequencing tables — class-level tuples, allocated once
     _STEP2_SEQ = (0b10, 0b11, 0b01, 0b00)
     _STEP3_SEQ = (0b100, 0b001, 0b010)
     _STEP4_SEQ = (0b0101, 0b0110, 0b1010, 0b1001)
     _STEP6_SEQ = (0b100, 0b101, 0b001, 0b011, 0b010, 0b110)
-    _STEP8_SEQ = (0b0001, 0b0101, 0b0100, 0b0110,
-                  0b0010, 0b1010, 0b1000, 0b1001)
+    _STEP8_SEQ = (0b0001, 0b0101, 0b0100, 0b0110, 0b0010, 0b1010, 0b1000, 0b1001)
 
     def __init__(self, interface=4, pin1=2, pin2=3, pin3=4, pin4=5, enable=True):
         """
@@ -54,15 +53,15 @@ class BasicStepper:
             pin1      : backward() callback
         """
         if callable(interface):
-            self._interface   = self.FUNCTION
-            self._forward_cb  = interface
+            self._interface = self.FUNCTION
+            self._forward_cb = interface
             self._backward_cb = pin1
-            self._pin_nums    = [0, 0, 0, 0]
+            self._pin_nums = [0, 0, 0, 0]
         else:
-            self._interface   = interface
-            self._forward_cb  = None
+            self._interface = interface
+            self._forward_cb = None
             self._backward_cb = None
-            self._pin_nums    = [pin1, pin2, pin3, pin4]
+            self._pin_nums = [pin1, pin2, pin3, pin4]
 
         # Cache pin count — interface never changes after construction
         if self._interface in (self.FULL4WIRE, self.HALF4WIRE):
@@ -72,25 +71,25 @@ class BasicStepper:
         else:
             self._numpins = 2
 
-        self._pin         = [None, None, None, None]
+        self._pin = [None, None, None, None]
         self._pinInverted = [0, 0, 0, 0]
 
-        self._currentPos     = 0
-        self._targetPos      = 0
-        self._speed          = 0.0
-        self._maxSpeed       = 0.0
-        self._acceleration   = 0.0
-        self._sqrt_twoa      = 1.0
-        self._stepInterval   = 0
-        self._minPulseWidth  = 1
-        self._enablePin      = None
+        self._currentPos = 0
+        self._targetPos = 0
+        self._speed = 0.0
+        self._maxSpeed = 0.0
+        self._acceleration = 0.0
+        self._sqrt_twoa = 1.0
+        self._stepInterval = 0
+        self._minPulseWidth = 1
+        self._enablePin = None
         self._enableInverted = False
-        self._lastStepTime   = 0
-        self._direction      = self._DIRECTION_CCW
-        self._n              = 0
-        self._c0             = 0.0
-        self._cn             = 0.0
-        self._cmin           = 1.0
+        self._lastStepTime = 0
+        self._direction = self._DIRECTION_CCW
+        self._n = 0
+        self._c0 = 0.0
+        self._cn = 0.0
+        self._cmin = 1.0
 
         if enable:
             self.enableOutputs()
@@ -126,11 +125,11 @@ class BasicStepper:
 
     def setCurrentPosition(self, position):
         """Reset current position to given value without moving. Also zeroes speed."""
-        self._targetPos    = position
-        self._currentPos   = position
-        self._n            = 0
+        self._targetPos = position
+        self._currentPos = position
+        self._n = 0
         self._stepInterval = 0
-        self._speed        = 0.0
+        self._speed = 0.0
 
     # ------------------------------------------------------------------
     # Speed / acceleration
@@ -192,14 +191,17 @@ class BasicStepper:
         Recompute instantaneous step interval based on position and acceleration.
         Called internally after each step and after parameter changes.
         """
-        distanceTo  = self.distanceToGo()
-        stepsToStop = int((self._speed * self._speed) / (2.0 * self._acceleration)) \
-                      if self._acceleration > 0 else 0  # Eq. 16
+        distanceTo = self.distanceToGo()
+        stepsToStop = (
+            int((self._speed * self._speed) / (2.0 * self._acceleration))
+            if self._acceleration > 0
+            else 0
+        )  # Eq. 16
 
         if distanceTo == 0 and stepsToStop <= 1:
             self._stepInterval = 0
-            self._speed        = 0.0
-            self._n            = 0
+            self._speed = 0.0
+            self._n = 0
             return self._stepInterval
 
         if distanceTo > 0:
@@ -218,15 +220,17 @@ class BasicStepper:
                     self._n = -self._n
 
         if self._n == 0:
-            self._cn        = self._c0
-            self._direction = self._DIRECTION_CW if distanceTo > 0 else self._DIRECTION_CCW
+            self._cn = self._c0
+            self._direction = (
+                self._DIRECTION_CW if distanceTo > 0 else self._DIRECTION_CCW
+            )
         else:
             self._cn = self._cn - ((2.0 * self._cn) / ((4.0 * self._n) + 1))  # Eq. 13
             self._cn = max(self._cn, self._cmin)
 
-        self._n           += 1
+        self._n += 1
         self._stepInterval = self._cn
-        self._speed        = 1000000.0 / self._cn
+        self._speed = 1000000.0 / self._cn
         if self._direction == self._DIRECTION_CCW:
             self._speed = -self._speed
 
@@ -278,13 +282,19 @@ class BasicStepper:
         """Non-blocking constant-speed run toward target. Returns True if stepped."""
         if self._targetPos == self._currentPos:
             return False
-        self._direction = self._DIRECTION_CW if self._targetPos > self._currentPos else self._DIRECTION_CCW
+        self._direction = (
+            self._DIRECTION_CW
+            if self._targetPos > self._currentPos
+            else self._DIRECTION_CCW
+        )
         return self.runSpeed()
 
     def stop(self):
         """Decelerate to stop as quickly as possible given current acceleration."""
         if self._speed != 0.0 and self._acceleration > 0:
-            stepsToStop = int((self._speed * self._speed) / (2.0 * self._acceleration)) + 1
+            stepsToStop = (
+                int((self._speed * self._speed) / (2.0 * self._acceleration)) + 1
+            )
             self.move(stepsToStop if self._speed > 0 else -stepsToStop)
 
     def isRunning(self):
@@ -303,7 +313,9 @@ class BasicStepper:
         """
         for i in range(self._numpins):
             if self._pin[i] is not None:
-                self._pin[i].value((1 if (mask & (1 << i)) else 0) ^ self._pinInverted[i])
+                self._pin[i].value(
+                    (1 if (mask & (1 << i)) else 0) ^ self._pinInverted[i]
+                )
 
     def stepForward(self):
         """Manual single step CW. Returns updated position."""
@@ -321,13 +333,20 @@ class BasicStepper:
 
     def _do_step(self, step):
         iface = self._interface
-        if   iface == self.FUNCTION:  self._step0(step)
-        elif iface == self.DRIVER:    self._step1(step)
-        elif iface == self.FULL2WIRE: self._step2(step)
-        elif iface == self.FULL3WIRE: self._step3(step)
-        elif iface == self.FULL4WIRE: self._step4(step)
-        elif iface == self.HALF3WIRE: self._step6(step)
-        elif iface == self.HALF4WIRE: self._step8(step)
+        if iface == self.FUNCTION:
+            self._step0(step)
+        elif iface == self.DRIVER:
+            self._step1(step)
+        elif iface == self.FULL2WIRE:
+            self._step2(step)
+        elif iface == self.FULL3WIRE:
+            self._step3(step)
+        elif iface == self.FULL4WIRE:
+            self._step4(step)
+        elif iface == self.HALF3WIRE:
+            self._step6(step)
+        elif iface == self.HALF4WIRE:
+            self._step8(step)
 
     def _step0(self, step):
         if self._speed > 0:
@@ -397,8 +416,8 @@ class BasicStepper:
         5-arg form (pin1, pin2, pin3, pin4, enableInvert)        — multi-wire modes
         """
         if len(args) == 3:
-            self._pinInverted[0] = int(args[1])   # STEP pin
-            self._pinInverted[1] = int(args[0])   # DIR  pin
+            self._pinInverted[0] = int(args[1])  # STEP pin
+            self._pinInverted[1] = int(args[0])  # DIR  pin
             self._enableInverted = bool(args[2])
         elif len(args) == 5:
             for i in range(4):
@@ -407,6 +426,7 @@ class BasicStepper:
 
 
 # ----------------------------------------------------------------------
+
 
 class MultiStepper:
     """
@@ -419,7 +439,7 @@ class MultiStepper:
     """
 
     def __init__(self):
-        self._steppers     = []
+        self._steppers = []
         self._num_steppers = 0
 
     def addStepper(self, stepper):
@@ -439,7 +459,7 @@ class MultiStepper:
         longestTime = 0.0
         for i in range(self._num_steppers):
             dist = absolute[i] - self._steppers[i].currentPosition()
-            spd  = self._steppers[i].maxSpeed()
+            spd = self._steppers[i].maxSpeed()
             if spd > 0:
                 t = abs(dist) / spd
                 if t > longestTime:

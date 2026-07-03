@@ -13,7 +13,7 @@ import time
 from ads1x15 import *
 
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
-adc = ADS1115(i2c)   # swap for ADS1015 if using 12-bit variant
+adc = ADS1115(i2c)  # swap for ADS1015 if using 12-bit variant
 
 print("ADS1X15 Simple Example")
 
@@ -27,6 +27,6 @@ print("ADS1X15 initialized")
 
 while True:
     raw = adc.readADC(0)
-    v   = adc.toVoltage(raw)
+    v = adc.toVoltage(raw)
     print("AIN0: raw={:6d}  voltage={:.4f} V".format(raw, v))
     time.sleep_ms(500)

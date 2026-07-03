@@ -10,11 +10,11 @@ from os import uname
 
 INPUTRONIC_GRID_DEFAULT_ADDR = 0x30
 
-_CMD_SET_LED      = 0x01  # Set one LED: [ledIdx, R, G, B]
+_CMD_SET_LED = 0x01  # Set one LED: [ledIdx, R, G, B]
 _CMD_SET_ALL_LEDS = 0x02  # Set all LEDs to same color: [R, G, B]
-_CMD_GET_BUTTON   = 0x03  # Query single button state: [buttonIdx]
+_CMD_GET_BUTTON = 0x03  # Query single button state: [buttonIdx]
 _CMD_GET_ALL_PADS = 0x04  # Query all button states
-_CMD_SET_ADDR     = 0x05  # Write new I2C address to EEPROM: [newAddr]
+_CMD_SET_ADDR = 0x05  # Write new I2C address to EEPROM: [newAddr]
 _CMD_SET_LED_MASK = 0x06  # Set LEDs by bitmask: [maskHi, maskLo, R, G, B]
 
 
@@ -124,13 +124,18 @@ class InputronicGrid:
         if index >= 16:
             return
         try:
-            self._i2c.writeto(self._addr, bytes([
-                _CMD_SET_LED,
-                index,
-                self._scale(r, intensity),
-                self._scale(g, intensity),
-                self._scale(b, intensity),
-            ]))
+            self._i2c.writeto(
+                self._addr,
+                bytes(
+                    [
+                        _CMD_SET_LED,
+                        index,
+                        self._scale(r, intensity),
+                        self._scale(g, intensity),
+                        self._scale(b, intensity),
+                    ]
+                ),
+            )
         except OSError:
             pass
 
@@ -157,12 +162,19 @@ class InputronicGrid:
         :param b:    Blue component (0-255)
         """
         try:
-            self._i2c.writeto(self._addr, bytes([
-                _CMD_SET_LED_MASK,
-                (mask >> 8) & 0xFF,
-                mask & 0xFF,
-                r, g, b,
-            ]))
+            self._i2c.writeto(
+                self._addr,
+                bytes(
+                    [
+                        _CMD_SET_LED_MASK,
+                        (mask >> 8) & 0xFF,
+                        mask & 0xFF,
+                        r,
+                        g,
+                        b,
+                    ]
+                ),
+            )
         except OSError:
             pass
 

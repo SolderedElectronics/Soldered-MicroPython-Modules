@@ -4,7 +4,13 @@
 # LAST UPDATED: 2026-05-22
 
 from machine import I2C, Pin
-from gnss_ublox import SolderedGNSS, LS_SRC_GPS, LS_SRC_GLONASS, LS_SRC_BEIDOU, LS_SRC_GALILEO
+from gnss_ublox import (
+    SolderedGNSS,
+    LS_SRC_GPS,
+    LS_SRC_GLONASS,
+    LS_SRC_BEIDOU,
+    LS_SRC_GALILEO,
+)
 
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 gnss = SolderedGNSS()
@@ -29,7 +35,7 @@ SOURCE_NAMES = {
 
 if gnss.getLeapSecondEvent():
     li, timeToEvent = gnss.getLeapIndicator()
-    currLs, src     = gnss.getCurrentLeapSeconds()
+    currLs, src = gnss.getCurrentLeapSeconds()
 
     print(f"Current leap seconds : {currLs}  (source: {SOURCE_NAMES.get(src, src)})")
     print(f"Leap indicator       : {li}  Time to next event: {timeToEvent} s")

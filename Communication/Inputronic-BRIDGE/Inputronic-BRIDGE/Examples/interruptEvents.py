@@ -31,7 +31,7 @@ bridge = InputronicBridge(
     i2c=i2c,
     i2cAddr=0x50,
     interruptPin=interruptPin,
-    activeHigh=False,           # falling edge
+    activeHigh=False,  # falling edge
     interruptCallback=onBridgeDataReady,
 )
 
@@ -67,8 +67,11 @@ while True:
 
     if events.mouse.valid:
         m = events.mouse
-        print("Mouse X:{} Y:{} L:{} R:{} M:{} Scroll:{}".format(
-            m.x, m.y, int(m.btnLeft), int(m.btnRight), int(m.btnMiddle), m.scroll))
+        print(
+            "Mouse X:{} Y:{} L:{} R:{} M:{} Scroll:{}".format(
+                m.x, m.y, int(m.btnLeft), int(m.btnRight), int(m.btnMiddle), m.scroll
+            )
+        )
 
     if events.midi.valid:
         mid = events.midi

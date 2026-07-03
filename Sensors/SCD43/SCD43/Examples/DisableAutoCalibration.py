@@ -32,7 +32,10 @@ if not sensor.stopPeriodicMeasurement():
     raise SystemExit
 
 # Check the current ASC state.
-print("ASC enabled before change:", "yes" if sensor.getAutomaticSelfCalibrationEnabled() else "no")
+print(
+    "ASC enabled before change:",
+    "yes" if sensor.getAutomaticSelfCalibrationEnabled() else "no",
+)
 
 # Disable ASC.
 if not sensor.setAutomaticSelfCalibrationEnabled(False):

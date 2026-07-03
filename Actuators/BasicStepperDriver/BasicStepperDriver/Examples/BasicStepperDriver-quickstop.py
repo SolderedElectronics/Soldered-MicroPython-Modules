@@ -16,11 +16,11 @@ while True:
     stepper.moveTo(500)
     while stepper.currentPosition() != 300:  # Full speed to 300
         stepper.run()
-    stepper.stop()          # Decelerate to stop as fast as possible
-    stepper.runToPosition() # Complete the deceleration
+    stepper.stop()  # Decelerate to stop as fast as possible
+    stepper.runToPosition()  # Complete the deceleration
 
     stepper.moveTo(-500)
-    while stepper.currentPosition() != 0:    # Full speed back to 0
+    while stepper.currentPosition() != 0:  # Full speed back to 0
         stepper.run()
     stepper.stop()
     stepper.runToPosition()

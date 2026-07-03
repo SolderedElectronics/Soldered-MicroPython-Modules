@@ -14,24 +14,24 @@ from lmp91000 import LMP91000
 # Board constants
 # ===========================================================================
 _DEFAULT_ADC_ADDR = 0x49
-_REF_VOLTAGE      = 2.5  # External reference voltage on board (V)
+_REF_VOLTAGE = 2.5  # External reference voltage on board (V)
 
 # ===========================================================================
 # LMP91000 TIA gain config values
 # ===========================================================================
-TIA_GAIN_EXTERNAL  = 0x00
+TIA_GAIN_EXTERNAL = 0x00
 TIA_GAIN_2_75_KOHM = 0x01
-TIA_GAIN_3_5_KOHM  = 0x02
-TIA_GAIN_7_KOHM    = 0x03
-TIA_GAIN_14_KOHM   = 0x04
-TIA_GAIN_35_KOHM   = 0x05
-TIA_GAIN_120_KOHM  = 0x06
-TIA_GAIN_350_KOHM  = 0x07
+TIA_GAIN_3_5_KOHM = 0x02
+TIA_GAIN_7_KOHM = 0x03
+TIA_GAIN_14_KOHM = 0x04
+TIA_GAIN_35_KOHM = 0x05
+TIA_GAIN_120_KOHM = 0x06
+TIA_GAIN_350_KOHM = 0x07
 
 # RLOAD
-RLOAD_10_OHM  = 0x00
-RLOAD_33_OHM  = 0x01
-RLOAD_50_OHM  = 0x02
+RLOAD_10_OHM = 0x00
+RLOAD_33_OHM = 0x01
+RLOAD_50_OHM = 0x02
 RLOAD_100_OHM = 0x03
 
 # Reference source
@@ -42,19 +42,19 @@ REF_EXTERNAL = 0x01
 INTERNAL_ZERO_20_PERCENT = 0x00
 INTERNAL_ZERO_50_PERCENT = 0x01
 INTERNAL_ZERO_67_PERCENT = 0x02
-INTERNAL_ZERO_BYPASSED   = 0x03
+INTERNAL_ZERO_BYPASSED = 0x03
 
 # Bias sign
 BIAS_SIGN_NEGATIVE = 0x00
 BIAS_SIGN_POSITIVE = 0x01
 
 # Bias percentage
-BIAS_0_PERCENT  = 0x00
-BIAS_1_PERCENT  = 0x01
-BIAS_2_PERCENT  = 0x02
-BIAS_4_PERCENT  = 0x03
-BIAS_6_PERCENT  = 0x04
-BIAS_8_PERCENT  = 0x05
+BIAS_0_PERCENT = 0x00
+BIAS_1_PERCENT = 0x01
+BIAS_2_PERCENT = 0x02
+BIAS_4_PERCENT = 0x03
+BIAS_6_PERCENT = 0x04
+BIAS_8_PERCENT = 0x05
 BIAS_10_PERCENT = 0x06
 BIAS_12_PERCENT = 0x07
 BIAS_14_PERCENT = 0x08
@@ -66,35 +66,35 @@ BIAS_24_PERCENT = 0x0D
 
 # FET short
 FET_SHORT_DISABLED = 0x00
-FET_SHORT_ENABLED  = 0x01
+FET_SHORT_ENABLED = 0x01
 
 # Operation mode
-OP_MODE_DEEP_SLEEP          = 0x00
-OP_MODE_2LEAD_GROUND_CELL   = 0x01
-OP_MODE_STANDBY             = 0x02
-OP_MODE_3LEAD_AMP_CELL      = 0x03
+OP_MODE_DEEP_SLEEP = 0x00
+OP_MODE_2LEAD_GROUND_CELL = 0x01
+OP_MODE_STANDBY = 0x02
+OP_MODE_3LEAD_AMP_CELL = 0x03
 OP_MODE_TEMPERATURE_TIA_OFF = 0x06
-OP_MODE_TEMPERATURE_TIA_ON  = 0x07
+OP_MODE_TEMPERATURE_TIA_ON = 0x07
 
 # ===========================================================================
 # Lookup tables
 # ===========================================================================
 _TIA_GAIN_TABLE = {
-    TIA_GAIN_EXTERNAL:  -1,
+    TIA_GAIN_EXTERNAL: -1,
     TIA_GAIN_2_75_KOHM: 2750.0,
-    TIA_GAIN_3_5_KOHM:  3500.0,
-    TIA_GAIN_7_KOHM:    7000.0,
-    TIA_GAIN_14_KOHM:   14000.0,
-    TIA_GAIN_35_KOHM:   35000.0,
-    TIA_GAIN_120_KOHM:  120000.0,
-    TIA_GAIN_350_KOHM:  350000.0,
+    TIA_GAIN_3_5_KOHM: 3500.0,
+    TIA_GAIN_7_KOHM: 7000.0,
+    TIA_GAIN_14_KOHM: 14000.0,
+    TIA_GAIN_35_KOHM: 35000.0,
+    TIA_GAIN_120_KOHM: 120000.0,
+    TIA_GAIN_350_KOHM: 350000.0,
 }
 
 _INTERNAL_ZERO_TABLE = {
     INTERNAL_ZERO_20_PERCENT: 20.0,
     INTERNAL_ZERO_50_PERCENT: 50.0,
     INTERNAL_ZERO_67_PERCENT: 67.0,
-    INTERNAL_ZERO_BYPASSED:   -1,
+    INTERNAL_ZERO_BYPASSED: -1,
 }
 
 
@@ -104,20 +104,31 @@ _INTERNAL_ZERO_TABLE = {
 class SensorConfig:
     """Holds configuration parameters for a specific electrochemical gas sensor."""
 
-    def __init__(self, nano_amperes_per_ppm, internal_zero_calibration, ads_gain,
-                 tia_gain, rload, ref_source, internal_zero, bias_sign, bias,
-                 fet_short, op_mode):
-        self.nanoAmperesPerPPM       = nano_amperes_per_ppm
+    def __init__(
+        self,
+        nano_amperes_per_ppm,
+        internal_zero_calibration,
+        ads_gain,
+        tia_gain,
+        rload,
+        ref_source,
+        internal_zero,
+        bias_sign,
+        bias,
+        fet_short,
+        op_mode,
+    ):
+        self.nanoAmperesPerPPM = nano_amperes_per_ppm
         self.internalZeroCalibration = internal_zero_calibration
-        self.adsGain                 = ads_gain
-        self.TIA_GAIN_IN_KOHMS       = tia_gain
-        self.RLOAD                   = rload
-        self.REF_SOURCE              = ref_source
-        self.INTERNAL_ZERO           = internal_zero
-        self.BIAS_SIGN               = bias_sign
-        self.BIAS                    = bias
-        self.FET_SHORT               = fet_short
-        self.OP_MODE                 = op_mode
+        self.adsGain = ads_gain
+        self.TIA_GAIN_IN_KOHMS = tia_gain
+        self.RLOAD = rload
+        self.REF_SOURCE = ref_source
+        self.INTERNAL_ZERO = internal_zero
+        self.BIAS_SIGN = bias_sign
+        self.BIAS = bias
+        self.FET_SHORT = fet_short
+        self.OP_MODE = op_mode
 
 
 # ===========================================================================
@@ -255,7 +266,9 @@ class ElectrochemicalGasSensor:
     Supports CO, NO2, SO2, O3, NO, H2S, NH3, CL2 sensor types.
     """
 
-    def __init__(self, sensor_type, i2c=None, adc_addr=_DEFAULT_ADC_ADDR, config_pin=None):
+    def __init__(
+        self, sensor_type, i2c=None, adc_addr=_DEFAULT_ADC_ADDR, config_pin=None
+    ):
         """
         Initialize the sensor.
 
@@ -277,10 +290,14 @@ class ElectrochemicalGasSensor:
             elif uname().sysname == "esp8266":
                 self._i2c = I2C(scl=Pin(5), sda=Pin(4))
             else:
-                raise Exception("Board not recognized, please pass an I2C object manually")
+                raise Exception(
+                    "Board not recognized, please pass an I2C object manually"
+                )
 
         # MENB: HIGH = LMP91000 I2C disabled (normal op), LOW = enabled (config mode)
-        self._configPin = Pin(config_pin, Pin.OUT, value=1) if config_pin is not None else None
+        self._configPin = (
+            Pin(config_pin, Pin.OUT, value=1) if config_pin is not None else None
+        )
 
     def begin(self):
         """
@@ -308,16 +325,20 @@ class ElectrochemicalGasSensor:
             self._configPin.value(0)  # MENB LOW — enable I2C config
 
         tiacn = (self._type.TIA_GAIN_IN_KOHMS << 2) | self._type.RLOAD
-        refcn  = ((self._type.REF_SOURCE    << 7) |
-                  (self._type.INTERNAL_ZERO << 5) |
-                  (self._type.BIAS_SIGN     << 4) |
-                   self._type.BIAS)
+        refcn = (
+            (self._type.REF_SOURCE << 7)
+            | (self._type.INTERNAL_ZERO << 5)
+            | (self._type.BIAS_SIGN << 4)
+            | self._type.BIAS
+        )
         modecn = (self._type.FET_SHORT << 7) | self._type.OP_MODE
 
         res = self._lmp.configure(tiacn, refcn, modecn)
 
-        self._tiaGainInKOhms      = _TIA_GAIN_TABLE.get(self._type.TIA_GAIN_IN_KOHMS, -1)
-        self._internalZeroPercent = _INTERNAL_ZERO_TABLE.get(self._type.INTERNAL_ZERO, -1)
+        self._tiaGainInKOhms = _TIA_GAIN_TABLE.get(self._type.TIA_GAIN_IN_KOHMS, -1)
+        self._internalZeroPercent = _INTERNAL_ZERO_TABLE.get(
+            self._type.INTERNAL_ZERO, -1
+        )
 
         if self._configPin is not None:
             self._configPin.value(1)  # MENB HIGH — disable I2C config

@@ -26,6 +26,9 @@ while True:
     value = sensor.getValue()
     fire = sensor.isFireDetected()
 
-    print("Raw: {:4d}  Resistance: {:8.1f} Ohm  Fire%: {:6.2f}%  Fire detected: {}".format(
-        raw, resistance, value, fire))
+    print(
+        "Raw: {:4d}  Resistance: {:8.1f} Ohm  Fire%: {:6.2f}%  Fire detected: {}".format(
+            raw, resistance, value, fire
+        )
+    )
     time.sleep(1)

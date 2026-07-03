@@ -24,8 +24,10 @@ while True:
         siv = gnss.getSIV()
         fix = gnss.getFixType()
 
-        print(f"Lat: {lat / 1e7:.7f}  Lon: {lon / 1e7:.7f}  Alt: {alt / 1000:.3f} m  "
-              f"Fix: {fix}  Satellites: {siv}")
+        print(
+            f"Lat: {lat / 1e7:.7f}  Lon: {lon / 1e7:.7f}  Alt: {alt / 1000:.3f} m  "
+            f"Fix: {fix}  Satellites: {siv}"
+        )
     else:
         print("Waiting for valid PVT data...")
 

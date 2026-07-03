@@ -21,13 +21,21 @@ while True:
     # Test each LED individually
     for i in range(3):
         board.setAllLEDs(0, 0, 0)
-        board.setLED(i, 255,   0,   0); time.sleep_ms(400)  # red
-        board.setLED(i,   0, 255,   0); time.sleep_ms(400)  # green
-        board.setLED(i,   0,   0, 255); time.sleep_ms(400)  # blue
+        board.setLED(i, 255, 0, 0)
+        time.sleep_ms(400)  # red
+        board.setLED(i, 0, 255, 0)
+        time.sleep_ms(400)  # green
+        board.setLED(i, 0, 0, 255)
+        time.sleep_ms(400)  # blue
 
     # All LEDs together
-    board.setAllLEDs(255,   0,   0); time.sleep_ms(500)  # red
-    board.setAllLEDs(  0, 255,   0); time.sleep_ms(500)  # green
-    board.setAllLEDs(  0,   0, 255); time.sleep_ms(500)  # blue
-    board.setAllLEDs(255, 255, 255); time.sleep_ms(500)  # white
-    board.setAllLEDs(  0,   0,   0); time.sleep_ms(500)  # off
+    board.setAllLEDs(255, 0, 0)
+    time.sleep_ms(500)  # red
+    board.setAllLEDs(0, 255, 0)
+    time.sleep_ms(500)  # green
+    board.setAllLEDs(0, 0, 255)
+    time.sleep_ms(500)  # blue
+    board.setAllLEDs(255, 255, 255)
+    time.sleep_ms(500)  # white
+    board.setAllLEDs(0, 0, 0)
+    time.sleep_ms(500)  # off

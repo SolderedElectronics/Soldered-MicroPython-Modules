@@ -115,7 +115,9 @@ class AS5600:
     supported in both modes; without one, direction is applied in software.
     """
 
-    def __init__(self, analog_pin=None, direction_pin=None, i2c=None, address=AS5600_I2C_ADDR):
+    def __init__(
+        self, analog_pin=None, direction_pin=None, i2c=None, address=AS5600_I2C_ADDR
+    ):
         """
         Initialize the AS5600.
         Pass analog_pin for native mode, or leave empty for I2C mode.
@@ -147,7 +149,11 @@ class AS5600:
             if i2c is not None:
                 self.i2c = i2c
             else:
-                if uname().sysname in ("esp32", "esp8266", "Soldered Dasduino CONNECTPLUS"):
+                if uname().sysname in (
+                    "esp32",
+                    "esp8266",
+                    "Soldered Dasduino CONNECTPLUS",
+                ):
                     self.i2c = I2C(0, scl=Pin(22), sda=Pin(21))
                 else:
                     raise Exception("Board not recognized, enter I2C pins manually")
@@ -693,6 +699,8 @@ class AS5600:
 
     def _writeReg2(self, reg, value):
         try:
-            self.i2c.writeto_mem(self.address, reg, bytes([(value >> 8) & 0xFF, value & 0xFF]))
+            self.i2c.writeto_mem(
+                self.address, reg, bytes([(value >> 8) & 0xFF, value & 0xFF])
+            )
         except OSError as e:
             raise Exception("I2C write error: {}".format(e))

@@ -24,8 +24,11 @@ NEW_ADDRESS = 0x31
 i2c = I2C(0, scl=Pin(22), sda=Pin(21))
 grid = InputronicGrid(i2c=i2c, address=CURRENT_ADDRESS)
 
-print("Device found at 0x{:02X}. Changing address to 0x{:02X} ...".format(
-    CURRENT_ADDRESS, NEW_ADDRESS))
+print(
+    "Device found at 0x{:02X}. Changing address to 0x{:02X} ...".format(
+        CURRENT_ADDRESS, NEW_ADDRESS
+    )
+)
 
 grid.setAddress(NEW_ADDRESS)
 
