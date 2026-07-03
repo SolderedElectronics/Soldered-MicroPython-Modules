@@ -1,0 +1,9 @@
+{
+    "urls": [
+        ["husb238.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HUSB238/HUSB238/husb238.py"],
+        ["Examples/husb238-basic.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HUSB238/HUSB238/Examples/husb238-basic.py"],
+        ["Examples/husb238-requestVoltage.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Sensors/HUSB238/HUSB238/Examples/husb238-requestVoltage.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}

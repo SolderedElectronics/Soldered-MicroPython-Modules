@@ -36,6 +36,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [DE2120](Sensors/DE2120/)
 - [ElectrochemicalGasSensor](Sensors/ElectrochemicalGasSensor/)
 - [HallEffect](Sensors/HallEffect/)
+- [HUSB238](Sensors/HUSB238/)
 - [HX711](Sensors/HX711/)
 - [IIS2DULPX](Sensors/IIS2DULPX/)
 - [INA219](Sensors/INA219/)
