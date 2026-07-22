@@ -71,6 +71,7 @@ Each module in the library is designed to be lightweight, readable, and compatib
 - [WS2812Grid](Actuators/WS2812Grid/)
 
 ### Communication
+- [ADSBReceiver](Communication/ADSBReceiver/)
 - [Inputronic-BRIDGE](Communication/Inputronic-BRIDGE/)
 - [Inputronic-GRID](Communication/Inputronic-GRID/)
 - [MCP2518](Communication/MCP2518/)
