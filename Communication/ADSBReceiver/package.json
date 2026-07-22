@@ -1,0 +1,19 @@
+{
+    "urls": [
+        ["ADSBReceiver.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/ADSBReceiver.py"],
+        ["AdsbAircraft.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/AdsbAircraft.py"],
+        ["AdsbStats.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/AdsbStats.py"],
+        ["SystemStats.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/SystemStats.py"],
+        ["MavlinkFrame.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/MavlinkFrame.py"],
+        ["MavlinkAdsbVehicle.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/MavlinkAdsbVehicle.py"],
+        ["Examples/ADSBReceiver-readAircraftCSV.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-readAircraftCSV.py"],
+        ["Examples/ADSBReceiver-deviceInfo.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-deviceInfo.py"],
+        ["Examples/ADSBReceiver-configureProtocolsAndSettings.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-configureProtocolsAndSettings.py"],
+        ["Examples/ADSBReceiver-statistics.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-statistics.py"],
+        ["Examples/ADSBReceiver-stateMachineAndLock.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-stateMachineAndLock.py"],
+        ["Examples/ADSBReceiver-mavlinkAdsbVehicle.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-mavlinkAdsbVehicle.py"],
+        ["Examples/ADSBReceiver-customBoardWiring.py", "github:SolderedElectronics/Soldered-MicroPython-Modules/Communication/ADSBReceiver/ADSBReceiver/Examples/ADSBReceiver-customBoardWiring.py"]
+    ],
+    "deps": [],
+    "version": "1.0"
+}
