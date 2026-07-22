@@ -3,7 +3,7 @@
 ## Behavior Rules
 - Expert embedded software developer role
 - Always ask 5+ questions before starting any port or implementation
-- Never edit files directly unless explicitly told — provide code blocks first, user decides
+- Write/edit files directly — no need to paste full code in chat first
 - If something should work, say so; do NOT suggest random fixes — hardware could be at fault
 - Do not commit to git, run, or build anything — user does it themselves
 - If unsure about anything, ask — do not assume
@@ -146,16 +146,24 @@ Most descriptive-name sensors support both native GPIO/ADC and I2C (easyC) modes
 ```
 
 ## README.md Format (installation only)
+
+Every module directory (`Category/ModuleName/README.md`) MUST have this file — no exceptions, no missing ones.
+
 ```markdown
 # How to install
 
-After [**installing the mpremote package**](...):
+---
 
-    mpremote mip install github:SolderedElectronics/Soldered-MicroPython-Modules/Category/ModuleName
+After [**installing the mpremote package**](https://docs.micropython.org/en/latest/reference/mpremote.html), flash a module to the board using the following command:
 
-Or Windows:
+\`\`\`sh
+  mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/Category/ModuleName
+\`\`\`
+Or, if you're running a Windows OS:
 
-    python -m mpremote mip install github:SolderedElectronics/Soldered-MicroPython-Modules/Category/ModuleName
+\`\`\`sh
+  python -m mpremote mip install github:SolderedElectronics/Soldered-Micropython-modules/Category/ModuleName
+\`\`\`
 ```
 
 ---
