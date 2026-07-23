@@ -17,6 +17,26 @@ _DEFAULT_ADC_ADDR = 0x49
 _REF_VOLTAGE      = 2.5  # External reference voltage on board (V)
 
 # ===========================================================================
+# ATtiny bridge protocol constants - keep in sync with
+# extras/attiny_firmware/BridgeProtocol.h (separate toolchains, can't share one file)
+# ===========================================================================
+_CMD_PING          = 0x01
+_CMD_CONFIGURE_ADC = 0x02
+_CMD_CONFIGURE_LMP = 0x03
+_CMD_TRIGGER_ADC   = 0x04
+
+_BRIDGE_STATUS_BUSY  = 0x00
+_BRIDGE_STATUS_OK    = 0x01
+_BRIDGE_STATUS_ERROR = 0x02
+_BRIDGE_STATUS_NONE  = 0xFF
+
+# Bridge boards (ATtiny, easyC jumpers) use 0x30-0x37; legacy direct-wired boards
+# use the ADS1115's own address range (0x48-0x4B) - begin() dispatches on this.
+_BRIDGE_ADDR_MIN   = 0x30
+_BRIDGE_ADDR_MAX   = 0x37
+_BRIDGE_TIMEOUT_MS = 500
+
+# ===========================================================================
 # LMP91000 TIA gain config values
 # ===========================================================================
 TIA_GAIN_EXTERNAL  = 0x00
@@ -261,8 +281,12 @@ class ElectrochemicalGasSensor:
 
         :param sensor_type: SensorConfig instance (SENSOR_CO, SENSOR_NO2, etc.)
         :param i2c: Initialized I2C object (optional, auto-detected on known boards)
-        :param adc_addr: I2C address of ADS1115 (default 0x49)
-        :param config_pin: GPIO pin number for LMP91000 MENB (None if wired to GND)
+        :param adc_addr: Legacy board: the ADS1115's own I2C address (0x48-0x4B).
+                          ATtiny bridge board: the bridge's easyC address (0x30-0x37).
+                          begin() picks the transport based on which range this falls in.
+        :param config_pin: GPIO pin number for LMP91000 MENB (None if wired to GND).
+                            Unused when running against a bridge board - LMPEN is
+                            hardwired to GND on that board revision.
         """
         self._type = sensor_type
         self._adcAddr = adc_addr
@@ -284,17 +308,33 @@ class ElectrochemicalGasSensor:
 
     def begin(self):
         """
-        Initialize ADS1115 and LMP91000, configure the analog frontend.
+        Initialize the sensor's transport and configure the analog frontend.
         Must be called before making any readings.
+
+        Auto-detects legacy direct-wired boards vs. new ATtiny bridge boards
+        from which address range adc_addr falls in (see __init__ docstring).
 
         :returns: True if successful, False if initialization failed
         """
-        self._lmp = LMP91000(self._i2c)
-        self._ads = ADS1115(self._i2c, self._adcAddr)
+        self._bridgeMode = _BRIDGE_ADDR_MIN <= self._adcAddr <= _BRIDGE_ADDR_MAX
 
-        result = self._ads.begin()
-        self._ads.setGain(self._type.adsGain)
-        self._ads.setDataRate(0)  # slowest for best precision
+        if not self._bridgeMode:
+            self._lmp = LMP91000(self._i2c)
+            self._ads = ADS1115(self._i2c, self._adcAddr)
+
+            result = self._ads.begin()
+            self._ads.setGain(self._type.adsGain)
+            self._ads.setDataRate(0)  # slowest for best precision
+        else:
+            # ads is math-only here (toVoltage()/setGain() never touch i2c) - it
+            # never issues any I2C traffic of its own in bridge mode.
+            self._ads = ADS1115(self._i2c, self._adcAddr)
+            self._ads.setGain(self._type.adsGain)
+            self._ads.setDataRate(0)
+
+            result = self._pingBridge()
+            result = result and self._sendConfigureAdc(self._type.adsGain, 0)
+            # config_pin is unused here - LMPEN is hardwired to GND on the bridge board.
 
         result = result and bool(self._configureLMP())
         return result
@@ -304,9 +344,6 @@ class ElectrochemicalGasSensor:
         return self._configureLMP()
 
     def _configureLMP(self):
-        if self._configPin is not None:
-            self._configPin.value(0)  # MENB LOW — enable I2C config
-
         tiacn = (self._type.TIA_GAIN_IN_KOHMS << 2) | self._type.RLOAD
         refcn  = ((self._type.REF_SOURCE    << 7) |
                   (self._type.INTERNAL_ZERO << 5) |
@@ -314,20 +351,78 @@ class ElectrochemicalGasSensor:
                    self._type.BIAS)
         modecn = (self._type.FET_SHORT << 7) | self._type.OP_MODE
 
-        res = self._lmp.configure(tiacn, refcn, modecn)
+        if self._bridgeMode:
+            res = self._sendConfigureLmp(tiacn, refcn, modecn)
+        else:
+            if self._configPin is not None:
+                self._configPin.value(0)  # MENB LOW — enable I2C config
+
+            res = self._lmp.configure(tiacn, refcn, modecn)
+
+            if self._configPin is not None:
+                self._configPin.value(1)  # MENB HIGH — disable I2C config
 
         self._tiaGainInKOhms      = _TIA_GAIN_TABLE.get(self._type.TIA_GAIN_IN_KOHMS, -1)
         self._internalZeroPercent = _INTERNAL_ZERO_TABLE.get(self._type.INTERNAL_ZERO, -1)
 
-        if self._configPin is not None:
-            self._configPin.value(1)  # MENB HIGH — disable I2C config
-
         return res
 
     def getVoltage(self):
-        """Read current voltage from ADS1115 channel 0. Returns float in volts."""
-        raw = self._ads.readADC(0)
+        """Read current voltage from the ADS1115 (channel 0). Returns float in volts."""
+        raw = self._triggerAndReadAdc() if self._bridgeMode else self._ads.readADC(0)
         return self._ads.toVoltage(raw)
+
+    def _bridge_transaction(self, cmd, payload=b""):
+        """
+        Send a command to the ATtiny bridge and poll the 3-byte response until
+        OK/ERROR or timeout.
+
+        :note: Blocking - protocol is synchronous, one command in flight at a time.
+               Only used when self._bridgeMode is True. Unlike Arduino's Wire library
+               (which just returns a nonzero status on a non-ACK), MicroPython's
+               machine.I2C raises OSError - treated here the same as a BUSY/not-ready
+               response and retried until the timeout, instead of crashing outright.
+        :returns: (ok, resultHigh, resultLow) tuple
+        """
+        start = time.ticks_ms()
+        sent = False
+        while time.ticks_diff(time.ticks_ms(), start) < _BRIDGE_TIMEOUT_MS:
+            try:
+                if not sent:
+                    self._i2c.writeto(self._adcAddr, bytes([cmd]) + payload)
+                    sent = True
+                status, hi, lo = self._i2c.readfrom(self._adcAddr, 3)
+            except OSError:
+                time.sleep_ms(5)
+                continue
+
+            if status == _BRIDGE_STATUS_OK:
+                return True, hi, lo
+            if status == _BRIDGE_STATUS_ERROR:
+                return False, 0, 0
+
+            time.sleep_ms(5)  # still BUSY or no command registered yet - retry
+
+        return False, 0, 0  # timeout
+
+    def _pingBridge(self):
+        ok, _, _ = self._bridge_transaction(_CMD_PING)
+        return ok
+
+    def _sendConfigureAdc(self, gain, data_rate):
+        ok, _, _ = self._bridge_transaction(_CMD_CONFIGURE_ADC, bytes([gain, data_rate]))
+        return ok
+
+    def _sendConfigureLmp(self, tiacn, refcn, modecn):
+        ok, _, _ = self._bridge_transaction(_CMD_CONFIGURE_LMP, bytes([tiacn, refcn, modecn]))
+        return ok
+
+    def _triggerAndReadAdc(self):
+        ok, hi, lo = self._bridge_transaction(_CMD_TRIGGER_ADC)
+        raw = (hi << 8) | lo
+        if raw & 0x8000:
+            raw -= 0x10000
+        return raw
 
     def getPPM(self):
         """Calculate and return gas concentration in PPM."""
