@@ -1,0 +1,18 @@
+{
+    "urls": [
+        [
+            "pca9685.py",
+            "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCA9685/PCA9685/pca9685.py"
+        ],
+        [
+            "Examples/pca9685-basicPWM.py",
+            "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCA9685/PCA9685/Examples/pca9685-basicPWM.py"
+        ],
+        [
+            "Examples/pca9685-servoSweep.py",
+            "github:SolderedElectronics/Soldered-MicroPython-Modules/Actuators/PCA9685/PCA9685/Examples/pca9685-servoSweep.py"
+        ]
+    ],
+    "deps": [],
+    "version": "1.0"
+}
