@@ -1,5 +1,7 @@
 # Soldered MicroPython Modules
 
+> **⚠️ Deprecated:** this monorepo is no longer maintained. Every module has been extracted into its own standalone repository, named `Soldered-<ModuleName>-MicroPython-Library`, under [SolderedElectronics](https://github.com/orgs/SolderedElectronics/repositories?q=MicroPython-Library). Install modules from their individual repos going forward - the links below are kept for reference but may point to stale code.
+
 ![](https://github.com/SolderedElectronics/Soldered-MicroPython-modules/blob/main/img/soldered_micropython.png)
 
 ---
